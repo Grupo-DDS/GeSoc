@@ -1,16 +1,11 @@
 //package validadorDeContrasenias;
-import java.util.Scanner;
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
-import java.util.Arrays;
 import javax.swing.JOptionPane;
 
 
 class ArchivoContraseniasInvalidas{
-	static String direccionDelArchivo = "C:\\Users\\Juan\\Documents\\Contrasenias10000.txt";
 	
 	public static boolean encontrar(String contraseniaInvalida) {
         boolean respuesta=false;
@@ -19,7 +14,7 @@ class ArchivoContraseniasInvalidas{
         BufferedReader lectorPalabra = null; // lee una palabra al detectar un \n
 
           try {                                       
-             archivo = new File(direccionDelArchivo);  
+             archivo = new File("contrasenias10000.txt");  
              lectorCaracter = new FileReader (archivo);           
              lectorPalabra = new BufferedReader(lectorCaracter);            
              String linea;
@@ -74,13 +69,13 @@ class ReguladorDeContrasenias{
 	
 	static public void regular(String contrasenia){
 		if(!longitudValida(contrasenia))
-			mensaje += "su contrasenia es demasiado corta\n";
+			mensaje += "Su contrasenia es demasiado corta\n";
 		if(!caracteresValidos(contrasenia))
-			mensaje += "utilice caracteres validos\n";
+			mensaje += "Utilice caracteres validos\n";
 		if(doblesEspacios(contrasenia))
 			mensaje += "Los dobles espacios no son permitidos\n";
 		if(contraseniaFrecuente(contrasenia))
-			mensaje += "su contrasenia es demasiado frecuente\n ";
+			mensaje += "Su contrasenia es demasiado frecuente\n ";
 		if(longitudValida(contrasenia) && caracteresValidos(contrasenia) && !doblesEspacios(contrasenia) && !contraseniaFrecuente(contrasenia))
 			mensaje = "Contrasenia Valida";
 		JOptionPane.showMessageDialog(null,mensaje);	

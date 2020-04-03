@@ -67,6 +67,19 @@ class ReguladorDeContrasenias{
 		return ArchivoContraseniasInvalidas.encontrar(contrasenia);
 	}
 	
+	static public boolean caracteresRepetidos(String contrasenia){
+		int cont=0;
+		for(int i=0;i<contrasenia.length()-2;i++) {
+			if(contrasenia.charAt(i)==contrasenia.charAt(i+1)) 
+				cont++;
+				else
+					cont=0;
+			if(cont==4)
+				return true;           
+		}
+		return false;
+	}
+	
 	static public void regular(String contrasenia){
 		if(!longitudValida(contrasenia))
 			mensaje += "Su contrasenia es demasiado corta\n";
@@ -76,7 +89,9 @@ class ReguladorDeContrasenias{
 			mensaje += "Los dobles espacios no son permitidos\n";
 		if(contraseniaFrecuente(contrasenia))
 			mensaje += "Su contrasenia es demasiado frecuente\n ";
-		if(longitudValida(contrasenia) && caracteresValidos(contrasenia) && !doblesEspacios(contrasenia) && !contraseniaFrecuente(contrasenia))
+		if(caracteresRepetidos(contrasenia))
+			mensaje += "Su contraseña tiene muchos caracteres repetidos\n ";
+		if(longitudValida(contrasenia) && caracteresValidos(contrasenia) && !doblesEspacios(contrasenia) && !contraseniaFrecuente(contrasenia) && !caracteresRepetidos(contrasenia))
 			mensaje = "Contrasenia Valida";
 		JOptionPane.showMessageDialog(null,mensaje);	
 		

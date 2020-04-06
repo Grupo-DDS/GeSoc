@@ -1,11 +1,16 @@
-//package validadorDeContrasenias;
+package validadorDeContrasenias;
+import java.util.Scanner;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
+import java.util.Arrays;
 import javax.swing.JOptionPane;
 
 
 class ArchivoContraseniasInvalidas{
+	static String direccionDelArchivo = "C:\\Users\\Oberyn\\Desktop\\Java\\validadorDeContrasenias\\src\\validadorDeContrasenias\\Contrasenias10000.txt";
 	
 	public static boolean encontrar(String contraseniaInvalida) {
         boolean respuesta=false;
@@ -14,7 +19,7 @@ class ArchivoContraseniasInvalidas{
         BufferedReader lectorPalabra = null; // lee una palabra al detectar un \n
 
           try {                                       
-             archivo = new File("contrasenias10000.txt");  
+             archivo = new File(direccionDelArchivo);  
              lectorCaracter = new FileReader (archivo);           
              lectorPalabra = new BufferedReader(lectorCaracter);            
              String linea;
@@ -42,7 +47,7 @@ class ArchivoContraseniasInvalidas{
 }
 class ReguladorDeContrasenias{
 	static String listaCararcteresValidos = " !\",#$%&()*+-,-./0123456789:;<=>ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`@abcdefghijklmnopqrstuvwxyz{}";
-	static String mensaje= "Contrasenia invalida:\n";
+	static String mensaje= "Contraseña invalida:\n";
 	static public boolean longitudValida(String contrasenia){
 		return contrasenia.length() >= 8;
 	}
@@ -66,33 +71,27 @@ class ReguladorDeContrasenias{
 	static public boolean contraseniaFrecuente(String contrasenia){
 		return ArchivoContraseniasInvalidas.encontrar(contrasenia);
 	}
-	
 	static public boolean caracteresRepetidos(String contrasenia){
-		int cont=0;
-		for(int i=0;i<contrasenia.length()-2;i++) {
-			if(contrasenia.charAt(i)==contrasenia.charAt(i+1)) 
-				cont++;
-				else
-					cont=0;
-			if(cont==4)
-				return true;           
+		for(int i=1;i<contrasenia.length()-1;i++) {
+			if(contrasenia.charAt(i)==contrasenia.charAt(i+1) && contrasenia.charAt(i)== contrasenia.charAt(i-1)) 
+				return true;	           
 		}
 		return false;
 	}
 	
 	static public void regular(String contrasenia){
 		if(!longitudValida(contrasenia))
-			mensaje += "Su contrasenia es demasiado corta\n";
+			mensaje += "su contraseña es demasiado corta\n";
 		if(!caracteresValidos(contrasenia))
-			mensaje += "Utilice caracteres validos\n";
+			mensaje += "utilice caracteres validos\n";
 		if(doblesEspacios(contrasenia))
 			mensaje += "Los dobles espacios no son permitidos\n";
 		if(contraseniaFrecuente(contrasenia))
-			mensaje += "Su contrasenia es demasiado frecuente\n ";
+			mensaje += "su contraseña es demasiado frecuente\n ";
 		if(caracteresRepetidos(contrasenia))
-			mensaje += "Su contraseña tiene muchos caracteres repetidos\n ";
+			mensaje += "su contraseña tiene muchos caracteres repetidos\n";
 		if(longitudValida(contrasenia) && caracteresValidos(contrasenia) && !doblesEspacios(contrasenia) && !contraseniaFrecuente(contrasenia) && !caracteresRepetidos(contrasenia))
-			mensaje = "Contrasenia Valida";
+			mensaje = "Contraseña Valida";
 		JOptionPane.showMessageDialog(null,mensaje);	
 		
 			
@@ -101,7 +100,7 @@ class ReguladorDeContrasenias{
 
 public class Validador{
 	public static void main(String[] args){
-		String contrasenia = JOptionPane.showInputDialog("Ingrese su contrasenia");
+		String contrasenia = JOptionPane.showInputDialog("Ingrese su contraseña");
 		ReguladorDeContrasenias.regular(contrasenia);	 
 	}	
 }

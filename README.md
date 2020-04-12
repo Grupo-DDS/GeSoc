@@ -5,3 +5,6 @@ Requisitos:
 - Revisa que los caracteres de la contraseña sean validos.
 - Dos o mas espacios seguidos no están permitidos
 - Tres o mas caracteres iguales no están permitidos
+
+
+![caracteresValidos](/caracteresValidos.jpg)

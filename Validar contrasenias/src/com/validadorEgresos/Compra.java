@@ -7,7 +7,7 @@ public class Compra {
 	 static Presupuesto presupuestoElegido;
 	 public static boolean requierePresupuestos;
 	 
-	 public static int cantidadDePresupuestos() {
+	 public int cantidadDePresupuestos() {
 		 return presupuestos.size(); 
 	 }
 

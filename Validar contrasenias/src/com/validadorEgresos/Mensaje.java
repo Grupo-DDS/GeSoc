@@ -6,7 +6,7 @@ public class Mensaje{
 	public static boolean seleccionProveedor;
 	public static Compra compra;
 	
-	public static boolean iscantidadPresupuestosIndicada() {
+	public boolean iscantidadPresupuestosIndicada() {
 		return cantidadPresupuestosIndicada;
 	}
 
@@ -14,7 +14,7 @@ public class Mensaje{
 		cantidadPresupuestosIndicada = _cantidadPresupuestosIndicada;
 	}
 	public  boolean ispresupuestoElegido() {
-		return cantidadPresupuestosIndicada;
+		return presupuestoElegido;
 	}
 
 	public  void setpresupuestoElegido(boolean _presupuestoElegido) {

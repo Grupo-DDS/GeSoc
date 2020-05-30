@@ -1,3 +1,4 @@
+package validadorContrasenias;
 //package com.validarContraseñas;
 
 public class CaracteresValidos{

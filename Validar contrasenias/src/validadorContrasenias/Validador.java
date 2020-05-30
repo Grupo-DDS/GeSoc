@@ -1,3 +1,4 @@
+package validadorContrasenias;
 //package com.validarContraseñas;
 import javax.swing.JOptionPane;
 

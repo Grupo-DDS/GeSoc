@@ -41,7 +41,11 @@ public class InstanciarEmpresa {
 	
 	public static Empresa instanciar(int valor) {
 	Empresa empresa = null;
+	
 		switch(valor) {
+		case -1:
+			System.out.println("no esta definido");
+			break;
 		case 0:
 			empresa = new Micro();
 			System.out.println("micro");
@@ -63,24 +67,32 @@ public class InstanciarEmpresa {
 	}
 	
 	public static int buscarTipoEmpresaXpersonal(int n,Empresa empresa) {
-		int i = 0;
-		if(empresa.getPersonal() > matrizXpersonal[i][n])
-			i++;
-		return i;
+		int j = 0;
+		while(j<4) {
+			if(empresa.getPersonal() >= matrizXpersonal[j][n])
+				j++;
+			else 
+				return j;
+		}
+		return -1;
 	}
 	
 	public static int buscarTipoEmpresaXventas(int n,Empresa empresa) {
-		int i = 0;
-		if(empresa.getVtasAnuales() > matrizXventasAnuales[i][n])
-			i++;
-		return i;
+		int j = 0;
+		while(j<4) {
+			if(empresa.getVtasAnuales() >= matrizXventasAnuales[j][n])
+				j++;
+			else 
+				return j;
+		}
+		return -1;
 	}
 	
 	public static void main(String[] args) {
 		 Empresa empresa = new Empresa();
-		 empresa.setActividad("CONSTRUCCION");
-		 empresa.setPersonal(100);
-		 empresa.setVtasAnuales(0);
+		 empresa.setActividad("AGROPECUARIO");
+		 empresa.setPersonal(707770);
+		 empresa.setVtasAnuales(547892000);
 		 definirEmpresa(empresa);
 	}
 }

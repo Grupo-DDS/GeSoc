@@ -76,7 +76,7 @@ public class ValidadorCompras {
 		
 		validar(compra,bandeja);
 		
-		bandeja.mostrarMensaje(0);
+		bandeja.mostrarMensajeAuxiliar(0);
 		
 	}
 	

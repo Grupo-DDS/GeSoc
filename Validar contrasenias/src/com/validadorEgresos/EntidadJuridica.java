@@ -1,10 +1,12 @@
 package com.validadorEgresos;
 
+import java.util.ArrayList;
+
 public class EntidadJuridica extends Entidad{
 	int codigoInscripcion;
 	int codigoPostal;
 	int cuit;
-	EntidadBase[] Entidades; 
+	ArrayList<EntidadBase> entidades = new ArrayList<EntidadBase>(); 
 	String razonSocial;
 	
 }

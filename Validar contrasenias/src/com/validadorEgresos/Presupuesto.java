@@ -9,7 +9,10 @@ public class Presupuesto {
 	int valorTotal = 0;
 	
 	public void agregarEgresos(OperacionEgreso egreso) {
-		egresos.add(egreso);
+		if(egresos.isEmpty() || egreso.getProveedor().equals(egresos.get(0).getProveedor()))
+			egresos.add(egreso);
+		
+		
 	}
 	
 	public void setValorTotal() { // Aca tengo el valor del presupuesto a partir de mis egresos
@@ -21,6 +24,11 @@ public class Presupuesto {
 	public int getValorTotal() {
 		return valorTotal;
 	}
+	
+	public static void metodo() {
+		
+	}
+	
 	//asdasdsad
 	
 	

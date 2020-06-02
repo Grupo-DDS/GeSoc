@@ -52,4 +52,5 @@ public class OperacionEgreso {
 	public void setValorDeEgreso(float valorDeEgreso) {
 		this.valorDeEgreso = valorDeEgreso;
 	}
+	
 }

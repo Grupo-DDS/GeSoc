@@ -45,40 +45,6 @@ public class ValidadorCompras {
 	}
 
 	
-	public static void main(String[] args) {
-		BandejaDeMensajes bandeja = new BandejaDeMensajes();
-		
-		Presupuesto presupuesto1 = new Presupuesto();
-		presupuesto1.setMonto(100);
-		Presupuesto presupuesto2 = new Presupuesto();
-		presupuesto2.setMonto(200);
-		Presupuesto presupuesto3 = new Presupuesto();
-		presupuesto3.setMonto(300);
-		
-		Presupuesto presupuesto4 = new Presupuesto();
-		presupuesto4.setMonto(800);
-		
-		Presupuesto presupuesto5 = new Presupuesto();
-		presupuesto5.setMonto(1000);
-		
-		
-		ArrayList<Presupuesto> presupuestos = new ArrayList<Presupuesto>();
-		presupuestos.add(presupuesto1);
-		presupuestos.add(presupuesto2);
-		presupuestos.add(presupuesto3);
-		presupuestos.add(presupuesto4);
-		
-		Compra compra = new Compra();
-		compra.setRequierePresupuestos(true);
-		compra.setPresupuestoElegido(presupuesto5);
-		compra.setPresupuestos(presupuestos);
-
-		
-		validar(compra,bandeja);
-		
-		bandeja.mostrarMensajeAuxiliar(0);
-		
-	}
 	
 }
 

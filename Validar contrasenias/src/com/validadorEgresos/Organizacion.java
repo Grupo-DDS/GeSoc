@@ -1,5 +1,7 @@
 package com.validadorEgresos;
 
+import java.util.ArrayList;
+
 public class Organizacion {
-	Entidad[] entidades;
+	ArrayList<Entidad> entidades = new ArrayList<Entidad>();
 }

@@ -18,6 +18,10 @@ public class Compra {
 	public  void setPresupuestos(ArrayList<Presupuesto> _presupuestos) {
 		presupuestos = _presupuestos;
 	}
+	
+	public void agregarPresupuesto(Presupuesto presupuesto) {
+		presupuestos.add(presupuesto);
+	}
 
 	public Presupuesto getPresupuestoElegido() {
 		return presupuestoElegido;

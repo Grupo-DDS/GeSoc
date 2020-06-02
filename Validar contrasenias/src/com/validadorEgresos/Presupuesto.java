@@ -1,25 +1,26 @@
 package com.validadorEgresos;
 
+import java.util.ArrayList;
+
 public class Presupuesto {
-	DocumentoComercial[] documentosComerciales;
-	float monto;
-	Producto[] productos;
-	public DocumentoComercial[] getDocumentosComerciales() {
-		return documentosComerciales;
+	//1 presupuesto con su lista de egresos de 1 proovedor
+	ArrayList<OperacionEgreso> egresos = new ArrayList<OperacionEgreso>();
+	ArrayList<DocumentoComercial> documentosComerciales = new ArrayList<DocumentoComercial>();
+	int valorTotal = 0;
+	
+	public void agregarEgresos(OperacionEgreso egreso) {
+		egresos.add(egreso);
 	}
-	public void setDocumentosComerciales(DocumentoComercial[] documentosComerciales) {
-		this.documentosComerciales = documentosComerciales;
+	
+	public void setValorTotal() { // Aca tengo el valor del presupuesto a partir de mis egresos
+		for(int i = 0; i < egresos.size(); i++) {
+			valorTotal += egresos.get(i).getValorDeEgreso();
+		}    
 	}
-	public float getMonto() {
-		return monto;
+	
+	public int getValorTotal() {
+		return valorTotal;
 	}
-	public void setMonto(float monto) {
-		this.monto = monto;
-	}
-	public Producto[] getProductos() {
-		return productos;
-	}
-	public void setProductos(Producto[] productos) {
-		this.productos = productos;
-	}
+	
+	
 }

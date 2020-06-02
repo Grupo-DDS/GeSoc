@@ -23,7 +23,7 @@ public class ValidadorCompras {
 		Comparator <Presupuesto> comparador = new Comparator<Presupuesto>(){
 			@Override
 			public int compare(Presupuesto presupuesto1,Presupuesto presupuesto2) {
-				if (presupuesto1.getMonto()>presupuesto2.getMonto())
+				if (presupuesto1.getValorTotal()>presupuesto2.getValorTotal())
 					return 1;
 				else
 					return -1;

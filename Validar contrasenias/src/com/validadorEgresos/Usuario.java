@@ -6,7 +6,7 @@ public class Usuario {
 
 	String nombre;
 	String contrasenia;
-	static ArrayList<Compra> comprasRevisor = new ArrayList<Compra>();
+	Compra compraRevisor;
 	public String getNombre() {
 		return nombre;
 	}
@@ -19,18 +19,15 @@ public class Usuario {
 	public void setContrasenia(String contrasenia) {
 		this.contrasenia = contrasenia;
 	}
-	public ArrayList<Compra> getComprasRevisor() {
-		return comprasRevisor;
+	public Compra getCompraRevisor() {
+		return compraRevisor;
 	}
-	public void setComprasRevisor(ArrayList<Compra> comprasRevisor) {
-		Usuario.comprasRevisor = comprasRevisor;
+	public void darseDeAlta(Compra _compraRevisor) {
+		compraRevisor = _compraRevisor;
 	}
 	
 	void verMensajes(BandejaDeMensajes bandeja) {
 		bandeja.mostrarMensaje(this);
 	}
 	
-	public void agregarCompraRevisor(Compra compra) {
-		comprasRevisor.add(compra);
-	}
 }

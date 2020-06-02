@@ -8,6 +8,7 @@ public class OperacionEgreso {
 	Producto producto;
 	Proveedor proveedor;
 	float valorDeEgreso;
+	//asdasd
 	
 	public DocumentoComercial getComprobante() {
 		return comprobante;

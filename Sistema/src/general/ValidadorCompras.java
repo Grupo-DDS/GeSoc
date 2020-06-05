@@ -1,10 +1,8 @@
 package general;
 
-import java.util.Collections;
-import java.util.Comparator;
-
 public class ValidadorCompras {
 	static Mensaje mensaje;
+	static Criterio criterio = new Criterio();
 	static int presupuestosRequeridos = 3;
 	
 	public static void verificarCantidad(Compra compra){
@@ -19,18 +17,7 @@ public class ValidadorCompras {
 		mensaje.setpresupuestoElegido(set);
 	}
 	public static void verificarSeleccionProveedor(Compra compra){
-		Comparator <Presupuesto> comparador = new Comparator<Presupuesto>(){
-			@Override
-			public int compare(Presupuesto presupuesto1,Presupuesto presupuesto2) {
-				if (presupuesto1.getValorTotal()>presupuesto2.getValorTotal())
-					return 1;
-				else
-					return -1;
-			}
-		};
-		Presupuesto presMin = Collections.min(compra.getPresupuestos(), comparador);
-		boolean set = compra.getPresupuestoElegido().equals(presMin);
-		mensaje.setseleccionProveedor(set);
+		criterio.proveedorMin(compra,mensaje);
 	}
 	
 	
@@ -43,7 +30,20 @@ public class ValidadorCompras {
 		bandeja.agregarMensaje(mensaje);
 	}
 
-	
+	public static void main(String[] args) {
+		ValidadorCompras val = new ValidadorCompras();
+		Compra compra = new Compra();	
+		Presupuesto p1 = new Presupuesto();
+		Presupuesto p2 = new Presupuesto();
+		Presupuesto p3 = new Presupuesto();
+		p1.setValorTotal(1);
+		p2.setValorTotal(10);
+		p3.setValorTotal(1000);
+		compra.agregarPresupuesto(p1);
+		compra.agregarPresupuesto(p2);
+		compra.agregarPresupuesto(p3);
+		val.verificarSeleccionProveedor(compra);
+	}
 	
 }
 

@@ -15,10 +15,12 @@ public class Presupuesto {
 		
 	}
 	
-	public void setValorTotal() { // Aca tengo el valor del presupuesto a partir de mis egresos
-		for(int i = 0; i < egresos.size(); i++) {
+	public void setValorTotal(int valor) { // Aca tengo el valor del presupuesto a partir de mis egresos
+	/*	for(int i = 0; i < egresos.size(); i++) {
 			valorTotal += egresos.get(i).getValorDeEgreso();
-		}    
+		}  
+	*/
+		valorTotal = valor;
 	}
 	
 	public int getValorTotal() {

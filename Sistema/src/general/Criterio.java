@@ -1,9 +1,15 @@
 package general;
 
-import java.util.Collections;
-import java.util.Comparator;
-
 public class Criterio {
+	
+	public boolean verificar(Compra compra) {
+		return true;
+	}
+	
+
+
+}
+/*
 public void proveedorMin(Compra compra, Mensaje mensaje) {
 	Comparator <Presupuesto> comparador = new Comparator<Presupuesto>(){
 		@Override
@@ -19,5 +25,4 @@ public void proveedorMin(Compra compra, Mensaje mensaje) {
 	mensaje.setseleccionProveedor(set);
 	System.out.println(presMin);
 }
-
-}
+*/

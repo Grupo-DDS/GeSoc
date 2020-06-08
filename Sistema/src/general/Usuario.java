@@ -1,10 +1,14 @@
 package general;
 
+import java.util.ArrayList;
+
 public class Usuario {
 
 	String nombre;
 	String contrasenia;
-	Compra compraRevisor;
+	ArrayList<Mensaje> bandejaDeMensajes = new ArrayList<Mensaje>();
+
+	
 	public String getNombre() {
 		return nombre;
 	}
@@ -17,15 +21,9 @@ public class Usuario {
 	public void setContrasenia(String contrasenia) {
 		this.contrasenia = contrasenia;
 	}
-	public Compra getCompraRevisor() {
-		return compraRevisor;
-	}
-	public void darseDeAlta(Compra _compraRevisor) {
-		compraRevisor = _compraRevisor;
-	}
 	
-	void verMensajes(BandejaDeMensajes bandeja) {
-		bandeja.mostrarMensaje(this);
+	public void agregarMensaje(Mensaje mensaje){
+		bandejaDeMensajes.add(mensaje);
 	}
-	
+		
 }

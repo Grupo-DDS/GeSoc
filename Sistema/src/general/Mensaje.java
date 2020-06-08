@@ -3,7 +3,7 @@ package general;
 public class Mensaje{
 	public static boolean cantidadPresupuestosIndicada;
 	public static boolean presupuestoElegido;
-	public static boolean seleccionProveedor;
+	public static boolean criterioCorrecto;
 	public static Compra compra;
 	
 	public boolean iscantidadPresupuestosIndicada() {
@@ -20,19 +20,21 @@ public class Mensaje{
 	public  void setpresupuestoElegido(boolean _presupuestoElegido) {
 		presupuestoElegido = _presupuestoElegido;
 	}
-	public  boolean isseleccionProveedor() {
-		return seleccionProveedor;
-	}
 
-	public  void setseleccionProveedor(boolean _seleccionProveedor) {
-		seleccionProveedor = _seleccionProveedor;
-	}
 	public  Compra iscompra() {
 		return compra;
 	}
 
 	public   void setcompra(Compra _compra) {
 		compra = _compra;
+	}
+
+	public static boolean isCriterioCorrecto() {
+		return criterioCorrecto;
+	}
+
+	public void setCriterioCorrecto(boolean criterioCorrecto) {
+		Mensaje.criterioCorrecto = criterioCorrecto;
 	}
 	
 }

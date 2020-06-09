@@ -1,14 +1,15 @@
 package general;
 
+import java.util.ArrayList;
+
 public class OperacionEgreso {
 	DocumentoComercial comprobante;
 	int fechaOperacion;
 	MedioDePago medioDePago;
 	Organizacion organizacion;
-	Producto producto;
+	ArrayList<Producto> productos = new ArrayList<Producto>();
 	Proveedor proveedor;
 	float valorDeEgreso;
-	//asdasd
 	
 	public DocumentoComercial getComprobante() {
 		return comprobante;
@@ -34,12 +35,6 @@ public class OperacionEgreso {
 	public void setOrganizacion(Organizacion organizacion) {
 		this.organizacion = organizacion;
 	}
-	public Producto getProducto() {
-		return producto;
-	}
-	public void setProducto(Producto producto) {
-		this.producto = producto;
-	}
 	public Proveedor getProveedor() {
 		return proveedor;
 	}
@@ -49,8 +44,15 @@ public class OperacionEgreso {
 	public float getValorDeEgreso() {
 		return valorDeEgreso;
 	}
-	public void setValorDeEgreso(float valorDeEgreso) {
-		this.valorDeEgreso = valorDeEgreso;
+	public void setValorDeEgreso() {	
+		for(int i = 0; i < productos.size(); i++)
+			this.valorDeEgreso += productos.get(i).getValor();		
+	}
+	public ArrayList<Producto> getProductos() {
+		return productos;
+	}
+	public void setProductos(ArrayList<Producto> productos) {
+		this.productos = productos;
 	}
 	
 }

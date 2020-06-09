@@ -3,35 +3,21 @@ package general;
 import java.util.ArrayList;
 
 public class Presupuesto {
-	//1 presupuesto con su lista de egresos de 1 proovedor
-	ArrayList<OperacionEgreso> egresos = new ArrayList<OperacionEgreso>();
+	 //1 presupuesto con su lista de egresos de 1 proovedor
+	static OperacionEgreso egreso;
 	ArrayList<DocumentoComercial> documentosComerciales = new ArrayList<DocumentoComercial>();
-	int valorTotal = 0;
+	float valorTotal = egreso.getValorDeEgreso();
+	ArrayList<Producto> detalle = egreso.getProductos();
 	
-	public void agregarEgresos(OperacionEgreso egreso) {
-		if(egresos.isEmpty() || egreso.getProveedor().equals(egresos.get(0).getProveedor()))
-			egresos.add(egreso);
-		
-		
-	}
-	
-	public void setValorTotal(int valor) { // Aca tengo el valor del presupuesto a partir de mis egresos
-	/*	for(int i = 0; i < egresos.size(); i++) {
-			valorTotal += egresos.get(i).getValorDeEgreso();
-		}  
-	*/
-		valorTotal = valor;
-	}
-	
-	public int getValorTotal() {
+	public float getValorTotal() {
 		return valorTotal;
 	}
 	
-	public static void metodo() {
-		
+	public static void mostrarDetalle() {
+		for(int i = 0; i < egreso.getProductos().size(); i++) {
+			System.out.println(egreso.getProductos().get(i).getDescripcion());
+			System.out.println(egreso.getProductos().get(i).getValor());
+			}
 	}
-	
-	//asdasdsad
-	
-	
+		
 }

@@ -7,6 +7,7 @@ public class Compra {
 	 public static boolean requierePresupuestos; 
 	 ArrayList<Usuario> revisores = new ArrayList<Usuario>();
 	 private Criterio criterio;
+	 OperacionEgreso egreso;
 	 
 	 public int cantidadDePresupuestos() {
 		 return presupuestos.size(); 
@@ -21,7 +22,8 @@ public class Compra {
 	}
 	
 	public void agregarPresupuesto(Presupuesto presupuesto) {
-		presupuestos.add(presupuesto);
+		if(this.isRequierePresupuestos())
+			presupuestos.add(presupuesto);
 	}
 
 	public Presupuesto getPresupuestoElegido() {

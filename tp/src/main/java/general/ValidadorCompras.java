@@ -18,7 +18,8 @@ public class ValidadorCompras {
 	}
 	
 	public static boolean verificarCriterio(Compra compra){
-		return compra.getCriterio().verificar(compra);
+		Presupuesto presCriterio = compra.getCriterio().obtenerPresupuesto(compra);
+		return presCriterio.equals(compra.getPresupuestoElegido());
 	}
 		
 	public static void validar(Compra compra) {

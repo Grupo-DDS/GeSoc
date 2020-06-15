@@ -2,8 +2,8 @@ package general;
 
 public class Criterio {
 	
-	public boolean verificar(Compra compra) {
-		return true;
+	public Presupuesto obtenerPresupuesto(Compra compra) {
+		return null;
 	}
 	
 

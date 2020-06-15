@@ -5,7 +5,7 @@ import java.util.Comparator;
 
 public class ProveedorMenorValor extends Criterio {
 
-	public boolean verificar(Compra compra) {
+	public Presupuesto obtenerPresupuesto(Compra compra) {
 		Comparator <Presupuesto> comparador = new Comparator<Presupuesto>(){
 			@Override
 			public int compare(Presupuesto presupuesto1,Presupuesto presupuesto2) {
@@ -16,7 +16,7 @@ public class ProveedorMenorValor extends Criterio {
 			}
 		};
 		Presupuesto presMin = Collections.min(compra.getPresupuestos(), comparador);
-		return compra.getPresupuestoElegido().equals(presMin);
+		return presMin;
 
 	}
 }

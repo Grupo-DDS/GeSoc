@@ -22,9 +22,7 @@ public class Compra {
 		this.criterio = criterio;
 	}
 
-	public int cantidadDePresupuestos() {
-		return presupuestos.size(); 
-	}
+
 
 	public float getValorTotal() {
 		float total = 0;
@@ -82,6 +80,24 @@ public class Compra {
 	}
 
 	public void setProductos(ArrayList<Producto> productos) {
+		this.productos = productos;
+	}
+
+
+
+	public int getCantidadMinimaPresupuestos() {
+		return cantidadMinimaPresupuestos;
+	}
+
+
+
+	public void setCantidadMinimaPresupuestos(int cantidadMinimaPresupuestos) {
+		this.cantidadMinimaPresupuestos = cantidadMinimaPresupuestos;
+	}
+
+
+
+	public void setProductos(List<Producto> productos) {
 		this.productos = productos;
 	}
 }

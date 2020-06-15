@@ -2,13 +2,12 @@ package general;
 
 public class ValidadorCompras {
 	static Mensaje mensaje;
-	static int presupuestosRequeridos = 3;
 	
 	public static boolean verificarCantidad(Compra compra){
 		if(!compra.isRequierePresupuestos())
 			return true;
 		else
-			return presupuestosRequeridos == compra.cantidadDePresupuestos();	
+			return  compra.getPresupuestos().size() >= compra.getCantidadMinimaPresupuestos() ;	
 	}
 	
 	public static boolean verificarPresupuestoElegido(Compra compra){

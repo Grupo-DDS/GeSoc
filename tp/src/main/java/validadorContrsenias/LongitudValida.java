@@ -1,8 +1,8 @@
 package validadorContrsenias;
 //package com.validarContrase�as;
 
-public class LongitudValida{
-	static public boolean validar(String contrasenia){
+public class LongitudValida extends Requisito{
+	public boolean validar(String contrasenia){
 		return contrasenia.length() >= 8;
 			
 	}

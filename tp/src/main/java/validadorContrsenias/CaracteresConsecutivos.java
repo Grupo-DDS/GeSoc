@@ -1,8 +1,8 @@
 package validadorContrsenias;
 //package com.validarContrase�as;
 
-public class CaracteresConsecutivos{
-	static public boolean validar(String contrasenia){
+public class CaracteresConsecutivos extends Requisito{
+	 public boolean validar(String contrasenia){
 		int i=0;
 		int caracter1=0;
 		int caracter2=0;

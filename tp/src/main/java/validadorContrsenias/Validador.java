@@ -1,24 +1,42 @@
 package validadorContrsenias;
 //package com.validarContrase�as;
 import javax.swing.JOptionPane;
-
+import java.util.ArrayList;
 public class Validador{
 	static String mensaje= "Contrase�a invalida\n";
+	static ArrayList<Requisito> requisitos = new ArrayList<Requisito>();
+	static void agregarRequisitos() {
+		ArchivoContraseniasInvalidas arcContInv = new ArchivoContraseniasInvalidas();
+		CaracteresConsecutivos carCon = new CaracteresConsecutivos();
+		CaracteresRepetidos carRep = new CaracteresRepetidos();
+		CaracteresValidos carVal = new CaracteresValidos();
+		LongitudValida longVal = new LongitudValida();
+		
+		requisitos.add(arcContInv);
+		requisitos.add(carCon);
+		requisitos.add(carRep);
+		requisitos.add(carVal);
+		requisitos.add(longVal);
+	}
 	
 	public static void main(String[] args){
 		String contrasenia = JOptionPane.showInputDialog("Ingrese su contrase�a");
-		
-		if(!LongitudValida.validar(contrasenia))
+		ArchivoContraseniasInvalidas arcContInv = new ArchivoContraseniasInvalidas();
+		CaracteresConsecutivos carCon = new CaracteresConsecutivos();
+		CaracteresRepetidos carRep = new CaracteresRepetidos();
+		CaracteresValidos carVal = new CaracteresValidos();
+		LongitudValida longVal = new LongitudValida();
+		if(!longVal.validar(contrasenia))
 			mensaje += "Su contrase�a es demasiado corta\n";
-		if(!CaracteresValidos.validar(contrasenia))
+		if(!carVal.validar(contrasenia))
 			mensaje += "Utilice caracteres validos\n";
-		if(ArchivoContraseniasInvalidas.validar(contrasenia))
+		if(arcContInv.validar(contrasenia))
 			mensaje += "Su contrase�a es demasiado frecuente\n ";
-		if(CaracteresRepetidos.validar(contrasenia))
+		if(carRep.validar(contrasenia))
 			mensaje += "Su contrase�a tiene muchos caracteres repetidos\n ";
-		if(CaracteresConsecutivos.validar(contrasenia))
+		if(carCon.validar(contrasenia))
 			mensaje += "Su contrase�a tiene muchos caracteres consecutivos\n";
-		if(LongitudValida.validar(contrasenia) && CaracteresValidos.validar(contrasenia)  && !ArchivoContraseniasInvalidas.validar(contrasenia) && !CaracteresRepetidos.validar(contrasenia))
+		if(longVal.validar(contrasenia) && carVal.validar(contrasenia)  && !arcContInv.validar(contrasenia) && !carRep.validar(contrasenia))
 			mensaje = "Contrase�a Valida";
 		JOptionPane.showMessageDialog(null,mensaje);
 	}

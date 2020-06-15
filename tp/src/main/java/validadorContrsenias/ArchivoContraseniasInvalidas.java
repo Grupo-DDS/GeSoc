@@ -4,8 +4,8 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 
-public class ArchivoContraseniasInvalidas{
-	public static boolean validar(String contraseniaInvalida) {
+public class ArchivoContraseniasInvalidas extends Requisito{
+	public boolean validar(String contraseniaInvalida) {
         File archivo = null;
         FileReader lectorCaracter = null; // lee caracter a caracter
         BufferedReader lectorPalabra = null; // lee una palabra al detectar un \n

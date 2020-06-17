@@ -25,7 +25,7 @@ public class OperacionEgresoTest {
 	@Test
 	public void validarOperacionEgreso() {
 		//Documento Comercial
-		DocumentoComercial comprobante1=new DocumentoComercial();
+		DocumentoComercial comprobante1=new DocumentoComercial(25,'a');
 		//Medio de pago
 		MedioDePago tarjeta=new MedioDePago();
 		tarjeta.setMedio("Visa");

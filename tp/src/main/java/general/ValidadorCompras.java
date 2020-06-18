@@ -1,8 +1,16 @@
 package general;
 
+import java.util.ArrayList;
+
 public class ValidadorCompras {
 	static Mensaje mensaje;
+	ArrayList <Compra> listaCompra = new ArrayList<Compra>(); // Deberian cargarse las comrpas en esta lista, y el validador deberia ir tomando cada compra como un FIFO.
 	
+	public ValidadorCompras(ArrayList<Compra> listaCompra) {
+		super();
+		this.listaCompra = listaCompra;
+	}
+
 	public static boolean verificarCantidad(Compra compra){
 		if(!compra.isRequierePresupuestos())
 			return true;

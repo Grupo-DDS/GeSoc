@@ -25,12 +25,19 @@ public class JobImpl implements Job {
 
         ICuentaRegresiva contadorSincronico = (ICuentaRegresiva) jobDetail.getJobDataMap().get("contadorSincronico");
         contadorSincronico.countDown();
-        if (count == 2) {
-            throw new RuntimeException("RuntimeException!");
+        switch(count) {
+        	case(2) :
+        		throw new RuntimeException("RuntimeException!");	
+        	case(4) :
+        		throw new JobExecutionException("JobExecutionException!");
+        		
+        }
+       /* if (count == 2) {
+            throw new RuntimeException("RuntimeException!"); // Utilizo un switch en vez de dos if porque me parece mas conveniente
         }
         if (count == 4) {
             throw new JobExecutionException("JobExecutionException!");
-        }
+        }*/
     
     }
 

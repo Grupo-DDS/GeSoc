@@ -3,21 +3,30 @@ package com.example.demoquartz;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.concurrent.CountDownLatch;
-import org.quartz.CronScheduleBuilder;
-import org.quartz.DateBuilder;
+
 import org.quartz.JobBuilder;
 import org.quartz.JobDataMap;
 import org.quartz.JobDetail;
 import org.quartz.Scheduler;
 import org.quartz.SchedulerException;
 import org.quartz.SchedulerFactory;
+import org.quartz.SimpleScheduleBuilder;
 import org.quartz.Trigger;
 import org.quartz.TriggerBuilder;
+
+import general.ValidadorCompras;
 
 public class QuartzSchedulerCronTriggerExample implements ICuentaRegresiva {
 
     private CountDownLatch contadorSincronico = new CountDownLatch(1);
+    private static QuartzSchedulerCronTriggerExample instance = new QuartzSchedulerCronTriggerExample();
+	public static QuartzSchedulerCronTriggerExample getInstance() {
+		return instance;
+	}
 
+	private QuartzSchedulerCronTriggerExample(){
+
+	}
     public static void main(String[] args) throws Exception {
         QuartzSchedulerCronTriggerExample quartzSchedulerExample = new QuartzSchedulerCronTriggerExample();
         quartzSchedulerExample.comenzar();
@@ -53,15 +62,18 @@ public class QuartzSchedulerCronTriggerExample implements ICuentaRegresiva {
         String cron = "0 " + (min + 1) + " " + hour + " * * ? *";
         Trigger trigger = TriggerBuilder.newTrigger()
                 .withIdentity("unTrigger")
-                .startAt(new Date())
-                .withSchedule(CronScheduleBuilder.cronSchedule(cron))
+                .startNow()
+                .withSchedule(SimpleScheduleBuilder
+                        .simpleSchedule()
+                        .withRepeatCount(1000000)
+                        .withIntervalInSeconds(2))
                 .build();
 
         // Asignacion del job y el trigger a la inst de scheduler
         scheduler.scheduleJob(jobDetail, trigger);
         
         contadorSincronico.await(); // esperando fin de las ejecuciones
-        scheduler.shutdown();
+      
     }
 
     public void countDown() {

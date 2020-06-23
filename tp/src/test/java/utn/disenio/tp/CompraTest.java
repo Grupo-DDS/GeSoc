@@ -34,10 +34,10 @@ public class CompraTest
 		listaPresupuestos.add(presupuesto3);
 		
 		ArrayList<Usuario> listaUsuariosRevisores = new ArrayList<Usuario>();
-		Usuario usuario1 = new Usuario();
-		Usuario usuario2 = new Usuario();
-		Usuario usuario3 = new Usuario();
-		Usuario usuario4 = new Usuario();
+		Usuario usuario1 = new Usuario(null,null,null);
+		Usuario usuario2 = new Usuario(null,null,null);
+		Usuario usuario3 = new Usuario(null,null,null);
+		Usuario usuario4 = new Usuario(null,null,null);
 						
 		
 		listaUsuariosRevisores.add(usuario1);

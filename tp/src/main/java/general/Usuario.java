@@ -4,6 +4,13 @@ import java.util.ArrayList;
 
 public class Usuario {
 
+	public Usuario(String nombre, String contrasenia, ArrayList<Mensaje> bandejaDeMensajes) {
+		super();
+		this.nombre = nombre;
+		this.contrasenia = contrasenia;
+		this.bandejaDeMensajes = bandejaDeMensajes;
+	}
+
 	String nombre;
 	String contrasenia;
 	ArrayList<Mensaje> bandejaDeMensajes = new ArrayList<Mensaje>();

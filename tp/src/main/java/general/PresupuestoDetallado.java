@@ -1,6 +1,11 @@
 package general;
 
 public class PresupuestoDetallado {
+	public PresupuestoDetallado(float precio, Producto productoCompra) {
+		super();
+		this.precio = precio;
+		this.productoCompra = productoCompra;
+	}
 	private float precio;
 	private Producto productoCompra;
 	public float getPrecio() {

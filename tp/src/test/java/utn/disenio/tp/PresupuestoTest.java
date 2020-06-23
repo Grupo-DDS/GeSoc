@@ -33,9 +33,9 @@ public class PresupuestoTest {
 		documentosComerciales.add(doc3);
 		
 		ArrayList<PresupuestoDetallado> detalles = new ArrayList<PresupuestoDetallado>();
-		PresupuestoDetallado pd1 = new PresupuestoDetallado();
-		PresupuestoDetallado pd2 = new PresupuestoDetallado();
-		PresupuestoDetallado pd3 = new PresupuestoDetallado();
+		PresupuestoDetallado pd1 = new PresupuestoDetallado(0,null);
+		PresupuestoDetallado pd2 = new PresupuestoDetallado(0,null);
+		PresupuestoDetallado pd3 = new PresupuestoDetallado(0,null);
 		
 		pd1.setPrecio(5000);
 		pd1.setProductoCompra(producto1);

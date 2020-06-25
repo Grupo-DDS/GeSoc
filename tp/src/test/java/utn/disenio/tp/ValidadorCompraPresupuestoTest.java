@@ -24,18 +24,18 @@ public class ValidadorCompraPresupuestoTest {
 		
 		List<Producto> listaProducto = new ArrayList<Producto>();
 		ArrayList<Presupuesto> presupuestos = new ArrayList<Presupuesto>();
-		Presupuesto presupuesto1 = new Presupuesto();
-		Presupuesto presupuesto2 = new Presupuesto();
-		Presupuesto presupuesto3 = new Presupuesto();
+		Presupuesto presupuesto1 = new Presupuesto(null,null,null);
+		Presupuesto presupuesto2 = new Presupuesto(null,null,null);
+		Presupuesto presupuesto3 = new Presupuesto(null,null,null);
 		
 		presupuestos.add(presupuesto1);
 		presupuestos.add(presupuesto2);
 		presupuestos.add(presupuesto3);
 		
-		Usuario usuario1 = new Usuario();
-		Usuario usuario2 = new Usuario();
-		Usuario usuario3 = new Usuario();
-		Usuario usuario4 = new Usuario();
+		Usuario usuario1 = new Usuario(null,null,null);
+		Usuario usuario2 = new Usuario(null,null,null);
+		Usuario usuario3 = new Usuario(null,null,null);
+		Usuario usuario4 = new Usuario(null,null,null);
 		
 		
 		

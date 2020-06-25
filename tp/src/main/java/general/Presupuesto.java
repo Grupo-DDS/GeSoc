@@ -1,12 +1,21 @@
 package general;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Presupuesto {
 	//1 presupuesto con su lista de egresos de 1 proovedor
 	Proveedor proveedor;
 	ArrayList<DocumentoComercial> documentosComerciales = new ArrayList<DocumentoComercial>();
-	ArrayList<PresupuestoDetallado> detalles = new ArrayList<PresupuestoDetallado>();
+	List<PresupuestoDetallado> detalles = new ArrayList<PresupuestoDetallado>();
+
+	public Presupuesto(Proveedor proveedor, ArrayList<DocumentoComercial> documentosComerciales,
+			List<PresupuestoDetallado> detalles1) {
+		super();
+		this.proveedor = proveedor;
+		this.documentosComerciales = documentosComerciales;
+		this.detalles = detalles1;
+	}
 
 	public Proveedor getProveedor() {
 		return proveedor;
@@ -24,7 +33,7 @@ public class Presupuesto {
 		this.documentosComerciales = documentosComerciales;
 	}
 
-	public ArrayList<PresupuestoDetallado> getDetalles() {
+	public List<PresupuestoDetallado> getDetalles() {
 		return detalles;
 	}
 

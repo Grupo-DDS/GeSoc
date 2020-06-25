@@ -25,9 +25,9 @@ public class CompraTest
 		List<Producto> listaProductos = Arrays.asList(producto1,producto2,producto3);
 		
 		ArrayList<Presupuesto> listaPresupuestos = new ArrayList<Presupuesto>();
-		Presupuesto presupuesto1 = new Presupuesto();
-		Presupuesto presupuesto2 = new Presupuesto();
-		Presupuesto presupuesto3 = new Presupuesto();
+		Presupuesto presupuesto1 = new Presupuesto(null,null,null);
+		Presupuesto presupuesto2 = new Presupuesto(null,null,null);
+		Presupuesto presupuesto3 = new Presupuesto(null,null,null);
 		
 		listaPresupuestos.add(presupuesto1);
 		listaPresupuestos.add(presupuesto2);

@@ -39,15 +39,6 @@ public class OperacionEgresoTest {
 		Producto producto1 = new Producto("heladera",2000);
 		Producto producto2 = new Producto("televisor",300);
 		List<Producto> listaProducto = Arrays.asList(producto1,producto2);
-		//presupuestos
-		ArrayList<Presupuesto> listaPresupuestos = new ArrayList<Presupuesto>();
-		Presupuesto presupuesto1 = new Presupuesto();
-		Presupuesto presupuesto2 = new Presupuesto();
-		Presupuesto presupuesto3 = new Presupuesto();
-		
-		listaPresupuestos.add(presupuesto1);
-		listaPresupuestos.add(presupuesto2);
-		listaPresupuestos.add(presupuesto3);
 		//usuarios
 		ArrayList<Usuario> listaUsuariosRevisores = new ArrayList<Usuario>();
 		Usuario usuario1 = new Usuario(null,null,null);
@@ -60,7 +51,7 @@ public class OperacionEgresoTest {
 		//criterio
 		ProveedorMenorValor criterio = new ProveedorMenorValor();
 		//compra
-		Compra compra1=new Compra(listaProducto, listaPresupuestos,presupuesto1, 3,listaUsuariosRevisores, criterio);
+		Compra compra1=new Compra(listaProducto, null,null, 0,listaUsuariosRevisores, criterio);
 		//operacion egreso
 		OperacionEgreso egreso1= new OperacionEgreso(comprobante1, fechaOp, tarjeta, organizacion, compra1, proveedor1);
 		//TESTS
@@ -69,6 +60,6 @@ public class OperacionEgresoTest {
         assertTrue(egreso1.getMedioDePago()==tarjeta);
         assertTrue(egreso1.getOrganizacion()==organizacion);
         assertTrue(egreso1.getProveedor()==proveedor1);
-        assertTrue(egreso1.getValorDeEgreso()==compra1.getPresupuestoElegido().getValorTotal());
+        assertTrue(egreso1.getValorDeEgreso()== 2300);
 	}
 }

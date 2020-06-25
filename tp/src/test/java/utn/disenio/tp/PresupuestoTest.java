@@ -48,7 +48,7 @@ public class PresupuestoTest {
 		detalles.add(pd2);
 		detalles.add(pd3);
 		
-		Presupuesto presupuesto = new Presupuesto();
+		Presupuesto presupuesto = new Presupuesto(null,null,null);
 		presupuesto.setProveedor(proveedor1);
 		presupuesto.setDocumentosComerciales(documentosComerciales);
 		presupuesto.setDetalles(detalles);

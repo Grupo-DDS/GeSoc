@@ -15,7 +15,7 @@ public class ValidadorCompras {
 	}
 
 	public void notificar(Compra compra) {
-		this.listaCompra.add(compra);
+		listaCompra.add(compra);
 	}
 
 	public static boolean verificarCantidad(Compra compra){
@@ -36,12 +36,12 @@ public class ValidadorCompras {
 	public void validar(){
 		while(listaCompra.size() > 0) {
 			Compra compra = listaCompra.poll();
-			System.out.println("pasaron cosas");
 			Mensaje mensaje = new Mensaje();
 			mensaje.setcompra(compra);
 			mensaje.setcantidadPresupuestosIndicada(verificarCantidad(compra));
 			mensaje.setpresupuestoElegido(verificarPresupuestoElegido(compra));
 			mensaje.setCriterioCorrecto(verificarCriterio(compra));
+			System.out.println("pasaron cosas");
 			NotificarRevisores nr = new NotificarRevisores();
 			nr.notificar(compra.getRevisores(),mensaje);			
 		}

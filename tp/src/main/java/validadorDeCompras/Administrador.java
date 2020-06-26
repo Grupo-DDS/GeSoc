@@ -8,5 +8,9 @@ public class Administrador extends Usuario {
 		super(nombre, contrasenia, bandejaDeMensajes);
 		// TODO Auto-generated constructor stub
 	}
+	public void otorgarJerarquia(CriterioCategorizacion padre, CriterioCategorizacion hijo) {
+	padre.criterioHijo.add(hijo);
+	hijo.criterioPadre.add(padre);	
+        }
 
 }

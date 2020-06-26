@@ -1,4 +1,4 @@
-package general;
+package egresosIngresos;
 
 public class VinculoIngresoEgreso {
 	private OperacionIngreso ingreso;

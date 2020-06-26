@@ -4,12 +4,12 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import general.Empresa;
-import general.InstanciarEmpresa;
-import general.MedianaTramo1;
-import general.MedianaTramo2;
-import general.Micro;
-import general.Pequenia;
+import entidades.Empresa;
+import entidades.InstanciarEmpresa;
+import entidades.MedianaTramo1;
+import entidades.MedianaTramo2;
+import entidades.Micro;
+import entidades.Pequenia;
 
 public class InstanciarEmpresaTest {
 

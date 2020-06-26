@@ -1,6 +1,6 @@
 package validadorContrasenias;
 
-import general.Usuario;
+import validadorDeCompras.Usuario;
 
 public class RegistrarUsuario {
 Usuario registrar(String nombre, String contrasenia) {

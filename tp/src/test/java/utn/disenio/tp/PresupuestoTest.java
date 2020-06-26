@@ -6,11 +6,11 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
-import general.DocumentoComercial;
-import general.Presupuesto;
-import general.PresupuestoDetallado;
-import general.Producto;
-import general.Proveedor;
+import comprasPresupuestos.Presupuesto;
+import comprasPresupuestos.PresupuestoDetallado;
+import comprasPresupuestos.Producto;
+import egresosIngresos.DocumentoComercial;
+import egresosIngresos.Proveedor;
 
 public class PresupuestoTest {
 

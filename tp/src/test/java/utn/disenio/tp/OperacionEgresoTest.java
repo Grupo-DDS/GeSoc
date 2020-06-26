@@ -9,16 +9,16 @@ import java.util.List;
 
 import org.junit.Test;
 
-import general.Compra;
-import general.DocumentoComercial;
-import general.MedioDePago;
-import general.OperacionEgreso;
-import general.Organizacion;
-import general.Presupuesto;
-import general.Producto;
-import general.Proveedor;
-import general.ProveedorMenorValor;
-import general.Usuario;
+import comprasPresupuestos.Compra;
+import comprasPresupuestos.Presupuesto;
+import comprasPresupuestos.Producto;
+import comprasPresupuestos.ProveedorMenorValor;
+import egresosIngresos.DocumentoComercial;
+import egresosIngresos.MedioDePago;
+import egresosIngresos.OperacionEgreso;
+import egresosIngresos.Organizacion;
+import egresosIngresos.Proveedor;
+import validadorDeCompras.Usuario;
 
 public class OperacionEgresoTest {
 

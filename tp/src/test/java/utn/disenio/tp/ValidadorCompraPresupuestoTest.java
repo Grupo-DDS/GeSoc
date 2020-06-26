@@ -7,13 +7,13 @@ import java.util.List;
 
 import org.junit.Test;
 
-import general.Compra;
-import general.Criterio;
-import general.Presupuesto;
-import general.Producto;
-import general.ProveedorMenorValor;
-import general.Usuario;
-import general.ValidadorCompras;
+import comprasPresupuestos.Compra;
+import comprasPresupuestos.Criterio;
+import comprasPresupuestos.Presupuesto;
+import comprasPresupuestos.Producto;
+import comprasPresupuestos.ProveedorMenorValor;
+import validadorDeCompras.Usuario;
+import validadorDeCompras.ValidadorCompras;
 
 public class ValidadorCompraPresupuestoTest {
 

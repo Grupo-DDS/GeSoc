@@ -1,10 +1,10 @@
 package com.example.demoquartz;
-import general.ValidadorCompras;
-
 import org.quartz.Job;
 import org.quartz.JobDetail;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
+
+import validadorDeCompras.ValidadorCompras;
 
 public class JobImpl implements Job {
 

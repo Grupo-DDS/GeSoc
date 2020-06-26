@@ -11,7 +11,7 @@ public class Administrador extends Usuario {
 	}
 	public void otorgarJerarquia(CriterioCategorizacion padre, CriterioCategorizacion hijo) {
 	padre.criterioHijo.add(hijo);
-	hijo.criterioPadre.add(padre);	
+	hijo.criterioPadre=padre;	
         }
 
 }

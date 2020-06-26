@@ -1,6 +1,7 @@
 package validadorDeCompras;
 
 import java.util.ArrayList;
+import criteriosCategorias.CriterioCategorizacion;
 
 public class Administrador extends Usuario {
 

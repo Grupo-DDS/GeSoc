@@ -12,7 +12,7 @@ public class Consola {
 	private static ValidadorCompras validador = ValidadorCompras.getInstance();
 	private static QuartzSchedulerCronTriggerExample scheduler = QuartzSchedulerCronTriggerExample.getInstance();
 	public static void ejecutar() throws SchedulerException, InterruptedException{	
-		scheduler.comenzar();
+		scheduler.iniciar();
 		Producto producto1 = new Producto("heladera",2000);
 		Producto producto2 = new Producto("televisor",300);
 		Producto producto3 = new Producto("televisor",350);
@@ -20,11 +20,11 @@ public class Consola {
 		
 		PresupuestoDetallado detalle1 = new PresupuestoDetallado(2000, producto1);
 		PresupuestoDetallado detalle2 = new PresupuestoDetallado(300, producto2);
-		PresupuestoDetallado detalle3 = new PresupuestoDetallado(50, producto3);
+		PresupuestoDetallado detalle3 = new PresupuestoDetallado(350, producto3);
 		
 		PresupuestoDetallado detalle4 = new PresupuestoDetallado(25, producto1);
 		PresupuestoDetallado detalle5 = new PresupuestoDetallado(30, producto2);
-		PresupuestoDetallado detalle6 = new PresupuestoDetallado(5, producto3);
+		PresupuestoDetallado detalle6 = new PresupuestoDetallado(50, producto3);
 		
 		PresupuestoDetallado detalle7 = new PresupuestoDetallado(200000, producto1);
 		PresupuestoDetallado detalle8 = new PresupuestoDetallado(30000, producto2);
@@ -57,21 +57,19 @@ public class Consola {
 		ProveedorMenorValor criterio = new ProveedorMenorValor();
 
 		Compra compra = new Compra(listaProductos, listaPresupuestos,presupuesto1, 3,listaUsuariosRevisores, criterio);
-		Compra compra2 = new Compra(listaProductos, listaPresupuestos,presupuesto1, 3,listaUsuariosRevisores, criterio);
-		Compra compra3 = new Compra(listaProductos, listaPresupuestos,presupuesto1, 3,listaUsuariosRevisores, criterio);
-		Compra compra4 = new Compra(listaProductos, listaPresupuestos,presupuesto1, 3,listaUsuariosRevisores, criterio);
+		Compra compra2 = new Compra(listaProductos, listaPresupuestos,presupuesto3, 5,listaUsuariosRevisores, criterio);
+		Compra compra3 = new Compra(listaProductos, listaPresupuestos,presupuesto2, 3,listaUsuariosRevisores, criterio);
 		
 
 		compra.agregarRevisor(usuario4);
 		
 		validador.notificar(compra);
+		Thread.sleep(10000);
 		validador.notificar(compra2);
+		Thread.sleep(10000);
 		validador.notificar(compra3);
-		validador.notificar(compra4);
-		//Time.sleep(2000);
-		
-		
-		
+		Thread.sleep(10000);
+
 	}
 	
 	public static void main(String[] args) throws SchedulerException, InterruptedException {

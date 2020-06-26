@@ -80,8 +80,8 @@ public class Consola {
 
 	}
 	
-/*	public static void main(String[] args) throws SchedulerException, InterruptedException {
+	public static void main(String[] args) throws SchedulerException, InterruptedException {
 		Consola.ejecutar();
-	}*/
+	}
 
 }

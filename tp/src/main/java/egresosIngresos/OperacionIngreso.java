@@ -1,4 +1,4 @@
-package general;
+package egresosIngresos;
 
 public class OperacionIngreso {
 	private String descripcion;

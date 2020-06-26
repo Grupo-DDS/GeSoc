@@ -11,10 +11,10 @@ public class Compra {
 	private Presupuesto presupuestoElegido;
 	private int cantidadMinimaPresupuestos; 
 	private ArrayList<Usuario> revisores = new ArrayList<Usuario>();
-	private Criterio criterio;
+	private CriterioSeleccionPresupuesto criterio;
 	
 	public Compra(List<Producto> listaProducto, ArrayList<Presupuesto> presupuestos, Presupuesto presupuestoElegido,
-			int cantidadMinimaPresupuestos, ArrayList<Usuario> revisores, Criterio criterio) {
+			int cantidadMinimaPresupuestos, ArrayList<Usuario> revisores, CriterioSeleccionPresupuesto criterio) {
 		super();
 		this.productos = listaProducto;
 		this.presupuestos = presupuestos;
@@ -65,11 +65,11 @@ public class Compra {
 		this.revisores = revisores;
 	}
 
-	public Criterio getCriterio() {
+	public CriterioSeleccionPresupuesto getCriterio() {
 		return criterio;
 	}
 
-	public void setCriterio(Criterio criterio) {
+	public void setCriterio(CriterioSeleccionPresupuesto criterio) {
 		this.criterio = criterio;
 	}
 

@@ -8,7 +8,7 @@ import java.util.List;
 import org.junit.Test;
 
 import comprasPresupuestos.Compra;
-import comprasPresupuestos.Criterio;
+import comprasPresupuestos.CriterioSeleccionPresupuesto;
 import comprasPresupuestos.Presupuesto;
 import comprasPresupuestos.PresupuestoDetallado;
 import comprasPresupuestos.Producto;

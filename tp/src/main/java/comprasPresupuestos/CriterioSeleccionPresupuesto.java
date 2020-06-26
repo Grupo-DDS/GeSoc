@@ -1,6 +1,6 @@
 package comprasPresupuestos;
 
-public class Criterio {
+public class CriterioSeleccionPresupuesto {
 	
 	public Presupuesto obtenerPresupuesto(Compra compra) {
 		return null;

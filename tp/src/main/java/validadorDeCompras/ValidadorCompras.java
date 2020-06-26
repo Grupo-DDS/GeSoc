@@ -22,7 +22,7 @@ public class ValidadorCompras {
 	}
 
 	public static boolean verificarCantidad(Compra compra){
-		return !compra.isRequierePresupuestos() || compra.getPresupuestos().size() >= compra.getCantidadMinimaPresupuestos();	
+		return compra.getPresupuestos().size() >= compra.getCantidadMinimaPresupuestos();	
 	}
 
 	public static boolean verificarPresupuestoElegido(Compra compra){

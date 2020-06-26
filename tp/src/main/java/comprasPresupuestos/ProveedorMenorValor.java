@@ -3,7 +3,7 @@ package comprasPresupuestos;
 import java.util.Collections;
 import java.util.Comparator;
 
-public class ProveedorMenorValor extends Criterio {
+public class ProveedorMenorValor extends CriterioSeleccionPresupuesto {
 
 	public Presupuesto obtenerPresupuesto(Compra compra) {
 		Comparator <Presupuesto> comparador = new Comparator<Presupuesto>(){

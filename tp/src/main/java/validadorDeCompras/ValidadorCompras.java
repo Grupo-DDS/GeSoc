@@ -53,7 +53,7 @@ public class ValidadorCompras {
 			System.out.printf("Verifica criterio: ");
 			System.out.printf(Boolean.toString(verificarCriterio(compra)));
 			System.out.println();
-			NotificarRevisores nr = new NotificarRevisores();
+			NotificarRevisores nr = NotificarRevisores.getInstance();
 			nr.notificar(compra.getRevisores(),mensaje);			
 		}
 	}

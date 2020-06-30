@@ -2,7 +2,7 @@ package egresosIngresos;
 
 public class VinculoIngresoEgreso {
 	private OperacionIngreso ingreso;
-	private OperacionEgreso egreso;
+	private ArrayList<OperacionEgreso> egresos=new ArrayList<OperacionEgreso>();
 	 
 	public OperacionIngreso getIngreso() {
 		return ingreso;
@@ -10,10 +10,7 @@ public class VinculoIngresoEgreso {
 	public void setIngreso(OperacionIngreso ingreso) {
 		this.ingreso = ingreso;
 	}
-	public OperacionEgreso getEgreso() {
-		return egreso;
-	}
 	public void setEgreso(OperacionEgreso egreso) {
-		this.egreso = egreso;
+		egresos.add(egreso);
 	}
 }

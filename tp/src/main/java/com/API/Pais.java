@@ -83,7 +83,7 @@ public class Pais {
 		this.states = states;
 	}
 	
-	public static Pais obtenerPais(String id) throws JsonParseException, JsonMappingException, UnsupportedOperationException, IOException{
+	public Pais obtenerPais(String id) throws JsonParseException, JsonMappingException, UnsupportedOperationException, IOException{
 		Pais pais = null;
 		try (CloseableHttpClient client = HttpClientBuilder.create().build()) {
             HttpGet get = new HttpGet("https://api.mercadolibre.com/classified_locations/countries/"+id);
@@ -97,7 +97,7 @@ public class Pais {
 		return pais;
 	}
 	
-	public static List<Pais> obtenerPaises() throws JsonParseException, JsonMappingException, UnsupportedOperationException, IOException{
+	public List<Pais> obtenerPaises() throws JsonParseException, JsonMappingException, UnsupportedOperationException, IOException{
 		List<Pais> list = null;
 		try (CloseableHttpClient client = HttpClientBuilder.create().build()) {
             HttpGet get = new HttpGet("https://api.mercadolibre.com/classified_locations/countries");
@@ -109,7 +109,8 @@ public class Pais {
 		return list;
 	}
 	public static void main(String[] args) throws JsonParseException, JsonMappingException, UnsupportedOperationException, IOException{
-		List<Pais> list = obtenerPaises(); 
+		Pais p = new Pais();
+		List<Pais> list = p.obtenerPaises(); 
 		int i=0;
 		while(i<list.size()){
 			Pais pais = list.get(i);
@@ -118,7 +119,7 @@ public class Pais {
 			System.out.println(pais.getName());
 			System.out.println(pais.getLocale());
 			System.out.println(pais.getCurrency_id());
-			pais = obtenerPais(pais.getId());
+			pais = pais.obtenerPais(pais.getId());
 			System.out.println(pais.getDecimal_separator());
 			System.out.println(pais.getThousands_separator());
 			System.out.println(pais.getTime_zone());

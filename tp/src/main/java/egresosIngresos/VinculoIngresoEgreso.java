@@ -1,25 +1,50 @@
 package egresosIngresos;
 
-import java.util.List;
+
 
 public class VinculoIngresoEgreso {
+	public Organizacion organizacion=new Organizacion();
 	
-	private Organizacion organizacion = new Organizacion();
-	private OperacionIngreso ingreso = new OperacionIngreso();
 	public Organizacion getOrganizacion() {
 		return organizacion;
 	}
 	public void setOrganizacion(Organizacion organizacion) {
 		this.organizacion = organizacion;
 	}
+	/*public void aceptarEgresos() {
+	    int i=0;
+	    ArrayList<OperacionEgreso> egresosOrganizacion=new ArrayList<OperacionEgreso>();
+	    this.ordenarEgresosPorValor();
+	    for(OperacionEgreso unEgreso:organizacion.egresos){
+	        egresosOrganizacion.add(unEgreso);
+	        }
+		for(OperacionIngreso unIngreso:organizacion.ingresos) {
+	    	float valorIngreso= unIngreso.getMontoTotal();
+	    	for(OperacionEgreso unEgreso:egresosOrganizacion) {
+	    		if((unEgreso.getFechaOperacion().compareTo(unIngreso.getPeriodoAceptabilidad().getFechaInicioPeriodo()))>0 && (unEgreso.getFechaOperacion().compareTo(unIngreso.getPeriodoAceptabilidad().getFechaFinPeriodo()))<0 && valorIngreso>unEgreso.getValorDeEgreso()) {
+	    	    valorIngreso-=unEgreso.getValorDeEgreso();
+	    	    egresosAceptados.get(i).add(unEgreso);
+	    	    egresosOrganizacion.remove(unEgreso);
+	    		}
+	        }
+	    	i+=1;
+	    }
+	}
 	
-	
-	private List<OperacionEgreso> egresosAceptados = (List<OperacionEgreso>) organizacion.egresos.stream().filter(egreso -> (egreso.compararFechas(ingreso)));
 
-	
-	/*
-	 * if((egreso.getFechaOperacion().compareTo(ingreso.getPeriodoAceptabilidad().getFechaInicioPeriodo()))>0 && (egreso.getFechaOperacion().compareTo(ingreso.getPeriodoAceptabilidad().getFechaFinPeriodo()))<0) {
-	private float sumatoriaEgresos() {
+	public void ingresosCompatibles() {
+		int i=0;
+		for(OperacionEgreso unEgreso:organizacion.egresos) {
+			for(OperacionIngreso unIngreso:organizacion.ingresos) {
+				if((unEgreso.getFechaOperacion().compareTo(unIngreso.getPeriodoAceptabilidad().getFechaInicioPeriodo()))>0 && (unEgreso.getFechaOperacion().compareTo(unIngreso.getPeriodoAceptabilidad().getFechaFinPeriodo()))<0 && unIngreso.getMontoTotal()>unEgreso.getValorDeEgreso()) {
+					ingresosCompatibles.get(i).add(unIngreso);
+				}
+			}
+			i+=1;
+		}
+	}
+	*/
+	/*private float sumatoriaEgresos() {
 		float sum=0;
 		for (OperacionEgreso unEgreso:egresos) {
 			sum+=unEgreso.getValorDeEgreso();
@@ -31,4 +56,3 @@ public class VinculoIngresoEgreso {
 	}
 	*/
 }
-

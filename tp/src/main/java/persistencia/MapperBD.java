@@ -2,20 +2,15 @@ package persistencia;
 
 import java.util.List;
 
-import javax.persistence.Entity;
 import javax.persistence.EntityManager;
-
-import com.API.Moneda;
 
 import comprasPresupuestos.Compra;
 
-
-public class CompraMapperBD {
-
-	public void insert(Compra c) {
+public class MapperBD {
+	public void insert(Object o) {
 		EntityManager em = BDUtils.getEntityManager();
 		BDUtils.comenzarTransaccion(em);
-		em.persist(c);
+		em.persist(o);
 		
 		BDUtils.commit(em);		
 	}
@@ -40,10 +35,10 @@ public class CompraMapperBD {
 		BDUtils.commit(em);		
 	}
 	
-	public void delete(Object c) {
+	public void delete(Object o) {
 		EntityManager em = BDUtils.getEntityManager();
 		BDUtils.comenzarTransaccion(em);
-		em.remove(c);
+		em.remove(o);
 		BDUtils.commit(em);	
 	}
 }

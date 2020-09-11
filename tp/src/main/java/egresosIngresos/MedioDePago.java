@@ -1,8 +1,13 @@
 package egresosIngresos;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class MedioDePago {
 static String medio;
 String paymentTypeId;
+@Id
 String id;
 
 public void datosDelSistema(String medio) {

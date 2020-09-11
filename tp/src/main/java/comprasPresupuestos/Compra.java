@@ -12,24 +12,23 @@ import javax.persistence.OneToOne;
 import validadorDeCompras.Usuario;
 
 public class Compra {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@Id
+   // @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 	
-	@OneToMany //TODO PREGUNTAR
+	//@OneToMany //TODO PREGUNTAR
 	private List<Producto> productos = new ArrayList<Producto>();
 	
-	@OneToMany
+	//@OneToMany
 	private ArrayList<Presupuesto> presupuestos = new ArrayList<Presupuesto>();
 	
-	@OneToOne
+	//@OneToOne
 	private Presupuesto presupuestoElegido;
 	private int cantidadMinimaPresupuestos;
 	
-	@ManyToMany
+	//@ManyToMany
 	private ArrayList<Usuario> revisores = new ArrayList<Usuario>();
 	
-	//TODO PREGUNTAR
 	private CriterioSeleccionPresupuesto criterio;
 	
 	public Compra(List<Producto> listaProducto, ArrayList<Presupuesto> presupuestos, Presupuesto presupuestoElegido,

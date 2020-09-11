@@ -3,6 +3,11 @@ package com.API;
 import java.io.IOException;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -15,8 +20,9 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 
-
+@Entity
 public class Pais {
+	@Id
 	private String id;
 	private String name;
 	private String locale;
@@ -24,7 +30,11 @@ public class Pais {
 	private String decimal_separator;
 	private String thousands_separator;
 	private String time_zone;
+	
+	@OneToOne
 	private Coordenada geo_information;
+	
+	@OneToMany
 	private List<Provincia> states;
 
 	

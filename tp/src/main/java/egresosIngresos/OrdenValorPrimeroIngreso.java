@@ -8,7 +8,6 @@ public class OrdenValorPrimeroIngreso extends Requerimiento {
 	private ArrayList<ArrayList<OperacionIngreso>> ingresosCompatibles=new ArrayList<ArrayList<OperacionIngreso>>();
 	public void ordenarIngresosPorValor() {
 		Collections.sort(organizacion.ingresos, new Comparator<OperacionIngreso>(){
-			@Override
 			public int compare(OperacionIngreso unIngreso,OperacionIngreso otroIngreso) {
 				return new Float(unIngreso.getMontoTotal()).compareTo(new Float(otroIngreso.getMontoTotal()));
 			}
@@ -16,6 +15,7 @@ public class OrdenValorPrimeroIngreso extends Requerimiento {
 		});
 			
 	}
+	@Override
 	public void ordenar() {
 		int i=0;
 		ArrayList<OperacionIngreso> ingresosOrganizacion=new ArrayList<OperacionIngreso>();
@@ -25,7 +25,7 @@ public class OrdenValorPrimeroIngreso extends Requerimiento {
 	        }
 		for(OperacionEgreso unEgreso:organizacion.egresos) {
 			for(OperacionIngreso unIngreso:ingresosOrganizacion) {
-				if((unEgreso.getFechaOperacion().compareTo(unIngreso.getPeriodoAceptabilidad().getFechaInicioPeriodo()))>0 && (unEgreso.getFechaOperacion().compareTo(unIngreso.getPeriodoAceptabilidad().getFechaFinPeriodo()))<0 && unIngreso.getMontoTotal()>unEgreso.getValorDeEgreso()) {
+				if(unEgreso.compararFechas(unIngreso)) {
 					ingresosCompatibles.get(i).add(unIngreso);
 				}
 			}

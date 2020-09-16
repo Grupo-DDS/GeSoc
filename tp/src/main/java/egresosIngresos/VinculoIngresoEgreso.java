@@ -3,7 +3,7 @@ package egresosIngresos;
 
 
 public class VinculoIngresoEgreso {
-	public Organizacion organizacion=new Organizacion();
+	public Organizacion organizacion=new Organizacion(null, null, null);
 	
 	public Organizacion getOrganizacion() {
 		return organizacion;

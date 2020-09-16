@@ -5,6 +5,11 @@ public class PeriodoAceptabilidadEgreso {
 public Date fechaInicio;
 public Date fechaFin;
 
+public PeriodoAceptabilidadEgreso(Date fechaInicio, Date fechaFin) {
+	super();
+	this.fechaInicio = fechaInicio;
+	this.fechaFin = fechaFin;
+}
 public Date getFechaInicioPeriodo() {
 	return fechaInicio;
 }

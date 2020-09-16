@@ -8,6 +8,12 @@ public class OperacionIngreso {
 	//private Date fechaOperacion;
 	private PeriodoAceptabilidadEgreso periodoAceptabilidad;
 	
+	public OperacionIngreso(String descripcion, float montoTotal, PeriodoAceptabilidadEgreso periodoAceptabilidad) {
+		super();
+		this.descripcion = descripcion;
+		this.montoTotal = montoTotal;
+		this.periodoAceptabilidad = periodoAceptabilidad;
+	}
 	public String getDescripcion() {
 		return descripcion;
 	}

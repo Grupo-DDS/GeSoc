@@ -41,4 +41,20 @@ public class MapperBD {
 		em.remove(o);
 		BDUtils.commit(em);	
 	}
+	
+	public Object obtenerObjeto(Long id) {		
+		EntityManager em = BDUtils.getEntityManager();
+		BDUtils.comenzarTransaccion(em);
+		return em.find(Object.class,id);	
+	}
+	
+	
+	@SuppressWarnings("unchecked")
+	public List<Object> obtenerObjetos() {		
+		EntityManager em = BDUtils.getEntityManager();
+		BDUtils.comenzarTransaccion(em);
+		return em.createQuery("FROM Object").getResultList();
+	}
+	
+	
 }

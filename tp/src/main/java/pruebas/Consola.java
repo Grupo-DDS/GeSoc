@@ -23,13 +23,23 @@ public class Consola {
 		Pais p = new Pais();
 		PaisMapperBD pbd = new PaisMapperBD();
 		List<Pais> paises = p.obtenerPaises();
-		pbd.insert(paises);
+		//pbd.insert(paises);
 		
 		Provincia pr = new Provincia();
 		ProvinciaMapperBD prbd = new ProvinciaMapperBD();
 		
 		//prbd.insert(paises.get(0).getStates());
 		
+		List <Moneda> monedasbd = mbd.obtenerMonedas();
+		int i = 0;
+		int size = monedasbd.size();
+		while(i<size) {
+			System.out.println("Moneda "+i+" "+monedasbd.get(i).toString());
+			i++;
+		}
 		
+		Moneda monedaEncontrada = mbd.obtenerMoneda("ARS");
+		if(monedaEncontrada!=null)
+			System.out.println("MONEDA ENCONTRADAAAA "+i+" "+monedaEncontrada.toString());
 	}
 }

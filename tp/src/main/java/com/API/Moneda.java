@@ -17,6 +17,20 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Entity
 public class Moneda {
+	@Override
+	public String toString() {
+		return "Moneda [id=" + id + ", symbol=" + symbol + ", description=" + description + ", decimal_places="
+				+ decimal_places + "]";
+	}
+	public Moneda() {}
+	public Moneda(String id, String symbol, String description, int decimal_places) {
+		super();
+		this.id = id;
+		this.symbol = symbol;
+		this.description = description;
+		this.decimal_places = decimal_places;
+	}
+	
 	
 	@Id
 	private String id;

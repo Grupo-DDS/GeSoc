@@ -46,4 +46,6 @@ public class CompraMapperBD {
 		em.remove(c);
 		BDUtils.commit(em);	
 	}
+	
+
 }

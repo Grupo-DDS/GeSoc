@@ -18,7 +18,21 @@ public class MonedaMapperBD {
 			index++;
 		}
 			
-		BDUtils.commit(em);		
+		BDUtils.commit(em);	
+		
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Moneda> obtenerMonedas() {		
+		EntityManager em = BDUtils.getEntityManager();
+		BDUtils.comenzarTransaccion(em);
+		return em.createQuery("FROM Moneda").getResultList();
+	}
+	
+	public Moneda obtenerMoneda(String id) {		
+		EntityManager em = BDUtils.getEntityManager();
+		BDUtils.comenzarTransaccion(em);
+		return em.find(Moneda.class,id);	
 	}
 	
 }

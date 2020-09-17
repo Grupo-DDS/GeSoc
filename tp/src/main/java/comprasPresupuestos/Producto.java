@@ -2,13 +2,19 @@ package comprasPresupuestos;
 
 import java.util.ArrayList;
 
+import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+
 import criteriosCategorias.Categoria;
 import criteriosCategorias.CriterioCategorizacion;
 
+@Entity
 public class Producto {
 	private String descripcion;
-	private float valor = 0;
+	private float valor;
+	@ManyToMany
 	public ArrayList<Categoria> categorias = new ArrayList<Categoria>();
+	public Producto() {}
 	public Producto(String descripcion, float valor) {
 		super();
 		this.descripcion = descripcion;

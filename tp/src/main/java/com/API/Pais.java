@@ -6,7 +6,10 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -25,6 +28,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @Entity
 public class Pais {
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id_pais;
+	
 	private String id;
 	private String name;
 	private String locale;
@@ -33,13 +39,20 @@ public class Pais {
 	private String thousands_separator;
 	private String time_zone;
 	
-	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+	@OneToOne(cascade = CascadeType.ALL)
 	private Coordenada geo_information;
 	
-	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "country_id_pais")
 	private List<Provincia> states;
 
 	
+	public Long getId_pais() {
+		return id_pais;
+	}
+	public void setId_pais(Long id_pais) {
+		this.id_pais = id_pais;
+	}
 	public String getId() {
 		return id;
 	}

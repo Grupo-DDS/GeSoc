@@ -25,6 +25,7 @@ public class Consola {
 		PaisMapperBD pbd = new PaisMapperBD();
 		List<Pais> paises = p.obtenerPaises();
 		List<Pais> paisesDetallados = p.obtenerPaisesDetallados(paises);
+		pbd.insert(paisesDetallados);
 		
 		Provincia pr = new Provincia();
 		int index = 0;
@@ -35,21 +36,21 @@ public class Consola {
 			paisesDetallados.get(index).setStates(provinciasDetalladas);
 			index++;
 		}
+//		
+//		Ciudad c = new Ciudad();
+//		int i = 0;
+//		int j = 0;
+//		while(i<size) {
+//			int sizeProvincia = paisesDetallados.get(i).getStates().size();
+//			while(j<sizeProvincia) {
+//				Provincia pj = paisesDetallados.get(i).getStates().get(j);
+//				List<Ciudad> ciudadesDetalladas = c.obtenerCiudadesDetalladas(pj.getCities());
+//				pj.setCities(ciudadesDetalladas);
+//				j++;
+//			}
+//			i++;
+//		}
 		
-		Ciudad c = new Ciudad();
-		int i = 0;
-		int j = 0;
-		while(i<size) {
-			int sizeProvincia = paisesDetallados.get(i).getStates().size();
-			while(j<sizeProvincia) {
-				Provincia pj = paisesDetallados.get(i).getStates().get(j);
-				List<Ciudad> ciudadesDetalladas = c.obtenerCiudadesDetalladas(pj.getCities());
-				pj.setCities(ciudadesDetalladas);
-				j++;
-			}
-			i++;
-		}
-		pbd.insert(paisesDetallados);
 		
 
 		

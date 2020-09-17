@@ -26,12 +26,13 @@ public class MapperBD {
 			index++;
 		}
 			
-		BDUtils.commit(em);		
+		BDUtils.commit(em);	
 	}
 	
-	public void update() {
+	public void update(Object o) {
 		EntityManager em = BDUtils.getEntityManager();
 		BDUtils.comenzarTransaccion(em);
+		em.merge(o);
 		BDUtils.commit(em);		
 	}
 	

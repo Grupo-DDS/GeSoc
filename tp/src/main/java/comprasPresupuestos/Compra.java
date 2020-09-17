@@ -2,35 +2,41 @@ package comprasPresupuestos;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import validadorDeCompras.Usuario;
 
+@Entity
 public class Compra {
-    //@Id
-   // @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 	
-	//@OneToMany //TODO PREGUNTAR
+	@OneToMany
+	@JoinColumn(name = "id_compra")
 	private List<Producto> productos = new ArrayList<Producto>();
 	
-	//@OneToMany
+	@OneToMany
+	@JoinColumn(name = "id_compra")
 	private ArrayList<Presupuesto> presupuestos = new ArrayList<Presupuesto>();
 	
-	//@OneToOne
+	@OneToOne
 	private Presupuesto presupuestoElegido;
 	private int cantidadMinimaPresupuestos;
 	
-	//@ManyToMany
+	@ManyToMany
 	private ArrayList<Usuario> revisores = new ArrayList<Usuario>();
 	
 	private CriterioSeleccionPresupuesto criterio;
 	
+	public Compra() {}
 	public Compra(List<Producto> listaProducto, ArrayList<Presupuesto> presupuestos, Presupuesto presupuestoElegido,
 			int cantidadMinimaPresupuestos, ArrayList<Usuario> revisores, CriterioSeleccionPresupuesto criterio) {
 		super();

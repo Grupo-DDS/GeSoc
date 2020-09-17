@@ -7,6 +7,15 @@ import javax.persistence.EntityManager;
 import com.API.Moneda;
 
 public class MonedaMapperBD {
+	
+	public void insert(Moneda m) {
+		EntityManager em = BDUtils.getEntityManager();
+		BDUtils.comenzarTransaccion(em);
+		em.persist(m);
+		
+		BDUtils.commit(em);		
+	}
+	
 	public void insert(List<Moneda> monedas) {
 		EntityManager em = BDUtils.getEntityManager();
 		BDUtils.comenzarTransaccion(em);
@@ -20,6 +29,21 @@ public class MonedaMapperBD {
 			
 		BDUtils.commit(em);	
 		
+	}
+	
+	public void update(Moneda moneda) {
+		EntityManager em = BDUtils.getEntityManager();
+		BDUtils.comenzarTransaccion(em);
+		em.merge(moneda);
+		BDUtils.commit(em);		
+		
+	}
+	
+	public void delete(Moneda moneda) {
+		EntityManager em = BDUtils.getEntityManager();
+		BDUtils.comenzarTransaccion(em);
+		em.remove(moneda);
+		BDUtils.commit(em);	
 	}
 	
 	@SuppressWarnings("unchecked")

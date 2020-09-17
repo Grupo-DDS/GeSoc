@@ -15,6 +15,14 @@ public class Coordenada {
 	@OneToOne(cascade = {CascadeType.ALL})
 	private Location location;
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	public Location getLocation() {
 		return location;
 	}

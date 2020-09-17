@@ -3,14 +3,34 @@ package comprasPresupuestos;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
 import egresosIngresos.DocumentoComercial;
 import egresosIngresos.Proveedor;
 
+@Entity
 public class Presupuesto {
 	//1 presupuesto con su lista de egresos de 1 proovedor
-	Proveedor proveedor;
-	ArrayList<DocumentoComercial> documentosComerciales = new ArrayList<DocumentoComercial>();
-	List<PresupuestoDetallado> detalles = new ArrayList<PresupuestoDetallado>();
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	
+	@ManyToOne
+	private Proveedor proveedor;
+	
+	@OneToMany
+	@JoinColumn(name = "id_presupuesto")
+	private ArrayList<DocumentoComercial> documentosComerciales = new ArrayList<DocumentoComercial>();
+	
+	@OneToMany
+	@JoinColumn(name = "id_presupuesto")
+	private List<PresupuestoDetallado> detalles = new ArrayList<PresupuestoDetallado>();
 
 	public Presupuesto(Proveedor proveedor, ArrayList<DocumentoComercial> documentosComerciales,
 			List<PresupuestoDetallado> detalles1) {
@@ -20,6 +40,8 @@ public class Presupuesto {
 		this.detalles = detalles1;
 	}
 
+	public Presupuesto() {}
+	
 	public Proveedor getProveedor() {
 		return proveedor;
 	}

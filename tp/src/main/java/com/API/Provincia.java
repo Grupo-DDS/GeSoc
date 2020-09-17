@@ -1,8 +1,10 @@
 package com.API;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -25,10 +27,10 @@ public class Provincia {
 	private String name;
 	@ManyToOne
 	private Pais country;
-	@OneToOne
+	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	private Coordenada geo_information;
 	private String time_zone;
-	@OneToMany
+	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	private List<Ciudad> cities;
 	
 	public Pais getCountry() {
@@ -80,6 +82,23 @@ public class Provincia {
 		
 		
 		return provincia;
+	}
+	
+	public List<Provincia> obtenerProvinciasDetalladas(List<Provincia> provincias) throws JsonParseException, JsonMappingException, UnsupportedOperationException, IOException{
+		if(provincias != null) {
+			List<Provincia> provinciasDetalladas = new ArrayList<Provincia>();
+			int index = 0;
+			int size = provincias.size();
+			
+			while(index<size) {
+				Provincia provinciaDetallada = obtenerProvincia(provincias.get(index).getId());
+				provinciasDetalladas.add(provinciaDetallada);
+				index++;
+			}
+			return provinciasDetalladas;
+		}
+		else
+			return provincias;
 	}
 	
 	public static void main(String[] args) throws JsonParseException, JsonMappingException, UnsupportedOperationException, IOException{

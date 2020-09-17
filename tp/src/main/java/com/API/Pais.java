@@ -1,8 +1,10 @@
 package com.API;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -31,10 +33,10 @@ public class Pais {
 	private String thousands_separator;
 	private String time_zone;
 	
-	@OneToOne
+	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	private Coordenada geo_information;
 	
-	@OneToMany
+	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	private List<Provincia> states;
 
 	
@@ -117,6 +119,18 @@ public class Pais {
             list = objectMapper.readValue(responseEntity.getContent(),new TypeReference<List<Pais>>(){});
 		}
 		return list;
+	}
+	
+	public List<Pais> obtenerPaisesDetallados(List<Pais> paises) throws JsonParseException, JsonMappingException, UnsupportedOperationException, IOException{
+		List<Pais> paisesDetallados = new ArrayList<Pais>();
+		int index = 0;
+		int size = paises.size();
+		while(index<size) {
+			Pais paisDetallado = obtenerPais(paises.get(index).getId());
+			paisesDetallados.add(paisDetallado);
+			index++;
+		}
+		return paisesDetallados;
 	}
 	public static void main(String[] args) throws JsonParseException, JsonMappingException, UnsupportedOperationException, IOException{
 		Pais p = new Pais();

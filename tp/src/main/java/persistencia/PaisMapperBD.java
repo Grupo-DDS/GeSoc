@@ -7,6 +7,13 @@ import javax.persistence.EntityManager;
 import com.API.Pais;
 
 public class PaisMapperBD {
+	public void insert(Pais p) {
+		EntityManager em = BDUtils.getEntityManager();
+		BDUtils.comenzarTransaccion(em);
+		em.persist(p);
+		
+		BDUtils.commit(em);		
+	}
 	public void insert(List<Pais> paises) {
 		EntityManager em = BDUtils.getEntityManager();
 		BDUtils.comenzarTransaccion(em);
@@ -17,6 +24,7 @@ public class PaisMapperBD {
 			em.persist(pais);
 			index++;
 		}
+		
 			
 		BDUtils.commit(em);		
 	}

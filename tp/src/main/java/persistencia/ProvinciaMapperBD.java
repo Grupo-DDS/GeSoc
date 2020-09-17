@@ -21,4 +21,13 @@ public class ProvinciaMapperBD {
 			
 		BDUtils.commit(em);		
 	}
+	
+	public void update(Provincia p) {
+		EntityManager em = BDUtils.getEntityManager();
+		BDUtils.comenzarTransaccion(em);
+		em.merge(p);
+		em.persist(p);
+		
+		BDUtils.commit(em);		
+	}
 }

@@ -1,5 +1,6 @@
 package com.API;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,7 +12,7 @@ public class Coordenada {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@OneToOne
+	@OneToOne(cascade = {CascadeType.ALL})
 	private Location location;
 
 	public Location getLocation() {

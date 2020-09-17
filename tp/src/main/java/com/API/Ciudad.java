@@ -1,8 +1,10 @@
 package com.API;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -28,7 +30,7 @@ public class Ciudad {
 	@ManyToOne
 	private Pais country;
 	
-	@OneToMany
+	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	private List<Ciudad> neighborhoods;
 	
 	@OneToOne
@@ -85,6 +87,24 @@ public class Ciudad {
 		}
 		return ciudad;
 	}
+	
+	public List<Ciudad> obtenerCiudadesDetalladas(List<Ciudad> ciudades) throws JsonParseException, JsonMappingException, UnsupportedOperationException, IOException{
+		if(ciudades != null) {
+			List<Ciudad> ciudadesDetalladas = new ArrayList<Ciudad>();
+			int index = 0;
+			int size = ciudades.size();
+			
+			while(index<size) {
+				Ciudad ciudadDetallada = obtenerCiudad(ciudades.get(index).getId());
+				ciudadesDetalladas.add(ciudadDetallada);
+				index++;
+			}
+			return ciudadesDetalladas;
+		}
+		else
+			return ciudades;
+	}
+	
 	
 	public static void main(String[] args) throws JsonParseException, JsonMappingException, UnsupportedOperationException, IOException{
 		Pais p = new Pais();

@@ -7,7 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
-@Entity
+@Entity(name = "Coordenada")
 public class Coordenada {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

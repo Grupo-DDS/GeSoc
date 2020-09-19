@@ -26,13 +26,13 @@ public class Presupuesto {
 	
 	@OneToMany
 	@JoinColumn(name = "id_presupuesto")
-	private ArrayList<DocumentoComercial> documentosComerciales = new ArrayList<DocumentoComercial>();
+	private List<DocumentoComercial> documentosComerciales = new ArrayList<DocumentoComercial>();
 	
 	@OneToMany
 	@JoinColumn(name = "id_presupuesto")
 	private List<PresupuestoDetallado> detalles = new ArrayList<PresupuestoDetallado>();
 
-	public Presupuesto(Proveedor proveedor, ArrayList<DocumentoComercial> documentosComerciales,
+	public Presupuesto(Proveedor proveedor, List<DocumentoComercial> documentosComerciales,
 			List<PresupuestoDetallado> detalles1) {
 		super();
 		this.proveedor = proveedor;
@@ -50,11 +50,11 @@ public class Presupuesto {
 		this.proveedor = proveedor;
 	}
 
-	public ArrayList<DocumentoComercial> getDocumentosComerciales() {
+	public List<DocumentoComercial> getDocumentosComerciales() {
 		return documentosComerciales;
 	}
 
-	public void setDocumentosComerciales(ArrayList<DocumentoComercial> documentosComerciales) {
+	public void setDocumentosComerciales(List<DocumentoComercial> documentosComerciales) {
 		this.documentosComerciales = documentosComerciales;
 	}
 
@@ -62,7 +62,7 @@ public class Presupuesto {
 		return detalles;
 	}
 
-	public void setDetalles(ArrayList<PresupuestoDetallado> detalles) {
+	public void setDetalles(List<PresupuestoDetallado> detalles) {
 		this.detalles = detalles;
 	}
 

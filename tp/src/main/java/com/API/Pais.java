@@ -25,7 +25,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 
-@Entity
+@Entity(name = "Pais")
 public class Pais {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

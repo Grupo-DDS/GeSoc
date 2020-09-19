@@ -4,8 +4,6 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
-import comprasPresupuestos.Compra;
-
 public abstract class SuperBDUtilsRodriCapo<T> {
 
     public void insert(T c) {

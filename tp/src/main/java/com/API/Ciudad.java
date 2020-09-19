@@ -22,7 +22,7 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-@Entity
+@Entity(name = "Ciudad")
 public class Ciudad {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

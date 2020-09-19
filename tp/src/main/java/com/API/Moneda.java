@@ -17,7 +17,7 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-@Entity
+@Entity(name = "Moneda")
 public class Moneda {
 	@Override
 	public String toString() {

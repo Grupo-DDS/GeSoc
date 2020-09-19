@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -25,20 +26,21 @@ public class Compra {
 	
 	@OneToMany
 	@JoinColumn(name = "id_compra")
-	private ArrayList<Presupuesto> presupuestos = new ArrayList<Presupuesto>();
+	private List<Presupuesto> presupuestos = new ArrayList<Presupuesto>();
 	
 	@OneToOne
 	private Presupuesto presupuestoElegido;
 	private int cantidadMinimaPresupuestos;
 	
 	@ManyToMany
-	private ArrayList<Usuario> revisores = new ArrayList<Usuario>();
+	private List<Usuario> revisores = new ArrayList<Usuario>();
 	
+	@ManyToOne
 	private CriterioSeleccionPresupuesto criterio;
 	
 	public Compra() {}
-	public Compra(List<Producto> listaProducto, ArrayList<Presupuesto> presupuestos, Presupuesto presupuestoElegido,
-			int cantidadMinimaPresupuestos, ArrayList<Usuario> revisores, CriterioSeleccionPresupuesto criterio) {
+	public Compra(List<Producto> listaProducto, List<Presupuesto> presupuestos, Presupuesto presupuestoElegido,
+			int cantidadMinimaPresupuestos, List<Usuario> revisores, CriterioSeleccionPresupuesto criterio) {
 		super();
 		this.productos = listaProducto;
 		this.presupuestos = presupuestos;
@@ -57,11 +59,11 @@ public class Compra {
 		return total;
 	}
 
-	public  ArrayList<Presupuesto> getPresupuestos() {
+	public  List<Presupuesto> getPresupuestos() {
 		return presupuestos;
 	}
 
-	public  void setPresupuestos(ArrayList<Presupuesto> _presupuestos) {
+	public  void setPresupuestos(List<Presupuesto> _presupuestos) {
 		presupuestos = _presupuestos;
 	}
 
@@ -81,11 +83,11 @@ public class Compra {
 		return cantidadMinimaPresupuestos > 0;
 	}
 
-	public ArrayList<Usuario> getRevisores() {
+	public List<Usuario> getRevisores() {
 		return revisores;
 	}
 
-	public void setRevisores(ArrayList<Usuario> revisores) {
+	public void setRevisores(List<Usuario> revisores) {
 		this.revisores = revisores;
 	}
 
@@ -105,7 +107,7 @@ public class Compra {
 		return productos;
 	}
 
-	public void setProductos(ArrayList<Producto> productos) {
+	public void setProductos(List<Producto> productos) {
 		this.productos = productos;
 	}
 
@@ -123,7 +125,5 @@ public class Compra {
 
 
 
-	public void setProductos(List<Producto> productos) {
-		this.productos = productos;
-	}
+
 }

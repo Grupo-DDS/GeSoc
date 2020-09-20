@@ -1,10 +1,45 @@
 package entidades;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity(name="InstanciarEmpresa")
 public class InstanciarEmpresa {
 	// Matriz de Cantidad  [TipoEmpresa,Actividad]
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	int idInstanciaEmpresa;
 	static int matrizXpersonal [][]  = {{12,7,7,15,5},{45,30,35,60,10},{200,165,125,235,50},{590,535,345,655,215}};
 	static int matrizXventasAnuales [][] = {{15230000,8500000,29740000,26540000,12890000},{90310000,50950000,178860000,190410000,48480000},{503880000,425170000,1502750000,1190330000,345430000},{755740000,607210000,2146810000,1739590000,547890000}};
 	
+	public InstanciarEmpresa() {}
+	
+	public int getIdInstanciaEmpresa() {
+		return idInstanciaEmpresa;
+	}
+
+	public void setIdInstanciaEmpresa(int idInstanciaEmpresa) {
+		this.idInstanciaEmpresa = idInstanciaEmpresa;
+	}
+
+	public static int[][] getMatrizXpersonal() {
+		return matrizXpersonal;
+	}
+
+	public static void setMatrizXpersonal(int[][] matrizXpersonal) {
+		InstanciarEmpresa.matrizXpersonal = matrizXpersonal;
+	}
+
+	public static int[][] getMatrizXventasAnuales() {
+		return matrizXventasAnuales;
+	}
+
+	public static void setMatrizXventasAnuales(int[][] matrizXventasAnuales) {
+		InstanciarEmpresa.matrizXventasAnuales = matrizXventasAnuales;
+	}
+
 	public static Empresa definirEmpresa(Empresa empresa) {
 	Empresa tipoEmpresa = null;
 		switch(empresa.getActividad()) {
@@ -87,13 +122,4 @@ public class InstanciarEmpresa {
 		}
 		return -1;
 	}
-	
-	public static void main(String[] args) {
-		 Empresa empresa = new Empresa();
-		 empresa.setActividad("AGROPECUARIO");
-		 empresa.setPersonal(707770);
-		 empresa.setVtasAnuales(547892000);
-		 definirEmpresa(empresa);
-	}
 }
-

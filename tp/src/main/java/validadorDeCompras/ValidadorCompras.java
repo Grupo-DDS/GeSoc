@@ -5,8 +5,42 @@ import java.util.Queue;
 
 import comprasPresupuestos.Compra;
 import comprasPresupuestos.Presupuesto;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.Table;
+
+@Entity
+//@Table(name = "VALIDADOR DE COMPRAS")
 
 public class ValidadorCompras {
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+	
+	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public static Queue<Compra> getListaCompra() {
+		return listaCompra;
+	}
+
+	public static void setListaCompra(Queue<Compra> listaCompra) {
+		ValidadorCompras.listaCompra = listaCompra;
+	}
+
+	public static void setInstance(ValidadorCompras instance) {
+		ValidadorCompras.instance = instance;
+	}
+
 	static Queue<Compra> listaCompra = new LinkedList<Compra>(); // Deberian cargarse las comrpas en esta lista, y el validador deberia ir tomando cada compra como un FIFO.
 	private static ValidadorCompras instance = new ValidadorCompras();
 	public static ValidadorCompras getInstance() {

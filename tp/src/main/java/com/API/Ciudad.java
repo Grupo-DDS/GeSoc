@@ -6,6 +6,8 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -20,9 +22,11 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-@Entity
+@Entity(name = "Ciudad")
 public class Ciudad {
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id_ciudad;
 	private String id;
 	private String name;
 	@ManyToOne

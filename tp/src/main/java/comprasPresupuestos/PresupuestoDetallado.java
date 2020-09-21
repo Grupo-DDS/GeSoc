@@ -1,13 +1,22 @@
 package comprasPresupuestos;
 
+import javax.persistence.Entity;
+import javax.persistence.OneToOne;
+
+@Entity
 public class PresupuestoDetallado {
 	public PresupuestoDetallado(float precio, Producto productoCompra) {
 		super();
 		this.precio = precio;
 		this.productoCompra = productoCompra;
 	}
+	
+	public PresupuestoDetallado() {}
 	private float precio;
+	
+	@OneToOne
 	private Producto productoCompra;
+	
 	public float getPrecio() {
 		return precio;
 	}

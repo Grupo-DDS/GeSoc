@@ -3,11 +3,15 @@ package egresosIngresos;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.OneToMany;
+
 import entidades.Entidad;
 
 public class Organizacion {
-	ArrayList<Entidad> entidades = new ArrayList<Entidad>();
+	@OneToMany
+	List<Entidad> entidades = new ArrayList<Entidad>();
 	List<OperacionIngreso> ingresos = new ArrayList<OperacionIngreso>();
+	@OneToMany (mappedBy = "organizacion")
 	List<OperacionEgreso> egresos = new ArrayList<OperacionEgreso>();
 	
 	public Organizacion(ArrayList<Entidad> entidades, List<OperacionIngreso> ingresos2,

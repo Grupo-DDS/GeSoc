@@ -3,16 +3,36 @@ package comprasPresupuestos;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
 import egresosIngresos.DocumentoComercial;
 import egresosIngresos.Proveedor;
 
+@Entity
 public class Presupuesto {
 	//1 presupuesto con su lista de egresos de 1 proovedor
-	Proveedor proveedor;
-	ArrayList<DocumentoComercial> documentosComerciales = new ArrayList<DocumentoComercial>();
-	List<PresupuestoDetallado> detalles = new ArrayList<PresupuestoDetallado>();
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	
+	@ManyToOne
+	private Proveedor proveedor;
+	
+	@OneToMany
+	@JoinColumn(name = "id_presupuesto")
+	private List<DocumentoComercial> documentosComerciales = new ArrayList<DocumentoComercial>();
+	
+	@OneToMany
+	@JoinColumn(name = "id_presupuesto")
+	private List<PresupuestoDetallado> detalles = new ArrayList<PresupuestoDetallado>();
 
-	public Presupuesto(Proveedor proveedor, ArrayList<DocumentoComercial> documentosComerciales,
+	public Presupuesto(Proveedor proveedor, List<DocumentoComercial> documentosComerciales,
 			List<PresupuestoDetallado> detalles1) {
 		super();
 		this.proveedor = proveedor;
@@ -20,6 +40,8 @@ public class Presupuesto {
 		this.detalles = detalles1;
 	}
 
+	public Presupuesto() {}
+	
 	public Proveedor getProveedor() {
 		return proveedor;
 	}
@@ -28,11 +50,11 @@ public class Presupuesto {
 		this.proveedor = proveedor;
 	}
 
-	public ArrayList<DocumentoComercial> getDocumentosComerciales() {
+	public List<DocumentoComercial> getDocumentosComerciales() {
 		return documentosComerciales;
 	}
 
-	public void setDocumentosComerciales(ArrayList<DocumentoComercial> documentosComerciales) {
+	public void setDocumentosComerciales(List<DocumentoComercial> documentosComerciales) {
 		this.documentosComerciales = documentosComerciales;
 	}
 
@@ -40,7 +62,7 @@ public class Presupuesto {
 		return detalles;
 	}
 
-	public void setDetalles(ArrayList<PresupuestoDetallado> detalles) {
+	public void setDetalles(List<PresupuestoDetallado> detalles) {
 		this.detalles = detalles;
 	}
 

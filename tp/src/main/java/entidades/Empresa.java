@@ -1,10 +1,34 @@
 package entidades;
 
+import javax.persistence.Entity;
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@Entity(name="Empresa")
+
 public class Empresa extends TipoEntidad{
+	//@Id
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+	int idEmpresa;
 	int personal;
 	int vtasAnuales;
 	String actividad;
 	
+	public Empresa () {}
+ 	
+	public int getIdEmpresa() {
+		return idEmpresa;
+	}
+
+	public void setIdEmpresa(int idEmpresa) {
+		this.idEmpresa = idEmpresa;
+	}
+
 	public int getPersonal() {
 		return personal;
 	}

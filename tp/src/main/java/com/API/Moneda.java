@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import org.apache.http.HttpEntity;
@@ -15,7 +17,7 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-@Entity
+@Entity(name = "Moneda")
 public class Moneda {
 	@Override
 	public String toString() {
@@ -33,12 +35,20 @@ public class Moneda {
 	
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id_moneda;
 	private String id;
 	private String symbol;
 	private String description;
 	private int decimal_places;
 	public String getId() {
 		return id;
+	}
+	public Long getId_moneda() {
+		return id_moneda;
+	}
+	public void setId_moneda(Long id_moneda) {
+		this.id_moneda = id_moneda;
 	}
 	public void setId(String id) {
 		this.id = id;

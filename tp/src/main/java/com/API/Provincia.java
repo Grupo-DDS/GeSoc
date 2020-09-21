@@ -6,7 +6,10 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -20,17 +23,22 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-@Entity
+@Entity(name = "Provincia")
 public class Provincia {
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id_provincia;
+	
 	private String id;
 	private String name;
 	@ManyToOne
+	
 	private Pais country;
-	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+	@OneToOne(cascade = CascadeType.ALL)
 	private Coordenada geo_information;
 	private String time_zone;
-	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "state_id_provincia")
 	private List<Ciudad> cities;
 	
 	public Pais getCountry() {
@@ -38,6 +46,12 @@ public class Provincia {
 	}
 	public void setCountry(Pais country) {
 		this.country = country;
+	}
+	public Long getId_provincia() {
+		return id_provincia;
+	}
+	public void setId_provincia(Long id_provincia) {
+		this.id_provincia = id_provincia;
 	}
 	public Coordenada getGeo_information() {
 		return geo_information;

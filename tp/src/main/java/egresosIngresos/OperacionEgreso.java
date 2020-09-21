@@ -2,16 +2,88 @@ package egresosIngresos;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
 import comprasPresupuestos.Compra;
-
+@Entity
+@Table(name="EGRESOS")
 public class OperacionEgreso {
-	private DocumentoComercial comprobante;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="ID_EGRESO")
+	private Long id;
+	
+	@Column(name="FECHA_EGRESO")
 	private Date fechaOperacion;
-	private MedioDePago medioDePago;
-	private Organizacion organizacion;
-	private Compra compra;
-	private Proveedor proveedor;
+	
+	@OneToOne(cascade= {CascadeType.ALL})
+	@JoinColumn(name="ID_DOC_COMERCIAL")
+	private DocumentoComercial comprobante;
 
+	@OneToOne(cascade= {CascadeType.ALL})
+	@JoinColumn(name="ID_MEDIO_DE_PAGO")
+	private MedioDePago medioDePago;
+	
+	@OneToOne(cascade= {CascadeType.ALL})
+	@JoinColumn(name="ID_ORGANIZACION")
+	private Organizacion organizacion;
+	
+	@OneToOne(cascade= {CascadeType.ALL})
+	@JoinColumn(name="ID_COMPRA")
+	private Compra compra;
+	
+	@OneToOne(cascade= {CascadeType.ALL})
+	@JoinColumn(name="ID_PROVEEDOR")
+	private Proveedor proveedor;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="ID_INGRESO")
+	private OperacionIngreso ingreso;
+	
+	
+
+	public OperacionEgreso(Long id, DocumentoComercial comprobante, Date fechaOperacion, MedioDePago medioDePago,
+			Organizacion organizacion, Compra compra, Proveedor proveedor, OperacionIngreso ingreso) {
+		super();
+		this.id = id;
+		this.comprobante = comprobante;
+		this.fechaOperacion = fechaOperacion;
+		this.medioDePago = medioDePago;
+		this.organizacion = organizacion;
+		this.compra = compra;
+		this.proveedor = proveedor;
+		this.ingreso= ingreso;
+	}
+	
+	@Override
+	public String toString() {
+		return "OperacionEgreso [id=" + id + ", fechaOperacion=" + fechaOperacion + ", comprobante=" + comprobante
+				+ ", medioDePago=" + medioDePago + ", organizacion=" + organizacion + ", compra=" + compra
+				+ ", proveedor=" + proveedor + ", ingreso=" + ingreso + "]";
+	}
+
+	public long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public Compra getCompra() {
+		return compra;
+	}
+	public void setCompra(Compra compra) {
+		this.compra = compra;
+	}
 	public OperacionEgreso(DocumentoComercial comprobante, Date fechaOperacion, MedioDePago medioDePago,
 			Organizacion organizacion, Compra compra, Proveedor proveedor) {
 		super();
@@ -51,6 +123,14 @@ public class OperacionEgreso {
 	}
 	public void setProveedor(Proveedor proveedor) {
 		this.proveedor = proveedor;
+	}
+
+	public OperacionIngreso getIngreso() {
+		return ingreso;
+	}
+
+	public void setIngreso(OperacionIngreso ingreso) {
+		this.ingreso = ingreso;
 	}
 
 	public float getValorDeEgreso() {

@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.Comparator;
 
 public class OrdenValorPrimeroEgreso extends Requerimiento {
+	/*
 	private ArrayList<ArrayList<OperacionEgreso>> egresosAceptados=new ArrayList<ArrayList<OperacionEgreso>>();
 	public void ordenarEgresosPorValor() {
 		Collections.sort(organizacion.egresos, new Comparator<OperacionEgreso>(){
@@ -35,5 +36,5 @@ public class OrdenValorPrimeroEgreso extends Requerimiento {
 	    	i+=1;
 	    }
 	}
-
+*/
 }

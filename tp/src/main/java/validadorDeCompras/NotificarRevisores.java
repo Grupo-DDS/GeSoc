@@ -1,6 +1,7 @@
 package validadorDeCompras;
 
-import java.util.ArrayList;
+
+import java.util.List;
 
 public class NotificarRevisores {
 
@@ -15,7 +16,7 @@ public class NotificarRevisores {
 	return instance;
 	}
 	
-	public void notificar(ArrayList<Usuario> revisores,Mensaje mensaje){
+	public void notificar(List<Usuario> revisores,Mensaje mensaje){
 		revisores.stream().forEach(revisor -> revisor.agregarMensaje(mensaje));
 	}
 }

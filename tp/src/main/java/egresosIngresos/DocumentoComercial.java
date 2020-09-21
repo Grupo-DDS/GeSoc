@@ -20,9 +20,8 @@ public class DocumentoComercial {
 	private char tipo;
 	
 	
-	public DocumentoComercial(Long id, int nroComercial, char tipo) {
+	public DocumentoComercial(int nroComercial, char tipo) {
 		super();
-		this.id = id;
 		this.nroComercial = nroComercial;
 		this.tipo = tipo;
 	}

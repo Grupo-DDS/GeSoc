@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.Comparator;
 
 public class OrdenValorPrimeroIngreso extends Requerimiento {
+	/*
 	private ArrayList<ArrayList<OperacionIngreso>> ingresosCompatibles=new ArrayList<ArrayList<OperacionIngreso>>();
 	public void ordenarIngresosPorValor() {
 		Collections.sort(organizacion.ingresos, new Comparator<OperacionIngreso>(){
@@ -33,5 +34,5 @@ public class OrdenValorPrimeroIngreso extends Requerimiento {
 		}
 	}
 	
-
+*/
 }

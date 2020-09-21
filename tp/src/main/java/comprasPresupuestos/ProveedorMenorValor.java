@@ -3,6 +3,9 @@ package comprasPresupuestos;
 import java.util.Collections;
 import java.util.Comparator;
 
+import javax.persistence.Entity;
+
+@Entity
 public class ProveedorMenorValor extends CriterioSeleccionPresupuesto {
 
 	public Presupuesto obtenerPresupuesto(Compra compra) {

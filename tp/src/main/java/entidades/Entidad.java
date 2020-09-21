@@ -9,18 +9,18 @@ import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
 @Entity (name="Entidad")
 
 public class Entidad {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	int idEntidad;
-	String nombreFicticio;
+	@GeneratedValue(strategy = GenerationType.TABLE)
+	private int idEntidad;
+	private String nombreFicticio;
 	
 	@OneToOne
 	@JoinColumn(name = "id_entidad")
-	TipoEntidad tipoDeEntidad;
+	private TipoEntidad tipoDeEntidad;
 	
 	public Entidad() {}
 	

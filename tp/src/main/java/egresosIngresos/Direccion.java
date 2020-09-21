@@ -38,6 +38,12 @@ public class Direccion {
 		this.piso = piso;
 		this.provincia = provincia;
 	}
+	public Direccion() {
+		// TODO Auto-generated constructor stub
+	}
+
+
+
 	public long getId() {
 		return id;
 	}

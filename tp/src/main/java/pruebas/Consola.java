@@ -2,6 +2,8 @@ package pruebas;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import com.API.Moneda;
@@ -11,12 +13,28 @@ import comprasPresupuestos.Compra;
 import comprasPresupuestos.Presupuesto;
 import comprasPresupuestos.PresupuestoDetallado;
 import comprasPresupuestos.Producto;
+import comprasPresupuestos.ProveedorMenorValor;
+import egresosIngresos.DocumentoComercial;
+import egresosIngresos.MedioDePago;
+import egresosIngresos.OperacionEgreso;
+import egresosIngresos.OperacionIngreso;
+import egresosIngresos.Organizacion;
+import egresosIngresos.Proveedor;
 import persistencia.CompraMapperBD;
+import persistencia.CriterioSeleccionPresupuestoMapperBD;
+import persistencia.DocumentoComercialMapperBD;
+import persistencia.MedioDePagoMapperBD;
 import persistencia.MonedaMapperBD;
+import persistencia.OperacionEgresoMapperBD;
+import persistencia.OperacionIngresoMapperBD;
+import persistencia.OrganizacionMapperBD;
 import persistencia.PaisMapperBD;
 import persistencia.PresupuestoDetalladoMapperBD;
 import persistencia.PresupuestoMapperBD;
 import persistencia.ProductoMapperBD;
+import persistencia.ProveedorMapperBD;
+import persistencia.UsuarioMapper;
+import validadorDeCompras.Usuario;
 
 
 public class Consola {
@@ -26,6 +44,7 @@ public class Consola {
 		MonedaMapperBD mbd = new MonedaMapperBD();
 		List<Moneda> monedas = m.obtenerListaAPI();
 		mbd.insert(monedas);
+		
 		
 		Pais p = new Pais();
 		PaisMapperBD pbd = new PaisMapperBD();
@@ -121,5 +140,60 @@ public class Consola {
 		cmbd.insert(c2);
 		cmbd.insert(c3);
 		cmbd.insert(c4);
+		
+		
+		DocumentoComercial comprobante1=new DocumentoComercial(25,'a');
+		DocumentoComercialMapperBD dcmbd = new DocumentoComercialMapperBD();
+		dcmbd.insert(comprobante1);
+		//Medio de pago
+		MedioDePago tarjeta=new MedioDePago();
+		MedioDePagoMapperBD mdpbd = new MedioDePagoMapperBD();
+		tarjeta.setMedio("Visa");
+		mdpbd.insert(tarjeta);
+		//organizacion
+		Organizacion organizacion= new Organizacion();
+		OrganizacionMapperBD orgmbd = new OrganizacionMapperBD();
+		orgmbd.insert(organizacion);
+		//proveedores
+		Proveedor proveedor1= new Proveedor();
+		ProveedorMapperBD provmbd = new ProveedorMapperBD();
+		provmbd.insert(proveedor1);
+		//fecha operacion
+		Date fechaOp=new Date();
+		//productos
+		Producto producto1 = new Producto("heladera",2000);
+		Producto producto2 = new Producto("televisor",300);
+		pmBD.insert(producto1);
+		pmBD.insert(producto2);
+		List<Producto> listaProducto = Arrays.asList(producto1,producto2);
+		//usuarios
+		ArrayList<Usuario> listaUsuariosRevisores = new ArrayList<Usuario>();
+		Usuario usuario1 = new Usuario(null,null,null);
+		Usuario usuario2 = new Usuario(null,null,null);
+		Usuario usuario3 = new Usuario(null,null,null);
+		UsuarioMapper usmbd = new UsuarioMapper();
+		usmbd.insert(usuario1);
+		usmbd.insert(usuario2);
+		usmbd.insert(usuario3);
+		listaUsuariosRevisores.add(usuario1);
+		listaUsuariosRevisores.add(usuario2);
+		listaUsuariosRevisores.add(usuario3);
+		//criterio
+		ProveedorMenorValor criterio = new ProveedorMenorValor();
+		CriterioSeleccionPresupuestoMapperBD cspmbd = new CriterioSeleccionPresupuestoMapperBD();
+		cspmbd.insert(criterio);
+		//compra
+		Compra compra1=new Compra(listaProducto, null,null, 0,listaUsuariosRevisores, criterio);
+		cmbd.insert(compra1);
+		//operacion egreso
+		OperacionEgreso egreso1= new OperacionEgreso(comprobante1, fechaOp, tarjeta, organizacion, compra1, proveedor1);
+		OperacionEgresoMapperBD oembd = new OperacionEgresoMapperBD();
+		oembd.insert(egreso1);
+		
+		ArrayList<OperacionEgreso> egresos = new ArrayList<OperacionEgreso>();
+		egresos.add(egreso1);
+		OperacionIngreso ingreso1 = new OperacionIngreso("juanita", 345345346, null, egresos,new Date());
+		OperacionIngresoMapperBD mapperIngreso = new OperacionIngresoMapperBD();
+		mapperIngreso.insert(ingreso1);
 	}
 }

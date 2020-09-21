@@ -2,6 +2,6 @@ package persistencia;
 
 import egresosIngresos.DocumentoComercial;
 
-public class DocumentoComercialMapperBD extends SuperBDUtilsRodriCapo<DocumentoComercial> {
+public class DocumentoComercialMapperBD extends MapperBD<DocumentoComercial> {
 	
 }

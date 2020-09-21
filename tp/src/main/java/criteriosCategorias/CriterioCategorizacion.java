@@ -1,24 +1,33 @@
 package criteriosCategorias;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 
 @Entity
-//@Table(name = "USUARIO")
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 
 public class CriterioCategorizacion {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+	
+	@OneToMany
+	List<Categoria> categorias = new ArrayList<Categoria>();
+	
+	@ManyToOne
+	public CriterioCategorizacion criterioPadre;
+	
+	@OneToMany
+	public List<CriterioCategorizacion> criterioHijo = new ArrayList<CriterioCategorizacion>();
+	
 	
 	public Long getId() {
 		return id;
@@ -28,7 +37,7 @@ public class CriterioCategorizacion {
 		this.id = id;
 	}
 
-	public ArrayList<Categoria> getCategorias() {
+	public List<Categoria> getCategorias() {
 		return categorias;
 	}
 
@@ -44,7 +53,7 @@ public class CriterioCategorizacion {
 		this.criterioPadre = criterioPadre;
 	}
 
-	public ArrayList<CriterioCategorizacion> getCriterioHijo() {
+	public List<CriterioCategorizacion> getCriterioHijo() {
 		return criterioHijo;
 	}
 
@@ -52,9 +61,7 @@ public class CriterioCategorizacion {
 		this.criterioHijo = criterioHijo;
 	}
 
-	ArrayList<Categoria> categorias = new ArrayList<Categoria>();
-	public CriterioCategorizacion criterioPadre;
-	public ArrayList<CriterioCategorizacion> criterioHijo = new ArrayList<CriterioCategorizacion>();
+
 	
 	public void agregarCategoria(Categoria categoria) {
 		categorias.add(categoria);

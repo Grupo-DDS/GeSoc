@@ -2,6 +2,6 @@ package persistencia;
 
 import criteriosCategorias.CriterioCategorizacion;
 
-public class CriterioCategorizacionMapper extends SuperBDUtilsRodriCapo<CriterioCategorizacion>{
+public class CriterioCategorizacionMapper extends MapperBD<CriterioCategorizacion>{
 
 }

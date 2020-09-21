@@ -1,8 +1,12 @@
 package validadorDeCompras;
 
 import java.util.ArrayList;
+
+import javax.persistence.Entity;
+
 import criteriosCategorias.CriterioCategorizacion;
 
+@Entity
 public class Administrador extends Usuario {
 
 	public Administrador(String nombre, String contrasenia, ArrayList<Mensaje> bandejaDeMensajes) {

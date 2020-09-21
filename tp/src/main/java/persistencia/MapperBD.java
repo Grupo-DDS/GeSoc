@@ -4,8 +4,9 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
-public abstract class SuperBDUtilsRodriCapo<T> {
+public abstract class MapperBD<T> {
 
+	
     public void insert(T c) {
         EntityManager em = BDUtils.getEntityManager();
         BDUtils.comenzarTransaccion(em);
@@ -33,6 +34,8 @@ public abstract class SuperBDUtilsRodriCapo<T> {
         em.remove(c);
         BDUtils.commit(em);
     }
+    
+    
     /*
     public T find (Long id) {
     	EntityManager em = BDUtils.getEntityManager();

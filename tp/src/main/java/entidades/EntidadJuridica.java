@@ -4,24 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+
 import javax.persistence.OneToMany;
 
 
 @Entity(name="EntidadJuridica")
 public class EntidadJuridica extends Entidad{
-	//@Id
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
-	int codigoInscripcion;
-	int codigoPostal;
-	int cuit;
+
+	private int codigoInscripcion;
+	private int codigoPostal;
+	private int cuit;
 	
-	@OneToMany(mappedBy="EntidadJuridica")
-	private ArrayList<EntidadBase> entidades = new ArrayList<EntidadBase>(); 
+	@OneToMany //(mappedBy="EntidadJuridica")
+	private List<EntidadBase> entidades = new ArrayList<EntidadBase>(); 
 	
-	String razonSocial;
+	private String razonSocial;
 	
 	public EntidadJuridica(int codigoInscripcion, int codigoPostal, int cuit, ArrayList<EntidadBase> entidades,
 			String razonSocial) {
@@ -53,7 +50,7 @@ public class EntidadJuridica extends Entidad{
 	public void setCuit(int cuit) {
 		this.cuit = cuit;
 	}
-	public ArrayList<EntidadBase> getEntidades() {
+	public List<EntidadBase> getEntidades() {
 		return entidades;
 	}
 	public void setEntidades(ArrayList<EntidadBase> entidades) {

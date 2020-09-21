@@ -2,6 +2,6 @@ package persistencia;
 
 import entidades.Pequenia;
 
-public class PequeniaMapperBD extends SuperBDUtilsRodriCapo<Pequenia>{
+public class PequeniaMapperBD extends MapperBD<Pequenia>{
 	
 }

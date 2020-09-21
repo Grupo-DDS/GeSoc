@@ -2,6 +2,6 @@ package persistencia;
 
 import comprasPresupuestos.Presupuesto;
 
-public class PresupuestoMapperBD extends SuperBDUtilsRodriCapo<Presupuesto> {
+public class PresupuestoMapperBD extends MapperBD<Presupuesto> {
 
 }

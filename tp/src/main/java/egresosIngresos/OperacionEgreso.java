@@ -2,7 +2,6 @@ package egresosIngresos;
 
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -26,23 +25,23 @@ public class OperacionEgreso {
 	@Column(name="FECHA_EGRESO")
 	private Date fechaOperacion;
 	
-	@OneToOne(cascade= {CascadeType.ALL})
+	@OneToOne
 	@JoinColumn(name="ID_DOC_COMERCIAL")
 	private DocumentoComercial comprobante;
 
-	@OneToOne(cascade= {CascadeType.ALL})
+	@OneToOne
 	@JoinColumn(name="ID_MEDIO_DE_PAGO")
 	private MedioDePago medioDePago;
 	
-	@OneToOne(cascade= {CascadeType.ALL})
+	@OneToOne
 	@JoinColumn(name="ID_ORGANIZACION")
 	private Organizacion organizacion;
 	
-	@OneToOne(cascade= {CascadeType.ALL})
+	@OneToOne
 	@JoinColumn(name="ID_COMPRA")
 	private Compra compra;
 	
-	@OneToOne(cascade= {CascadeType.ALL})
+	@OneToOne
 	@JoinColumn(name="ID_PROVEEDOR")
 	private Proveedor proveedor;
 	

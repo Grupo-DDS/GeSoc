@@ -1,8 +1,12 @@
 package comprasPresupuestos;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
 import criteriosCategorias.Categoria;
@@ -10,10 +14,13 @@ import criteriosCategorias.CriterioCategorizacion;
 
 @Entity
 public class Producto {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 	private String descripcion;
 	private float valor;
 	@ManyToMany
-	public ArrayList<Categoria> categorias = new ArrayList<Categoria>();
+	public List<Categoria> categorias = new ArrayList<Categoria>();
 	public Producto() {}
 	public Producto(String descripcion, float valor) {
 		super();

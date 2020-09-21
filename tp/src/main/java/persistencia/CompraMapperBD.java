@@ -3,7 +3,7 @@ package persistencia;
 import comprasPresupuestos.Compra;
 
 
-public class CompraMapperBD extends SuperBDUtilsRodriCapo<Compra>{
+public class CompraMapperBD extends MapperBD<Compra>{
 
 	public void rodriEsUnLindo(Compra c) {
 		this.insert(c);

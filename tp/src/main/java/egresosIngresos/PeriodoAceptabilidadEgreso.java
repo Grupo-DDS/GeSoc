@@ -1,6 +1,7 @@
 package egresosIngresos;
 import java.util.Date;
 
+
 public class PeriodoAceptabilidadEgreso {
 public Date fechaInicio;
 public Date fechaFin;

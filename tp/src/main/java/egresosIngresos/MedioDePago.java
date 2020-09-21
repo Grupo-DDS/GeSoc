@@ -1,14 +1,20 @@
 package egresosIngresos;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class MedioDePago {
-static String medio;
-String paymentTypeId;
-@Id
-String id;
+	private static String medio;
+	private String paymentTypeId;
+	
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id_medioDePago;
+	private String id;
 
 public void datosDelSistema(String medio) {
 	switch(medio) {

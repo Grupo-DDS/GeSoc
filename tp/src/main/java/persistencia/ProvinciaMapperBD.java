@@ -2,6 +2,6 @@ package persistencia;
 
 import com.API.Provincia;
 
-public class ProvinciaMapperBD extends SuperBDUtilsRodriCapo<Provincia> {
+public class ProvinciaMapperBD extends MapperBD<Provincia> {
 	
 }

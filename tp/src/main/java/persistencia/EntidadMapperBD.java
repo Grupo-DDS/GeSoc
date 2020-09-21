@@ -2,6 +2,6 @@ package persistencia;
 
 import entidades.Entidad;
 
-public class EntidadMapperBD extends SuperBDUtilsRodriCapo<Entidad>{
+public class EntidadMapperBD extends MapperBD<Entidad>{
 	
 }

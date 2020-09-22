@@ -8,5 +8,4 @@ public class ReglaFecha extends ReglaVinculacion {
 		}
 		return false;
 	}
-
 }

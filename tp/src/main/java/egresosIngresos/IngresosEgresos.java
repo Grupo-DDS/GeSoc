@@ -3,6 +3,11 @@ package egresosIngresos;
 import java.util.List;
 
 public class IngresosEgresos {
+	public IngresosEgresos(List<OperacionEgreso> egresosRestantes, List<OperacionIngreso> ingresosRestantes) {
+		super();
+		this.egresosRestantes = egresosRestantes;
+		this.ingresosRestantes = ingresosRestantes;
+	}
 	List<OperacionEgreso> egresosRestantes;
 	List<OperacionIngreso> ingresosRestantes;
 	public List<OperacionEgreso> getEgresosRestantes() {

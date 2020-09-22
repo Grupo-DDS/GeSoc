@@ -45,12 +45,11 @@ public class OperacionIngreso {
 	
 	
 	public OperacionIngreso(String descripcion, float montoTotal,
-			PeriodoAceptabilidadEgreso periodoAceptabilidad, ArrayList<OperacionEgreso> egresos, Date fechaOperacion) {
+			 ArrayList<OperacionEgreso> egresos, Date fechaOperacion) {
 		super();
 		
 		this.descripcion = descripcion;
 		this.montoTotal = montoTotal;
-		//this.periodoAceptabilidad = periodoAceptabilidad;
 		this.egresos = egresos;
 		this.fechaOperacion=fechaOperacion;
 	}

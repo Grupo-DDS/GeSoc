@@ -22,14 +22,44 @@ public class Organizacion {
 	List<OperacionIngreso> ingresos = new ArrayList<OperacionIngreso>();
 	@OneToMany (mappedBy = "organizacion")
 	List<OperacionEgreso> egresos = new ArrayList<OperacionEgreso>();
-	Requerimiento requerimiento;
-	ReglaVinculacion regla;
-	public Organizacion(ArrayList<Entidad> entidades, List<OperacionIngreso> ingresos2,
-			List<OperacionEgreso> egresos) {
-		super();
+	private Requerimiento requerimiento;
+	private ReglaVinculacion regla;
+	
+	
+	public List<Entidad> getEntidades() {
+		return entidades;
+	}
+
+	public void setEntidades(List<Entidad> entidades) {
 		this.entidades = entidades;
-		this.ingresos = ingresos2;
+	}
+
+	public List<OperacionIngreso> getIngresos() {
+		return ingresos;
+	}
+
+	public void setIngresos(List<OperacionIngreso> ingresos) {
+		this.ingresos = ingresos;
+	}
+
+	public List<OperacionEgreso> getEgresos() {
+		return egresos;
+	}
+
+	public void setEgresos(List<OperacionEgreso> egresos) {
 		this.egresos = egresos;
+	}
+
+	public ReglaVinculacion getRegla() {
+		return regla;
+	}
+
+	public void setRegla(ReglaVinculacion regla) {
+		this.regla = regla;
+	}
+
+	public void setRequerimiento(Requerimiento requerimiento) {
+		this.requerimiento = requerimiento;
 	}
 
 	public Organizacion() {

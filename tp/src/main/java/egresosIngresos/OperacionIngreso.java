@@ -37,7 +37,7 @@ public class OperacionIngreso {
 	@OneToMany(mappedBy="ingreso")
 	private List<OperacionEgreso> egresos=new ArrayList<OperacionEgreso>();
 	
-	
+	private Organizacion organizacion;
 	
 	@Override
 	public String toString() {

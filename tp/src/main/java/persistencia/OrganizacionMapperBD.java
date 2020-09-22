@@ -7,12 +7,18 @@ import javax.persistence.EntityManager;
 import egresosIngresos.Organizacion;
 
 public class OrganizacionMapperBD extends MapperBD<Organizacion>{
+	private static final OrganizacionMapperBD instance = new OrganizacionMapperBD();
+	
+	private OrganizacionMapperBD () {}
+	public static OrganizacionMapperBD getInstance() {
+		return instance;
+	}
+	public List<Organizacion> obtenerOrganizaciones() {
 
-public List<Organizacion> obtenerOrganizaciones() {
 		EntityManager em = BDUtils.getEntityManager();
-        BDUtils.comenzarTransaccion(em);
-		@SuppressWarnings("unchecked")
-		List<Organizacion> organizaciones = (List<Organizacion>) em.createQuery("select p from Organizacion").getResultList();
+		BDUtils.comenzarTransaccion(em);
+
+		List<Organizacion> organizaciones =	em.createQuery("select o from Organizacion o", Organizacion.class).getResultList();
 		return organizaciones;
-}
+	}
 }

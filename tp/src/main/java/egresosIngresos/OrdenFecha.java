@@ -1,10 +1,15 @@
 package egresosIngresos;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 
 public class OrdenFecha extends Requerimiento {
 
+	public void ordenar (List<OperacionEgreso> egresos){
+		egresos.sort(Comparator.comparing(OperacionEgreso::getFechaOperacion));
+	}
 	@Override
 	public IngresosEgresos ordenar(List<OperacionEgreso> egresosAVincular, List<OperacionIngreso> ingresoAVincular) {
 		// TODO Auto-generated method stub

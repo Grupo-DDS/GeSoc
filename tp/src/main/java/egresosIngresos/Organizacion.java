@@ -18,7 +18,7 @@ public class Organizacion {
 	private Long id;
 	@OneToMany
 	List<Entidad> entidades = new ArrayList<Entidad>();
-	@OneToMany
+	@OneToMany (mappedBy = "organizacion")
 	List<OperacionIngreso> ingresos = new ArrayList<OperacionIngreso>();
 	@OneToMany (mappedBy = "organizacion")
 	List<OperacionEgreso> egresos = new ArrayList<OperacionEgreso>();
@@ -66,8 +66,10 @@ public class Organizacion {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Object getRequerimiento() {
-		// TODO Auto-generated method stub
-		return null;
+	public Requerimiento getRequerimiento() {
+		return requerimiento;
 	}
+
+	
+	
 }

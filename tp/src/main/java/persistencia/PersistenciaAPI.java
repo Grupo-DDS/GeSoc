@@ -13,7 +13,7 @@ public class PersistenciaAPI {
 		Moneda m = new Moneda();
 		MonedaMapperBD mbd = new MonedaMapperBD();
 		List<Moneda> monedas = m.obtenerListaAPI();
-		mbd.insert(monedas);
+		mbd.save(monedas);
 		
 		Pais p = new Pais();
 		PaisMapperBD pbd = new PaisMapperBD();
@@ -43,7 +43,7 @@ public class PersistenciaAPI {
 			}
 			i++;
 		}
-		pbd.insert(paisesDetallados);
+		pbd.save(paisesDetallados);
 		
 
 		

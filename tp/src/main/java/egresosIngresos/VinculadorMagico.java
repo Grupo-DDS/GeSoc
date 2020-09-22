@@ -2,18 +2,20 @@ package egresosIngresos;
 
 import java.util.List;
 
+import persistencia.OperacionEgresoMapperBD;
+import persistencia.OperacionIngresoMapperBD;
 import persistencia.OrganizacionMapperBD;
 
 public class VinculadorMagico {
-	OrganizacionMapperBD mapOrg;
 	public void vincular(){
-		List<Organizacion> organizaciones = mapOrg.obtenerOrganizaciones();
+		List<Organizacion> organizaciones = OrganizacionMapperBD.getInstance().obtenerOrganizaciones();
 		for (Organizacion organizacion : organizaciones){
-			List<OperacionIngreso> ingresos = organizacion.getIngresos(); // baseDeDatosDameLosIngresosDe(organizacion);
-			List<OperacionEgreso> egresos = organizacion.getEgresos(); // baseDeDatosDameLosEgresosDe(organizacion);
+			List<OperacionIngreso> ingresos = OperacionIngresoMapperBD.getInstance().obtenerIngresosQueSeanVinculables(organizacion);
+			List<OperacionEgreso> egresos = OperacionEgresoMapperBD.getInstance().obtenerEgresosQueSeanVinculables(organizacion);
 			ReglaVinculacion regla = organizacion.getRegla();
-			organizacion.getRequerimiento().vincular(ingresos, egresos, regla);
-			baseDeDatosGuardameLoQueHice(ingresos, egresos);
+			organizacion.getRequerimiento().vincular(egresos, ingresos, regla);
+			OperacionIngresoMapperBD.getInstance().save(ingresos);
+			OperacionEgresoMapperBD.getInstance().save(egresos);
 		}
 	}
 }

@@ -14,7 +14,7 @@ public abstract class MapperBD<T> {
         BDUtils.commit(em);
     }
 
-    public void insert(List<T> objetos) {
+    public void save(List<T> objetos) {
         EntityManager em = BDUtils.getEntityManager();
         BDUtils.comenzarTransaccion(em);
         objetos.forEach(objeto -> em.persist(objeto));

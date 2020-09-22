@@ -1,8 +1,14 @@
 package egresosIngresos;
 
-
+import java.util.List;
 
 public class OrdenValorPrimeroEgreso extends Requerimiento {
+
+	@Override
+	public IngresosEgresos ordenar(List<OperacionEgreso> egresosAVincular, List<OperacionIngreso> ingresoAVincular) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	/*
 	private ArrayList<ArrayList<OperacionEgreso>> egresosAceptados=new ArrayList<ArrayList<OperacionEgreso>>();
 	public void ordenarEgresosPorValor() {

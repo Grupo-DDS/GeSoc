@@ -22,7 +22,8 @@ public class Organizacion {
 	List<OperacionIngreso> ingresos = new ArrayList<OperacionIngreso>();
 	@OneToMany (mappedBy = "organizacion")
 	List<OperacionEgreso> egresos = new ArrayList<OperacionEgreso>();
-	
+	Requerimiento requerimiento;
+	ReglaVinculacion regla;
 	public Organizacion(ArrayList<Entidad> entidades, List<OperacionIngreso> ingresos2,
 			List<OperacionEgreso> egresos) {
 		super();
@@ -33,5 +34,10 @@ public class Organizacion {
 
 	public Organizacion() {
 		// TODO Auto-generated constructor stub
+	}
+
+	public Object getRequerimiento() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

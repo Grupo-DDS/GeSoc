@@ -1,12 +1,19 @@
 package egresosIngresos;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
+import java.util.List;
 
 
 public class OrdenFecha extends Requerimiento {
-	private ArrayList<ArrayList<OperacionEgreso>> egresosAceptados=new ArrayList<ArrayList<OperacionEgreso>>();
+
+	@Override
+	public IngresosEgresos ordenar(List<OperacionEgreso> egresosAVincular, List<OperacionIngreso> ingresoAVincular) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	/*
+	  private ArrayList<ArrayList<OperacionEgreso>> egresosAceptados=new ArrayList<ArrayList<OperacionEgreso>>();
+	 
 	
 	public void ordenarEgresosPorFecha() {
 		Collections.sort(organizacion.egresos, new Comparator<OperacionEgreso>(){
@@ -38,5 +45,5 @@ public class OrdenFecha extends Requerimiento {
 	    	i+=1;
 	    }
 	}
-
+ */
 }

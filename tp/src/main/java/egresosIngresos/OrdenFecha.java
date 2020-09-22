@@ -1,54 +1,25 @@
 package egresosIngresos;
 
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-
 public class OrdenFecha extends Requerimiento {
 
-	public void ordenar (List<OperacionEgreso> egresos){
-		egresos.sort(Comparator.comparing(OperacionEgreso::getFechaOperacion));
-	}
 	@Override
-	public IngresosEgresos ordenar(List<OperacionEgreso> egresosAVincular, List<OperacionIngreso> ingresoAVincular) {
-		// TODO Auto-generated method stub
+	public IngresosEgresos ordenar(List<OperacionEgreso> egresosAVincular, List<OperacionIngreso> ingresosAVincular){
+		return new IngresosEgresos(egresosAVincular, ingresosAVincular);
+		}
+
+		
+
+	public IngresosEgresos vincular(List<OperacionEgreso> egresosAVincular, List<OperacionIngreso> ingresosAVincular,ReglaVinculacion regla){
+		egresosAVincular.sort(Comparator.comparing(OperacionEgreso::getFechaOperacion));
+		for(OperacionIngreso unIngreso:ingresosAVincular){
+			for(OperacionEgreso unEgreso:egresosAVincular){
+				if(regla.esVinculable(unIngreso, unEgreso))
+					unIngreso.getEgresos().add(unEgreso);
+			}
+		}
 		return null;
 	}
-	
-	/*
-	  private ArrayList<ArrayList<OperacionEgreso>> egresosAceptados=new ArrayList<ArrayList<OperacionEgreso>>();
-	 
-	
-	public void ordenarEgresosPorFecha() {
-		Collections.sort(organizacion.egresos, new Comparator<OperacionEgreso>(){
-			@Override
-			public int compare(OperacionEgreso unEgreso,OperacionEgreso otroEgreso) {
-				return unEgreso.getFechaOperacion().compareTo(otroEgreso.getFechaOperacion());
-			}
-			
-		});
-			
-	}
-	
-	public void ordenar() {
-		int i=0;
-	    ArrayList<OperacionEgreso> egresosOrganizacion=new ArrayList<OperacionEgreso>();
-	    this.ordenarEgresosPorFecha();
-	    for(OperacionEgreso unEgreso:organizacion.egresos){
-	        egresosOrganizacion.add(unEgreso);
-	        }
-		for(OperacionIngreso unIngreso:organizacion.ingresos) {
-	    	float valorIngreso= unIngreso.getMontoTotal();
-	    	for(OperacionEgreso unEgreso:egresosOrganizacion) {
-	    		if((unEgreso.getFechaOperacion().compareTo(unIngreso.getPeriodoAceptabilidad().getFechaInicioPeriodo()))>0 && (unEgreso.getFechaOperacion().compareTo(unIngreso.getPeriodoAceptabilidad().getFechaFinPeriodo()))<0 && valorIngreso>unEgreso.getValorDeEgreso()) {
-	    	    valorIngreso-=unEgreso.getValorDeEgreso();
-	    	    egresosAceptados.get(i).add(unEgreso);
-	    	    egresosOrganizacion.remove(unEgreso);
-	    		}
-	        }
-	    	i+=1;
-	    }
-	}
- */
 }

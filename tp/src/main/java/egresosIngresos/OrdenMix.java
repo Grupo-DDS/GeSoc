@@ -20,7 +20,7 @@ List<Requerimiento> requerimientos ;
 	
 	@Override
 	public IngresosEgresos ordenar(List<OperacionEgreso> egresosAVincular, List<OperacionIngreso> ingresosAVincular){
-	return new IngresosEgresos(egresosAVincular, ingresosAVincular);
+		return new IngresosEgresos(egresosAVincular, ingresosAVincular);
 	}
 
 }

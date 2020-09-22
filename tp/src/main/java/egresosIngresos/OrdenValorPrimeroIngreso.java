@@ -6,13 +6,20 @@ import java.util.List;
 public class OrdenValorPrimeroIngreso extends Requerimiento {
 
 	@Override
-	public IngresosEgresos ordenar(List<OperacionEgreso> egresosAVincular, List<OperacionIngreso> ingresoAVincular){
-		// TODO Auto-generated method stub
-		return null;
+	public IngresosEgresos ordenar(List<OperacionEgreso> egresosAVincular, List<OperacionIngreso> ingresosAVincular){
+		return new IngresosEgresos(egresosAVincular, ingresosAVincular);
 	}
 	
-	public void ordenar(List<OperacionIngreso> ingresoAVincular) {
-		ingresoAVincular.sort(Comparator.comparing(OperacionIngreso::getMontoTotal));
+	
+	
+	public IngresosEgresos vincular(List<OperacionEgreso> egresosAVincular, List<OperacionIngreso> ingresosAVincular,ReglaVinculacion regla){
+		ingresosAVincular.sort(Comparator.comparing(OperacionIngreso::getMontoTotal));
+		OperacionEgreso unEgreso = egresosAVincular.get(0);
+		for(OperacionIngreso unIngreso:ingresosAVincular){
+			if(regla.esVinculable(unIngreso, unEgreso))
+				unIngreso.getEgresos().add(unEgreso);
+		}
+		return null;
 	}
 	
 }

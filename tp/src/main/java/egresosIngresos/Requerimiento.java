@@ -11,7 +11,8 @@ public abstract class Requerimiento {
 				for (OperacionIngreso ingresoAVincular: ingresosAVincular) {
 					for (OperacionEgreso egresoAVincular: egresosAVincular) {
 						if (regla.esVinculable(ingresoAVincular, egresoAVincular)){
-							// vinculo si lo que le queda al ingreso a es menor a lo que vale el egreso
+							ingresoAVincular.getEgresos().add(egresoAVincular);
+							egresoAVincular.setIngreso(ingresoAVincular);
 						} else {
 							restante.egresosRestantes.add(egresoAVincular);
 							restante.ingresosRestantes.add(ingresoAVincular);

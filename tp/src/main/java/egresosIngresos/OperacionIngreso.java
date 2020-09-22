@@ -30,15 +30,13 @@ public class OperacionIngreso {
 	@Column(name="FECHA_OPERACION")
 	private Date fechaOperacion;
 	
-//	@OneToOne(cascade=CascadeType.ALL)
-//	@JoinColumn(name="ID_PERIODO_ACEPTABILIDAD_EGRESO")
-//	private PeriodoAceptabilidadEgreso periodoAceptabilidad;
-	
 	@OneToMany(mappedBy="ingreso")
 	private List<OperacionEgreso> egresos=new ArrayList<OperacionEgreso>();
 	
 	private Organizacion organizacion;
 	
+	private Date fechaInicio= sumarDiasAFecha(fechaOperacion,-5);
+	private Date fechaFin= sumarDiasAFecha(fechaOperacion,5);
 	@Override
 	public String toString() {
 		return "OperacionIngreso [id=" + id + ", descripcion=" + descripcion + ", montoTotal=" + montoTotal
@@ -96,11 +94,21 @@ public class OperacionIngreso {
 	public void setMontoTotal(float montoTotal) {
 		this.montoTotal = montoTotal;
 	}
-//	public PeriodoAceptabilidadEgreso getPeriodoAceptabilidad() {
-//		return periodoAceptabilidad;
-//	}
-//	public void setPeriodoAceptabilidad(PeriodoAceptabilidadEgreso periodoAceptabilidad) {
-//		this.periodoAceptabilidad = periodoAceptabilidad;
-//	}
+	public static Date sumarDiasAFecha(Date fecha, int dias){
+	      if (dias==0) return fecha;
+	      Calendar calendar = Calendar.getInstance();
+	      calendar.setTime(fecha); 
+	      calendar.add(Calendar.DAY_OF_YEAR, dias);  
+	      return calendar.getTime(); 
+	}
+
+
+	public Date getFechaInicio() {
+		return fechaInicio;
+	}
+
+	public Date getFechaFin() {
+		return fechaFin;
+	}
 }
 

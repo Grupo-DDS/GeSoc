@@ -18,4 +18,5 @@ public class VinculadorMagico {
 			OperacionEgresoMapperBD.getInstance().save(egresos);
 		}
 	}
+	// A
 }

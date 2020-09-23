@@ -24,10 +24,17 @@ public abstract class MapperBD<T> {
     public void update(T c) {
         EntityManager em = BDUtils.getEntityManager();
         BDUtils.comenzarTransaccion(em);
-        em.persist(c);
+        em.merge(c);
         BDUtils.commit(em);
     } //Cuando persisits algo queda guardado dentro del Entity Manager, commit guarda cambios, el Em es el q sabe q existe.
 
+    
+    public void updateAll(List<T> c) {
+        EntityManager em = BDUtils.getEntityManager();
+        BDUtils.comenzarTransaccion(em);
+        c.forEach(c_i -> em.merge(c_i));
+        BDUtils.commit(em);
+    }
     public void delete(T c) {
         EntityManager em = BDUtils.getEntityManager();
         BDUtils.comenzarTransaccion(em);

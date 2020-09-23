@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import com.API.Moneda;
@@ -60,7 +61,7 @@ public class Consola {
 		Producto p6 = new Producto("Joystick",4000);
 		Producto p7 = new Producto("Auto 9km",800000);
 		Producto p8 = new Producto("Perfume",5);
-		ProductoMapperBD pmBD = new ProductoMapperBD();
+		ProductoMapperBD pmBD =  ProductoMapperBD.getInstance();
 		pmBD.insert(p1);
 		pmBD.insert(p2);
 		pmBD.insert(p3);
@@ -135,7 +136,7 @@ public class Consola {
 		productos4.add(p8);
 		Compra c4 = new Compra(productos4,null,null,0, null,null);
 		
-		CompraMapperBD cmbd = new CompraMapperBD();
+		CompraMapperBD cmbd = CompraMapperBD.getInstance();
 		cmbd.insert(c1);
 		cmbd.insert(c2);
 		cmbd.insert(c3);
@@ -152,7 +153,7 @@ public class Consola {
 		mdpbd.insert(tarjeta);
 		//organizacion
 		Organizacion organizacion= new Organizacion();
-		OrganizacionMapperBD orgmbd = new OrganizacionMapperBD();
+		OrganizacionMapperBD orgmbd = OrganizacionMapperBD.getInstance();
 		orgmbd.insert(organizacion);
 		//proveedores
 		Proveedor proveedor1= new Proveedor();
@@ -187,13 +188,14 @@ public class Consola {
 		cmbd.insert(compra1);
 		//operacion egreso
 		OperacionEgreso egreso1= new OperacionEgreso(comprobante1, fechaOp, tarjeta, organizacion, compra1, proveedor1);
-		OperacionEgresoMapperBD oembd = new OperacionEgresoMapperBD();
+		OperacionEgresoMapperBD oembd = OperacionEgresoMapperBD.getInstance();
 		oembd.insert(egreso1);
 		
 		ArrayList<OperacionEgreso> egresos = new ArrayList<OperacionEgreso>();
 		egresos.add(egreso1);
-		OperacionIngreso ingreso1 = new OperacionIngreso("juanita", 345345346, null, egresos,new Date());
-		OperacionIngresoMapperBD mapperIngreso = new OperacionIngresoMapperBD();
+		OperacionIngreso ingreso1 = new OperacionIngreso("ingreso de remeras",323,new Date(),egresos,organizacion);
+		OperacionIngresoMapperBD mapperIngreso = OperacionIngresoMapperBD.getInstance();
 		mapperIngreso.insert(ingreso1);
+		
 	}
 }

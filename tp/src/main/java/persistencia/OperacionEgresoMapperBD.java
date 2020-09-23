@@ -20,4 +20,11 @@ private static final OperacionEgresoMapperBD instance = new OperacionEgresoMappe
 		return em.createQuery("select e from OperacionEgreso e where e.organizacion = :org and e.ingreso is null", OperacionEgreso.class)
 					.setParameter("org", organizacion).getResultList();
 	}
+	
+	public List<OperacionEgreso> obtenerEgresos(){
+		EntityManager em = BDUtils.getEntityManager();
+		BDUtils.comenzarTransaccion(em);
+		return em.createQuery("FROM OperacionEgreso", OperacionEgreso.class).getResultList();
+	}
+	
 }

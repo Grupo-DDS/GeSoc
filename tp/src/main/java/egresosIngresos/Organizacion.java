@@ -1,13 +1,16 @@
-package egresosIngresos;
+ package egresosIngresos;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
 import entidades.Entidad;
 
@@ -16,13 +19,29 @@ public class Organizacion {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	public Organizacion(Long id, List<Entidad> entidades, List<OperacionIngreso> ingresos,
+			List<OperacionEgreso> egresos, Requerimiento requerimiento, ReglaVinculacion regla) {
+		super();
+		this.id = id;
+		this.entidades = entidades;
+		this.ingresos = ingresos;
+		this.egresos = egresos;
+		this.requerimiento = requerimiento;
+		this.regla = regla;
+	}
+	public Organizacion() {}
+
 	@OneToMany
-	List<Entidad> entidades = new ArrayList<Entidad>();
+	private List<Entidad> entidades = new ArrayList<Entidad>();
 	@OneToMany (mappedBy = "organizacion")
-	List<OperacionIngreso> ingresos = new ArrayList<OperacionIngreso>();
+	private List<OperacionIngreso> ingresos = new ArrayList<OperacionIngreso>();
 	@OneToMany (mappedBy = "organizacion")
-	List<OperacionEgreso> egresos = new ArrayList<OperacionEgreso>();
+	private List<OperacionEgreso> egresos = new ArrayList<OperacionEgreso>();
+	
+	@ManyToOne(cascade = CascadeType.ALL)
 	private Requerimiento requerimiento;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
 	private ReglaVinculacion regla;
 	
 	
@@ -62,9 +81,6 @@ public class Organizacion {
 		this.requerimiento = requerimiento;
 	}
 
-	public Organizacion() {
-		// TODO Auto-generated constructor stub
-	}
 
 	public Requerimiento getRequerimiento() {
 		return requerimiento;

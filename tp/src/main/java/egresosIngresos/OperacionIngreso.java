@@ -10,8 +10,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="INGRESOS")
@@ -33,84 +35,75 @@ public class OperacionIngreso {
 	@OneToMany(mappedBy="ingreso")
 	private List<OperacionEgreso> egresos=new ArrayList<OperacionEgreso>();
 	
+	@ManyToOne
 	private Organizacion organizacion;
 	
-	private Date fechaInicio= sumarDiasAFecha(fechaOperacion,-5);
-	private Date fechaFin= sumarDiasAFecha(fechaOperacion,5);
+	
+	private Date fechaInicio;
+	
+	
+	private Date fechaFin;
 	@Override
 	public String toString() {
 		return "OperacionIngreso [id=" + id + ", descripcion=" + descripcion + ", montoTotal=" + montoTotal
 				 + ", egresos=" + egresos + ", fechaOperacion=" + fechaOperacion + "]";
 	}
 	
-	
-	public OperacionIngreso(String descripcion, float montoTotal,
-			 ArrayList<OperacionEgreso> egresos, Date fechaOperacion, Organizacion organizacion) {
+	public OperacionIngreso(){}
+
+	public OperacionIngreso(String descripcion, float montoTotal, Date fechaOperacion, List<OperacionEgreso> egresos,
+			Organizacion organizacion) {
 		super();
-		
 		this.descripcion = descripcion;
 		this.montoTotal = montoTotal;
+		this.fechaOperacion = fechaOperacion;
 		this.egresos = egresos;
-		this.fechaOperacion=fechaOperacion;
-		this.setOrganizacion(organizacion);
-	}
-
-	public OperacionIngreso() {}
-	public long getId() {
-		return id;
+		this.organizacion = organizacion;
+		this.fechaInicio= sumarDiasAFecha(fechaOperacion,-5);
+		this.fechaFin= sumarDiasAFecha(fechaOperacion,5);
 	}
 	
-	public Date getFechaOperacion() {
-		return fechaOperacion;
+
+	
+	public Long getId() {
+		return id;
 	}
-
-
-	public void setFechaOperacion(Date fechaOperacion) {
-		this.fechaOperacion = fechaOperacion;
-	}
-
 
 	public void setId(Long id) {
 		this.id = id;
 	}
 
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
+	public float getMontoTotal() {
+		return montoTotal;
+	}
+
+	public void setMontoTotal(float montoTotal) {
+		this.montoTotal = montoTotal;
+	}
+
+	public Date getFechaOperacion() {
+		return fechaOperacion;
+	}
+
+	public void setFechaOperacion(Date fechaOperacion) {
+		this.fechaOperacion = fechaOperacion;
+	}
 
 	public List<OperacionEgreso> getEgresos() {
 		return egresos;
 	}
-	public void setEgresos(ArrayList<OperacionEgreso> egresos) {
+
+	public void setEgresos(List<OperacionEgreso> egresos) {
 		this.egresos = egresos;
 	}
-
-	public String getDescripcion() {
-		return descripcion;
-	}
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
-	public float getMontoTotal() {
-		return montoTotal;
-	}
-	public void setMontoTotal(float montoTotal) {
-		this.montoTotal = montoTotal;
-	}
-	public static Date sumarDiasAFecha(Date fecha, int dias){
-	      if (dias==0) return fecha;
-	      Calendar calendar = Calendar.getInstance();
-	      calendar.setTime(fecha); 
-	      calendar.add(Calendar.DAY_OF_YEAR, dias);  
-	      return calendar.getTime(); 
-	}
-
-
-	public Date getFechaInicio() {
-		return fechaInicio;
-	}
-
-	public Date getFechaFin() {
-		return fechaFin;
-	}
-
 
 	public Organizacion getOrganizacion() {
 		return organizacion;
@@ -119,5 +112,36 @@ public class OperacionIngreso {
 	public void setOrganizacion(Organizacion organizacion) {
 		this.organizacion = organizacion;
 	}
+
+	public Date getFechaInicio() {
+		return fechaInicio;
+	}
+
+	public void setFechaInicio(Date fechaInicio) {
+		this.fechaInicio = fechaInicio;
+	}
+
+	public Date getFechaFin() {
+		return fechaFin;
+	}
+
+	public void setFechaFin(Date fechaFin) {
+		this.fechaFin = fechaFin;
+	}
+
+	public static Date sumarDiasAFecha(Date fecha, int dias){
+	      if (dias==0) 
+	    	  return fecha;
+	      Calendar calendar = Calendar.getInstance();
+	      calendar.setTime(fecha); 
+	      calendar.add(Calendar.DAY_OF_YEAR, dias);  
+	      return calendar.getTime(); 
+	}
+
+
+
+
+
+
 }
 

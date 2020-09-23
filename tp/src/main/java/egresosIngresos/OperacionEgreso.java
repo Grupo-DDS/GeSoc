@@ -33,7 +33,7 @@ public class OperacionEgreso {
 	@JoinColumn(name="ID_MEDIO_DE_PAGO")
 	private MedioDePago medioDePago;
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name="ID_ORGANIZACION")
 	private Organizacion organizacion;
 	
@@ -46,10 +46,10 @@ public class OperacionEgreso {
 	private Proveedor proveedor;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="ID_INGRESO")
+	@JoinColumn(name="ingreso")
 	private OperacionIngreso ingreso;
 	
-	
+	public OperacionEgreso() {}
 
 	public OperacionEgreso(Long id, DocumentoComercial comprobante, Date fechaOperacion, MedioDePago medioDePago,
 			Organizacion organizacion, Compra compra, Proveedor proveedor, OperacionIngreso ingreso) {
@@ -64,6 +64,8 @@ public class OperacionEgreso {
 		this.ingreso= ingreso;
 	}
 	
+
+
 	@Override
 	public String toString() {
 		return "OperacionEgreso [id=" + id + ", fechaOperacion=" + fechaOperacion + ", comprobante=" + comprobante

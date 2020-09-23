@@ -23,7 +23,6 @@ public class Direccion {
 	private String localidad;
 	@Column(name="PISO")
 	private String piso;
-	@Column(name="ID_CIUDAD")
 	@ManyToOne
 	private Ciudad ciudad;
 	

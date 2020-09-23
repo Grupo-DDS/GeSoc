@@ -5,15 +5,11 @@ import comprasPresupuestos.Compra;
 
 public class CompraMapperBD extends MapperBD<Compra>{
 
-	public void rodriEsUnLindo(Compra c) {
-		this.insert(c);
+	private static final CompraMapperBD instance = new CompraMapperBD();
+	
+	private CompraMapperBD () {}
+	public static CompraMapperBD getInstance() {
+		return instance;
 	}
-	/*
-	 En las clases mapper NO VA LOGICA DE NEGOCIO. 
-	 Solo va LOGICA DE BD (Accion de crear, borrar, actualizar registros).
-	 
-	 
-	 
-	 */
 	
 }

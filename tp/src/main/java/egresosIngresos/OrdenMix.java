@@ -2,9 +2,14 @@ package egresosIngresos;
 
 import java.util.List;
 
-public class OrdenMix extends Requerimiento {
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 
-List<Requerimiento> requerimientos;
+@Entity
+public class OrdenMix extends Requerimiento {
+	
+	@OneToMany
+	private List<Requerimiento> requerimientos;
 	
 	@Override
 	public IngresosEgresos vincular(List<OperacionEgreso> egresosAVincular, List<OperacionIngreso> ingresosAVincular, ReglaVinculacion regla){

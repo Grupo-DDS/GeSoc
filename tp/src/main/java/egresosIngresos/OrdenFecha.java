@@ -4,22 +4,10 @@ import java.util.Comparator;
 import java.util.List;
 
 public class OrdenFecha extends Requerimiento {
-
 	@Override
 	public IngresosEgresos ordenar(List<OperacionEgreso> egresosAVincular, List<OperacionIngreso> ingresosAVincular){
+		egresosAVincular.sort(Comparator.comparing(OperacionEgreso::getFechaOperacion));
+		ingresosAVincular.sort(Comparator.comparing(OperacionIngreso::getFechaOperacion));
 		return new IngresosEgresos(egresosAVincular, ingresosAVincular);
 		}
-
-		
-
-	public IngresosEgresos vincular(List<OperacionEgreso> egresosAVincular, List<OperacionIngreso> ingresosAVincular,ReglaVinculacion regla){
-		egresosAVincular.sort(Comparator.comparing(OperacionEgreso::getFechaOperacion));
-		for(OperacionIngreso unIngreso:ingresosAVincular){
-			for(OperacionEgreso unEgreso:egresosAVincular){
-				if(regla.esVinculable(unIngreso, unEgreso))
-					unIngreso.getEgresos().add(unEgreso);
-			}
-		}
-		return null;
-	}
 }

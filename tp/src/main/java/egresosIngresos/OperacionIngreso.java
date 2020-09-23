@@ -46,13 +46,14 @@ public class OperacionIngreso {
 	
 	
 	public OperacionIngreso(String descripcion, float montoTotal,
-			 ArrayList<OperacionEgreso> egresos, Date fechaOperacion) {
+			 ArrayList<OperacionEgreso> egresos, Date fechaOperacion, Organizacion organizacion) {
 		super();
 		
 		this.descripcion = descripcion;
 		this.montoTotal = montoTotal;
 		this.egresos = egresos;
 		this.fechaOperacion=fechaOperacion;
+		this.setOrganizacion(organizacion);
 	}
 
 	public OperacionIngreso() {}
@@ -109,6 +110,15 @@ public class OperacionIngreso {
 
 	public Date getFechaFin() {
 		return fechaFin;
+	}
+
+
+	public Organizacion getOrganizacion() {
+		return organizacion;
+	}
+
+	public void setOrganizacion(Organizacion organizacion) {
+		this.organizacion = organizacion;
 	}
 }
 

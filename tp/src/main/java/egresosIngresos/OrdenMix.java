@@ -4,7 +4,7 @@ import java.util.List;
 
 public class OrdenMix extends Requerimiento {
 
-List<Requerimiento> requerimientos ;
+List<Requerimiento> requerimientos;
 	
 	@Override
 	public IngresosEgresos vincular(List<OperacionEgreso> egresosAVincular, List<OperacionIngreso> ingresosAVincular, ReglaVinculacion regla){
@@ -17,10 +17,12 @@ List<Requerimiento> requerimientos ;
 		}
 		return restante;
 	}
-	
+
 	@Override
-	public IngresosEgresos ordenar(List<OperacionEgreso> egresosAVincular, List<OperacionIngreso> ingresosAVincular){
-		return new IngresosEgresos(egresosAVincular, ingresosAVincular);
+	public IngresosEgresos ordenar(List<OperacionEgreso> egresosAVincular, List<OperacionIngreso> ingresoAVincular) {
+		// TODO Auto-generated method stub
+		return null;
 	}
+
 
 }

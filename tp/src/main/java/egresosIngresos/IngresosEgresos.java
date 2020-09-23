@@ -8,8 +8,8 @@ public class IngresosEgresos {
 		this.egresosRestantes = egresosRestantes;
 		this.ingresosRestantes = ingresosRestantes;
 	}
-	List<OperacionEgreso> egresosRestantes;
-	List<OperacionIngreso> ingresosRestantes;
+	private List<OperacionEgreso> egresosRestantes;
+	private List<OperacionIngreso> ingresosRestantes;
 	public List<OperacionEgreso> getEgresosRestantes() {
 		return egresosRestantes;
 	}

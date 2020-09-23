@@ -5,7 +5,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.API.Ciudad;
 
 @Entity
 @Table(name="DIRECCIONES")
@@ -20,23 +23,24 @@ public class Direccion {
 	private String localidad;
 	@Column(name="PISO")
 	private String piso;
-	@Column(name="PROVINCIA")
-	private String provincia;
+	@Column(name="ID_CIUDAD")
+	@ManyToOne
+	private Ciudad ciudad;
 	
 	
 	@Override
 	public String toString() {
 		return "Direccion [id=" + id + ", calle=" + calle + ", localidad=" + localidad + ", piso=" + piso
-				+ ", provincia=" + provincia + "]";
+				+ ", ciudad=" + ciudad + "]";
 	}
 	
-	public Direccion(Long id, String calle, String localidad, String piso, String provincia) {
+	public Direccion(Long id, String calle, String localidad, String piso, Ciudad ciudad) {
 		super();
 		this.id = id;
 		this.calle = calle;
 		this.localidad = localidad;
 		this.piso = piso;
-		this.provincia = provincia;
+		this.ciudad = ciudad;
 	}
 	public Direccion() {
 		// TODO Auto-generated constructor stub
@@ -68,11 +72,11 @@ public class Direccion {
 	public void setPiso(String piso) {
 		this.piso = piso;
 	}
-	public String getProvincia() {
-		return provincia;
+	public Ciudad getCiudad() {
+		return ciudad;
 	}
-	public void setProvincia(String provincia) {
-		this.provincia = provincia;
+	public void setCiudad(Ciudad ciudad) {
+		this.ciudad = ciudad;
 	}
 	
 	

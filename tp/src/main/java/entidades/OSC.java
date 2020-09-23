@@ -8,7 +8,6 @@ public class OSC extends TipoEntidad{
 	//@Id
 	//@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int idOSC;
-	private static OSC instance = null;
 	
 	public OSC() {}
 	public int getIdOSC() {
@@ -17,11 +16,4 @@ public class OSC extends TipoEntidad{
 	public void setIdOSC(int idOSC) {
 		this.idOSC = idOSC;
 	}
-	
-	public static OSC getInstance() {
-		if (instance == null)
-			instance = new OSC();
-		return instance;
-	}
-	
 }

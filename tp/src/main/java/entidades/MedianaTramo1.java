@@ -8,7 +8,6 @@ public class MedianaTramo1 extends Empresa{
 	//@Id
 	//@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int idMedianaTramo1;
-	private static MedianaTramo1 instance = null;
 	
 	public MedianaTramo1() {}
 
@@ -22,10 +21,4 @@ public class MedianaTramo1 extends Empresa{
 		this.idMedianaTramo1 = idMedianaTramo1;
 	}
 
-
-	public static MedianaTramo1 getInstance() {
-		if (instance == null)
-			instance = new MedianaTramo1();
-		return instance;
-	}
 }

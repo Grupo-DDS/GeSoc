@@ -42,16 +42,17 @@ public class Consola {
 	public static void main(String args[]) throws IOException {
 		
 		Moneda m = new Moneda();
-		MonedaMapperBD mbd = new MonedaMapperBD();
+		MonedaMapperBD mbd = MonedaMapperBD.getInstance();
 		List<Moneda> monedas = m.obtenerListaAPI();
 		mbd.insert(monedas);
 		
 		
 		Pais p = new Pais();
-		PaisMapperBD pbd = new PaisMapperBD();
+		PaisMapperBD pbd = PaisMapperBD.getInstance();
 		List<Pais> paises = p.obtenerPaises();
 		List<Pais> paisesDetallados = p.obtenerPaisesDetallados(paises);
 		pbd.insert(paisesDetallados);
+	
 		
 		Producto p1 = new Producto("Oreo",100);
 		Producto p2 = new Producto("Cepillo de dientes",300);
@@ -79,7 +80,7 @@ public class Consola {
 		PresupuestoDetallado pd6 = new PresupuestoDetallado(7100,p6);
 		PresupuestoDetallado pd7 = new PresupuestoDetallado(898100,p7);
 		PresupuestoDetallado pd8 = new PresupuestoDetallado(6934100,p8);		
-		PresupuestoDetalladoMapperBD pdbd = new PresupuestoDetalladoMapperBD();		
+		PresupuestoDetalladoMapperBD pdbd = PresupuestoDetalladoMapperBD.getInstance();		
 		pdbd.insert(pd1);
 		pdbd.insert(pd2);
 		pdbd.insert(pd3);
@@ -109,7 +110,7 @@ public class Consola {
 		detalle4.add(pd8);		
 		Presupuesto pr4 = new Presupuesto(null,null,detalle4);
 		
-		PresupuestoMapperBD pmbd = new PresupuestoMapperBD();
+		PresupuestoMapperBD pmbd = PresupuestoMapperBD.getInstance();
 		pmbd.insert(pr1);
 		pmbd.insert(pr2);
 		pmbd.insert(pr3);
@@ -143,12 +144,12 @@ public class Consola {
 		cmbd.insert(c4);
 		
 		
-		DocumentoComercial comprobante1=new DocumentoComercial(25,'a');
-		DocumentoComercialMapperBD dcmbd = new DocumentoComercialMapperBD();
+		DocumentoComercial comprobante1=new DocumentoComercial(250,'A');
+		DocumentoComercialMapperBD dcmbd = DocumentoComercialMapperBD.getInstance();
 		dcmbd.insert(comprobante1);
 		//Medio de pago
 		MedioDePago tarjeta=new MedioDePago();
-		MedioDePagoMapperBD mdpbd = new MedioDePagoMapperBD();
+		MedioDePagoMapperBD mdpbd = MedioDePagoMapperBD.getInstance();
 		tarjeta.setMedio("Visa");
 		mdpbd.insert(tarjeta);
 		//organizacion
@@ -157,7 +158,7 @@ public class Consola {
 		orgmbd.insert(organizacion);
 		//proveedores
 		Proveedor proveedor1= new Proveedor();
-		ProveedorMapperBD provmbd = new ProveedorMapperBD();
+		ProveedorMapperBD provmbd =  ProveedorMapperBD.getInstance();
 		provmbd.insert(proveedor1);
 		//fecha operacion
 		Date fechaOp=new Date();
@@ -172,7 +173,7 @@ public class Consola {
 		Usuario usuario1 = new Usuario(null,null,null);
 		Usuario usuario2 = new Usuario(null,null,null);
 		Usuario usuario3 = new Usuario(null,null,null);
-		UsuarioMapper usmbd = new UsuarioMapper();
+		UsuarioMapper usmbd =  UsuarioMapper.getInstance();
 		usmbd.insert(usuario1);
 		usmbd.insert(usuario2);
 		usmbd.insert(usuario3);
@@ -181,7 +182,7 @@ public class Consola {
 		listaUsuariosRevisores.add(usuario3);
 		//criterio
 		ProveedorMenorValor criterio = new ProveedorMenorValor();
-		CriterioSeleccionPresupuestoMapperBD cspmbd = new CriterioSeleccionPresupuestoMapperBD();
+		CriterioSeleccionPresupuestoMapperBD cspmbd =  CriterioSeleccionPresupuestoMapperBD.getInstance();
 		cspmbd.insert(criterio);
 		//compra
 		Compra compra1=new Compra(listaProducto, null,null, 0,listaUsuariosRevisores, criterio);
@@ -193,9 +194,26 @@ public class Consola {
 		
 		ArrayList<OperacionEgreso> egresos = new ArrayList<OperacionEgreso>();
 		egresos.add(egreso1);
-		OperacionIngreso ingreso1 = new OperacionIngreso("ingreso de remeras",323,new Date(),egresos,organizacion);
-		OperacionIngresoMapperBD mapperIngreso = OperacionIngresoMapperBD.getInstance();
-		mapperIngreso.insert(ingreso1);
+		
+
+		
+		GregorianCalendar gIngreso1 = new GregorianCalendar(2010, 7, 7);
+		Date fechaIngreso1= gIngreso1.getTime();
+		OperacionIngreso ingreso1 = new OperacionIngreso("ingreso 1",3333,fechaIngreso1,new ArrayList<OperacionEgreso>(),organizacion);
+		
+		GregorianCalendar gIngreso12 = new GregorianCalendar(2010, 7, 7);
+		Date fechaIngreso12= gIngreso12.getTime();
+		OperacionIngreso ingreso12 = new OperacionIngreso("ingreso 2", 3333, fechaIngreso12,new ArrayList<OperacionEgreso>(), organizacion);
+	
+		
+		GregorianCalendar gIngreso13 = new GregorianCalendar(2010, 7, 7);
+		Date fechaIngreso13= gIngreso13.getTime();
+		OperacionIngreso ingreso13 = new OperacionIngreso("ingreso 3", 3333, fechaIngreso13,new ArrayList<OperacionEgreso>(), organizacion);
+
+
+		OperacionIngresoMapperBD.getInstance().insert(Arrays.asList(ingreso1,ingreso12,ingreso13));
+		
+
 		
 	}
 }

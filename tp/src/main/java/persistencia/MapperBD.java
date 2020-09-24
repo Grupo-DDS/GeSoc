@@ -51,12 +51,7 @@ public abstract class MapperBD<T> {
     }
     
     
-    /*
-    public T find (Long id) {
-    	EntityManager em = BDUtils.getEntityManager();
-    	return em.find(T, id);
-    }
-    */
+   
     
     
 

@@ -11,12 +11,12 @@ import com.API.Provincia;
 public class PersistenciaAPI {
 	public void cargarTodo() throws IOException {
 		Moneda m = new Moneda();
-		MonedaMapperBD mbd = new MonedaMapperBD();
+		MonedaMapperBD mbd = MonedaMapperBD.getInstance();
 		List<Moneda> monedas = m.obtenerListaAPI();
 		mbd.insert(monedas);
 		
 		Pais p = new Pais();
-		PaisMapperBD pbd = new PaisMapperBD();
+		PaisMapperBD pbd = PaisMapperBD.getInstance();
 		List<Pais> paises = p.obtenerPaises();
 		List<Pais> paisesDetallados = p.obtenerPaisesDetallados(paises);
 		

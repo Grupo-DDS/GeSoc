@@ -2,6 +2,7 @@ package egresosIngresos;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -45,7 +46,7 @@ public class OperacionEgreso {
 	@JoinColumn(name="ID_PROVEEDOR")
 	private Proveedor proveedor;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="ingreso")
 	private OperacionIngreso ingreso;
 	

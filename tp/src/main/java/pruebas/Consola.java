@@ -44,14 +44,14 @@ public class Consola {
 		Moneda m = new Moneda();
 		MonedaMapperBD mbd = new MonedaMapperBD();
 		List<Moneda> monedas = m.obtenerListaAPI();
-		mbd.save(monedas);
+		mbd.insert(monedas);
 		
 		
 		Pais p = new Pais();
 		PaisMapperBD pbd = new PaisMapperBD();
 		List<Pais> paises = p.obtenerPaises();
 		List<Pais> paisesDetallados = p.obtenerPaisesDetallados(paises);
-		pbd.save(paisesDetallados);
+		pbd.insert(paisesDetallados);
 		
 		Producto p1 = new Producto("Oreo",100);
 		Producto p2 = new Producto("Cepillo de dientes",300);

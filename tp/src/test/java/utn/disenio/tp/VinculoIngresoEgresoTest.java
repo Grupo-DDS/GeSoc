@@ -1,7 +1,6 @@
 package utn.disenio.tp;
 
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
@@ -10,11 +9,11 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import comprasPresupuestos.Compra;
 import comprasPresupuestos.Producto;
-
 import egresosIngresos.OperacionEgreso;
 import egresosIngresos.OperacionIngreso;
 import egresosIngresos.OrdenFecha;
@@ -87,15 +86,15 @@ public class VinculoIngresoEgresoTest {
 		Date fechaIngreso13= gIngreso13.getTime();
 		OperacionIngreso ingreso13 = new OperacionIngreso("ingreso 1", 3333, fechaIngreso13,new ArrayList<OperacionEgreso>(), organizacion);
 
-		ProductoMapperBD.getInstance().save(listaProducto);
-		ProductoMapperBD.getInstance().save(listaProducto2);
-		ProductoMapperBD.getInstance().save(listaProducto3);
+		ProductoMapperBD.getInstance().insert(listaProducto);
+		ProductoMapperBD.getInstance().insert(listaProducto2);
+		ProductoMapperBD.getInstance().insert(listaProducto3);
 		CompraMapperBD.getInstance().insert(compra1);
 		CompraMapperBD.getInstance().insert(compra12);
 		CompraMapperBD.getInstance().insert(compra13);
-		OperacionIngresoMapperBD.getInstance().save(Arrays.asList(ingreso1,ingreso12,ingreso13));
+		OperacionIngresoMapperBD.getInstance().insert(Arrays.asList(ingreso1,ingreso12,ingreso13));
 		
-		OperacionEgresoMapperBD.getInstance().save(Arrays.asList(egreso1,egreso12,egreso13));
+		OperacionEgresoMapperBD.getInstance().insert(Arrays.asList(egreso1,egreso12,egreso13));
 		
 		organizacion.setEgresos(Arrays.asList(egreso1,egreso12,egreso13));
 		organizacion.setIngresos(Arrays.asList(ingreso1,ingreso12,ingreso13));
@@ -104,16 +103,22 @@ public class VinculoIngresoEgresoTest {
 		
 		VinculadorMagico vm = new VinculadorMagico();
 		vm.vincular();
-		assertTrue(true);
+		
 		
 		List<OperacionEgreso> egresosVinculados = OperacionEgresoMapperBD.getInstance().obtenerEgresos();
-		egresosVinculados.forEach(egresoV -> System.out.println(egresoV.toString()));
 		
-		List<OperacionIngreso> ingresosVinculados = OperacionIngresoMapperBD.getInstance().obtenerIngresos();
-		ingresosVinculados.forEach(ingresoV->System.out.println(ingresoV.toString()));
+		//egresosVinculados.forEach(egresoV -> System.out.println(egresoV.toString()));
+//		
+//		List<OperacionIngreso> ingresosVinculados = OperacionIngresoMapperBD.getInstance().obtenerIngresos();
+//		ingresosVinculados.forEach(ingresoV->System.out.println(ingresoV.toString()));
 		
-
+		assertTrue(true);
+		
 		
 	}
+	
+	@Before
+	public void borrarBaseDeDatos() {
 		
+	}
 }

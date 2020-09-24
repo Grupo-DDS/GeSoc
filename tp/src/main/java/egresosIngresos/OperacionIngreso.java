@@ -5,6 +5,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -32,7 +33,7 @@ public class OperacionIngreso {
 	@Column(name="FECHA_OPERACION")
 	private Date fechaOperacion;
 	
-	@OneToMany(mappedBy="ingreso")
+	@OneToMany(mappedBy="ingreso",cascade = CascadeType.ALL)
 	private List<OperacionEgreso> egresos=new ArrayList<OperacionEgreso>();
 	
 	@ManyToOne

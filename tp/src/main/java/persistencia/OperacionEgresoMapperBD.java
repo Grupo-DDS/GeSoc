@@ -24,7 +24,8 @@ private static final OperacionEgresoMapperBD instance = new OperacionEgresoMappe
 	public List<OperacionEgreso> obtenerEgresos(){
 		EntityManager em = BDUtils.getEntityManager();
 		BDUtils.comenzarTransaccion(em);
-		return em.createQuery("FROM OperacionEgreso", OperacionEgreso.class).getResultList();
+		return em.createQuery("SELECT E FROM OperacionEgreso E JOIN FETCH E.ingreso i", OperacionEgreso.class).getResultList();
 	}
+	
 	
 }

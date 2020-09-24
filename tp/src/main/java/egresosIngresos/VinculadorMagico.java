@@ -16,6 +16,7 @@ public class VinculadorMagico {
 			List<OperacionEgreso> egresos = OperacionEgresoMapperBD.getInstance().obtenerEgresosQueSeanVinculables(organizacion);
 			ReglaVinculacion regla = organizacion.getRegla();
 			organizacion.getRequerimiento().vincular(egresos, ingresos, regla);
+			//egresos.forEach(egreso->egreso.setMedioDePago(new MedioDePago()));
 			OperacionIngresoMapperBD.getInstance().updateAll(ingresos);
 			OperacionEgresoMapperBD.getInstance().updateAll(egresos);
 		}

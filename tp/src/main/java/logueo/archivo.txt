@@ -1,0 +1,99 @@
+aloaloaloaloaloaloaloalo
+alo
+alo
+alo
+alo
+alo
+alo
+alo
+alo
+alo
+alo
+alo
+alo
+alo
+alo
+alo
+alo
+alo
+alo
+alo
+alo
+insertinsertinsertinsertinsertinsertinsertinsertinsertinsertinsertinsertinsertinsertinsertinsertinsertinsertinsertinsertinsertinsertinsertinsertinsertinsertinsertinsertinsertinsertinsertinsertinsertinsertinsertinsertinsertinsertinsertinsertpersistencia.MapperBD insert
+persistencia.MapperBD insert
+persistencia.MapperBD insert
+persistencia.MapperBD insert
+persistencia.MapperBD insert
+persistencia.MapperBD insert
+persistencia.MapperBD insert
+persistencia.MapperBD insert
+persistencia.MapperBD insert
+persistencia.MapperBD insert
+persistencia.MapperBD insert
+persistencia.MapperBD insert
+persistencia.MapperBD insert
+persistencia.MapperBD insert
+persistencia.MapperBD insert
+persistencia.MapperBD insert
+persistencia.MapperBD insert
+persistencia.MapperBD insert
+persistencia.MapperBD insert
+persistencia.MapperBD insert
+persistencia.MapperBD insert
+persistencia.MapperBD insert
+persistencia.MapperBD insert
+persistencia.MapperBD insert
+persistencia.MapperBD insert
+persistencia.MapperBD insert
+persistencia.MapperBD insert
+persistencia.MapperBD insert
+persistencia.MapperBD insert
+persistencia.MapperBD insert
+persistencia.MapperBD insert
+persistencia.MapperBD insert
+persistencia.MapperBD insert
+persistencia.MapperBD insert
+persistencia.MapperBD insert
+persistencia.MapperBD insert
+persistencia.MapperBD insert
+persistencia.MapperBD insert
+persistencia.MapperBD insert
+MapperBD.java:18 insert persistencia.MonedaMapperBD@3561c410 method-execution persistencia.MapperBD insert
+MapperBD.java:18 insert persistencia.PaisMapperBD@670a4738 method-execution persistencia.MapperBD insert
+MapperBD.java:10 insert persistencia.ProductoMapperBD@1e01b195 method-execution persistencia.MapperBD insert
+MapperBD.java:10 insert persistencia.ProductoMapperBD@1e01b195 method-execution persistencia.MapperBD insert
+MapperBD.java:10 insert persistencia.ProductoMapperBD@1e01b195 method-execution persistencia.MapperBD insert
+MapperBD.java:10 insert persistencia.ProductoMapperBD@1e01b195 method-execution persistencia.MapperBD insert
+MapperBD.java:10 insert persistencia.ProductoMapperBD@1e01b195 method-execution persistencia.MapperBD insert
+MapperBD.java:10 insert persistencia.ProductoMapperBD@1e01b195 method-execution persistencia.MapperBD insert
+MapperBD.java:10 insert persistencia.ProductoMapperBD@1e01b195 method-execution persistencia.MapperBD insert
+MapperBD.java:10 insert persistencia.ProductoMapperBD@1e01b195 method-execution persistencia.MapperBD insert
+MapperBD.java:10 insert persistencia.PresupuestoDetalladoMapperBD@19d9ba89 method-execution persistencia.MapperBD insert
+MapperBD.java:10 insert persistencia.PresupuestoDetalladoMapperBD@19d9ba89 method-execution persistencia.MapperBD insert
+MapperBD.java:10 insert persistencia.PresupuestoDetalladoMapperBD@19d9ba89 method-execution persistencia.MapperBD insert
+MapperBD.java:10 insert persistencia.PresupuestoDetalladoMapperBD@19d9ba89 method-execution persistencia.MapperBD insert
+MapperBD.java:10 insert persistencia.PresupuestoDetalladoMapperBD@19d9ba89 method-execution persistencia.MapperBD insert
+MapperBD.java:10 insert persistencia.PresupuestoDetalladoMapperBD@19d9ba89 method-execution persistencia.MapperBD insert
+MapperBD.java:10 insert persistencia.PresupuestoDetalladoMapperBD@19d9ba89 method-execution persistencia.MapperBD insert
+MapperBD.java:10 insert persistencia.PresupuestoDetalladoMapperBD@19d9ba89 method-execution persistencia.MapperBD insert
+MapperBD.java:10 insert persistencia.PresupuestoMapperBD@361b3ca6 method-execution persistencia.MapperBD insert
+MapperBD.java:10 insert persistencia.PresupuestoMapperBD@361b3ca6 method-execution persistencia.MapperBD insert
+MapperBD.java:10 insert persistencia.PresupuestoMapperBD@361b3ca6 method-execution persistencia.MapperBD insert
+MapperBD.java:10 insert persistencia.PresupuestoMapperBD@361b3ca6 method-execution persistencia.MapperBD insert
+MapperBD.java:10 insert persistencia.CompraMapperBD@62c6db99 method-execution persistencia.MapperBD insert
+MapperBD.java:10 insert persistencia.CompraMapperBD@62c6db99 method-execution persistencia.MapperBD insert
+MapperBD.java:10 insert persistencia.CompraMapperBD@62c6db99 method-execution persistencia.MapperBD insert
+MapperBD.java:10 insert persistencia.CompraMapperBD@62c6db99 method-execution persistencia.MapperBD insert
+MapperBD.java:10 insert persistencia.DocumentoComercialMapperBD@6ef61cd0 method-execution persistencia.MapperBD insert
+MapperBD.java:10 insert persistencia.MedioDePagoMapperBD@7a0d2c80 method-execution persistencia.MapperBD insert
+MapperBD.java:10 insert persistencia.OrganizacionMapperBD@1da32baf method-execution persistencia.MapperBD insert
+MapperBD.java:10 insert persistencia.ProveedorMapperBD@541897c6 method-execution persistencia.MapperBD insert
+MapperBD.java:10 insert persistencia.ProductoMapperBD@1e01b195 method-execution persistencia.MapperBD insert
+MapperBD.java:10 insert persistencia.ProductoMapperBD@1e01b195 method-execution persistencia.MapperBD insert
+MapperBD.java:10 insert persistencia.UsuarioMapper@42cf5a6f method-execution persistencia.MapperBD insert
+MapperBD.java:10 insert persistencia.UsuarioMapper@42cf5a6f method-execution persistencia.MapperBD insert
+MapperBD.java:10 insert persistencia.UsuarioMapper@42cf5a6f method-execution persistencia.MapperBD insert
+MapperBD.java:10 insert persistencia.CriterioSeleccionPresupuestoMapperBD@3661b732 method-execution persistencia.MapperBD insert
+MapperBD.java:10 insert persistencia.CompraMapperBD@62c6db99 method-execution persistencia.MapperBD insert
+MapperBD.java:10 insert persistencia.OperacionEgresoMapperBD@442310fd method-execution persistencia.MapperBD insert
+MapperBD.java:18 insert persistencia.OperacionIngresoMapperBD@5f4e389a method-execution persistencia.MapperBD insert

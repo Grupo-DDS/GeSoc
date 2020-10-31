@@ -5,12 +5,12 @@ import java.io.IOException;
 
 
 public class broker {
-	public void saludar() {
+	public static void saludar() {
 		System.out.println("ALOHA");
 	}
 	
 	public static void main(String args[]) throws IOException {
-		broker b = new broker();
-		b.saludar();
+		//broker b = new broker();
+		broker.saludar();
 	}
 }

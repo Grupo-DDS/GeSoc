@@ -1,12 +1,12 @@
 package logueo;
 
-import java.util.GregorianCalendar;
+import java.time.LocalDateTime;
 
 public class OperacionLog {
 	
 	private TipoOperacion tipoOperacion; //alta, baja o modificacion
 	private String entidadAfectada;
-	private GregorianCalendar fecha;
+	private LocalDateTime fecha;
 	
 	public TipoOperacion getTipoOperacion() {
 		return tipoOperacion;
@@ -20,10 +20,10 @@ public class OperacionLog {
 	public void setEntidadAfectada(String entidadAfectada) {
 		this.entidadAfectada = entidadAfectada;
 	}
-	public GregorianCalendar getFecha() {
+	public LocalDateTime getFecha() {
 		return fecha;
 	}
-	public void setFecha(GregorianCalendar fecha) {
+	public void setFecha(LocalDateTime fecha) {
 		this.fecha = fecha;
 	}
 	

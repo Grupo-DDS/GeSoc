@@ -9,12 +9,14 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 @Controller
 public class Controllers {
 
-    @RequestMapping(method = GET, path = {"/","/home"})
+    @RequestMapping(method = GET, path = {"/pages","/index"})
     public String homeView(){
         //retorna el html ubicado en src/main/resources/templates
         //luego de procesarlo con el view engine Thymeleaf
-        return "home";
+        return "index";
     }
+  
+
 
     @RequestMapping(method = GET, path = "/hello")
     public String helloView(Model model, Authentication auth){

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>GeSoc - Entrar o Registrarse</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="css/heroic-features.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="../GeSoc Grupo 6/pages/inicio.html">GeSoc</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="../GeSoc Grupo 6/pages/inicio.html">Inicio
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../pages/mensajes.html">Mensajes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../pages/usuario.html">Usuario</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="container">
+
+    <!-- Header -->
+    <header class="jumbotron my-4">
+      <h1 class="display-3">Bienvenido a GeSoc</h1>
+      <p class="lead">Nuestro sistema Gestor de Proyectos Sociales
+           facilita la carga y gestión de sus operaciones de egresos. </p>
+    </header>
+
+    <!-- Page Features -->
+    <div class="container">
+      <div style="display:none;" class="js-concurrent-resource-modification-alert">
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="container start-screen">
+            <div class="row">
+              <div class="col-sm-12 col-md-11 col-lg-10">
+                <div class="row">
+                  <div class="col-sm-6 col-lg-5">
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <i class="j-icon-purchases-feature pull-left"></i>
+                        <p class="lead">
+                          <strong>▼ Cargue sus Operaciones de Egresos</strong>
+                          <br>
+                           y vea su historial de Operaciones.
+                        </p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <i class="j-icon-alert-feature pull-left"></i>
+                        <p class="lead">
+                          <strong>▼ Asocie sus Ingresos con sus Egresos</strong>
+                          <br>
+                           de forma eficiente y rápida.
+                        </p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <i class="j-icon-manage-feature pull-left"></i>
+                        <p class="lead">
+                          <strong>▼ Visualice sus asociaciones por categoría</strong>
+                          <br>
+                           y pruebe entre las distintas categorías. 
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-4 col-sm-offset-1">
+                    <div class="well panel-highlighted">
+                      <form method="post" action="/authorize?_st=3YuH2VLMLRNHY5wBPIM01-NauS-bwz8GHOjMwa6rmMvWslQ5dYvQTEubnQ3M5yhe" class="js-auth-dialog-form">
+                        <h5>Iniciar sesión con una cuenta existente</h5>
+                        <div class="form-group js-auth-dialog-input-username"><input name="username" style="width:100%" id="username" placeholder="Nombre de usuario" type="text" autofocus="" class="form-control"></div>
+                        <div class="form-group js-auth-dialog-input-password"><input name="password" style="width:100%" placeholder="Contraseña" type="password" class="form-control"></div>
+                        <div style="display:none;" class="form-group js-auth-dialog-input-2fa">
+                        <input name="secondFactor" style="width:100%" placeholder="One-time password" type="text" class="form-control">
+                        </div>
+                        <div class="form-group clearfix">
+                          <div class="pull-left"><button onclick="return false;" class="btn btn-primary btn-lg js-auth-dialog-btn-signin login-submit-btn">Iniciar sesión</button><span class="unit-container-xs"></span></div>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="well panel-highlighted">
+                      <form method="post" action="/signup-request?_st=3YuH2VLMLRNHY5wBPIM01-NauS-bwz8GHOjMwa6rmMvWslQ5dYvQTEubnQ3M5yhe">
+                        <h5>¿Aún no estás registrado?</h5>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ventanaRegistro">Crear cuenta nueva</button></div>
+                         <!-- Modal -->
+                        <div class="modal fade" id="ventanaRegistro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Registrate</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                
+                                <div class="form-group js-auth-dialog-input-username"><input name="username" style="width:100%" id="username" placeholder="Nombre de usuario" type="text" autofocus="" class="form-control"></div>
+                                <div class="form-group js-auth-dialog-input-password"><input name="password" style="width:100%" placeholder="Contraseña" type="password" class="form-control"></div>
+                                <div style="display:none;" class="form-group js-auth-dialog-input-2fa">
+                                <input name="secondFactor" style="width:100%" placeholder="One-time password" type="text" class="form-control">
+                                          
+                                 </div>
+                                 <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                <button type="button" class="btn btn-primary">Registrarse</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                       </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

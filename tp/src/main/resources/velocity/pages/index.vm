@@ -1,5 +1,3 @@
-#parse("/velocity/layout.vm")
-#@mainLayout()
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,10 +11,10 @@
   <title>GeSoc - Entrar o Registrarse</title>
 
   <!-- Bootstrap core CSS -->
-  <link href="../public/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link href="../public/css/heroic-features.css" rel="stylesheet">
+  <link href="/css/heroic-features.css" rel="stylesheet">
 
 </head>
 
@@ -24,22 +22,22 @@
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="../GeSoc Grupo 6/pages/inicio.html">GeSoc</a>
+      <a class="navbar-brand" href="/inicio.html">GeSoc</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="../GeSoc Grupo 6/pages/inicio.html">Inicio
+            <a class="nav-link" href="/inicio.html">Inicio
               <span class="sr-only">(current)</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../pages/mensajes.html">Mensajes</a>
+            <a class="nav-link" href=/mensajes.html">Mensajes</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../pages/usuario.html">Usuario</a>
+            <a class="nav-link" href="/usuario.html">Usuario</a>
           </li>
         </ul>
       </div>
@@ -100,7 +98,7 @@
                   </div>
                   <div class="col-sm-4 col-sm-offset-1">
                     <div class="well panel-highlighted">
-                      <form method="post" action="/authorize?_st=3YuH2VLMLRNHY5wBPIM01-NauS-bwz8GHOjMwa6rmMvWslQ5dYvQTEubnQ3M5yhe" class="js-auth-dialog-form">
+                    <form id="loginForm" method="post">
                             #if($authenticationFailed)
         						<p class="bad notification">$msg.get("LOGIN_AUTH_FAILED")</p>
     						#elseif($authenticationSucceeded)
@@ -111,31 +109,24 @@
                         <h5>Iniciar sesión con una cuenta existente</h5>
                         <div class="form-group js-auth-dialog-input-username"><input name="username" style="width:100%" id="username" placeholder="Nombre de usuario" type="text" autofocus="" class="form-control"></div>
                         <div class="form-group js-auth-dialog-input-password"><input name="password" style="width:100%" placeholder="Contraseña" type="password" class="form-control"></div>
+                        #if($loginRedirect)
+        					<input type="hidden" name="loginRedirect" value="$loginRedirect">
+						#end
                         <div style="display:none;" class="form-group js-auth-dialog-input-2fa">
-                        <input name="secondFactor" style="width:100%" placeholder="One-time password" type="text" class="form-control">
-
-                        </div>
+						</div>
                         
                         <div class="form-group clearfix">
-                          <div class="pull-left">
-                          	
-                          		<button
-                          		#if($loginRedirect)
-                          			onclick="$loginRedirect" 
-                          		#end
-                          			class="btn btn-primary btn-lg js-auth-dialog-btn-signin login-submit-btn">Iniciar sesión
-                          		</button>
-                          	
-                          		<span class="unit-container-xs"></span>
-                          </div>
-                        	
-    					
+                          <div class="pull-left"> 
+                          #*<input type="submit" value="$msg.get("LOGIN_BUTTON_LOGIN")">*#
+                          <button onclick="submit" class="btn btn-primary btn-lg js-auth-dialog-btn-signin login-submit-btn">
+                          	Iniciar sesión
+                          </button>
+                          <span class="unit-container-xs"></span></div>
                         </div>
                       </form>
-                      #end
                     </div>
                     <div class="well panel-highlighted">
-                      <form method="post" action="/signup-request?_st=3YuH2VLMLRNHY5wBPIM01-NauS-bwz8GHOjMwa6rmMvWslQ5dYvQTEubnQ3M5yhe">
+                    <form id="loginForm" method="post">
                         <h5>¿Aún no estás registrado?</h5>
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ventanaRegistro">Crear cuenta nueva</button></div>
                          <!-- Modal -->
@@ -179,8 +170,8 @@
   <!-- /.container -->
 
   <!-- Bootstrap core JavaScript -->
-  <script src="../public/vendor/jquery/jquery.min.js"></script>
-  <script src="../public/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/vendor/jquery/jquery.min.js"></script>
+  <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
 

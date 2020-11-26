@@ -1,6 +1,6 @@
 package utn.disenio.tp;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +8,6 @@ import java.util.List;
 import org.junit.Test;
 
 import comprasPresupuestos.Compra;
-import comprasPresupuestos.CriterioSeleccionPresupuesto;
 import comprasPresupuestos.Presupuesto;
 import comprasPresupuestos.PresupuestoDetallado;
 import comprasPresupuestos.Producto;
@@ -35,10 +34,10 @@ public void testCantidad() {
 		ArrayList<Mensaje> bandejaDeMensajes2 = new ArrayList<Mensaje>();
 		ArrayList<Mensaje> bandejaDeMensajes3 = new ArrayList<Mensaje>();
 		ArrayList<Mensaje> bandejaDeMensajes4 = new ArrayList<Mensaje>();
-		Usuario usuario1 = new Usuario(null,null,bandejaDeMensajes1);
-		Usuario usuario2 = new Usuario(null,null,bandejaDeMensajes2);
-		Usuario usuario3 = new Usuario(null,null,bandejaDeMensajes3);
-		Usuario usuario4 = new Usuario(null,null,bandejaDeMensajes4);
+		Usuario usuario1 = new Usuario(null,null,null, bandejaDeMensajes1);
+		Usuario usuario2 = new Usuario(null,null,null,bandejaDeMensajes2);
+		Usuario usuario3 = new Usuario(null,null,null,bandejaDeMensajes3);
+		Usuario usuario4 = new Usuario(null,null,null,bandejaDeMensajes4);
 		
 		
 		
@@ -69,10 +68,10 @@ public void testCantidad() {
 		ArrayList<Mensaje> bandejaDeMensajes2 = new ArrayList<Mensaje>();
 		ArrayList<Mensaje> bandejaDeMensajes3 = new ArrayList<Mensaje>();
 		ArrayList<Mensaje> bandejaDeMensajes4 = new ArrayList<Mensaje>();
-		Usuario usuario1 = new Usuario(null,null,bandejaDeMensajes1);
-		Usuario usuario2 = new Usuario(null,null,bandejaDeMensajes2);
-		Usuario usuario3 = new Usuario(null,null,bandejaDeMensajes3);
-		Usuario usuario4 = new Usuario(null,null,bandejaDeMensajes4);
+		Usuario usuario1 = new Usuario(null,null,null,bandejaDeMensajes1);
+		Usuario usuario2 = new Usuario(null,null,null,bandejaDeMensajes2);
+		Usuario usuario3 = new Usuario(null,null,null,bandejaDeMensajes3);
+		Usuario usuario4 = new Usuario(null,null,null,bandejaDeMensajes4);
 		
 		
 		Producto producto1 = new Producto("manzanas",120) ;
@@ -154,10 +153,10 @@ public void testCantidad() {
 		ArrayList<Mensaje> bandejaDeMensajes2 = new ArrayList<Mensaje>();
 		ArrayList<Mensaje> bandejaDeMensajes3 = new ArrayList<Mensaje>();
 		ArrayList<Mensaje> bandejaDeMensajes4 = new ArrayList<Mensaje>();
-		Usuario usuario1 = new Usuario(null,null,bandejaDeMensajes1);
-		Usuario usuario2 = new Usuario(null,null,bandejaDeMensajes2);
-		Usuario usuario3 = new Usuario(null,null,bandejaDeMensajes3);
-		Usuario usuario4 = new Usuario(null,null,bandejaDeMensajes4);
+		Usuario usuario1 = new Usuario(null,null,null,bandejaDeMensajes1);
+		Usuario usuario2 = new Usuario(null,null,null,bandejaDeMensajes2);
+		Usuario usuario3 = new Usuario(null,null,null,bandejaDeMensajes3);
+		Usuario usuario4 = new Usuario(null,null,null,bandejaDeMensajes4);
 		
 		
 		Producto producto1 = new Producto("manzanas",120) ;

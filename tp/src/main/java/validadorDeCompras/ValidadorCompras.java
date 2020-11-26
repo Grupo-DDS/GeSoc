@@ -3,14 +3,14 @@ package validadorDeCompras;
 import java.util.LinkedList;
 import java.util.Queue;
 
-import comprasPresupuestos.Compra;
-import comprasPresupuestos.Presupuesto;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import RendicionDeCuentas.ProyectoDeFinanciacion;
+import comprasPresupuestos.Compra;
+import comprasPresupuestos.Presupuesto;
 
 
 @Entity

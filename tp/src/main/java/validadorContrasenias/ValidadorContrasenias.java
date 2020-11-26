@@ -4,6 +4,15 @@ package validadorContrasenias;
 import java.util.ArrayList;
 public class ValidadorContrasenias{
 	
+	private static final ValidadorContrasenias instance = new ValidadorContrasenias();
+	
+	private ValidadorContrasenias () {}
+	public static ValidadorContrasenias getInstance() {
+		return instance;
+	}
+	
+	
+	
 	static ArrayList<Requisito> requisitos = new ArrayList<Requisito>();
 	
 	static void agregarRequisitos() {
@@ -20,7 +29,7 @@ public class ValidadorContrasenias{
 		requisitos.add(longVal);
 	}
 	
-	public static boolean validar(String contrasenia){
+	public boolean validar(String contrasenia){
 		agregarRequisitos();
 		return requisitos.stream().allMatch(requisito->requisito.validar(contrasenia)) ;
 		

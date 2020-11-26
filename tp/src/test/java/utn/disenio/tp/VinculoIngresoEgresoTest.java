@@ -19,7 +19,6 @@ import egresosIngresos.OperacionIngreso;
 import egresosIngresos.OrdenFecha;
 import egresosIngresos.Organizacion;
 import egresosIngresos.ReglaFecha;
-import egresosIngresos.VinculadorMagico;
 import persistencia.CompraMapperBD;
 import persistencia.OperacionEgresoMapperBD;
 import persistencia.OperacionIngresoMapperBD;
@@ -101,8 +100,8 @@ public class VinculoIngresoEgresoTest {
 
 		
 		
-		VinculadorMagico vm = new VinculadorMagico();
-		vm.vincular();
+		//VinculadorMagico vm = new VinculadorMagico();
+		//vm.vincular();
 		
 		
 		List<OperacionEgreso> egresosVinculados = OperacionEgresoMapperBD.getInstance().obtenerEgresos();

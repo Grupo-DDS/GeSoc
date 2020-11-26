@@ -1,7 +1,10 @@
 package app;
 
-import spark.*;
-import static app.RequestUtil.*;
+import static app.RequestUtil.getQueryLocale;
+
+import spark.Filter;
+import spark.Request;
+import spark.Response;
 public class Filters {
 
     // Locale change can be initiated from any page

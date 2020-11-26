@@ -1,8 +1,6 @@
 package entidades;
 
 import javax.persistence.Entity;
-
-
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 

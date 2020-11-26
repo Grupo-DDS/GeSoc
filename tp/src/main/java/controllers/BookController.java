@@ -1,14 +1,16 @@
 package controllers;
 
 import static app.Application.bookDao;
-import app.dominio.Book;
 import static app.JsonUtil.dataToJson;
-import app.Path;
 import static app.RequestUtil.clientAcceptsHtml;
 import static app.RequestUtil.clientAcceptsJson;
 import static app.RequestUtil.getParamIsbn;
-import app.ViewUtil;
+
 import java.util.HashMap;
+
+import app.Path;
+import app.ViewUtil;
+import app.dominio.Book;
 import spark.Request;
 import spark.Response;
 import spark.Route;

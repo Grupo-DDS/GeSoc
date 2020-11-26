@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
-import egresosIngresos.OperacionEgreso;
 import egresosIngresos.OperacionIngreso;
 import egresosIngresos.Organizacion;
 

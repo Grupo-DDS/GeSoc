@@ -52,10 +52,10 @@ public class Consola {
 		listaPresupuestos.add(presupuesto3);
 
 		ArrayList<Usuario> listaUsuariosRevisores = new ArrayList<Usuario>();
-		Usuario usuario1 = new Usuario(null,null,null);
-		Usuario usuario2 = new Usuario(null,null,null);
-		Usuario usuario3 = new Usuario(null,null,null);
-		Usuario usuario4 = new Usuario(null,null,null);
+		Usuario usuario1 = new Usuario(null,null, null, null);
+		Usuario usuario2 = new Usuario(null,null, null, null);
+		Usuario usuario3 = new Usuario(null,null, null, null);
+		Usuario usuario4 = new Usuario(null,null, null, null);
 
 
 		listaUsuariosRevisores.add(usuario1);

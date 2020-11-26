@@ -1,8 +1,8 @@
 package controllers;
 
-import static app.Application.userDao;
-import app.dominio.User;
 import org.mindrot.jbcrypt.BCrypt;
+
+import validadorDeCompras.Usuario;
 
 public class UserController {
 
@@ -12,7 +12,8 @@ public class UserController {
         if (username.isEmpty() || password.isEmpty()) {
             return false;
         }
-        User user = userDao.getUserByUsername(username);
+        Usuario user = new Usuario();
+        user = user.buscarUsuarioBD(username);
         if (user == null) {
             return false;
         }

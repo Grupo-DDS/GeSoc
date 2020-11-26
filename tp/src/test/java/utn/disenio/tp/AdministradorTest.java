@@ -1,6 +1,6 @@
 package utn.disenio.tp;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
@@ -11,7 +11,7 @@ public class AdministradorTest {
 
 	@Test
 	public void otorgarJerarquiaTest() {
-		Administrador admin= new Administrador(null, null, null);
+		Administrador admin= new Administrador();
 		CriterioCategorizacion padre=new CriterioCategorizacion();
 		CriterioCategorizacion hijo=new CriterioCategorizacion();
 		admin.otorgarJerarquia(padre, hijo);

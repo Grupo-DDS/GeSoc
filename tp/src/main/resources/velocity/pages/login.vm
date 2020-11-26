@@ -22,14 +22,14 @@
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="/inicio.html">GeSoc</a>
+      <a class="navbar-brand" href="/inicio">GeSoc</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="/inicio.html">Inicio
+            <a class="nav-link" href="/inicio">Inicio
               <span class="sr-only">(current)</span>
             </a>
           </li>
@@ -107,8 +107,12 @@
         						<p class="notification">$msg.get("LOGIN_LOGGED_OUT")</p>
     						#end
                         <h5>Iniciar sesión con una cuenta existente</h5>
-                        <div class="form-group js-auth-dialog-input-username"><input name="username" style="width:100%" id="username" placeholder="Nombre de usuario" type="text" autofocus="" class="form-control"></div>
-                        <div class="form-group js-auth-dialog-input-password"><input name="password" style="width:100%" placeholder="Contraseña" type="password" class="form-control"></div>
+                        <div class="form-group js-auth-dialog-input-username">
+                        	<input name="username" style="width:100%" id="username" placeholder="Nombre de usuario" type="text" autofocus="" class="form-control">
+                        </div>
+                        <div class="form-group js-auth-dialog-input-password">
+                        	<input name="password" style="width:100%" placeholder="Contraseña" type="password" class="form-control">
+                        </div>
                         #if($loginRedirect)
         					<input type="hidden" name="loginRedirect" value="$loginRedirect">
 						#end
@@ -117,7 +121,6 @@
                         
                         <div class="form-group clearfix">
                           <div class="pull-left"> 
-                          #*<input type="submit" value="$msg.get("LOGIN_BUTTON_LOGIN")">*#
                           <button onclick="submit" class="btn btn-primary btn-lg js-auth-dialog-btn-signin login-submit-btn">
                           	Iniciar sesión
                           </button>
@@ -126,7 +129,7 @@
                       </form>
                     </div>
                     <div class="well panel-highlighted">
-                    <form id="loginForm" method="post">
+                    <form id="signinForm" method="post">
                         <h5>¿Aún no estás registrado?</h5>
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ventanaRegistro">Crear cuenta nueva</button></div>
                          <!-- Modal -->
@@ -140,16 +143,29 @@
                                 </button>
                               </div>
                               <div class="modal-body">
-                                
-                                <div class="form-group js-auth-dialog-input-username"><input name="username" style="width:100%" id="username" placeholder="Nombre de usuario" type="text" autofocus="" class="form-control"></div>
-                                <div class="form-group js-auth-dialog-input-password"><input name="password" style="width:100%" placeholder="Contraseña" type="password" class="form-control"></div>
+                              	#if($signinFailedSecurity)
+        							<p>SU CONTRASEÑA NO ES SEGURA</p>
+								#elseif($signinFailedUsername)
+        							<p>SU NOMBRE DE USUARIO YA EXISTE</p>
+        						#elseif($signinSucceeded)
+        							<p>USUARIO REGISTRADO CORRECTAMENTE!</p>	
+        						#end
+                                <div class="form-group js-auth-dialog-input-username">
+                                	<input name="usernamesignin" style="width:100%" id="username" placeholder="Nombre de usuario" type="text" autofocus="" class="form-control">
+                                </div>
+                                <div class="form-group js-auth-dialog-input-password">
+                                	<input name="passwordsignin" style="width:100%" placeholder="Contraseña" type="password" class="form-control">
+                                </div>
                                 <div style="display:none;" class="form-group js-auth-dialog-input-2fa">
                                 <input name="secondFactor" style="width:100%" placeholder="One-time password" type="text" class="form-control">
                                           
                                  </div>
                                  <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                                <button type="button" class="btn btn-primary">Registrarse</button>
+                                <button onclick="submit" type="button" class="btn btn-primary">Registrarse</button>
+                                #if($loginRedirect)
+        							<input type="hidden" name="loginRedirect" value="$loginRedirect">
+								#end
                               </div>
                             </div>
                           </div>

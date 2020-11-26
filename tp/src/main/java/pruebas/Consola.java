@@ -170,9 +170,9 @@ public class Consola {
 		List<Producto> listaProducto = Arrays.asList(producto1,producto2);
 		//usuarios
 		ArrayList<Usuario> listaUsuariosRevisores = new ArrayList<Usuario>();
-		Usuario usuario1 = new Usuario(null,null,null);
-		Usuario usuario2 = new Usuario(null,null,null);
-		Usuario usuario3 = new Usuario(null,null,null);
+		Usuario usuario1 = new Usuario(null,null, null, null);
+		Usuario usuario2 = new Usuario(null,null, null, null);
+		Usuario usuario3 = new Usuario(null,null, null, null);
 		UsuarioMapper usmbd =  UsuarioMapper.getInstance();
 		usmbd.insert(usuario1);
 		usmbd.insert(usuario2);

@@ -1,6 +1,6 @@
 package utn.disenio.tp;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,7 +10,6 @@ import java.util.List;
 import org.junit.Test;
 
 import comprasPresupuestos.Compra;
-import comprasPresupuestos.Presupuesto;
 import comprasPresupuestos.Producto;
 import comprasPresupuestos.ProveedorMenorValor;
 import egresosIngresos.DocumentoComercial;
@@ -41,9 +40,9 @@ public class OperacionEgresoTest {
 		List<Producto> listaProducto = Arrays.asList(producto1,producto2);
 		//usuarios
 		ArrayList<Usuario> listaUsuariosRevisores = new ArrayList<Usuario>();
-		Usuario usuario1 = new Usuario(null,null,null);
-		Usuario usuario2 = new Usuario(null,null,null);
-		Usuario usuario3 = new Usuario(null,null,null);
+		Usuario usuario1 = new Usuario();
+		Usuario usuario2 = new Usuario();
+		Usuario usuario3 = new Usuario();
 		
 		listaUsuariosRevisores.add(usuario1);
 		listaUsuariosRevisores.add(usuario2);

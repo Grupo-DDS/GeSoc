@@ -1,11 +1,19 @@
 package app;
 
-import org.apache.velocity.app.*;
-import org.eclipse.jetty.http.*;
-import spark.*;
-import spark.template.velocity.*;
-import java.util.*;
-import static app.RequestUtil.*;
+import static app.RequestUtil.getSessionCurrentUser;
+import static app.RequestUtil.getSessionLocale;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.apache.velocity.app.VelocityEngine;
+import org.eclipse.jetty.http.HttpStatus;
+
+import spark.ModelAndView;
+import spark.Request;
+import spark.Response;
+import spark.Route;
+import spark.template.velocity.VelocityTemplateEngine;
 
 public class ViewUtil {
 

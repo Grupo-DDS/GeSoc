@@ -1,13 +1,23 @@
 package controllers;
 
-import app.Path;
-import static app.RequestUtil.*;
-import app.ViewUtil;
+import static app.RequestUtil.getQueryLoginRedirect;
+import static app.RequestUtil.getQueryPassword;
+import static app.RequestUtil.getQueryPasswordSignin;
+import static app.RequestUtil.getQueryUsername;
+import static app.RequestUtil.getQueryUsernameSignin;
+import static app.RequestUtil.removeSessionAttrLoggedOut;
+import static app.RequestUtil.removeSessionAttrLoginRedirect;
+
 import java.util.HashMap;
 import java.util.Map;
+
+import app.Path;
+import app.ViewUtil;
 import spark.Request;
 import spark.Response;
 import spark.Route;
+import validadorContrasenias.ValidadorContrasenias;
+import validadorDeCompras.Usuario;
 
 public class LoginController {
 
@@ -46,6 +56,28 @@ public class LoginController {
             request.session().attribute("loginRedirect", request.pathInfo());
             response.redirect(Path.Web.LOGIN);
         }
+    };
+    
+    public static Route handleSigninPost = (Request request, Response response) -> {
+        Map<String, Object> model = new HashMap<>();
+        if (ValidadorContrasenias.getInstance().validar(getQueryPasswordSignin(request))) {
+            model.put("signinFailedSecurity", true);
+            return ViewUtil.render(request, model, Path.Template.LOGIN);
+        }
+        Usuario user = new Usuario();
+        user = user.buscarUsuarioBD(getQueryUsernameSignin(request));
+        if (user != null) {
+            model.put("signinFailedUsername", true);
+            return ViewUtil.render(request, model, Path.Template.LOGIN);
+        }
+        user = new Usuario();
+        user.crearUsuario(getQueryUsernameSignin(request),getQueryPasswordSignin(request));
+        model.put("signinSucceeded", true);
+        request.session().attribute("currentUser", getQueryUsernameSignin(request));
+        if (getQueryLoginRedirect(request) != null) {
+            response.redirect(getQueryLoginRedirect(request));
+        }
+        return ViewUtil.render(request, model, Path.Template.LOGIN);
     };
 
 }

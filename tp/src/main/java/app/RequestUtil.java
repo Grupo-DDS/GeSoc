@@ -1,6 +1,6 @@
 package app;
 
-import spark.*;
+import spark.Request;
 
 public class RequestUtil {
 
@@ -18,6 +18,14 @@ public class RequestUtil {
 
     public static String getQueryPassword(Request request) {
         return request.queryParams("password");
+    }
+    
+    public static String getQueryUsernameSignin(Request request) {
+        return request.queryParams("usernamesignin");
+    }
+
+    public static String getQueryPasswordSignin(Request request) {
+        return request.queryParams("passwordsignin");
     }
 
     public static String getQueryLoginRedirect(Request request) {

@@ -1,11 +1,6 @@
 package app;
 
 
-import app.persistencia.BookDao;
-import app.persistencia.UserDao;
-import controllers.BookController;
-import controllers.IndexController;
-import controllers.LoginController;
 import static spark.Spark.after;
 import static spark.Spark.before;
 import static spark.Spark.get;
@@ -14,13 +9,25 @@ import static spark.Spark.post;
 import static spark.Spark.staticFiles;
 import static spark.debug.DebugScreen.enableDebugScreen;
 
-public class Application {
+import javax.persistence.EntityManager;
 
+import app.persistencia.BookDao;
+import app.persistencia.UserDao;
+import controllers.BookController;
+import controllers.IndexController;
+import controllers.LoginController;
+import persistencia.BDUtils;
+
+public class Application {
+	
     // Declare dependencies
     public static BookDao bookDao;
     public static UserDao userDao;
 
     public static void main(String[] args) {
+    	
+        EntityManager em = BDUtils.getEntityManager();
+        BDUtils.comenzarTransaccion(em);
 
         // Dependencias del modelo o dominio
         bookDao = new BookDao();
@@ -41,6 +48,7 @@ public class Application {
         get(Path.Web.ONE_BOOK,  BookController.fetchOneBook);
         get(Path.Web.LOGIN,     LoginController.serveLoginPage);
         post(Path.Web.LOGIN,    LoginController.handleLoginPost);
+        post(Path.Web.LOGIN,    LoginController.handleSigninPost);
         post(Path.Web.LOGOUT,   LoginController.handleLogoutPost);
         get("*",                ViewUtil.notFound);
 

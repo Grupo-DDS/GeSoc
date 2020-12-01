@@ -8,7 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import RendicionDeCuentas.ProyectoDeFinanciacion;
 import comprasPresupuestos.Compra;
 import comprasPresupuestos.Presupuesto;
 
@@ -20,7 +19,6 @@ public class ValidadorCompras {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-	private float montoLimite;
 	
 	public Long getId() {
 		return id;
@@ -92,13 +90,6 @@ public class ValidadorCompras {
 			nr.notificar(compra.getRevisores(),mensaje);			
 		}
 	}
-	public boolean validarProyecto(ProyectoDeFinanciacion proyecto){
-		
-		if(proyecto.getMontoTotalAsignado() <= montoLimite )
-			return true;
-		else
-			return proyecto.getPresupuestos().size() >= proyecto.getCantPresupuestosMinima();
-		
-	}
+
 }
 

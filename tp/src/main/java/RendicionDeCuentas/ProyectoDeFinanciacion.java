@@ -11,6 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import comprasPresupuestos.Presupuesto;
+import egresosIngresos.OperacionEgreso;
 import egresosIngresos.OperacionIngreso;
 import validadorDeCompras.Usuario;
 
@@ -22,14 +23,15 @@ public class ProyectoDeFinanciacion {
 	@ManyToOne
 	private Usuario directorResponsable;
 	private Float montoTotalAsignado;
+	private Float montoLimiteSinPresupuesto;
 	private int cantPresupuestosMinima;
 	@OneToMany
 	private List<Presupuesto> presupuestos = new ArrayList<Presupuesto>();
 	@OneToMany
 	private List<OperacionIngreso> ingresos = new ArrayList<OperacionIngreso>();
 	
-
-	
+	@OneToMany
+	private List<OperacionEgreso> egresos = new ArrayList<OperacionEgreso>();
 	
 	public ProyectoDeFinanciacion(Long id, Usuario directorResponsable, Float montoTotalAsignado, int cantPresupuestosMinima,
 			List<Presupuesto> presupuestos, List<OperacionIngreso> ingresos) {
@@ -43,6 +45,19 @@ public class ProyectoDeFinanciacion {
 	}
 	public ProyectoDeFinanciacion() {
 		super();
+	}
+	
+	public Float getMontoLimiteSinPresupuesto() {
+		return montoLimiteSinPresupuesto;
+	}
+	public void setMontoLimiteSinPresupuesto(Float montoLimiteSinPresupuesto) {
+		this.montoLimiteSinPresupuesto = montoLimiteSinPresupuesto;
+	}
+	public List<OperacionEgreso> getEgresos() {
+		return egresos;
+	}
+	public void setEgresos(List<OperacionEgreso> egresos) {
+		this.egresos = egresos;
 	}
 	public Usuario getDirectorResponsable() {
 		return directorResponsable;

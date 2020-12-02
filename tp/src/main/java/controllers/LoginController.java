@@ -49,14 +49,12 @@ public class LoginController {
 			String passwordSignin = getQueryPasswordSignin(request);
 			if (!ValidadorContrasenias.getInstance().validar(passwordSignin)) {
 				model.put("signinFailedSecurity", true);
-				System.out.println("CONSTRASENIA INSEGURA AL PARECER");
 				return ViewUtil.render(request, model, Path.Template.LOGIN);
 			}
 			Usuario user = new Usuario();
 			Usuario userEncontrado = user.buscarUsuarioBD(usernameSignin);
 			if (userEncontrado != null) {
 				model.put("signinFailedUsername", true);
-				System.out.println("EXISTE UN USUARIO CON ESE NOMBRE");
 				return ViewUtil.render(request, model, Path.Template.LOGIN);
 			}
 			

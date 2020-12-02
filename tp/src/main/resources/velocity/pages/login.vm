@@ -131,6 +131,13 @@
                     <div class="well panel-highlighted">
                     <form id="signinForm" method="post">
                         <h5>¿Aún no estás registrado?</h5>
+                        #if($signinFailedSecurity)
+        					<p>SU CONTRASEÑA NO ES SEGURA</p>
+						#elseif($signinFailedUsername)
+        					<p>SU NOMBRE DE USUARIO YA EXISTE</p>
+        				#elseif($signinSucceeded)
+        					<p>USUARIO REGISTRADO CORRECTAMENTE!</p>	
+        						#end
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ventanaRegistro">Crear cuenta nueva</button></div>
                          <!-- Modal -->
                         <div class="modal fade" id="ventanaRegistro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -143,29 +150,25 @@
                                 </button>
                               </div>
                               <div class="modal-body">
-                              	#if($signinFailedSecurity)
-        							<p>SU CONTRASEÑA NO ES SEGURA</p>
-								#elseif($signinFailedUsername)
-        							<p>SU NOMBRE DE USUARIO YA EXISTE</p>
-        						#elseif($signinSucceeded)
-        							<p>USUARIO REGISTRADO CORRECTAMENTE!</p>	
-        						#end
+
                                 <div class="form-group js-auth-dialog-input-username">
                                 	<input name="usernamesignin" style="width:100%" id="username" placeholder="Nombre de usuario" type="text" autofocus="" class="form-control">
                                 </div>
                                 <div class="form-group js-auth-dialog-input-password">
                                 	<input name="passwordsignin" style="width:100%" placeholder="Contraseña" type="password" class="form-control">
                                 </div>
+
                                 <div style="display:none;" class="form-group js-auth-dialog-input-2fa">
                                 <input name="secondFactor" style="width:100%" placeholder="One-time password" type="text" class="form-control">
                                           
                                  </div>
-                                 <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                                <button onclick="submit" type="button" class="btn btn-primary">Registrarse</button>
                                 #if($loginRedirect)
         							<input type="hidden" name="loginRedirect" value="$loginRedirect">
 								#end
+                                 <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                <button onclick="submit" class="btn btn-primary">Registrarse</button>
+
                               </div>
                             </div>
                           </div>

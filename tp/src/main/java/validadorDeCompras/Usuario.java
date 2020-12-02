@@ -82,9 +82,6 @@ public class Usuario {
 		return UsuarioMapper.getInstance().buscarUsuario(nombre);
 	}
 
-	public void crearUsuario(String username, String password) {
-		// TODO Auto-generated method stub
-		
-	}
+
 		
 }

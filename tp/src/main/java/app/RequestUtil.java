@@ -13,18 +13,22 @@ public class RequestUtil {
     }
 
     public static String getQueryUsername(Request request) {
+    	System.out.println("username: "+request.queryParams("username"));
         return request.queryParams("username");
     }
 
     public static String getQueryPassword(Request request) {
+    	System.out.println("password: "+request.queryParams("password"));
         return request.queryParams("password");
     }
     
     public static String getQueryUsernameSignin(Request request) {
+    	System.out.println("usernamesignin: "+request.queryParams("usernamesignin"));
         return request.queryParams("usernamesignin");
     }
 
     public static String getQueryPasswordSignin(Request request) {
+    	System.out.println("passwordsignin: "+request.queryParams("passwordsignin"));
         return request.queryParams("passwordsignin");
     }
 

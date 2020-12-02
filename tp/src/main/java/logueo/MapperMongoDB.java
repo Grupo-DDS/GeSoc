@@ -24,7 +24,7 @@ public class MapperMongoDB {
 
 	public void insertarLog(OperacionLog logMongo) {
 		try (MongoClient mongoClient = MongoClients
-				.create("mongodb+srv://juan:57a8Otdhqg5i0TNW@cluster0.lksmg.mongodb.net/test")) {
+				.create("mongodb+srv://juan:57a8Otdhqg5i0TNW@cluster0.lksmg.mongodb.net/gesoc")) {
 			MongoDatabase gesoc = mongoClient.getDatabase("gesoc");
 			MongoCollection<Document> logsGesoc = gesoc.getCollection("gesoc_logs");
 			Document logDocumento = new Document("_id", new ObjectId());
@@ -39,7 +39,7 @@ public class MapperMongoDB {
 	public List<Document> buscarLog(TipoOperacion tipo, String entidad) {
 
 		try (MongoClient mongoClient = MongoClients
-				.create("mongodb+srv://juan:57a8Otdhqg5i0TNW@cluster0.lksmg.mongodb.net/test")) {
+				.create("mongodb+srv://juan:57a8Otdhqg5i0TNW@cluster0.lksmg.mongodb.net/gesoc")) {
 			MongoDatabase gesoc = mongoClient.getDatabase("gesoc");
 			MongoCollection<Document> logs = gesoc.getCollection("gesoc_logs");
 

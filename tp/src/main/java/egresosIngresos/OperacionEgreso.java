@@ -1,7 +1,6 @@
 package egresosIngresos;
 
-import java.util.Date;
-
+import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -23,7 +22,7 @@ public class OperacionEgreso {
 	private Long id;
 	
 	@Column(name="FECHA_EGRESO")
-	private Date fechaOperacion;
+	private LocalDate fechaOperacion;
 	
 	@OneToOne
 	@JoinColumn(name="ID_DOC_COMERCIAL")
@@ -51,7 +50,7 @@ public class OperacionEgreso {
 	
 	public OperacionEgreso() {}
 
-	public OperacionEgreso(Long id, DocumentoComercial comprobante, Date fechaOperacion, MedioDePago medioDePago,
+	public OperacionEgreso(Long id, DocumentoComercial comprobante, LocalDate fechaOperacion, MedioDePago medioDePago,
 			Organizacion organizacion, Compra compra, Proveedor proveedor, OperacionIngreso ingreso) {
 		super();
 		this.id = id;
@@ -85,7 +84,7 @@ public class OperacionEgreso {
 	public void setCompra(Compra compra) {
 		this.compra = compra;
 	}
-	public OperacionEgreso(DocumentoComercial comprobante, Date fechaOperacion, MedioDePago medioDePago,
+	public OperacionEgreso(DocumentoComercial comprobante, LocalDate fechaOperacion, MedioDePago medioDePago,
 			Organizacion organizacion, Compra compra, Proveedor proveedor) {
 		super();
 		this.comprobante = comprobante;
@@ -101,10 +100,10 @@ public class OperacionEgreso {
 	public void setComprobante(DocumentoComercial comprobante) {
 		this.comprobante = comprobante;
 	}
-	public Date getFechaOperacion() {
+	public LocalDate getFechaOperacion() {
 		return fechaOperacion;
 	}
-	public void setFechaOperacion(Date fechaOperacion) {
+	public void setFechaOperacion(LocalDate fechaOperacion) {
 		this.fechaOperacion = fechaOperacion;
 	}
 	public MedioDePago getMedioDePago() {

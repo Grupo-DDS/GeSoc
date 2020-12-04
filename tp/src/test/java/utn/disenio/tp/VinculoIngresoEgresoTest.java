@@ -3,6 +3,7 @@ package utn.disenio.tp;
 
 import static org.junit.Assert.assertTrue;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -35,55 +36,45 @@ public class VinculoIngresoEgresoTest {
 		
 		OrganizacionMapperBD.getInstance().insert(organizacion);
 		//proveedores
-		GregorianCalendar g = new GregorianCalendar(2010, 7, 7);
-		Date fechaOp= g.getTime();
+		LocalDate fechaOp = LocalDate.of(2010, 7, 7);
 		//productos
 		Producto producto1 = new Producto("heladera",2000);
 		Producto producto2 = new Producto("televisor",300);
 		List<Producto> listaProducto = Arrays.asList(producto1,producto2);
 		//compra
-		Compra compra1=new Compra(listaProducto, null,null, 0,null, null);
+		Compra compra1=new Compra(null, listaProducto, null,null, 0,null, null);
 		//operacion egreso
 		OperacionEgreso egreso1= new OperacionEgreso(null, fechaOp, null, organizacion, compra1, null);
 		
-		
-		GregorianCalendar g2 = new GregorianCalendar(2010, 7, 7);
-		Date fechaOp2= g2.getTime();
+
 		//productos
 		Producto producto12 = new Producto("heladera",2000);
 		Producto producto22 = new Producto("televisor",300);
 		List<Producto> listaProducto2 = Arrays.asList(producto12,producto22);
 		//compra
-		Compra compra12=new Compra(listaProducto2, null,null, 0,null, null);
+		Compra compra12=new Compra(null, listaProducto2, null,null, 0,null, null);
 		//operacion egreso
-		OperacionEgreso egreso12= new OperacionEgreso(null, fechaOp2, null, organizacion, compra12, null);
+		OperacionEgreso egreso12= new OperacionEgreso(null, fechaOp, null, organizacion, compra12, null);
 
-		
-		GregorianCalendar g3 = new GregorianCalendar(2010, 7, 7);
-		Date fechaOp3= g3.getTime();
+
 		//productos
 		Producto producto13 = new Producto("heladera",2000);
 		Producto producto23 = new Producto("televisor",300);
 		List<Producto> listaProducto3 = Arrays.asList(producto13,producto23);
 		//compra
-		Compra compra13=new Compra(listaProducto3, null,null, 0,null, null);
+		Compra compra13=new Compra(null, listaProducto3, null,null, 0,null, null);
 		//operacion egreso
-		OperacionEgreso egreso13= new OperacionEgreso(null, fechaOp3, null, organizacion, compra13, null);
+		OperacionEgreso egreso13= new OperacionEgreso(null, fechaOp, null, organizacion, compra13, null);
 	
 		
 
-		
-		GregorianCalendar gIngreso1 = new GregorianCalendar(2010, 7, 7);
-		Date fechaIngreso1= gIngreso1.getTime();
-		OperacionIngreso ingreso1 = new OperacionIngreso("ingreso 1",3333,fechaIngreso1,new ArrayList<OperacionEgreso>(),organizacion);
-		GregorianCalendar gIngreso12 = new GregorianCalendar(2010, 7, 7);
-		Date fechaIngreso12= gIngreso12.getTime();
-		OperacionIngreso ingreso12 = new OperacionIngreso("ingreso 2", 3333, fechaIngreso12,new ArrayList<OperacionEgreso>(), organizacion);
+
+		OperacionIngreso ingreso1 = new OperacionIngreso("ingreso 1",3333,fechaOp,new ArrayList<OperacionEgreso>(),organizacion);
+
+		OperacionIngreso ingreso12 = new OperacionIngreso("ingreso 2", 3333, fechaOp,new ArrayList<OperacionEgreso>(), organizacion);
 	
-		
-		GregorianCalendar gIngreso13 = new GregorianCalendar(2010, 7, 7);
-		Date fechaIngreso13= gIngreso13.getTime();
-		OperacionIngreso ingreso13 = new OperacionIngreso("ingreso 1", 3333, fechaIngreso13,new ArrayList<OperacionEgreso>(), organizacion);
+
+		OperacionIngreso ingreso13 = new OperacionIngreso("ingreso 1", 3333, fechaOp,new ArrayList<OperacionEgreso>(), organizacion);
 
 		ProductoMapperBD.getInstance().insert(listaProducto);
 		ProductoMapperBD.getInstance().insert(listaProducto2);

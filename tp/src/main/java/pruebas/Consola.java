@@ -1,6 +1,8 @@
 package pruebas;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -120,22 +122,22 @@ public class Consola {
 		List<Producto> productos1 = new ArrayList<Producto>();
 		productos1.add(p1);
 		productos1.add(p2);
-		Compra c1 = new Compra(productos1,null,null,0, null,null);
+		Compra c1 = new Compra(null, productos1,null,null,0, null,null);
 		
 		List<Producto> productos2 = new ArrayList<Producto>();
 		productos2.add(p3);
 		productos2.add(p4);
-		Compra c2 = new Compra(productos2,null,null,0, null,null);
+		Compra c2 = new Compra(null, productos2,null,null,0, null,null);
 		
 		List<Producto> productos3 = new ArrayList<Producto>();
 		productos3.add(p5);
 		productos3.add(p6);
-		Compra c3 = new Compra(productos3,null,null,0, null,null);
+		Compra c3 = new Compra(null, productos3,null,null,0, null,null);
 		
 		List<Producto> productos4 = new ArrayList<Producto>();
 		productos4.add(p7);
 		productos4.add(p8);
-		Compra c4 = new Compra(productos4,null,null,0, null,null);
+		Compra c4 = new Compra(null, productos4,null,null,0, null,null);
 		
 		CompraMapperBD cmbd = CompraMapperBD.getInstance();
 		cmbd.insert(c1);
@@ -161,7 +163,7 @@ public class Consola {
 		ProveedorMapperBD provmbd =  ProveedorMapperBD.getInstance();
 		provmbd.insert(proveedor1);
 		//fecha operacion
-		Date fechaOp=new Date();
+		LocalDate fechaOp=LocalDate.now();
 		//productos
 		Producto producto1 = new Producto("heladera",2000);
 		Producto producto2 = new Producto("televisor",300);
@@ -185,7 +187,7 @@ public class Consola {
 		CriterioSeleccionPresupuestoMapperBD cspmbd =  CriterioSeleccionPresupuestoMapperBD.getInstance();
 		cspmbd.insert(criterio);
 		//compra
-		Compra compra1=new Compra(listaProducto, null,null, 0,listaUsuariosRevisores, criterio);
+		Compra compra1=new Compra(null, listaProducto, null,null, 0,listaUsuariosRevisores, criterio);
 		cmbd.insert(compra1);
 		//operacion egreso
 		OperacionEgreso egreso1= new OperacionEgreso(comprobante1, fechaOp, tarjeta, organizacion, compra1, proveedor1);
@@ -197,17 +199,14 @@ public class Consola {
 		
 
 		
-		GregorianCalendar gIngreso1 = new GregorianCalendar(2010, 7, 7);
-		Date fechaIngreso1= gIngreso1.getTime();
+		LocalDate fechaIngreso1= LocalDate.of(2010, 7, 7);
 		OperacionIngreso ingreso1 = new OperacionIngreso("ingreso 1",3333,fechaIngreso1,new ArrayList<OperacionEgreso>(),organizacion);
 		
-		GregorianCalendar gIngreso12 = new GregorianCalendar(2010, 7, 7);
-		Date fechaIngreso12= gIngreso12.getTime();
+		LocalDate fechaIngreso12= LocalDate.of(2010, 7, 7);
 		OperacionIngreso ingreso12 = new OperacionIngreso("ingreso 2", 3333, fechaIngreso12,new ArrayList<OperacionEgreso>(), organizacion);
 	
 		
-		GregorianCalendar gIngreso13 = new GregorianCalendar(2010, 7, 7);
-		Date fechaIngreso13= gIngreso13.getTime();
+		LocalDate fechaIngreso13 = LocalDate.of(2010, 7, 7);
 		OperacionIngreso ingreso13 = new OperacionIngreso("ingreso 3", 3333, fechaIngreso13,new ArrayList<OperacionEgreso>(), organizacion);
 
 

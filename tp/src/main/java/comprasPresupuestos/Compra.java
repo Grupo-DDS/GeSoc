@@ -20,6 +20,8 @@ public class Compra {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	private Long numeroCompra;
+	
 	@OneToMany
 	@JoinColumn(name = "id_compra")
 	private List<Producto> productos = new ArrayList<Producto>();
@@ -39,16 +41,23 @@ public class Compra {
 	private CriterioSeleccionPresupuesto criterio;
 	
 	public Compra() {}
-	public Compra(List<Producto> listaProducto, List<Presupuesto> presupuestos, Presupuesto presupuestoElegido,
-			int cantidadMinimaPresupuestos, List<Usuario> revisores, CriterioSeleccionPresupuesto criterio) {
+
+
+
+
+	public Compra(Long numeroCompra, List<Producto> productos, List<Presupuesto> presupuestos,
+			Presupuesto presupuestoElegido, int cantidadMinimaPresupuestos, List<Usuario> revisores,
+			CriterioSeleccionPresupuesto criterio) {
 		super();
-		this.productos = listaProducto;
+		this.numeroCompra = numeroCompra;
+		this.productos = productos;
 		this.presupuestos = presupuestos;
 		this.presupuestoElegido = presupuestoElegido;
 		this.cantidadMinimaPresupuestos = cantidadMinimaPresupuestos;
 		this.revisores = revisores;
 		this.criterio = criterio;
 	}
+
 
 
 
@@ -121,6 +130,12 @@ public class Compra {
 
 	public void setCantidadMinimaPresupuestos(int cantidadMinimaPresupuestos) {
 		this.cantidadMinimaPresupuestos = cantidadMinimaPresupuestos;
+	}
+	public Long getNumeroCompra() {
+		return numeroCompra;
+	}
+	public void setNumeroCompra(Long numeroCompra) {
+		this.numeroCompra = numeroCompra;
 	}
 
 

@@ -46,7 +46,7 @@ public class CompraTest
 		
 		ProveedorMenorValor criterio = new ProveedorMenorValor();
 		
-		Compra compra = new Compra(listaProductos, listaPresupuestos,presupuesto1, 3,listaUsuariosRevisores, criterio);
+		Compra compra = new Compra(null, listaProductos, listaPresupuestos,presupuesto1, 3,listaUsuariosRevisores, criterio);
 		
 		compra.agregarRevisor(usuario4);
 		

@@ -2,6 +2,7 @@ package utn.disenio.tp;
 
 import static org.junit.Assert.assertTrue;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -33,7 +34,7 @@ public class OperacionEgresoTest {
 		//proveedores
 		Proveedor proveedor1= new Proveedor();
 		//fecha operacion
-		Date fechaOp=new Date();
+		LocalDate fechaOp=LocalDate.now();
 		//productos
 		Producto producto1 = new Producto("heladera",2000);
 		Producto producto2 = new Producto("televisor",300);
@@ -50,7 +51,7 @@ public class OperacionEgresoTest {
 		//criterio
 		ProveedorMenorValor criterio = new ProveedorMenorValor();
 		//compra
-		Compra compra1=new Compra(listaProducto, null,null, 0,listaUsuariosRevisores, criterio);
+		Compra compra1=new Compra(null, listaProducto, null,null, 0,listaUsuariosRevisores, criterio);
 		//operacion egreso
 		OperacionEgreso egreso1= new OperacionEgreso(comprobante1, fechaOp, tarjeta, organizacion, compra1, proveedor1);
 		//TESTS

@@ -64,9 +64,9 @@ public class Consola {
 
 		ProveedorMenorValor criterio = new ProveedorMenorValor();
 
-		Compra compra = new Compra(listaProductos, listaPresupuestos,presupuesto1, 3,listaUsuariosRevisores, criterio);
-		Compra compra2 = new Compra(listaProductos, listaPresupuestos,presupuesto3, 5,listaUsuariosRevisores, criterio);
-		Compra compra3 = new Compra(listaProductos, listaPresupuestos,presupuesto2, 3,listaUsuariosRevisores, criterio);
+		Compra compra = new Compra(null, listaProductos, listaPresupuestos,presupuesto1, 3,listaUsuariosRevisores, criterio);
+		Compra compra2 = new Compra(null, listaProductos, listaPresupuestos,presupuesto3, 5,listaUsuariosRevisores, criterio);
+		Compra compra3 = new Compra(null, listaProductos, listaPresupuestos,presupuesto2, 3,listaUsuariosRevisores, criterio);
 		
 
 		compra.agregarRevisor(usuario4);

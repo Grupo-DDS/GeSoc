@@ -14,6 +14,7 @@ import javax.persistence.EntityManager;
 import app.persistencia.BookDao;
 import app.persistencia.UserDao;
 import controllers.BookController;
+import controllers.EgresoController;
 import controllers.IndexController;
 import controllers.LoginController;
 import persistencia.BDUtils;
@@ -49,6 +50,7 @@ public class Application {
         get(Path.Web.LOGIN,     LoginController.serveLoginPage);
         post(Path.Web.LOGIN,    LoginController.handleLoginPost);
         post(Path.Web.LOGOUT,   LoginController.handleLogoutPost);
+        post(Path.Web.EGRESOS,  EgresoController.cargarEgreso);
         get("*",                ViewUtil.notFound);
 
         // Filtro aplicado despues de get y post

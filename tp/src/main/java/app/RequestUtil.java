@@ -4,66 +4,90 @@ import spark.Request;
 
 public class RequestUtil {
 
-    public static String getQueryLocale(Request request) {
-        return request.queryParams("locale");
-    }
+	public static String getQueryLocale(Request request) {
+		return request.queryParams("locale");
+	}
 
-    public static String getParamIsbn(Request request) {
-        return request.params("isbn");
-    }
+	public static String getParamIsbn(Request request) {
+		return request.params("isbn");
+	}
 
-    public static String getQueryUsername(Request request) {
-    	System.out.println("username: "+request.queryParams("username"));
-        return request.queryParams("username");
-    }
+	public static String getQueryUsername(Request request) {
+		return request.queryParams("username");
+	}
 
-    public static String getQueryPassword(Request request) {
-    	System.out.println("password: "+request.queryParams("password"));
-        return request.queryParams("password");
-    }
-    
-    public static String getQueryUsernameSignin(Request request) {
-    	System.out.println("usernamesignin: "+request.queryParams("usernamesignin"));
-        return request.queryParams("usernamesignin");
-    }
+	public static String getQueryPassword(Request request) {
+		return request.queryParams("password");
+	}
 
-    public static String getQueryPasswordSignin(Request request) {
-    	System.out.println("passwordsignin: "+request.queryParams("passwordsignin"));
-        return request.queryParams("passwordsignin");
-    }
+	public static String getQueryUsernameSignin(Request request) {
+		return request.queryParams("usernamesignin");
+	}
 
-    public static String getQueryLoginRedirect(Request request) {
-        return request.queryParams("loginRedirect");
-    }
+	public static String getQueryPasswordSignin(Request request) {
+		return request.queryParams("passwordsignin");
+	}
 
-    public static String getSessionLocale(Request request) {
-        return request.session().attribute("locale");
-    }
+	public static String getQueryLoginRedirect(Request request) {
+		return request.queryParams("loginRedirect");
+	}
 
-    public static String getSessionCurrentUser(Request request) {
-        return request.session().attribute("currentUser");
-    }
+	public static String getSessionLocale(Request request) {
+		return request.session().attribute("locale");
+	}
 
-    public static boolean removeSessionAttrLoggedOut(Request request) {
-        Object loggedOut = request.session().attribute("loggedOut");
-        request.session().removeAttribute("loggedOut");
-        return loggedOut != null;
-    }
+	public static String getSessionCurrentUser(Request request) {
+		return request.session().attribute("currentUser");
+	}
 
-    public static String removeSessionAttrLoginRedirect(Request request) {
-        String loginRedirect = request.session().attribute("loginRedirect");
-        request.session().removeAttribute("loginRedirect");
-        return loginRedirect;
-    }
+	public static boolean removeSessionAttrLoggedOut(Request request) {
+		Object loggedOut = request.session().attribute("loggedOut");
+		request.session().removeAttribute("loggedOut");
+		return loggedOut != null;
+	}
 
-    public static boolean clientAcceptsHtml(Request request) {
-        String accept = request.headers("Accept");
-        return accept != null && accept.contains("text/html");
-    }
+	public static String removeSessionAttrLoginRedirect(Request request) {
+		String loginRedirect = request.session().attribute("loginRedirect");
+		request.session().removeAttribute("loginRedirect");
+		return loginRedirect;
+	}
 
-    public static boolean clientAcceptsJson(Request request) {
-        String accept = request.headers("Accept");
-        return accept != null && accept.contains("application/json");
-    }
+	public static boolean clientAcceptsHtml(Request request) {
+		String accept = request.headers("Accept");
+		return accept != null && accept.contains("text/html");
+	}
 
+	public static boolean clientAcceptsJson(Request request) {
+		String accept = request.headers("Accept");
+
+		return accept != null && accept.contains("application/json");
+	}
+
+	public static String getQueryCompra(Request request) {
+		return request.queryParams("compra");
+	}
+
+	public static String getQueryComprobanteNumero(Request request) {
+		return request.queryParams("numeroComprobante");
+	}
+
+	public static String getQueryComprobanteTipo(Request request) {
+		return request.queryParams("tipoComprobante");
+	}
+
+	public static String getQueryFecha(Request request) {
+		return request.queryParams("fecha");
+	}
+	
+	public static String getQueryMedio(Request request) {
+		return request.queryParams("medio");
+	}
+	
+	public static String getQueryNombreProveedor(Request request) {
+		return request.queryParams("nombreProveedor");
+	}
+	
+	public static String getQueryDNICUITProveedor(Request request) {
+		return request.queryParams("DNIoCUITprov");
+	}
 }

@@ -11,10 +11,10 @@
   <title>GeSoc</title>
 
   <!-- Bootstrap core CSS -->
-  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link href="../css/heroic-features.css" rel="stylesheet">
+  <link href="/css/heroic-features.css" rel="stylesheet">
 
 </head>
 
@@ -23,22 +23,22 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="../pages/inicio.html">GeSoc</a>
+      <a class="navbar-brand" href="/inicio">GeSoc</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="../pages/inicio.html">Inicio
+            <a class="nav-link" href="/inicio">Inicio
               <span class="sr-only">(current)</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../pages/mensajes.html">Mensajes</a>
+            <a class="nav-link" href="/mensajes">Mensajes</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../pages/usuario.html">Cerrar Sesión</a>
+            <a class="nav-link" href="/usuario">Cerrar Sesión</a>
           </li>
         </ul>
       </div>
@@ -61,26 +61,34 @@
           <form>
             <div class="form-row">
               <div class="form-group col-md-6">
-                <label for="inputCompra">Compra</label>
-                <input type="text" class="form-control" id="inputCompra" placeholder="Compra">
+                <label for="inputCompra">Numero de Compra</label>
+                <input name="compra" type="text" class="form-control" id="inputCompra" placeholder="Numero de Compra">
               </div>
-              <div class="form-group col-md-6">
-                <label for="inputComprobante">Comprobante</label>
-                <input type="text" class="form-control" id="inputComprobante" placeholder="Comprobante">
+              <div class="form-group col-md-3">
+                <label for="inputComprobante">Numero comprobante</label>
+                <input name="numeroComprobante" type="text" class="form-control" id="inputComprobante" placeholder="Numero comprobante">
               </div>
+			  <div class="form-group col-md-3">
+                <label for="inputComprobante">Tipo comprobante</label>
+                <input name="tipoComprobante" type="text" class="form-control" id="inputComprobante" placeholder="Tipo comprobante">
+              </div>			  
             </div>
-            <div class="form-group">
-              <label for="inputProveedor">Proveedor</label>
-              <input type="text" class="form-control" id="inputProveedor" placeholder="Proveedor">
+            <div class="form-group col-md-6">
+              <label for="inputProveedor">Nombre proveedor</label>
+              <input name="nombreProveedor" type="text" class="form-control" id="inputProveedor" placeholder="Nombre o Razon Social">
+            </div>
+			<div class="form-group col-md-6">
+              <label for="inputProveedor">CUIT o DNI</label>
+              <input name="DNIoCUITprov" type="text" class="form-control" id="inputProveedor" placeholder="CUIT o DNI">
             </div>
             <div class="form-group">
               <label for="inputPago">Medio de pago</label>
-              <input type="text" class="form-control" id="inputPago" placeholder="Efectivo, tarjeta de crédito">
+              <input name="medio" type="text" class="form-control" id="inputPago" placeholder="Medio">
             </div>
             <div class="form-row">
               <div class="form-group col-md-6 col-md-6 col-lg-6">
                 <label for="inputFecha">Fecha de operación</label>
-                <input type="text" class="form-control" id="inputFecha" placeholder="20/10/2020">
+                <input name="fecha" type="text" class="form-control" id="inputFecha" placeholder="20/10/2020">
               </div>
               <div class="form-group col-md-6 col-md-6 col-lg-6">
                 <label for="inputState">Monto</label>
@@ -101,8 +109,8 @@
 
  
   <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/vendor/jquery/jquery.min.js"></script>
+  <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
 

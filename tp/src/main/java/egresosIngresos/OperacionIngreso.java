@@ -1,8 +1,7 @@
 package egresosIngresos;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -30,7 +29,7 @@ public class OperacionIngreso {
 	private float montoTotal;
 	
 	@Column(name="FECHA_OPERACION")
-	private Date fechaOperacion;
+	private LocalDate fechaOperacion;
 	
 	@OneToMany(mappedBy="ingreso",cascade = CascadeType.ALL)
 	private List<OperacionEgreso> egresos=new ArrayList<OperacionEgreso>();
@@ -39,10 +38,10 @@ public class OperacionIngreso {
 	private Organizacion organizacion;
 	
 	
-	private Date fechaInicio;
+	private LocalDate fechaInicio;
 	
 	
-	private Date fechaFin;
+	private LocalDate fechaFin;
 	@Override
 	public String toString() {
 		return "OperacionIngreso [id=" + id + ", descripcion=" + descripcion + ", montoTotal=" + montoTotal
@@ -51,7 +50,7 @@ public class OperacionIngreso {
 	
 	public OperacionIngreso(){}
 
-	public OperacionIngreso(String descripcion, float montoTotal, Date fechaOperacion, List<OperacionEgreso> egresos,
+	public OperacionIngreso(String descripcion, float montoTotal, LocalDate fechaOperacion, List<OperacionEgreso> egresos,
 			Organizacion organizacion) {
 		super();
 		this.descripcion = descripcion;
@@ -89,11 +88,11 @@ public class OperacionIngreso {
 		this.montoTotal = montoTotal;
 	}
 
-	public Date getFechaOperacion() {
+	public LocalDate getFechaOperacion() {
 		return fechaOperacion;
 	}
 
-	public void setFechaOperacion(Date fechaOperacion) {
+	public void setFechaOperacion(LocalDate fechaOperacion) {
 		this.fechaOperacion = fechaOperacion;
 	}
 
@@ -113,29 +112,26 @@ public class OperacionIngreso {
 		this.organizacion = organizacion;
 	}
 
-	public Date getFechaInicio() {
+	public LocalDate getFechaInicio() {
 		return fechaInicio;
 	}
 
-	public void setFechaInicio(Date fechaInicio) {
+	public void setFechaInicio(LocalDate fechaInicio) {
 		this.fechaInicio = fechaInicio;
 	}
 
-	public Date getFechaFin() {
+	public LocalDate getFechaFin() {
 		return fechaFin;
 	}
 
-	public void setFechaFin(Date fechaFin) {
+	public void setFechaFin(LocalDate fechaFin) {
 		this.fechaFin = fechaFin;
 	}
 
-	public static Date sumarDiasAFecha(Date fecha, int dias){
-	      if (dias==0) 
-	    	  return fecha;
-	      Calendar calendar = Calendar.getInstance();
-	      calendar.setTime(fecha); 
-	      calendar.add(Calendar.DAY_OF_YEAR, dias);  
-	      return calendar.getTime(); 
+	public static LocalDate sumarDiasAFecha(LocalDate fecha, int dias){
+
+	      return fecha.plusDays(dias);
+
 	}
 
 

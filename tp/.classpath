@@ -92,5 +92,14 @@
 			<attribute name="maven.scope" value="compile"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/juan_/.m2/repository/org/apache/velocity/velocity/1.7/velocity-1.7.jar" sourcepath="C:/Users/juan_/.m2/repository/org/apache/velocity/velocity/1.7/velocity-1.7-sources.jar">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="maven.groupId" value="org.apache.velocity"/>
+			<attribute name="maven.artifactId" value="velocity"/>
+			<attribute name="maven.version" value="1.7"/>
+			<attribute name="maven.scope" value="compile"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

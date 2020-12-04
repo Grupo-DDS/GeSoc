@@ -49,11 +49,11 @@ public void testCantidad() {
 		ProveedorMenorValor criterio = new ProveedorMenorValor();
 		
 		
-		Compra compra = new Compra(listaProducto, presupuestos,presupuesto1, 3,revisores, criterio);
+		Compra compra = new Compra(null, listaProducto, presupuestos,presupuesto1, 3,revisores, criterio);
 
 		assertTrue(ValidadorCompras.verificarCantidad(compra));
 		
-		Compra compra2 = new Compra(listaProducto, presupuestos,presupuesto1, 6,revisores, criterio);
+		Compra compra2 = new Compra(null, listaProducto, presupuestos,presupuesto1, 6,revisores, criterio);
 		
 		assertTrue(!ValidadorCompras.verificarCantidad(compra2));
 		
@@ -134,14 +134,14 @@ public void testCantidad() {
 		listaProducto.add(producto2);
 
 		
-		Compra compra = new Compra(listaProducto, presupuestosValidos,presupuesto1, 3,revisores, criterio);
+		Compra compra = new Compra(null, listaProducto, presupuestosValidos,presupuesto1, 3,revisores, criterio);
 
 		assertTrue(ValidadorCompras.verificarPresupuestoElegido(compra));
 		
-		Compra compra2 = new Compra(listaProducto, presupuestosAlgunoValido,presupuesto1, 6,revisores, criterio);
+		Compra compra2 = new Compra(null, listaProducto, presupuestosAlgunoValido,presupuesto1, 6,revisores, criterio);
 		assertTrue(ValidadorCompras.verificarPresupuestoElegido(compra2));
 		
-		Compra compra3 = new Compra(listaProducto, presupuestosTodosInvalidos,presupuesto1, 6,revisores, criterio);
+		Compra compra3 = new Compra(null, listaProducto, presupuestosTodosInvalidos,presupuesto1, 6,revisores, criterio);
 		assertTrue(!ValidadorCompras.verificarPresupuestoElegido(compra3));
 
 	}
@@ -213,13 +213,13 @@ public void testCantidad() {
 		listaProducto.add(producto2);
 
 		
-		Compra compra1 = new Compra(listaProducto, presupuestos,presupuesto1, 3,revisores, criterio);
+		Compra compra1 = new Compra(null, listaProducto, presupuestos,presupuesto1, 3,revisores, criterio);
 		assertTrue(ValidadorCompras.verificarCriterio(compra1));
 
-		Compra compra2 = new Compra(listaProducto, presupuestos,presupuesto2, 3,revisores, criterio);
+		Compra compra2 = new Compra(null, listaProducto, presupuestos,presupuesto2, 3,revisores, criterio);
 		assertTrue(!ValidadorCompras.verificarCriterio(compra2));
 		
-		Compra compra3 = new Compra(listaProducto, presupuestos,presupuesto3, 3,revisores, criterio);
+		Compra compra3 = new Compra(null, listaProducto, presupuestos,presupuesto3, 3,revisores, criterio);
 		assertTrue(!ValidadorCompras.verificarCriterio(compra3));
 	}
 	

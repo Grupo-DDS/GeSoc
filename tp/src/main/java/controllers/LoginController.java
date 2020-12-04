@@ -85,26 +85,6 @@ public class LoginController {
 		}
 	};
 
-	public static Route handleSigninPost = (Request request, Response response) -> {
-		Map<String, Object> model = new HashMap<>();
-		if (ValidadorContrasenias.getInstance().validar(getQueryPasswordSignin(request))) {
-			model.put("signinFailedSecurity", true);
-			return ViewUtil.render(request, model, Path.Template.LOGIN);
-		}
-		Usuario user = new Usuario();
-		user = user.buscarUsuarioBD(getQueryUsernameSignin(request));
-		if (user != null) {
-			model.put("signinFailedUsername", true);
-			return ViewUtil.render(request, model, Path.Template.LOGIN);
-		}
-		user = new Usuario();
-		//user.crearUsuario(getQueryUsernameSignin(request), getQueryPasswordSignin(request));
-		model.put("signinSucceeded", true);
-		request.session().attribute("currentUser", getQueryUsernameSignin(request));
-		if (getQueryLoginRedirect(request) != null) {
-			response.redirect(getQueryLoginRedirect(request));
-		}
-		return ViewUtil.render(request, model, Path.Template.LOGIN);
-	};
+
 
 }

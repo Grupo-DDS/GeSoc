@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
@@ -11,10 +10,10 @@
   <title>GeSoc - Inicio</title>
 
   <!-- Bootstrap core CSS -->
-  <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link href="/css/heroic-features.css" rel="stylesheet">
+  <link href="../css/heroic-features.css" rel="stylesheet">
 
 </head>
 
@@ -23,22 +22,25 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="/inicio">GeSoc</a>
+      <a class="navbar-brand" href="../pages/inicio.html">GeSoc</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="/inicio">Inicio
+            <a class="nav-link" href="../pages/inicio.html">Inicio
               <span class="sr-only">(current)</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/mensajes">Mensajes</a>
+            <a class="nav-link" href="../pages/proyecto.html">Proyecto</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/usuario">Cerrar Sesión</a>
+            <a class="nav-link" href="../pages/mensajes.html">Mensajes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../index.html">Cerrar Sesi&oacute;n</a>
           </li>
         </ul>
       </div>
@@ -51,9 +53,9 @@
     <!-- Header -->
     <header class="jumbotron my-4">
       <h1 class="display-3">Bienvenido a su cuenta de GeSoc</h1>
-      <p class="lead">Nuestro sistema Gestor de Proyectos Sociales está orientado a la 
-        contabilidad de gestión como objetivo principal. </p>
-      <a href="/info" class="btn btn-primary btn-lg">Más Info</a>
+      <p class="lead">Nuestro sistema Gestor de Proyectos Sociales est&aacute; orientado a la 
+        contabilidad de gesti&oacute;n como objetivo principal. </p>
+      <a href="../pages/info.html" class="btn btn-primary btn-lg">M&aacute;s Info</a>
     </header>
 
     <!-- Page Features -->
@@ -61,39 +63,70 @@
 
       <div class="col-lg-4 col-md-4 mb-3">
         <div class="card h-100">
-          <img class="card-img-top" src="/Images/icons.webp" alt="">
+          <img class="card-img-top" src="../Images/cargar-operaciones.svg" alt="">
           <div class="card-body">
             <h4 class="card-title">Cargar Operaciones</h4>
             <p class="card-text">Cargue sus Operaciones de Egresos</p>
           </div>
           <div class="card-footer">
-            <a href="/cargar-operaciones" class="btn btn-primary">Cargar Operaciones</a>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ventanaOperaciones">Cargar Operaciones</button>
+                         <!-- Modal -->
+                        <div class="modal fade" id="ventanaOperaciones" tabindex="-1" role="dialog" aria-labelledby="modalCargarOperaciones" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                               
+                                <h5 class="modal-title" id="modalCargarOperaciones">¿Qu&eacute; operaci&oacute;n desea cargar?</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+
+                              <div class="modal-body">
+                                <p>Elija entre egresos, ingresos y compras</p>
+                                <div style="display:none;" class="form-group js-auth-dialog-input-2fa">
+                                <input name="secondFactor" style="width:100%" placeholder="One-time password" type="text" class="form-control">
+                                          
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                  <a href="../pages/cargar-egresos.html" class="btn btn-primary">Egresos</a>
+                                  <a href="../pages/cargar-ingresos.html" class="btn btn-primary">Ingresos</a>
+                                  <a href="../pages/cargar-compras.html" class="btn btn-primary">Compras</a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                        </div>    
           </div>
         </div>
-      </div>
-
+      
+    
+     
+</div>
       <div class="col-lg-4 col-md-4 mb-3">
         <div class="card h-100">
-          <img class="card-img-top" src="/Images/icons.webp" alt="">
+          <img class="card-img-top" src="../Images/mis-operaciones.svg" alt="">
           <div class="card-body">
             <h4 class="card-title">Mis Operaciones</h4>
             <p class="card-text">Visualice sus Operaciones Cargadas</p>
           </div>
           <div class="card-footer">
-            <a href="/mis-operaciones" class="btn btn-primary">Ver Operaciones</a>
+            <a href="../pages/mis-operaciones.html" class="btn btn-primary">Ver Operaciones</a>
           </div>
         </div>
       </div>
 
       <div class="col-lg-4 col-md-4 mb-3">
         <div class="card h-100">
-          <img class="card-img-top" src="/Images/icons.webp" alt="">
+          <img class="card-img-top" src="../Images/asociaciones.svg" alt="">
           <div class="card-body">
             <h4 class="card-title">Asociaciones</h4>
             <p class="card-text">Realice distintos tipos de asociaciones</p>
           </div>
           <div class="card-footer">
-            <a href="/asociaciones" class="btn btn-primary">Asociar</a>
+            <a href="../pages/asociaciones.html" class="btn btn-primary">Asociar</a>
           </div>
         </div>
       </div>
@@ -107,17 +140,19 @@
   <!-- Footer -->
   <footer class="py-5 bg-dark">
     <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
+      <p class="m-0 text-center text-white">Copyright &copy; GeSoc Website 2020</p>
     </div>
     <!-- /.container -->
   </footer>
 
   <!-- Bootstrap core JavaScript -->
-  <script src="/vendor/jquery/jquery.min.js"></script>
-  <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../vendor/jquery/jquery.min.js"></script>
+  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
-
 </html>
+
+
+
 
 

@@ -20,7 +20,7 @@ public class ProveedorMapperBD extends MapperBD<Proveedor>{
 		BDUtils.comenzarTransaccion(em);
 		Persona personaEncontrada;
 		try {
-			personaEncontrada = em.createQuery("select p from Proveedor p where p.dni = :d", Persona.class)
+			personaEncontrada = em.createQuery("select p from Persona p where p.dni = :d", Persona.class)
 					.setParameter("d", dni).getSingleResult();
 		}
 		catch(NoResultException e) {
@@ -33,7 +33,7 @@ public class ProveedorMapperBD extends MapperBD<Proveedor>{
 		BDUtils.comenzarTransaccion(em);
 		OrganizacionProveedora orgEncontrada;
 		try {
-			orgEncontrada = em.createQuery("select p from Proveedor p where p.cuit = :c", OrganizacionProveedora.class)
+			orgEncontrada = em.createQuery("select p from OrganizacionProveedora p where p.cuit = :c", OrganizacionProveedora.class)
 					.setParameter("c", cuit).getSingleResult();
 		}
 		catch(NoResultException e) {

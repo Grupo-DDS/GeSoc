@@ -47,15 +47,15 @@ public class Application {
         get(Path.Web.INDEX,     IndexController.serveIndexPage);
         get(Path.Web.BOOKS,     BookController.fetchAllBooks);
         get(Path.Web.ONE_BOOK,  BookController.fetchOneBook);
+        
         get(Path.Web.LOGIN,     LoginController.serveLoginPage);
+        get(Path.Web.EGRESOS,  EgresoController.cargarEgreso);
         post(Path.Web.LOGIN,    LoginController.handleLoginPost);
         post(Path.Web.LOGOUT,   LoginController.handleLogoutPost);
-        post(Path.Web.EGRESOS,  EgresoController.cargarEgreso);
         get("*",                ViewUtil.notFound);
 
         // Filtro aplicado despues de get y post
         after("*",              Filters.addGzipHeader);
-
     }
 
 }

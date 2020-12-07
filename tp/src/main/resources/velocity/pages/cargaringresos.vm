@@ -59,7 +59,7 @@
            facilita la carga y gesti&oacute;n de sus operaciones de ingresos. </p>
     </header>
 
-    	#if($FormatoNumeroIncorrecto)
+    #if($FormatoNumeroIncorrecto)
 		<p>ERROR: EL FORMATO DEL MONTO INGRESADO ES INCORRECTO</p>
 	#elseif($montoMenorACero)
 		<p>ERROR: EL MONTO INGRESADO DEBE SER MAYOR A CERO</p>
@@ -88,8 +88,7 @@
                 <input name="fecha" type="text" class="form-control" id="inputFechaOperacion" placeholder="20/10/2020">
               </div>
               <button onclick="submit" class="btn btn-primary">Cargar</button>
-            </div>
-            </div>
+
         </form>
     </div>
   </div>

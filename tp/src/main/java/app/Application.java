@@ -16,6 +16,7 @@ import app.persistencia.UserDao;
 import controllers.BookController;
 import controllers.EgresoController;
 import controllers.IndexController;
+import controllers.InicioController;
 import controllers.LoginController;
 import persistencia.BDUtils;
 
@@ -45,13 +46,13 @@ public class Application {
 
         // Rutas (path, controller)
         get(Path.Web.INDEX,     IndexController.serveIndexPage);
+        get(Path.Web.INICIO,     InicioController.servePaginaInicio);
         get(Path.Web.BOOKS,     BookController.fetchAllBooks);
-        get(Path.Web.ONE_BOOK,  BookController.fetchOneBook);
-        
+        get(Path.Web.ONE_BOOK,  BookController.fetchOneBook);        
         get(Path.Web.LOGIN,     LoginController.serveLoginPage);
         get(Path.Web.EGRESOS,  EgresoController.cargarEgreso);
         post(Path.Web.LOGIN,    LoginController.handleLoginPost);
-        post(Path.Web.LOGOUT,   LoginController.handleLogoutPost);
+        get(Path.Web.LOGOUT,   LoginController.handleLogoutPost);
         get("*",                ViewUtil.notFound);
 
         // Filtro aplicado despues de get y post

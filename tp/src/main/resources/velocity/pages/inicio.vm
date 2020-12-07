@@ -10,10 +10,10 @@
   <title>GeSoc - Inicio</title>
 
   <!-- Bootstrap core CSS -->
-  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link href="../css/heroic-features.css" rel="stylesheet">
+  <link href="/css/heroic-features.css" rel="stylesheet">
 
 </head>
 
@@ -22,25 +22,25 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="../pages/inicio.html">GeSoc</a>
+      <a class="navbar-brand" href="/inicio">GeSoc</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="../pages/inicio.html">Inicio
+            <a class="nav-link" href="/inicio">Inicio
               <span class="sr-only">(current)</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../pages/proyecto.html">Proyecto</a>
+            <a class="nav-link" href="/proyecto">Proyecto</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../pages/mensajes.html">Mensajes</a>
+            <a class="nav-link" href="/mensajes">Mensajes</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../index.html">Cerrar Sesi&oacute;n</a>
+				<a class="nav-link" href="/logout">Cerrar Sesi&oacute;n</a>
           </li>
         </ul>
       </div>
@@ -55,7 +55,7 @@
       <h1 class="display-3">Bienvenido a su cuenta de GeSoc</h1>
       <p class="lead">Nuestro sistema Gestor de Proyectos Sociales est&aacute; orientado a la 
         contabilidad de gesti&oacute;n como objetivo principal. </p>
-      <a href="../pages/info.html" class="btn btn-primary btn-lg">M&aacute;s Info</a>
+      <a href="/info.html" class="btn btn-primary btn-lg">M&aacute;s Info</a>
     </header>
 
     <!-- Page Features -->
@@ -63,7 +63,7 @@
 
       <div class="col-lg-4 col-md-4 mb-3">
         <div class="card h-100">
-          <img class="card-img-top" src="../Images/cargar-operaciones.svg" alt="">
+          <img class="card-img-top" src="/Images/cargar-operaciones.svg" alt="">
           <div class="card-body">
             <h4 class="card-title">Cargar Operaciones</h4>
             <p class="card-text">Cargue sus Operaciones de Egresos</p>
@@ -90,9 +90,9 @@
                                 </div>
                                 <div class="modal-footer">
                                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                                  <a href="../pages/cargar-egresos.html" class="btn btn-primary">Egresos</a>
-                                  <a href="../pages/cargar-ingresos.html" class="btn btn-primary">Ingresos</a>
-                                  <a href="../pages/cargar-compras.html" class="btn btn-primary">Compras</a>
+                                  <a href="/egresos" class="btn btn-primary">Egresos</a>
+                                  <a href="/ingresos" class="btn btn-primary">Ingresos</a>
+                                  <a href="/compras" class="btn btn-primary">Compras</a>
                                 </div>
                               </div>
                             </div>
@@ -107,26 +107,26 @@
 </div>
       <div class="col-lg-4 col-md-4 mb-3">
         <div class="card h-100">
-          <img class="card-img-top" src="../Images/mis-operaciones.svg" alt="">
+          <img class="card-img-top" src="/Images/mis-operaciones.svg" alt="">
           <div class="card-body">
             <h4 class="card-title">Mis Operaciones</h4>
             <p class="card-text">Visualice sus Operaciones Cargadas</p>
           </div>
           <div class="card-footer">
-            <a href="../pages/mis-operaciones.html" class="btn btn-primary">Ver Operaciones</a>
+            <a href="/mis-operaciones" class="btn btn-primary">Ver Operaciones</a>
           </div>
         </div>
       </div>
 
       <div class="col-lg-4 col-md-4 mb-3">
         <div class="card h-100">
-          <img class="card-img-top" src="../Images/asociaciones.svg" alt="">
+          <img class="card-img-top" src="/Images/asociaciones.svg" alt="">
           <div class="card-body">
             <h4 class="card-title">Asociaciones</h4>
             <p class="card-text">Realice distintos tipos de asociaciones</p>
           </div>
           <div class="card-footer">
-            <a href="../pages/asociaciones.html" class="btn btn-primary">Asociar</a>
+            <a href="/asociaciones" class="btn btn-primary">Asociar</a>
           </div>
         </div>
       </div>
@@ -146,8 +146,8 @@
   </footer>
 
   <!-- Bootstrap core JavaScript -->
-  <script src="../vendor/jquery/jquery.min.js"></script>
-  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/vendor/jquery/jquery.min.js"></script>
+  <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>

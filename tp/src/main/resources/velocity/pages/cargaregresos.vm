@@ -58,7 +58,7 @@
       <p class="lead">Nuestro sistema Gestor de Proyectos Sociales
            facilita la carga y gesti&oacute;n de sus operaciones de egresos. </p>
     </header>
-	#if($compraInexistente)
+    #if($compraInexistente)
 		<p>ERROR: LA COMPRA INGRESADA NO EXISTE</p>
 	#elseif($comprobanteUnSoloDigito)
 		<p>ERROR: EL NUMERO DE COMPROBANTE SOLO DEBE CONTENER UN DIGITO </p>

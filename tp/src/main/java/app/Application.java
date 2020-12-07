@@ -15,6 +15,7 @@ import app.persistencia.BookDao;
 import app.persistencia.UserDao;
 import controllers.BookController;
 import controllers.EgresoController;
+import controllers.IngresoController;
 import controllers.IndexController;
 import controllers.InicioController;
 import controllers.LoginController;
@@ -36,7 +37,7 @@ public class Application {
         userDao = new UserDao();
 
         // Configuracion Spark
-        port(8080);
+        port(5020);
         staticFiles.location("/public");
         staticFiles.expireTime(600L);
         enableDebugScreen(); //ver una pantalla con detalle en caso de error
@@ -51,6 +52,7 @@ public class Application {
         get(Path.Web.ONE_BOOK,  BookController.fetchOneBook);        
         get(Path.Web.LOGIN,     LoginController.serveLoginPage);
         get(Path.Web.EGRESOS,  EgresoController.cargarEgreso);
+        get(Path.Web.INGRESOS,  IngresoController.cargarIngreso);
         post(Path.Web.LOGIN,    LoginController.handleLoginPost);
         get(Path.Web.LOGOUT,   LoginController.handleLogoutPost);
         get("*",                ViewUtil.notFound);

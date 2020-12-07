@@ -90,4 +90,11 @@ public class RequestUtil {
 	public static String getQueryDNICUITProveedor(Request request) {
 		return request.queryParams("DNIoCUITprov");
 	}
+	public static String getQueryMontoTotal(Request request) {
+		return request.queryParams("MontoTotal");
+	}
+	public static String getQueryDescripcion(Request request) {
+		return request.queryParams("Descripcion");
+	}
+	
 }

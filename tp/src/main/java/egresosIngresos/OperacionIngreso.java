@@ -14,13 +14,15 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import persistencia.OperacionIngresoMapperBD;
+
 @Entity
 @Table(name="INGRESOS")
 public class OperacionIngreso {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="ID_INGRESO")
-	private Long id;
+	private Long id;                                               
 	
 	@Column(name="DESCRIPCION")
 	private String descripcion;
@@ -134,7 +136,10 @@ public class OperacionIngreso {
 
 	}
 
-
+	public static void insertarEnBD(OperacionIngreso ingreso) {
+		OperacionIngresoMapperBD.getInstance().insert(ingreso);
+	}
+	
 
 
 

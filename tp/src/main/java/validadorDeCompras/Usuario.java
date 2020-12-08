@@ -78,7 +78,7 @@ public class Usuario {
 		bandejaDeMensajes.add(mensaje);
 	}
 	
-	public Usuario buscarUsuarioBD(String nombre) {
+	public static Usuario buscarUsuarioBD(String nombre) {
 		return UsuarioMapper.getInstance().buscarUsuario(nombre);
 	}
 

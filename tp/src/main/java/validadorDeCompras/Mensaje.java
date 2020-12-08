@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
 import comprasPresupuestos.Compra;
 
 @Entity
@@ -16,6 +18,7 @@ public class Mensaje {
 	public boolean cantidadPresupuestosIndicada;
 	public boolean presupuestoElegido;
 	public boolean criterioCorrecto;
+	@OneToOne
 	public Compra compra;
 
 	public Long getId() {
@@ -46,6 +49,17 @@ public class Mensaje {
 		return criterioCorrecto;
 	}
 
+	public Mensaje(boolean cantidadPresupuestosIndicada, boolean presupuestoElegido, boolean criterioCorrecto,
+			Compra compra) {
+		super();
+		this.cantidadPresupuestosIndicada = cantidadPresupuestosIndicada;
+		this.presupuestoElegido = presupuestoElegido;
+		this.criterioCorrecto = criterioCorrecto;
+		this.compra = compra;
+	}
+	public Mensaje() {
+		
+	}
 	public void setCriterioCorrecto(boolean criterioCorrecto) {
 		this.criterioCorrecto = criterioCorrecto;
 	}
@@ -74,12 +88,5 @@ public class Mensaje {
 		presupuestoElegido = _presupuestoElegido;
 	}
 
-	public Compra iscompra() {
-		return compra;
-	}
-
-	public void setcompra(Compra _compra) {
-		compra = _compra;
-	}
 
 }

@@ -73,7 +73,7 @@ public class ValidadorCompras {
 		while(listaCompra.size() > 0) {
 			Compra compra = listaCompra.poll();
 			Mensaje mensaje = new Mensaje();
-			mensaje.setcompra(compra);
+			mensaje.setCompra(compra);
 			mensaje.setcantidadPresupuestosIndicada(verificarCantidad(compra));
 			System.out.printf("Verifica cantidad: ");
 			System.out.printf(Boolean.toString(verificarCantidad(compra)));

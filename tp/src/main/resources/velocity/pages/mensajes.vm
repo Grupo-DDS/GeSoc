@@ -10,10 +10,10 @@
   <title>GeSoc - Mensajes</title>
 
   <!-- Bootstrap core CSS -->
-  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link href="../css/heroic-features.css" rel="stylesheet">
+  <link href="/css/heroic-features.css" rel="stylesheet">
 
 </head>
 
@@ -22,25 +22,25 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="../pages/inicio.html">GeSoc</a>
+      <a class="navbar-brand" href="/inicio">GeSoc</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="../pages/inicio.html">Inicio
+            <a class="nav-link" href="/inicio">Inicio
               <span class="sr-only">(current)</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../pages/proyecto.html">Proyecto</a>
+            <a class="nav-link" href="/proyecto">Proyecto</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="../pages/mensajes.html">Mensajes</a>
+            <a class="nav-link active" href="/mensajes">Mensajes</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../index.html">Cerrar Sesi&oacute;n</a>
+            <a class="nav-link" href="/logout">Cerrar Sesi&oacute;n</a>
           </li>
         </ul>
       </div>
@@ -58,11 +58,14 @@
         <div id="imagenes"></div>
 
         <ul class="list-group">
-          <li class="list-group-item">Mensaje 5</li>
-          <li class="list-group-item">Mensaje 4</li>
-          <li class="list-group-item">Mensaje 3</li>
-          <li class="list-group-item">Mensaje 2</li>
-          <li class="list-group-item">Mensaje 1</li>
+        #foreach($mensaje in $mensajes)
+		<li class="list-group-item">$mensaje.getCompra().getNumeroCompra()
+		 $mensaje.isCantidadPresupuestosIndicada()
+		 $mensaje.isPresupuestoElegido()
+		 $mensaje.isCriterioCorrecto()</li>
+   		
+   		#end
+        
         </ul>
     </div>    
   </div>

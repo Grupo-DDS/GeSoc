@@ -130,7 +130,7 @@
                     </div>
                     <div class="well panel-highlighted">
                     <form id="signinForm" method="post">
-                        <h5>¿A&uacute;n no est&aacute;s registrado?</h5>
+                        <h5>&#191;A&uacute;n no est&aacute;s registrado?</h5>
                         #if($signinFailedSecurity)
         					<p>SU CONTRASE&Ntilde;A NO ES SEGURA</p>
 						#elseif($signinFailedUsername)

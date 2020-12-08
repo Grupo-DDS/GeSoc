@@ -7,6 +7,7 @@ import static app.RequestUtil.clientAcceptsJson;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import app.Path;
@@ -25,7 +26,12 @@ public class MensajesController {
             HashMap<String, Object> model = new HashMap<>();
             String nombreUsuario = request.session().attribute("currentUser");
             Usuario usuario = Usuario.buscarUsuarioBD(nombreUsuario);
-            System.out.println(usuario.getNombre());
+            List<Mensaje> lista = usuario.getBandejaDeMensajes();
+            if(lista != null) {
+            for(Mensaje mensaje : lista) {
+            	
+            	System.out.println("MENSAJE: "+mensaje.getCompra().getNumeroCompra()+" "+mensaje.isPresupuestoElegido());
+            }}
             model.put("mensajes", usuario.getBandejaDeMensajes());
             //actualiza la Vista (MVC) que es un HTML
             return ViewUtil.render(request, model, Path.Template.MENSAJES);

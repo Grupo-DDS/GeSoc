@@ -1,6 +1,7 @@
 package validadorDeCompras;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.ManyToMany;
 
 import persistencia.UsuarioMapper;
 @Entity
@@ -23,7 +25,8 @@ public class Usuario {
 	String nombre;
     String salt;
     String hashedPassword;
-	ArrayList<Mensaje> bandejaDeMensajes = new ArrayList<Mensaje>();
+    @ManyToMany
+	List<Mensaje> bandejaDeMensajes = new ArrayList<Mensaje>();
 	
 	
 	public Usuario() {
@@ -68,12 +71,15 @@ public class Usuario {
 	public void setHashedPassword(String hashedPassword) {
 		this.hashedPassword = hashedPassword;
 	}
-	public ArrayList<Mensaje> getBandejaDeMensajes() {
+
+	public List<Mensaje> getBandejaDeMensajes() {
 		return bandejaDeMensajes;
 	}
-	public void setBandejaDeMensajes(ArrayList<Mensaje> bandejaDeMensajes) {
+
+	public void setBandejaDeMensajes(List<Mensaje> bandejaDeMensajes) {
 		this.bandejaDeMensajes = bandejaDeMensajes;
 	}
+
 	public void agregarMensaje(Mensaje mensaje){
 		bandejaDeMensajes.add(mensaje);
 	}

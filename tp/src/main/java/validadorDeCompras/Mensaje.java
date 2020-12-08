@@ -15,11 +15,11 @@ public class Mensaje {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	public boolean cantidadPresupuestosIndicada;
-	public boolean presupuestoElegido;
-	public boolean criterioCorrecto;
+	private boolean cantidadPresupuestosIndicada;
+	private boolean presupuestoElegido;
+	private boolean criterioCorrecto;
 	@OneToOne
-	public Compra compra;
+	private Compra compra;
 
 	public Long getId() {
 		return id;
@@ -27,6 +27,19 @@ public class Mensaje {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+
+	public Mensaje(boolean cantidadPresupuestosIndicada, boolean presupuestoElegido, boolean criterioCorrecto,
+			Compra compra) {
+		super();
+		this.cantidadPresupuestosIndicada = cantidadPresupuestosIndicada;
+		this.presupuestoElegido = presupuestoElegido;
+		this.criterioCorrecto = criterioCorrecto;
+		this.compra = compra;
+	}
+	public Mensaje() {
+		
 	}
 
 	public boolean isCantidadPresupuestosIndicada() {
@@ -49,17 +62,6 @@ public class Mensaje {
 		return criterioCorrecto;
 	}
 
-	public Mensaje(boolean cantidadPresupuestosIndicada, boolean presupuestoElegido, boolean criterioCorrecto,
-			Compra compra) {
-		super();
-		this.cantidadPresupuestosIndicada = cantidadPresupuestosIndicada;
-		this.presupuestoElegido = presupuestoElegido;
-		this.criterioCorrecto = criterioCorrecto;
-		this.compra = compra;
-	}
-	public Mensaje() {
-		
-	}
 	public void setCriterioCorrecto(boolean criterioCorrecto) {
 		this.criterioCorrecto = criterioCorrecto;
 	}
@@ -71,22 +73,6 @@ public class Mensaje {
 	public void setCompra(Compra compra) {
 		this.compra = compra;
 	}
-
-	public boolean iscantidadPresupuestosIndicada() {
-		return cantidadPresupuestosIndicada;
-	}
-
-	public void setcantidadPresupuestosIndicada(boolean _cantidadPresupuestosIndicada) {
-		cantidadPresupuestosIndicada = _cantidadPresupuestosIndicada;
-	}
-
-	public boolean ispresupuestoElegido() {
-		return presupuestoElegido;
-	}
-
-	public void setpresupuestoElegido(boolean _presupuestoElegido) {
-		presupuestoElegido = _presupuestoElegido;
-	}
-
+	
 
 }

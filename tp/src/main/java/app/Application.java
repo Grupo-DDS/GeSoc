@@ -10,6 +10,7 @@ import static spark.Spark.staticFiles;
 import static spark.debug.DebugScreen.enableDebugScreen;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 
@@ -26,6 +27,7 @@ import controllers.MensajesController;
 import persistencia.BDUtils;
 import persistencia.CompraMapperBD;
 import persistencia.MensajeMapper;
+import persistencia.UsuarioMapper;
 import validadorDeCompras.Mensaje;
 import validadorDeCompras.Usuario;
 
@@ -39,7 +41,7 @@ public class Application {
     	
         EntityManager em = BDUtils.getEntityManager();
         BDUtils.comenzarTransaccion(em);
-       /* Usuario usuario = Usuario.buscarUsuarioBD("Marquitos");
+       Usuario usuario = Usuario.buscarUsuarioBD("juan");
         Compra compra = new Compra(); 
         
         compra.setNumeroCompra(Long.parseLong("100"));
@@ -59,7 +61,7 @@ public class Application {
         Mensaje mensaje12 = new Mensaje(true,true,true,compra);
         Mensaje mensaje13 = new Mensaje(true,true,true,compra);
         Mensaje mensaje14 = new Mensaje(true,true,true,compra);
-        ArrayList<Mensaje> mensajes = new ArrayList<Mensaje>();
+        List<Mensaje> mensajes = new ArrayList<Mensaje>();
         mensajes.add(mensaje);
         mensajes.add(mensaje1);
         mensajes.add(mensaje2);
@@ -76,7 +78,8 @@ public class Application {
         mensajes.add(mensaje13);
         mensajes.add(mensaje14);
         MensajeMapper.getInstance().insert(mensajes);
-        usuario.setBandejaDeMensajes(mensajes);*/
+        usuario.setBandejaDeMensajes(mensajes);
+        UsuarioMapper.getInstance().update(usuario);
         bookDao = new BookDao();
         userDao = new UserDao();
 

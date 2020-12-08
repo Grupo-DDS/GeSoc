@@ -4,21 +4,20 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
 import comprasPresupuestos.Compra;
 
-
-
 @Entity
-//@Table(name = "USUARIO")
 
-public class Mensaje{
-	
+public class Mensaje {
+
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-	
-	
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	public boolean cantidadPresupuestosIndicada;
+	public boolean presupuestoElegido;
+	public boolean criterioCorrecto;
+	public Compra compra;
+
 	public Long getId() {
 		return id;
 	}
@@ -27,64 +26,60 @@ public class Mensaje{
 		this.id = id;
 	}
 
-	public static boolean isCantidadPresupuestosIndicada() {
+	public boolean isCantidadPresupuestosIndicada() {
 		return cantidadPresupuestosIndicada;
 	}
 
-	public static void setCantidadPresupuestosIndicada(boolean cantidadPresupuestosIndicada) {
-		Mensaje.cantidadPresupuestosIndicada = cantidadPresupuestosIndicada;
+	public void setCantidadPresupuestosIndicada(boolean cantidadPresupuestosIndicada) {
+		this.cantidadPresupuestosIndicada = cantidadPresupuestosIndicada;
 	}
 
-	public static boolean isPresupuestoElegido() {
+	public boolean isPresupuestoElegido() {
 		return presupuestoElegido;
 	}
 
-	public static void setPresupuestoElegido(boolean presupuestoElegido) {
-		Mensaje.presupuestoElegido = presupuestoElegido;
+	public void setPresupuestoElegido(boolean presupuestoElegido) {
+		this.presupuestoElegido = presupuestoElegido;
 	}
 
-	public static Compra getCompra() {
-		return compra;
-	}
-
-	public static void setCompra(Compra compra) {
-		Mensaje.compra = compra;
-	}
-
-	public static boolean cantidadPresupuestosIndicada;
-	public static boolean presupuestoElegido;
-	public static boolean criterioCorrecto;
-	public static Compra compra;
-	
-	public boolean iscantidadPresupuestosIndicada() {
-		return cantidadPresupuestosIndicada;
-	}
-
-	public   void setcantidadPresupuestosIndicada(boolean _cantidadPresupuestosIndicada) {
-		cantidadPresupuestosIndicada = _cantidadPresupuestosIndicada;
-	}
-	public  boolean ispresupuestoElegido() {
-		return presupuestoElegido;
-	}
-
-	public  void setpresupuestoElegido(boolean _presupuestoElegido) {
-		presupuestoElegido = _presupuestoElegido;
-	}
-
-	public  Compra iscompra() {
-		return compra;
-	}
-
-	public   void setcompra(Compra _compra) {
-		compra = _compra;
-	}
-
-	public static boolean isCriterioCorrecto() {
+	public boolean isCriterioCorrecto() {
 		return criterioCorrecto;
 	}
 
 	public void setCriterioCorrecto(boolean criterioCorrecto) {
-		Mensaje.criterioCorrecto = criterioCorrecto;
+		this.criterioCorrecto = criterioCorrecto;
 	}
-	
+
+	public Compra getCompra() {
+		return compra;
+	}
+
+	public void setCompra(Compra compra) {
+		this.compra = compra;
+	}
+
+	public boolean iscantidadPresupuestosIndicada() {
+		return cantidadPresupuestosIndicada;
+	}
+
+	public void setcantidadPresupuestosIndicada(boolean _cantidadPresupuestosIndicada) {
+		cantidadPresupuestosIndicada = _cantidadPresupuestosIndicada;
+	}
+
+	public boolean ispresupuestoElegido() {
+		return presupuestoElegido;
+	}
+
+	public void setpresupuestoElegido(boolean _presupuestoElegido) {
+		presupuestoElegido = _presupuestoElegido;
+	}
+
+	public Compra iscompra() {
+		return compra;
+	}
+
+	public void setcompra(Compra _compra) {
+		compra = _compra;
+	}
+
 }

@@ -72,7 +72,7 @@
 		<p>EXITO: EL EGRESO FUE CARGADO CORRECTAMENTE</p>
     #end
     <!-- Page Features -->
-    <div class="row text-center">	
+    
         <form method="get">
 
 			<div class="form-row">
@@ -110,7 +110,7 @@
             
             <button onclick="submit" type="submit" class="btn btn-primary">Cargar</button>
         </form>
-    </div>
+
   </div>
   <script src="/vendor/jquery/jquery.min.js"></script>
   <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

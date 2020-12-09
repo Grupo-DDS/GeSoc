@@ -97,23 +97,47 @@
                               </div>
                             </div>
                           </div>
-
                         </div>    
           </div>
         </div>
-      
-    
-     
 </div>
+
       <div class="col-lg-4 col-md-4 mb-3">
         <div class="card h-100">
-          <img class="card-img-top" src="/Images/mis-operaciones.svg" alt="">
+          <img class="card-img-top" src="../Images/mis-operaciones.svg" alt="">
           <div class="card-body">
             <h4 class="card-title">Mis Operaciones</h4>
             <p class="card-text">Visualice sus Operaciones Cargadas</p>
           </div>
           <div class="card-footer">
-            <a href="/mis-operaciones" class="btn btn-primary">Ver Operaciones</a>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ventanaVerOperaciones">Ver Operaciones</button>
+                         <!-- Modal -->
+                        <div class="modal fade" id="ventanaVerOperaciones" tabindex="-1" role="dialog" aria-labelledby="modalVerOperaciones" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                               
+                                <h5 class="modal-title" id="modalCargarOperaciones">¿Qu&eacute; operaciones desea ver?</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+
+                              <div class="modal-body">
+                                <p>Elija entre egresos e ingresos</p>
+                                <div style="display:none;" class="form-group js-auth-dialog-input-2fa">
+                                <input name="secondFactor" style="width:100%" placeholder="One-time password" type="text" class="form-control">
+                                          
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                  <a href="../pages/mis-egresos.html" class="btn btn-primary">Egresos</a>
+                                  <a href="../pages/mis-ingresos.html" class="btn btn-primary">Ingresos</a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>    
           </div>
         </div>
       </div>

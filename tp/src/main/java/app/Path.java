@@ -16,8 +16,8 @@ public class Path {
         @Getter public static final String EGRESOS = "/egresos";
         @Getter public static final String INGRESOS = "/ingresos";
         @Getter public static final String MENSAJES = "/mensajes";
-        
-        
+        @Getter public static final String PROYECTO = "/proyecto";
+        @Getter public static final String ASOCIACIONES = "/asociaciones";
         
         public static String getINDEX() {
 			return INDEX;
@@ -47,7 +47,8 @@ public class Path {
         public static final String EGRESOS = "/velocity/pages/cargaregresos.vm";
         public static final String INGRESOS = "/velocity/pages/cargaringresos.vm";
         public static final String MENSAJES = "/velocity/pages/mensajes.vm";
-
+        public static final String PROYECTO = "/velocity/pages/proyecto.vm";
+        public static final String ASOCIACIONES = "/velocity/pages/asociaciones.vm";
     }
 
 }

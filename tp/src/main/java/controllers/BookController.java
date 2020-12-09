@@ -1,13 +1,14 @@
 package controllers;
 
 
+import static app.Application.bookDao;
 import static app.JsonUtil.dataToJson;
 import static app.RequestUtil.clientAcceptsHtml;
 import static app.RequestUtil.clientAcceptsJson;
 import static app.RequestUtil.getParamIsbn;
 
 import java.util.HashMap;
-import static app.Application.bookDao;
+
 import app.Path;
 import app.ViewUtil;
 import app.dominio.Book;

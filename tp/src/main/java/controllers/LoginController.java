@@ -51,8 +51,7 @@ public class LoginController {
 				model.put("signinFailedSecurity", true);
 				return ViewUtil.render(request, model, Path.Template.LOGIN);
 			}
-			Usuario user = new Usuario();
-			Usuario userEncontrado = user.buscarUsuarioBD(usernameSignin);
+			Usuario userEncontrado = Usuario.buscarUsuarioBD(usernameSignin);
 			if (userEncontrado != null) {
 				model.put("signinFailedUsername", true);
 				return ViewUtil.render(request, model, Path.Template.LOGIN);

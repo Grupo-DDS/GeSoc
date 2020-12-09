@@ -1,8 +1,6 @@
 package controllers;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 public class pruebaControl {
 	public static void main(String[] args) {

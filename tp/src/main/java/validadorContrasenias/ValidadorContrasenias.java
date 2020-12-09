@@ -1,7 +1,6 @@
 package validadorContrasenias;
 //package com.validarContrase�as;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 

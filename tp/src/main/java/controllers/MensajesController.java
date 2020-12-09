@@ -5,10 +5,8 @@ import static app.JsonUtil.dataToJson;
 import static app.RequestUtil.clientAcceptsHtml;
 import static app.RequestUtil.clientAcceptsJson;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import app.Path;
 import app.ViewUtil;
@@ -27,11 +25,7 @@ public class MensajesController {
             String nombreUsuario = request.session().attribute("currentUser");
             Usuario usuario = Usuario.buscarUsuarioBD(nombreUsuario);
             List<Mensaje> lista = usuario.getBandejaDeMensajes();
-            if(lista != null) {
-            for(Mensaje mensaje : lista) {
-            	
-            	System.out.println("MENSAJE: "+mensaje.getCompra().getNumeroCompra()+" "+mensaje.isPresupuestoElegido());
-            }}
+
             model.put("mensajes", usuario.getBandejaDeMensajes());
             //actualiza la Vista (MVC) que es un HTML
             return ViewUtil.render(request, model, Path.Template.MENSAJES);

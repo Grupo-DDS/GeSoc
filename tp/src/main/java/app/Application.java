@@ -9,27 +9,20 @@ import static spark.Spark.post;
 import static spark.Spark.staticFiles;
 import static spark.debug.DebugScreen.enableDebugScreen;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.EntityManager;
 
 import app.persistencia.BookDao;
 import app.persistencia.UserDao;
-import comprasPresupuestos.Compra;
+import controllers.AsociacionesController;
 import controllers.BookController;
 import controllers.EgresoController;
-import controllers.IngresoController;
 import controllers.IndexController;
+import controllers.IngresoController;
 import controllers.InicioController;
 import controllers.LoginController;
 import controllers.MensajesController;
+import controllers.ProyectoController;
 import persistencia.BDUtils;
-import persistencia.CompraMapperBD;
-import persistencia.MensajeMapper;
-import persistencia.UsuarioMapper;
-import validadorDeCompras.Mensaje;
-import validadorDeCompras.Usuario;
 
 public class Application {
 	
@@ -41,7 +34,7 @@ public class Application {
     	
         EntityManager em = BDUtils.getEntityManager();
         BDUtils.comenzarTransaccion(em);
-       Usuario usuario = Usuario.buscarUsuarioBD("juan");
+      /* Usuario usuario = Usuario.buscarUsuarioBD("juan");
         Compra compra = new Compra(); 
         
         compra.setNumeroCompra(Long.parseLong("100"));
@@ -79,7 +72,7 @@ public class Application {
         mensajes.add(mensaje14);
         MensajeMapper.getInstance().insert(mensajes);
         usuario.setBandejaDeMensajes(mensajes);
-        UsuarioMapper.getInstance().update(usuario);
+        UsuarioMapper.getInstance().update(usuario);*/
         bookDao = new BookDao();
         userDao = new UserDao();
 
@@ -103,6 +96,8 @@ public class Application {
         post(Path.Web.LOGIN,    LoginController.handleLoginPost);
         get(Path.Web.LOGOUT,   LoginController.handleLogoutPost);
         get(Path.Web.MENSAJES,   MensajesController.mensajesView);
+        get(Path.Web.PROYECTO,   ProyectoController.IndexProyecto);
+        get(Path.Web.ASOCIACIONES,   AsociacionesController.handleAsociaciones);
         get("*",                ViewUtil.notFound);
 
         // Filtro aplicado despues de get y post

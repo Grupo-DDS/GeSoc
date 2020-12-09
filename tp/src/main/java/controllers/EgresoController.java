@@ -4,9 +4,9 @@ import static app.RequestUtil.getQueryCompra;
 import static app.RequestUtil.getQueryComprobanteNumero;
 import static app.RequestUtil.getQueryComprobanteTipo;
 import static app.RequestUtil.getQueryDNICUITProveedor;
-import static app.RequestUtil.getQueryNombreProveedor;
 import static app.RequestUtil.getQueryFecha;
 import static app.RequestUtil.getQueryMedio;
+import static app.RequestUtil.getQueryNombreProveedor;
 
 import java.time.LocalDate;
 import java.util.HashMap;

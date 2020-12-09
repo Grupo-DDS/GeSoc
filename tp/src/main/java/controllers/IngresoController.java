@@ -1,22 +1,16 @@
 package controllers;
 
+import static app.RequestUtil.getQueryDescripcion;
+import static app.RequestUtil.getQueryFecha;
+import static app.RequestUtil.getQueryMontoTotal;
+
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 
-
-import static app.RequestUtil.getQueryFecha;
-import static app.RequestUtil.getQueryMontoTotal;
-import static app.RequestUtil.getQueryDescripcion;
-
-import java.time.LocalDate;
-
-
-
 import app.Path;
 import app.ViewUtil;
-
 import egresosIngresos.OperacionIngreso;
-
 import spark.Request;
 import spark.Response;
 import spark.Route;

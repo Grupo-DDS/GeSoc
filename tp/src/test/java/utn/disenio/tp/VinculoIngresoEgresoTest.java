@@ -29,8 +29,8 @@ public class VinculoIngresoEgresoTest {
 	public void validarVinculoIngresoEgreso() {
 		//organizacion
 		Organizacion organizacion= new Organizacion();
-		organizacion.setRegla(new ReglaFecha());
-		organizacion.setRequerimiento(new OrdenFecha());
+		organizacion.setRegla( ReglaFecha.getInstance());
+		organizacion.setRequerimiento( OrdenFecha.getInstance());
 		
 		OrganizacionMapperBD.getInstance().insert(organizacion);
 		//proveedores

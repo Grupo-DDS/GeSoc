@@ -97,4 +97,21 @@ public class RequestUtil {
 		return request.queryParams("Descripcion");
 	}
 	
+	public static String getQueryOpcionesAsociacion(Request request) {
+		return request.queryParams("opcionesVinculacion");
+	}
+	
+	public static String getQueryRegla1Mix(Request request) {
+		return request.queryParams("Regla1Mix");
+	}
+	
+	public static String getQueryRegla2Mix(Request request) {
+		return request.queryParams("Regla2Mix");
+	}
+	
+	public static String getQueryRegla3Mix(Request request) {
+		return request.queryParams("Regla3Mix");
+	}
+	
+
 }

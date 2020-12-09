@@ -1,5 +1,6 @@
 package egresosIngresos;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -19,7 +20,7 @@ public abstract class Requerimiento {
 	private Long id;
 	
 	@Transient
-	private IngresosEgresos restante;
+	private IngresosEgresos restante = new IngresosEgresos(new ArrayList<OperacionEgreso>(), new ArrayList<OperacionIngreso>());
 	
 	public IngresosEgresos vincular(List<OperacionEgreso> egresosAVincular, List<OperacionIngreso> ingresosAVincular,
 			ReglaVinculacion regla){

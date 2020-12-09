@@ -23,14 +23,14 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="../pages/inicio.html">GeSoc</a>
+      <a class="navbar-brand" href="/inicio">GeSoc</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="../pages/inicio.html">Inicio
+            <a class="nav-link" href="/inicio">Inicio
               <span class="sr-only">(current)</span>
             </a>
           </li>
@@ -49,60 +49,69 @@
   </nav>
 
   <!-- Page Content -->
-  <div class="container">
+<div class="container">
+	<!-- Header -->
+	<header class="jumbotron my-4">
+		<h1 class="display-3">Bienvenido a sus asociaciones de GeSoc</h1>
+        <p class="lead">Asocie sus ingresos y egresos seg&uacute;n el criterio que crea mas conveniente.</p>
+	</header>
+</div>
 
-        <!-- Header -->
-        <header class="jumbotron my-4">
-        <h1 class="display-3">Bienvenido a sus asociaciones de GeSoc</h1>
-        <p class="lead">Asocie sus egresos y presupuestos a distintas categor&iacute;as, ademas de sus ingresos a sus egresos. </p>
-        </header>
-    </div>
-
+<form method="get">	
     <div class="container">
-      <div class="row">
-        <div class="form-group col-md-3">
-         <select class="form-control">
-          <option>Egreso</option>
-            </select>
-        </div>
-  
-        <div class="form-group col-md-3">
-          <select class="form-control">
-            <option>Presupuesto</option>
-              </select>
-            </div>
-        <div class="form-group col-md-3">
-          <select class="form-control">
-            <option>Categor&iacute;a</option>
-          </select>
-        </div>
-        <div class="form-group col-md-3">
-          <button type="submit" class="btn btn-primary">Asociar</button>
-          </div>
-      </div>
-    </div>
+		#if($vinculacionCompletada)
+		<p>Asociaci&oacute;n completada!</p>
+		#end
+		#if($SolicitarRequerimientosMix)
+			<p>Elija las reglas de vinculaci&oacute;n para Orden Mix</p>
+		#end
+		<div class="row">
+			#if($SolicitarRequerimientosMix)
+				<div class="form-group col-md-3">
+					<select name="Regla1Mix" class="form-control">
+						<option selected disabled>Primer Regla</option>
+						<option value="OrdenEgreso">Orden Valor PrimeroEgreso</option>
+						<option value="OrdenIngreso">Orden Valor PrimeroIngreso</option>
+						<option value="OrdenFecha">Orden Fecha</option>
+					</select>
+				</div>
+				<div class="form-group col-md-3">
+					<select name="Regla2Mix" class="form-control">
+						<option selected disabled>Segunda Regla</option>
+						<option value="OrdenEgreso">Orden Valor PrimeroEgreso</option>
+						<option value="OrdenIngreso">Orden Valor PrimeroIngreso</option>
+						<option value="OrdenFecha">Orden Fecha</option>
+					</select>
+				</div>
+				<div class="form-group col-md-3">
+					<select name="Regla3Mix" class="form-control">
+						<option selected disabled>Tercer Regla</option>
+						<option value="OrdenEgreso">Orden Valor PrimeroEgreso</option>
+						<option value="OrdenIngreso">Orden Valor PrimeroIngreso</option>
+						<option value="OrdenFecha">Orden Fecha</option>
+					</select>
+				</div>
 
-    <div class="container">
-    <div class="row">
-      <div class="form-group col-md-3">
-       <select class="form-control">
-        <option>Egreso</option>
-          </select>
-      </div>
-      <div class="form-group col-md-3">
-        <select class="form-control">
-          <option>Ingreso</option>
-            </select>
-          </div>
-      <div class="form-group col-md-3">
-        <select class="form-control">
-          <option>Regla de asociaci&oacute;n</option>
-        </select>
-      </div>
-      <div class="form-group col-md-3">
-        <button type="submit" class="btn btn-primary">Asociar</button>
-        </div>
-    </div>
-  </div> 
+				<div class="form-group col-md-3">
+					<button onclick="submit" class="btn btn-primary">Asociar</button>
+				</div>
+			#else
+				<div class="form-group col-md-8">
+					<select name="opcionesVinculacion" class="form-control">
+						<option selected disabled>Criterio de ejecuci&oacute;n</option>
+						<option value="OrdenEgreso">Orden Valor PrimeroEgreso</option>
+						<option value="OrdenIngreso">Orden Valor PrimeroIngreso</option>
+						<option value="OrdenFecha">Orden Fecha</option>
+						<option value="OrdenMix">Orden Mix</option>
+					</select>
+				</div>
+				<div class="form-group col-md-4">
+					<button onclick="submit" class="btn btn-primary">Asociar</button>
+				</div>	
+			#end
+		</div>
+	</div>
+</form>
+    
 </body>
 </html>

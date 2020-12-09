@@ -2,6 +2,8 @@
 <html lang="en">
 
 <head>
+  <script src="../vendor/jquery/jquery.min.js"></script>
+  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -60,18 +62,130 @@
     </header>
     
     <!-- Page Features -->
-    <div class="row text-center">
+    
         <form>
-            <div class="form-row">
-              <div class="form-group col-md-6">
+            
+              <div class="form-group">
+                <fieldset disabled>
                 <label for="inputProds">Productos</label>
-                <input type="text" class="form-control" id="inputProds" placeholder="Lista de productos">
+                <input type="text" class="form-control" id="inputProds" placeholder="Productos seleccionados">
+              </fieldset>
+                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#ventanaAgregarProductos">Agregar</button>
+                               <!-- Modal -->
+                              <div class="modal fade" id="ventanaAgregarProductos" tabindex="-1" role="dialog" aria-labelledby="modalCargarOperaciones" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                     
+                                      <h5 class="modal-title" id="modalCargarProductos">Productos disponibles:</h5>
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                    </div>
+      
+                                      <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">
+                                          <!-- Default checked -->
+                                          <div class="custom-control custom-checkbox">
+                                            <div class="form-row">
+                                            <div class="form-group col-md-9">
+                                              
+                                            <input type="checkbox" class="custom-control-input" id="check1">
+                                            <label class="custom-control-label" for="check1">Producto 1</label>
+                                          </div>
+                                          
+                                            <div class="form-group col-sm-2">
+                                              <select id="inputState" class="form-control">
+                                                <option selected>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                              </select>
+                                            </div>
+                                            </div>
+                                          </div>
+                                        </li>
+                                        <li class="list-group-item">
+                                          <!-- Default checked -->
+                                          <div class="custom-control custom-checkbox">
+                                            <div class="form-row">
+                                            <div class="form-group col-md-9">
+                                              
+                                            <input type="checkbox" class="custom-control-input" id="check2">
+                                            <label class="custom-control-label" for="check2">Producto 2</label>
+                                          </div>
+                                          
+                                            <div class="form-group col-sm-2">
+                                              <select id="inputState" class="form-control">
+                                                <option selected>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                              </select>
+                                            </div>
+                                            </div>
+                                          </div>
+                                        </li>
+                                      </ul>
+                                      
+                                      <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                      <button type="button" class="btn btn-primary" data-dismiss="modal">Seleccionar</button>
+                                     
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>  
+          
               </div>
-              <div class="form-group col-md-6">
+              <div class="form-group">
+                <fieldset disabled>
                 <label for="inputPresupuestos">Presupuestos</label>
-                <input type="text" class="form-control" id="inputPresupuestos" placeholder="Lista de presupuestos">
+                <input type="text" class="form-control" id="inputPresupuestos" placeholder="Presupuesto elegido">
+              </fieldset>
+                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#ventanaAgregarPresupuestos">Ver</button>
+                               <!-- Modal -->
+                              <div class="modal fade" id="ventanaAgregarPresupuestos" tabindex="-1" role="dialog" aria-labelledby="modalCargarOperaciones" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                     
+                                      <h5 class="modal-title" id="modalCargarPresupuestos">Presupuestos disponibles:</h5>
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                    </div>
+      
+                                    <div class="col-sm-10">
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" checked>
+                                        <label class="form-check-label">
+                                          Presupuesto 1
+                                        </label>
+                                      </div>
+                                      
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2">
+                                        <label class="form-check-label" for="gridRadios2">
+                                          Presupuesto 2
+                                        </label>
+                                      </div>
+                                      <div class="form-check disabled">
+                                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3">
+                                        <label class="form-check-label" for="gridRadios3">
+                                          Presupuesto 3
+                                        </label>
+                                      </div>
+                                    </div>
+
+                                      <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                      <button type="button" class="btn btn-primary" data-dismiss="modal">Seleccionar</button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                 
               </div>
-            </div>
+            
             <div class="form-group">
               <label for="inputCriterio">Criterio</label>
               <input type="text" class="form-control" id="inputCriterio" placeholder="Criterio de selecci&oacute;n de presupuesto">
@@ -79,7 +193,7 @@
             <button type="submit" class="btn btn-primary">Cargar</button>
             </div>
         </form>
-    </div>
+    
   </div>
 
 </body>

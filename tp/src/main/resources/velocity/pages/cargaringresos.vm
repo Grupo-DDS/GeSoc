@@ -71,7 +71,7 @@
 		<p>EXITO: EL EGRESO FUE CARGADO CORRECTAMENTE</p>
     #end
     <!-- Page Features -->
-    <div class="row text-center">
+
        <form method="get">
             <div class="form-group col-md-12">
                 <label for="inputMonto">Monto</label>
@@ -90,7 +90,7 @@
               <button onclick="submit" class="btn btn-primary">Cargar</button>
 
         </form>
-    </div>
+
   </div>
 
 </body>

@@ -20,7 +20,7 @@ import spark.Route;
 
 public class AuditoriaController {
 	public static Route LogsView = (Request request, Response response) -> {
-		// LoginController.ensureUserIsLoggedIn(request, response);
+		LoginController.ensureUserIsLoggedIn(request, response);
 		if (clientAcceptsHtml(request)) {
 			// obtencion, generacion del Modelo (MVC)
 			HashMap<String, Object> model = new HashMap<>();

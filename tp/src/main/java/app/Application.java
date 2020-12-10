@@ -98,6 +98,7 @@ public class Application {
         get(Path.Web.MENSAJES,   MensajesController.mensajesView);
         get(Path.Web.PROYECTO,   ProyectoController.IndexProyecto);
         get(Path.Web.ASOCIACIONES,   AsociacionesController.handleAsociaciones);
+        get(Path.Web.MIS_INGRESOS,  IngresoController.mis_ingresos);
         get("*",                ViewUtil.notFound);
 
         // Filtro aplicado despues de get y post

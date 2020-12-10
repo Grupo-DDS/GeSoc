@@ -104,7 +104,7 @@
 
       <div class="col-lg-4 col-md-4 mb-3">
         <div class="card h-100">
-          <img class="card-img-top" src="../Images/mis-operaciones.svg" alt="">
+          <img class="card-img-top" src="/Images/mis-operaciones.svg" alt="">
           <div class="card-body">
             <h4 class="card-title">Mis Operaciones</h4>
             <p class="card-text">Visualice sus Operaciones Cargadas</p>
@@ -131,8 +131,8 @@
                                 </div>
                                 <div class="modal-footer">
                                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                                  <a href="../pages/mis-egresos.html" class="btn btn-primary">Egresos</a>
-                                  <a href="../pages/mis-ingresos.html" class="btn btn-primary">Ingresos</a>
+                                  <a href="/mis-egresos" class="btn btn-primary">Egresos</a>
+                                  <a href="/mis-ingresos" class="btn btn-primary">Ingresos</a>
                                 </div>
                               </div>
                             </div>

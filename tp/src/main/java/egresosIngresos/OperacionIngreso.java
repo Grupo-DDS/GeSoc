@@ -139,6 +139,10 @@ public class OperacionIngreso {
 	public static void insertarEnBD(OperacionIngreso ingreso) {
 		OperacionIngresoMapperBD.getInstance().insert(ingreso);
 	}
+
+	public static List<OperacionIngreso> buscarIngresos() {
+		return OperacionIngresoMapperBD.getInstance().obtenerIngresos();
+	}
 	
 
 

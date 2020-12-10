@@ -14,6 +14,7 @@ import javax.persistence.EntityManager;
 import app.persistencia.BookDao;
 import app.persistencia.UserDao;
 import controllers.AsociacionesController;
+import controllers.AuditoriaController;
 import controllers.BookController;
 import controllers.EgresoController;
 import controllers.IndexController;
@@ -100,6 +101,7 @@ public class Application {
         get(Path.Web.ASOCIACIONES,   AsociacionesController.handleAsociaciones);
         get(Path.Web.MIS_INGRESOS,  IngresoController.mis_ingresos);
         get(Path.Web.MIS_EGRESOS,  EgresoController.mis_egresos);
+        get(Path.Web.AUDITORIA,  AuditoriaController.LogsView);
         get("*",                ViewUtil.notFound);
 
         // Filtro aplicado despues de get y post

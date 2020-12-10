@@ -113,5 +113,11 @@ public class RequestUtil {
 		return request.queryParams("Regla3Mix");
 	}
 	
-
+	public static String getQueryOperaciones(Request request) {
+		return request.queryParams("Operaciones");
+	}
+	
+	public static String getQueryTipoOperacion(Request request) {
+		return request.queryParams("TipoOperacion");
+	}
 }

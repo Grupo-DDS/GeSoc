@@ -59,10 +59,12 @@
 
         <ul class="list-group">
         #foreach($mensaje in $mensajes)
-		<li class="list-group-item">$mensaje.getCompra().getNumeroCompra()
-		 $mensaje.isCantidadPresupuestosIndicada()
-		 $mensaje.isPresupuestoElegido()
-		 $mensaje.isCriterioCorrecto()</li>
+		<li class="list-group-item">
+			$mensaje.getCompra().getNumeroCompra()
+			$mensaje.isCantidadPresupuestosIndicada()
+			$mensaje.isPresupuestoElegido()
+			$mensaje.isCriterioCorrecto()
+		</li>
    		
    		#end
         

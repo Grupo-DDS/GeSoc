@@ -20,6 +20,7 @@ public class Path {
         @Getter public static final String ASOCIACIONES = "/asociaciones";
         @Getter public static final String MIS_EGRESOS = "/mis-egresos";
         @Getter public static final String MIS_INGRESOS = "/mis-ingresos";
+        @Getter public static final String AUDITORIA = "/auditoria";
         public static String getINDEX() {
 			return INDEX;
 		}
@@ -52,6 +53,7 @@ public class Path {
         public static final String ASOCIACIONES = "/velocity/pages/asociaciones.vm";
         public static final String MIS_EGRESOS = "/velocity/pages/mis-egresos.vm";
         public static final String MIS_INGRESOS = "/velocity/pages/mis-ingresos.vm";
+        public static final String AUDITORIA = "/velocity/pages/auditoria.vm";
     }
 
 }

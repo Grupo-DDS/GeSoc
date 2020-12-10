@@ -6,14 +6,12 @@ import static app.RequestUtil.clientAcceptsHtml;
 import static app.RequestUtil.clientAcceptsJson;
 
 import java.util.HashMap;
-import java.util.List;
 
 import app.Path;
 import app.ViewUtil;
 import spark.Request;
 import spark.Response;
 import spark.Route;
-import validadorDeCompras.Mensaje;
 import validadorDeCompras.Usuario;
 
 public class MensajesController {
@@ -24,7 +22,6 @@ public class MensajesController {
             HashMap<String, Object> model = new HashMap<>();
             String nombreUsuario = request.session().attribute("currentUser");
             Usuario usuario = Usuario.buscarUsuarioBD(nombreUsuario);
-            List<Mensaje> lista = usuario.getBandejaDeMensajes();
 
             model.put("mensajes", usuario.getBandejaDeMensajes());
             //actualiza la Vista (MVC) que es un HTML

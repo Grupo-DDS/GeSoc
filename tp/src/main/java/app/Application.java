@@ -99,6 +99,7 @@ public class Application {
         get(Path.Web.PROYECTO,   ProyectoController.IndexProyecto);
         get(Path.Web.ASOCIACIONES,   AsociacionesController.handleAsociaciones);
         get(Path.Web.MIS_INGRESOS,  IngresoController.mis_ingresos);
+        get(Path.Web.MIS_EGRESOS,  EgresoController.mis_egresos);
         get("*",                ViewUtil.notFound);
 
         // Filtro aplicado despues de get y post

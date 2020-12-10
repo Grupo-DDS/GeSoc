@@ -25,4 +25,7 @@ public class OrganizacionProveedora extends Proveedor {
 		this.razonSocial = razonSocial;
 	}
 
+	public String getNombre() {
+		return razonSocial;
+	}
 }

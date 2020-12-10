@@ -25,8 +25,11 @@ public class DocumentoComercial {
 		this.nroComercial = nroComercial;
 		this.tipo = tipo;
 	}
+	
+	public DocumentoComercial() {
 
-
+	}
+	
 	@Override
 	public String toString() {
 		return "DocumentoComercial [id=" + id + ", nroComercial=" + nroComercial + ", tipo=" + tipo + "]";

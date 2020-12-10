@@ -1,6 +1,7 @@
 package egresosIngresos;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,6 +15,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import comprasPresupuestos.Compra;
+import persistencia.OperacionEgresoMapperBD;
 @Entity
 @Table(name="EGRESOS")
 public class OperacionEgreso {
@@ -138,5 +140,11 @@ public class OperacionEgreso {
 		return compra.isRequierePresupuestos() ?
 				compra.getPresupuestoElegido().getValorTotal() : compra.getValorTotal();
 	}
+
+	public static List<OperacionEgreso> buscarEgresos() {
+		return OperacionEgresoMapperBD.getInstance().obtenerEgresos();
+	}
+
+
 
 }

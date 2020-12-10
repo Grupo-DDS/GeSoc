@@ -6,17 +6,25 @@ import javax.persistence.Entity;
 public class Persona extends Proveedor {
 	int dni;
 	String nombreApellido;
+
 	public int getDni() {
 		return dni;
 	}
+
 	public void setDni(int dni) {
 		this.dni = dni;
 	}
+
 	public String getNombreApellido() {
 		return nombreApellido;
 	}
+
 	public void setNombreApellido(String nombreApellido) {
 		this.nombreApellido = nombreApellido;
+	}
+
+	public String getNombre() {
+		return nombreApellido;
 	}
 
 }

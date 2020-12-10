@@ -70,7 +70,6 @@ public class IngresoController {
 			// obtencion, generacion del Modelo (MVC)
 			HashMap<String, Object> model = new HashMap<>();
 			List<OperacionIngreso> ingresos = OperacionIngreso.buscarIngresos();
-			OperacionIngreso op = new OperacionIngreso();
 			DecimalFormat formatoPrecio = new DecimalFormat("#.##");
 			model.put("formato", formatoPrecio);
 			model.put("ingresos", ingresos);

@@ -14,6 +14,21 @@ public class MedioDePago {
 	private String medio;
 	private String paymentTypeId;
 
+	public Long getId_medioDePago() {
+		return id_medioDePago;
+	}
+
+
+	public String getPaymentTypeId() {
+		return paymentTypeId;
+	}
+
+
+
+	public String getMedio() {
+		return medio;
+	}
+
 	public boolean datosDelSistema(String medio) {
 		switch (medio) {
 		case "Visa":

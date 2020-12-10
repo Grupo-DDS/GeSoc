@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>GeSoc - Mis ingresos</title>
+  <title>GeSoc - Mis egresos</title>
 
   <!-- Bootstrap core CSS -->
   <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -53,37 +53,40 @@
 
     <!-- Header -->
         <header class="jumbotron my-4">
-        <h1 class="display-3">Vea sus Ingresos</h1>
-        <p class="lead">Visualice operaciones de ingresos.</p>
+        <h1 class="display-3">Vea sus Egresos</h1>
+        <p class="lead">Visualice operaciones de egresos.</p>
         </header>
     </div>
-    <div class="container">
-        <div class="form-row">
-    <style type="text/css">
-	table.tableizer-table {
-		font-size: 18px;
-		border: 1px solid #CCC; 
-		font-family: Arial, Helvetica, sans-serif;
-	} 
-	.tableizer-table td {
-		padding: 4px;
-		margin: 3px;
-		border: 1px solid #CCC;
-	}
-	.tableizer-table th {
-		background-color: #BFC5C5; 
-		font-weight: bold;
-	}
-</style>
-<table class="tableizer-table">
-<thead><tr class="tableizer-firstrow"><th></th><th>&nbsp;Descripci&oacute;n&nbsp;</th><th>&nbsp;Monto&nbsp;</th><th>&nbsp;Fecha&nbsp;</th></tr></thead><tbody>
-	#foreach($ingreso in $ingresos)
-		<tr><td>Ingreso $ingreso.getId()</td><td>&nbsp; $ingreso.getDescripcion() &nbsp;</td><td>&nbsp; $formato.format($ingreso.getMontoTotal()) &nbsp;</td><td>&nbsp; $ingreso.getFechaOperacion() &nbsp;</td></tr>   		
-	#end
 
-</div>
-    </div>
-</tbody></table>
-    
+    <div class="container">
+    <div class="form-row">
+    <style type="text/css">
+      table.tableizer-table {
+        font-size: 18px;
+        border: 1px solid #CCC; 
+        font-family: Arial, Helvetica, sans-serif;
+      } 
+      .tableizer-table td {
+        padding: 4px;
+        margin: 3px;
+        border: 1px solid #CCC;
+      }
+      .tableizer-table th {
+        background-color: #BFC5C5; 
+		    font-weight: bold;
+      }
+    </style>
+    <table class="tableizer-table">
+    <thead><tr class="tableizer-firstrow"><th></th><th>&nbsp;Compra&nbsp;</th><th>&nbsp;Comprobante&nbsp;</th><th>&nbsp;Proveedor&nbsp;</th><th>&nbsp;Medio de pago&nbsp;</th><th>&nbsp;Fecha&nbsp;</th><th>&nbsp;Monto&nbsp;</th><th>&nbsp;Ingreso vinculado&nbsp;</th></tr></thead><tbody>
+     	#foreach($egreso in $egresos)
+			 <tr><td>Egreso $egreso.getId()</td><td>&nbsp; $egreso.getCompra().getNumeroCompra() &nbsp;</td><td>&nbsp; $egreso.getComprobante().getNroComercial() &nbsp;</td><td>&nbsp; $egreso.getProveedor().getNombre() &nbsp;</td><td>&nbsp; $egreso.getMedioDePago().getMedio() &nbsp;</td><td>&nbsp; $egreso.getFechaOperacion() &nbsp;</td><td>&nbsp; $egreso.getValorDeEgreso() &nbsp;</td>
+				#if($egreso.getIngreso())
+					<td>&nbsp; $egreso.getIngreso().getId() &nbsp;</td></tr>
+				#else
+					<td>&nbsp; SIN VINCULAR &nbsp;</td></tr>
+				#end
+		#end
+    </tbody></table>
+      </div>
 </body>
 </html>

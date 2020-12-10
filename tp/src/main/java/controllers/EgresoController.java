@@ -1,5 +1,8 @@
 package controllers;
 
+import static app.JsonUtil.dataToJson;
+import static app.RequestUtil.clientAcceptsHtml;
+import static app.RequestUtil.clientAcceptsJson;
 import static app.RequestUtil.getQueryCompra;
 import static app.RequestUtil.getQueryComprobanteNumero;
 import static app.RequestUtil.getQueryComprobanteTipo;
@@ -8,8 +11,10 @@ import static app.RequestUtil.getQueryFecha;
 import static app.RequestUtil.getQueryMedio;
 import static app.RequestUtil.getQueryNombreProveedor;
 
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import app.Path;
@@ -68,6 +73,7 @@ public class EgresoController {
 					return ViewUtil.render(request, model, Path.Template.EGRESOS);
 				}
 				MedioDePago mp = new MedioDePago();
+				mp.setMedio(getQueryMedio(request).trim());
 				if (mp.datosDelSistema(getQueryMedio(request).trim())) {
 					MedioDePagoMapperBD.getInstance().insert(mp);
 					nuevaOperacionEgreso.setMedioDePago(mp);
@@ -115,5 +121,29 @@ public class EgresoController {
 		}
 		return ViewUtil.render(request, model, Path.Template.EGRESOS);
 
+	};
+	
+	public static Route mis_egresos = (Request request, Response response) -> {
+		LoginController.ensureUserIsLoggedIn(request, response);
+		if (clientAcceptsHtml(request)) {
+			// obtencion, generacion del Modelo (MVC)
+			HashMap<String, Object> model = new HashMap<>();
+			List<OperacionEgreso> egresos = OperacionEgreso.buscarEgresos();
+			
+			DecimalFormat formatoPrecio = new DecimalFormat("#.##");
+			model.put("formato", formatoPrecio);
+			model.put("egresos", egresos);
+			// actualiza la Vista (MVC) que es un HTML
+			System.out.println(egresos.get(0).toString());
+			return ViewUtil.render(request, model, Path.Template.MIS_EGRESOS);
+		}
+
+		if (clientAcceptsJson(request)) {
+			// actualiza la Vista, que es un JSON
+			
+			return dataToJson(OperacionEgreso.buscarEgresos());
+		}
+		// actualiza la Vista con un mensaje de error
+		return ViewUtil.notAcceptable.handle(request, response);
 	};
 }

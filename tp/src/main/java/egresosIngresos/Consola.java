@@ -62,7 +62,7 @@ public class Consola {
 		listaUsuariosRevisores.add(usuario2);
 		listaUsuariosRevisores.add(usuario3);
 
-		ProveedorMenorValor criterio = new ProveedorMenorValor();
+		ProveedorMenorValor criterio = ProveedorMenorValor.getInstance();
 
 		Compra compra = new Compra(null, listaProductos, listaPresupuestos,presupuesto1, 3,listaUsuariosRevisores, criterio);
 		Compra compra2 = new Compra(null, listaProductos, listaPresupuestos,presupuesto3, 5,listaUsuariosRevisores, criterio);

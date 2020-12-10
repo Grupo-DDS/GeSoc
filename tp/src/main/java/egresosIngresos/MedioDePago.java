@@ -5,6 +5,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import persistencia.MedioDePagoMapperBD;
+
 @Entity
 public class MedioDePago {
 	@Id
@@ -135,6 +137,10 @@ public class MedioDePago {
 
 	public void setMedio(String _medio) {
 		medio = _medio;
+	}
+	
+	public static void insertarNuevoMedioDePagoEnBD(MedioDePago mp) {
+		MedioDePagoMapperBD.getInstance().insert(mp);
 	}
 
 }

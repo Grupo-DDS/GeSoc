@@ -5,9 +5,18 @@ import java.util.Comparator;
 
 import javax.persistence.Entity;
 
+import persistencia.CompraMapperBD;
+
 @Entity
 public class ProveedorMenorValor extends CriterioSeleccionPresupuesto {
 
+	private static final ProveedorMenorValor instance = new ProveedorMenorValor();
+	
+	private ProveedorMenorValor () {}
+	public static ProveedorMenorValor getInstance() {
+		return instance;
+	}
+	
 	public Presupuesto obtenerPresupuesto(Compra compra) {
 		Comparator <Presupuesto> comparador = new Comparator<Presupuesto>(){
 			@Override

@@ -1,4 +1,5 @@
 package comprasPresupuestos; 
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import persistencia.CompraMapperBD;
 import validadorDeCompras.Usuario;
 
 @Entity
@@ -137,7 +139,10 @@ public class Compra {
 	public void setNumeroCompra(Long numeroCompra) {
 		this.numeroCompra = numeroCompra;
 	}
-
+	
+	public static Compra buscarCompraPorNumeroEnBD(Long numero) {
+		return CompraMapperBD.getInstance().buscarCompraPorNumero(numero);
+	}
 
 
 

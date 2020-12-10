@@ -37,7 +37,11 @@
             <a class="nav-link" href="/mensajes">Mensajes</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/usuario">Usuario</a>
+			#if($currentUser)
+				<a class="nav-link" href="/login">$currentUser</a>
+			#else
+				<a class="nav-link" href="/login">Usuario</a>
+			#end
           </li>
         </ul>
       </div>
@@ -100,11 +104,11 @@
                     <div class="well panel-highlighted">
                     <form id="loginForm" method="post">
                             #if($authenticationFailed)
-        						<p class="bad notification">$msg.get("LOGIN_AUTH_FAILED")</p>
+        						<p class="bad notification">La informaci&oacute;n ingresada es incorrecta.</p>
     						#elseif($authenticationSucceeded)
-        						<p class="good notification">$msg.get("LOGIN_AUTH_SUCCEEDED", $currentUser)</p>
+        						<p class="good notification">Usted ha iniciado sesi&oacute;n como $currentUser</p>
     						#elseif($loggedOut)
-        						<p class="notification">$msg.get("LOGIN_LOGGED_OUT")</p>
+        						<p class="notification">Usted ha cerrado la sesi&oacute;n</p>
     						#end
                         <h5>Iniciar sesi&oacute;n con una cuenta existente</h5>
                         <div class="form-group js-auth-dialog-input-username">
@@ -134,7 +138,7 @@
                         #if($signinFailedSecurity)
         					<p>SU CONTRASE&Ntilde;A NO ES SEGURA</p>
 						#elseif($signinFailedUsername)
-        					<p>SU NOMBRE DE USUARIO YA EXISTE</p>
+        					<p>EL NOMBRE DE USUARIO INGRESADO YA EXISTE</p>
         				#elseif($signinSucceeded)
         					<p>USUARIO REGISTRADO CORRECTAMENTE!</p>	
         				#end

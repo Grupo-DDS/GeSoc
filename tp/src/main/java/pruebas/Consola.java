@@ -180,7 +180,7 @@ public class Consola {
 		listaUsuariosRevisores.add(usuario2);
 		listaUsuariosRevisores.add(usuario3);
 		//criterio
-		ProveedorMenorValor criterio = new ProveedorMenorValor();
+		ProveedorMenorValor criterio =  ProveedorMenorValor.getInstance();
 		CriterioSeleccionPresupuestoMapperBD cspmbd =  CriterioSeleccionPresupuestoMapperBD.getInstance();
 		cspmbd.insert(criterio);
 		//compra

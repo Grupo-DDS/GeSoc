@@ -48,7 +48,7 @@ public class OperacionEgresoTest {
 		listaUsuariosRevisores.add(usuario2);
 		listaUsuariosRevisores.add(usuario3);
 		//criterio
-		ProveedorMenorValor criterio = new ProveedorMenorValor();
+		ProveedorMenorValor criterio =  ProveedorMenorValor.getInstance();
 		//compra
 		Compra compra1=new Compra(null, listaProducto, null,null, 0,listaUsuariosRevisores, criterio);
 		//operacion egreso

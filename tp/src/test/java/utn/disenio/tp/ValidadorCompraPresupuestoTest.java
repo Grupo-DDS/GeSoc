@@ -46,7 +46,7 @@ public void testCantidad() {
 		revisores.add(usuario2);
 		revisores.add(usuario3);
 		revisores.add(usuario4);
-		ProveedorMenorValor criterio = new ProveedorMenorValor();
+		ProveedorMenorValor criterio =  ProveedorMenorValor.getInstance();
 		
 		
 		Compra compra = new Compra(null, listaProducto, presupuestos,presupuesto1, 3,revisores, criterio);
@@ -127,7 +127,7 @@ public void testCantidad() {
 		revisores.add(usuario2);
 		revisores.add(usuario3);
 		revisores.add(usuario4);
-		ProveedorMenorValor criterio = new ProveedorMenorValor();
+		ProveedorMenorValor criterio =  ProveedorMenorValor.getInstance();
 		
 		List<Producto> listaProducto = new ArrayList<Producto>();
 		listaProducto.add(producto1);
@@ -206,7 +206,7 @@ public void testCantidad() {
 		revisores.add(usuario2);
 		revisores.add(usuario3);
 		revisores.add(usuario4);
-		ProveedorMenorValor criterio = new ProveedorMenorValor();
+		ProveedorMenorValor criterio =  ProveedorMenorValor.getInstance();
 		
 		List<Producto> listaProducto = new ArrayList<Producto>();
 		listaProducto.add(producto1);

@@ -1,6 +1,5 @@
 package controllers;
 
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,5 +14,15 @@ public class ProyectoController {
 		Map<String, Object> model = new HashMap<>();
 		LoginController.ensureUserIsLoggedIn(request, response);
 		return ViewUtil.render(request, model, Path.Template.PROYECTO);
-};
+	};
+	public static Route cargarProyecto = (Request request, Response response) -> {
+		Map<String, Object> model = new HashMap<>();
+		LoginController.ensureUserIsLoggedIn(request, response);
+		return ViewUtil.render(request, model, Path.Template.CARGAR_PROYECTO);
+	};
+	public static Route vincularProyecto = (Request request, Response response) -> {
+		Map<String, Object> model = new HashMap<>();
+		LoginController.ensureUserIsLoggedIn(request, response);
+		return ViewUtil.render(request, model, Path.Template.VINCULAR_PROYECTO);
+	};
 }

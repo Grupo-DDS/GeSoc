@@ -16,6 +16,7 @@ import app.persistencia.UserDao;
 import controllers.AsociacionesController;
 import controllers.AuditoriaController;
 import controllers.BookController;
+import controllers.CompraController;
 import controllers.EgresoController;
 import controllers.IndexController;
 import controllers.IngresoController;
@@ -35,45 +36,7 @@ public class Application {
     	
         EntityManager em = BDUtils.getEntityManager();
         BDUtils.comenzarTransaccion(em);
-      /* Usuario usuario = Usuario.buscarUsuarioBD("juan");
-        Compra compra = new Compra(); 
-        
-        compra.setNumeroCompra(Long.parseLong("100"));
-        CompraMapperBD.getInstance().insert(compra);
-        Mensaje mensaje = new Mensaje(true,true,true,compra);
-        Mensaje mensaje1 = new Mensaje(true,true,true,compra);
-        Mensaje mensaje2 = new Mensaje(true,true,true,compra);
-        Mensaje mensaje3 = new Mensaje(true,true,true,compra);
-        Mensaje mensaje4 = new Mensaje(true,true,true,compra);
-        Mensaje mensaje5 = new Mensaje(true,true,true,compra);
-        Mensaje mensaje6 = new Mensaje(true,true,true,compra);
-        Mensaje mensaje7 = new Mensaje(true,true,true,compra);
-        Mensaje mensaje8 = new Mensaje(true,true,true,compra);
-        Mensaje mensaje9 = new Mensaje(true,true,true,compra);
-        Mensaje mensaje10 = new Mensaje(true,true,true,compra);
-        Mensaje mensaje11= new Mensaje(true,true,true,compra);
-        Mensaje mensaje12 = new Mensaje(true,true,true,compra);
-        Mensaje mensaje13 = new Mensaje(true,true,true,compra);
-        Mensaje mensaje14 = new Mensaje(true,true,true,compra);
-        List<Mensaje> mensajes = new ArrayList<Mensaje>();
-        mensajes.add(mensaje);
-        mensajes.add(mensaje1);
-        mensajes.add(mensaje2);
-        mensajes.add(mensaje3);
-        mensajes.add(mensaje4);
-        mensajes.add(mensaje5);
-        mensajes.add(mensaje6);
-        mensajes.add(mensaje7);
-        mensajes.add(mensaje8);
-        mensajes.add(mensaje9);
-        mensajes.add(mensaje10);
-        mensajes.add(mensaje11);
-        mensajes.add(mensaje12);
-        mensajes.add(mensaje13);
-        mensajes.add(mensaje14);
-        MensajeMapper.getInstance().insert(mensajes);
-        usuario.setBandejaDeMensajes(mensajes);
-        UsuarioMapper.getInstance().update(usuario);*/
+      
         bookDao = new BookDao();
         userDao = new UserDao();
 
@@ -98,10 +61,13 @@ public class Application {
         get(Path.Web.LOGOUT,   LoginController.handleLogoutPost);
         get(Path.Web.MENSAJES,   MensajesController.mensajesView);
         get(Path.Web.PROYECTO,   ProyectoController.IndexProyecto);
+        get(Path.Web.VINCULAR_PROYECTO,   ProyectoController.vincularProyecto);
+        get(Path.Web.CARGAR_PROYECTO,   ProyectoController.cargarProyecto);
         get(Path.Web.ASOCIACIONES,   AsociacionesController.handleAsociaciones);
         get(Path.Web.MIS_INGRESOS,  IngresoController.mis_ingresos);
         get(Path.Web.MIS_EGRESOS,  EgresoController.mis_egresos);
         get(Path.Web.AUDITORIA,  AuditoriaController.LogsView);
+        get(Path.Web.COMPRA,  CompraController.cargarCompra);
         get("*",                ViewUtil.notFound);
 
         // Filtro aplicado despues de get y post

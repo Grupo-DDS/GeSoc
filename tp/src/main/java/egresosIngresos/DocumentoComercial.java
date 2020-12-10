@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import persistencia.DocumentoComercialMapperBD;
+
 @Entity
 @Table(name="DOCUMENTOS_COMERCIALES")
 public class DocumentoComercial {
@@ -63,6 +65,10 @@ public class DocumentoComercial {
 
 	public void setTipo(char tipo) {
 		this.tipo = tipo;
+	}
+	
+	public static void insertarDocumentoEnBD(DocumentoComercial doc) {
+		DocumentoComercialMapperBD.getInstance().insert(doc);
 	}
 	
 }

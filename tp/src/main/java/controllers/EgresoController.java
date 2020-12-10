@@ -25,11 +25,6 @@ import egresosIngresos.MedioDePago;
 import egresosIngresos.OperacionEgreso;
 import egresosIngresos.OrganizacionProveedora;
 import egresosIngresos.Persona;
-import persistencia.CompraMapperBD;
-import persistencia.DocumentoComercialMapperBD;
-import persistencia.MedioDePagoMapperBD;
-import persistencia.OperacionEgresoMapperBD;
-import persistencia.ProveedorMapperBD;
 import spark.Request;
 import spark.Response;
 import spark.Route;
@@ -44,8 +39,7 @@ public class EgresoController {
 					&& !getQueryFecha(request).equals("") && !getQueryMedio(request).equals("")
 					&& !getQueryNombreProveedor(request).equals("") && !getQueryDNICUITProveedor(request).equals("")
 					&& !getQueryComprobanteNumero(request).equals("")) {
-				Compra compraEncontrada = CompraMapperBD.getInstance()
-						.buscarCompraPorNumero(Long.parseLong(getQueryCompra(request).trim()));
+				Compra compraEncontrada = Compra.buscarCompraPorNumeroEnBD(Long.parseLong(getQueryCompra(request).trim()));
 				if (compraEncontrada != null)
 					nuevaOperacionEgreso.setCompra(compraEncontrada);
 				else {
@@ -56,7 +50,7 @@ public class EgresoController {
 					DocumentoComercial comprobante = new DocumentoComercial(
 							Integer.parseInt(getQueryComprobanteNumero(request).trim()),
 							getQueryComprobanteTipo(request).trim().charAt(0));
-					DocumentoComercialMapperBD.getInstance().insert(comprobante);
+					DocumentoComercial.insertarDocumentoEnBD(comprobante);
 					nuevaOperacionEgreso.setComprobante(comprobante);
 				} else {
 					model.put("comprobanteUnSoloDigito", true);
@@ -75,7 +69,7 @@ public class EgresoController {
 				MedioDePago mp = new MedioDePago();
 				mp.setMedio(getQueryMedio(request).trim());
 				if (mp.datosDelSistema(getQueryMedio(request).trim())) {
-					MedioDePagoMapperBD.getInstance().insert(mp);
+					MedioDePago.insertarNuevoMedioDePagoEnBD(mp);
 					nuevaOperacionEgreso.setMedioDePago(mp);
 				} else {
 					model.put("errorMedioDePagoInexistente", true);
@@ -83,7 +77,7 @@ public class EgresoController {
 				}
 				if (getQueryDNICUITProveedor(request).trim().length() <= 8) {
 					int dniPersona = Integer.parseInt(getQueryDNICUITProveedor(request).trim());
-					Persona proveedorEncontradoBD = ProveedorMapperBD.getInstance().buscarPersonaPorDNI(dniPersona);
+					Persona proveedorEncontradoBD = Persona.buscarPersonaPorDNIEnBD(dniPersona);
 					if (proveedorEncontradoBD != null)
 						nuevaOperacionEgreso.setProveedor(proveedorEncontradoBD);
 					else {
@@ -91,25 +85,27 @@ public class EgresoController {
 
 						nuevaPersona.setDni(dniPersona);
 						nuevaPersona.setNombreApellido(getQueryNombreProveedor(request).trim());
-						ProveedorMapperBD.getInstance().insert(nuevaPersona);
+						Persona.insertarNuevaPersonaEnBD(nuevaPersona);
+						
 						nuevaOperacionEgreso.setProveedor(nuevaPersona);
 					}
 				} else {
 					int cuitProveedor = Integer.parseInt(getQueryDNICUITProveedor(request).trim());
-					OrganizacionProveedora proveedorEncontradoBD = ProveedorMapperBD.getInstance()
-							.buscarProveedorPorCuit(cuitProveedor);
+					
+					OrganizacionProveedora proveedorEncontradoBD = OrganizacionProveedora.buscarProveedorPorCUITEnBD(cuitProveedor);
 					if (proveedorEncontradoBD != null)
 						nuevaOperacionEgreso.setProveedor(proveedorEncontradoBD);
 					else {
 						OrganizacionProveedora nuevaOrgProveedora = new OrganizacionProveedora();
 						nuevaOrgProveedora.setCuit(cuitProveedor);
 						nuevaOrgProveedora.setRazonSocial(getQueryNombreProveedor(request).trim());
-						ProveedorMapperBD.getInstance().insert(nuevaOrgProveedora);
+						OrganizacionProveedora.insertarNuevoProveedorEnBD(nuevaOrgProveedora);
 						nuevaOperacionEgreso.setProveedor(nuevaOrgProveedora);
 					}
 				}
 
-				OperacionEgresoMapperBD.getInstance().insert(nuevaOperacionEgreso);
+				
+				OperacionEgreso.insertarNuevoEgresoEnBD(nuevaOperacionEgreso);
 				model.put("cargaEgresoExitosa", true);
 
 			} else {

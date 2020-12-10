@@ -16,6 +16,8 @@ public class Categoria {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 	
+	private String nombre;
+	
 	@ManyToOne
 	private CriterioCategorizacion criterio;
 	
@@ -28,6 +30,12 @@ public class Categoria {
 	}
 
 	
+	public String getNombre() {
+		return nombre;
+	}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 	public CriterioCategorizacion getCriterio() {
 		return criterio;
 	}

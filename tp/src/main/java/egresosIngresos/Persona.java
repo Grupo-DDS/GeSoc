@@ -2,6 +2,8 @@ package egresosIngresos;
 
 import javax.persistence.Entity;
 
+import persistencia.ProveedorMapperBD;
+
 @Entity
 public class Persona extends Proveedor {
 	int dni;
@@ -25,6 +27,15 @@ public class Persona extends Proveedor {
 
 	public String getNombre() {
 		return nombreApellido;
+	}
+	
+	public static Persona buscarPersonaPorDNIEnBD(int dni) {
+		return ProveedorMapperBD.getInstance().buscarPersonaPorDNI(dni);
+	}
+
+	public static void insertarNuevaPersonaEnBD(Persona nuevaPersona) {
+		ProveedorMapperBD.getInstance().insert(nuevaPersona);
+		
 	}
 
 }

@@ -17,10 +17,15 @@ public class Path {
         @Getter public static final String INGRESOS = "/ingresos";
         @Getter public static final String MENSAJES = "/mensajes";
         @Getter public static final String PROYECTO = "/proyecto";
+        @Getter public static final String VINCULAR_PROYECTO = "/vincular-proyecto";
+        @Getter public static final String CARGAR_PROYECTO = "/cargar-proyectos";
         @Getter public static final String ASOCIACIONES = "/asociaciones";
         @Getter public static final String MIS_EGRESOS = "/mis-egresos";
         @Getter public static final String MIS_INGRESOS = "/mis-ingresos";
         @Getter public static final String AUDITORIA = "/auditoria";
+        @Getter public static final String COMPRA = "/compras";
+        
+        
         public static String getINDEX() {
 			return INDEX;
 		}
@@ -50,10 +55,13 @@ public class Path {
         public static final String INGRESOS = "/velocity/pages/cargaringresos.vm";
         public static final String MENSAJES = "/velocity/pages/mensajes.vm";
         public static final String PROYECTO = "/velocity/pages/proyecto.vm";
+        public static final String VINCULAR_PROYECTO = "/velocity/pages/vincular-proyecto.vm";
+        public static final String CARGAR_PROYECTO = "/velocity/pages/cargar-proyectos.vm";
         public static final String ASOCIACIONES = "/velocity/pages/asociaciones.vm";
         public static final String MIS_EGRESOS = "/velocity/pages/mis-egresos.vm";
         public static final String MIS_INGRESOS = "/velocity/pages/mis-ingresos.vm";
         public static final String AUDITORIA = "/velocity/pages/auditoria.vm";
+        public static final String COMPRA = "/velocity/pages/cargar-compras.vm";
     }
 
 }

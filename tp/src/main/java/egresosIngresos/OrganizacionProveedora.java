@@ -3,6 +3,8 @@ package egresosIngresos;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
+import persistencia.ProveedorMapperBD;
+
 @Entity
 public class OrganizacionProveedora extends Proveedor {
 	int cuit;
@@ -27,5 +29,14 @@ public class OrganizacionProveedora extends Proveedor {
 
 	public String getNombre() {
 		return razonSocial;
+	}
+
+	public static OrganizacionProveedora buscarProveedorPorCUITEnBD(int cuitProveedor) {
+		return ProveedorMapperBD.getInstance().buscarProveedorPorCuit(cuitProveedor);
+	}
+
+	public static void insertarNuevoProveedorEnBD(OrganizacionProveedora nuevaOrgProveedora) {
+		ProveedorMapperBD.getInstance().insert(nuevaOrgProveedora);
+		
 	}
 }

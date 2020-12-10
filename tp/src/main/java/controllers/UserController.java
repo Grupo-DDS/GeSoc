@@ -13,7 +13,7 @@ public class UserController {
             return false;
         }
         Usuario user = new Usuario();
-        user = user.buscarUsuarioBD(username);
+        user = Usuario.buscarUsuarioBD(username);
         if (user == null) {
             return false;
         }

@@ -95,7 +95,7 @@
               <p class="card-text">Acceda a la auditor&iacute;a de operaciones </p>
             </div>
             <div class="card-footer">
-              <a href="/pages/auditoria" class="btn btn-primary">Auditor&iacute;a</a>
+              <a href="/auditoria" class="btn btn-primary">Auditor&iacute;a</a>
             </div>
           </div>
         </div>

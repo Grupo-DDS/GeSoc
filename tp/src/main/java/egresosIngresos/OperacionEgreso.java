@@ -145,6 +145,11 @@ public class OperacionEgreso {
 		return OperacionEgresoMapperBD.getInstance().obtenerEgresos();
 	}
 
+	public static void insertarNuevoEgresoEnBD(OperacionEgreso nuevaOperacionEgreso) {
+		OperacionEgresoMapperBD.getInstance().insert(nuevaOperacionEgreso);
+		
+	}
+
 
 
 }

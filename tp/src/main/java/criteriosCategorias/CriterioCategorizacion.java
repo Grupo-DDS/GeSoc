@@ -19,14 +19,16 @@ public class CriterioCategorizacion {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 	
+	private String nombre;
+	
 	@OneToMany
 	List<Categoria> categorias = new ArrayList<Categoria>();
 	
 	@ManyToOne
-	public CriterioCategorizacion criterioPadre;
+	private CriterioCategorizacion criterioPadre;
 	
 	@OneToMany
-	public List<CriterioCategorizacion> criterioHijo = new ArrayList<CriterioCategorizacion>();
+	private List<CriterioCategorizacion> criterioHijo = new ArrayList<CriterioCategorizacion>();
 	
 	
 	public Long getId() {
@@ -35,6 +37,22 @@ public class CriterioCategorizacion {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public void setCategorias(List<Categoria> categorias) {
+		this.categorias = categorias;
+	}
+
+	public void setCriterioHijo(List<CriterioCategorizacion> criterioHijo) {
+		this.criterioHijo = criterioHijo;
 	}
 
 	public List<Categoria> getCategorias() {

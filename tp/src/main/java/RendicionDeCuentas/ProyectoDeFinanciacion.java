@@ -114,6 +114,15 @@ public class ProyectoDeFinanciacion {
 		return id;
 	}
 
+	public static ProyectoDeFinanciacion buscarProyectoPorIdentificadorEnBD(Long identificadorPresupuesto) {
+		return ProyectoDeFinanciacionMapperBD.getInstance().buscarProyectoPorIdentificador(identificadorPresupuesto);
+	}
+
+	public static void ActualizarProyecto(ProyectoDeFinanciacion proyectoEncontrado) {
+		ProyectoDeFinanciacionMapperBD.getInstance().update(proyectoEncontrado);
+		
+	}
+
 	
 	
 

@@ -6,6 +6,9 @@ import java.util.Map;
 import RendicionDeCuentas.ProyectoDeFinanciacion;
 import app.Path;
 import app.ViewUtil;
+import comprasPresupuestos.Presupuesto;
+import egresosIngresos.OperacionEgreso;
+import egresosIngresos.OperacionIngreso;
 import spark.Request;
 import spark.Response;
 import spark.Route;
@@ -15,6 +18,10 @@ import static app.RequestUtil.getQueryCantidadPresupuestos;
 import static app.RequestUtil.getQueryMontoLimiteSinPresupuesto;
 import static app.RequestUtil.getQueryMontoTotal;
 import static app.RequestUtil.getQueryUsername;
+
+import static app.RequestUtil.getQueryNumeroProyecto;
+import static app.RequestUtil.getQueryOpcionOperacion;
+import static app.RequestUtil.getQueryNumeroOperacion;
 
 public class ProyectoController {
 	public static Route IndexProyecto = (Request request, Response response) -> {
@@ -53,7 +60,7 @@ public class ProyectoController {
 				model.put("montoLimiteMenorACero", true);
 				return ViewUtil.render(request, model, Path.Template.CARGAR_PROYECTO);
 			}
-			
+
 			if (montoLimite > montoTotal) {
 				model.put("montoLimiteMayorAlTotal", true);
 				return ViewUtil.render(request, model, Path.Template.CARGAR_PROYECTO);
@@ -83,7 +90,7 @@ public class ProyectoController {
 				model.put("usuarioNoExiste", true);
 				return ViewUtil.render(request, model, Path.Template.CARGAR_PROYECTO);
 			}
-			
+
 			ProyectoDeFinanciacion.insertarNuevoProyectoEnBD(proyectoNuevo);
 			model.put("proyectoCargadoCorrectamente", true);
 			model.put("idProyectoNuevo", proyectoNuevo.getId());
@@ -94,6 +101,66 @@ public class ProyectoController {
 	public static Route vincularProyecto = (Request request, Response response) -> {
 		Map<String, Object> model = new HashMap<>();
 		LoginController.ensureUserIsLoggedIn(request, response);
+		if (getQueryNumeroProyecto(request) != null && getQueryOpcionOperacion(request) != null
+				&& getQueryNumeroOperacion(request) != null) {
+			Long identificadorPresupuesto;
+			try {
+				identificadorPresupuesto = Long.parseLong(getQueryNumeroProyecto(request).trim());
+			} catch (NumberFormatException e1) {
+				model.put("FormatoNumeroIncorrecto", true);
+				return ViewUtil.render(request, model, Path.Template.VINCULAR_PROYECTO);
+			}
+			ProyectoDeFinanciacion proyectoEncontrado = ProyectoDeFinanciacion
+					.buscarProyectoPorIdentificadorEnBD(identificadorPresupuesto);
+
+			if (proyectoEncontrado == null) {
+				model.put("proyectoNoEncontrado", true);
+				return ViewUtil.render(request, model, Path.Template.VINCULAR_PROYECTO);
+			}
+
+			Long identificadorOperacion;
+			try {
+				identificadorOperacion = Long.parseLong(getQueryNumeroOperacion(request).trim());
+			} catch (NumberFormatException e1) {
+				model.put("FormatoNumeroOperacionIncorrecto", true);
+				return ViewUtil.render(request, model, Path.Template.VINCULAR_PROYECTO);
+			}
+
+			if (getQueryOpcionOperacion(request).equals("ingreso")) {
+				OperacionIngreso operacionEncontrada = OperacionIngreso.buscarIngresoPorIdEnBD(identificadorOperacion);
+				if (operacionEncontrada != null) {
+					proyectoEncontrado.getIngresos().add(operacionEncontrada);
+					ProyectoDeFinanciacion.ActualizarProyecto(proyectoEncontrado);
+					model.put("vinculacionExitosaIngreso", true);
+
+				} else {
+					model.put("ingresoNoEncontrado", true);
+					return ViewUtil.render(request, model, Path.Template.VINCULAR_PROYECTO);
+				}
+			} else if (getQueryOpcionOperacion(request).equals("egreso")) {
+				OperacionEgreso operacionEncontrada = OperacionEgreso.buscarEgresoPorIdEnBD(identificadorOperacion);
+				if (operacionEncontrada != null) {
+					proyectoEncontrado.getEgresos().add(operacionEncontrada);
+					model.put("vinculacionExitosaEgreso", true);
+					ProyectoDeFinanciacion.ActualizarProyecto(proyectoEncontrado);
+				} else {
+					model.put("egresoNoEncontrado", true);
+					return ViewUtil.render(request, model, Path.Template.VINCULAR_PROYECTO);
+				}
+			} else if (getQueryOpcionOperacion(request).equals("presupuesto")) {
+				Presupuesto operacionEncontrada = Presupuesto.buscarPresupuestoPorIdEnBD(identificadorOperacion);
+				if (operacionEncontrada != null) {
+					proyectoEncontrado.getPresupuestos().add(operacionEncontrada);
+					model.put("vinculacionExitosaPresupuesto", true);
+					ProyectoDeFinanciacion.ActualizarProyecto(proyectoEncontrado);
+				} else {
+					model.put("presupuestoNoEncontrado", true);
+					return ViewUtil.render(request, model, Path.Template.VINCULAR_PROYECTO);
+				}
+			}
+
+		}
+
 		return ViewUtil.render(request, model, Path.Template.VINCULAR_PROYECTO);
 	};
 }

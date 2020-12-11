@@ -148,6 +148,10 @@ public class OperacionEgreso {
 		
 	}
 
+	public static OperacionEgreso buscarEgresoPorIdEnBD(Long identificadorOperacion) {
+		return OperacionEgresoMapperBD.getInstance().buscarEgresoPorId(identificadorOperacion);
+	}
+
 
 
 }

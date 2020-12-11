@@ -141,6 +141,10 @@ public class OperacionIngreso {
 	public static List<OperacionIngreso> buscarIngresos() {
 		return OperacionIngresoMapperBD.getInstance().obtenerIngresos();
 	}
+
+	public static OperacionIngreso buscarIngresoPorIdEnBD(Long identificadorOperacion) {
+		return OperacionIngresoMapperBD.getInstance().buscarIngresoPorId(identificadorOperacion);
+	}
 	
 
 

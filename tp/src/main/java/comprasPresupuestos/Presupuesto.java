@@ -13,6 +13,7 @@ import javax.persistence.OneToMany;
 
 import egresosIngresos.DocumentoComercial;
 import egresosIngresos.Proveedor;
+import persistencia.PresupuestoMapperBD;
 
 @Entity
 public class Presupuesto {
@@ -73,6 +74,10 @@ public class Presupuesto {
 		}
 		// detalles.stream().forEach(detalle -> total += detalle.getPrecio());
 		return total;
+	}
+
+	public static Presupuesto buscarPresupuestoPorIdEnBD(Long identificadorOperacion) {
+		return PresupuestoMapperBD.getInstance().buscarPresupuestoPorId(identificadorOperacion);
 	}
 
 	/* Esto seria Interfaz, donde se ve el detalle de los productos

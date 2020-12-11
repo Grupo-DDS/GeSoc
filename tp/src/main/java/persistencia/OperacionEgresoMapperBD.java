@@ -3,6 +3,7 @@ package persistencia;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 
 import egresosIngresos.OperacionEgreso;
 
@@ -29,6 +30,20 @@ public class OperacionEgresoMapperBD extends MapperBD<OperacionEgreso> {
 		
 		return em.createQuery("select e from OperacionEgreso e", OperacionEgreso.class)
 				.getResultList();
+	}
+
+	public OperacionEgreso buscarEgresoPorId(Long identificadorOperacion) {
+		EntityManager em = BDUtils.getEntityManager();
+		BDUtils.comenzarTransaccion(em);
+		OperacionEgreso egresoEncontrado;
+		try {
+			egresoEncontrado = em.createQuery("select e from OperacionEgreso e where e.id = :identificador", OperacionEgreso.class)
+					.setParameter("identificador", identificadorOperacion).getSingleResult();
+		}
+		catch(NoResultException e) {
+			egresoEncontrado = null;
+		}
+		return egresoEncontrado;
 	}
 
 }

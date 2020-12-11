@@ -129,5 +129,16 @@ public class RequestUtil {
 		return request.queryParams("montoLimiteSinPresupuesto");
 	}
 	
+	public static String getQueryNumeroProyecto(Request request) {
+		return request.queryParams("NumeroProyecto");
+	}
+	
+	public static String getQueryOpcionOperacion(Request request) {
+		return request.queryParams("OpcionOperacion");
+	}	
+	
+	public static String getQueryNumeroOperacion(Request request) {
+		return request.queryParams("NumeroOperacion");
+	}	
 	
 }

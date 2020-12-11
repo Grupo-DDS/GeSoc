@@ -72,22 +72,31 @@
           }
         </style> <!-- los &nbsp; son para espacios en blanco-->
         <table class="tableizer-table">
-        <thead><tr class="tableizer-firstrow"><th></th><th>&nbsp;¿Cantidad de presupuestos indicada?&nbsp;</th><th>&nbsp;¿Presupuesto elegido?&nbsp;</th><th>&nbsp;¿Compra?&nbsp;</th><th>&nbsp;¿Criterio correcto?&nbsp;</th></tr></thead><tbody>
-         <tr><td>Mensaje1</td><td>true</td><td>false</td><td>false</td><td>true</td></tr>
+        <thead><tr class="tableizer-firstrow"><th></th><th>&nbsp;Numero de Compra&nbsp;</th><th>&nbsp;&#191;Cantidad de presupuestos indicada?&nbsp;</th><th>&nbsp;&#191;Compra realizada en base a un presupuesto?&nbsp;</th><th>&nbsp;&#191;Criterio de seleccion de presupuesto correcto?&nbsp;</th></tr></thead><tbody>
+         #foreach($mensaje in $mensajes)
+			<tr><td>Mensaje $foreach.count</td>
+				<td>$mensaje.getCompra().getNumeroCompra()</td>
+				#if($mensaje.isCantidadPresupuestosIndicada())
+					<td>SI</td>
+				#else
+					<td>NO</td>
+				#end	
+				#if($mensaje.isPresupuestoElegido())
+					<td>SI</td>
+				#else
+					<td>NO</td>
+				#end
+				#if($mensaje.isCriterioCorrecto())
+					<td>SI</td>
+				#else
+					<td>NO</td>
+				#end	
+
+			
+		 #end
+		 
         </tbody></table>
 
-        <ul class="list-group">
-        #foreach($mensaje in $mensajes)
-		<li class="list-group-item">
-			$mensaje.getCompra().getNumeroCompra()
-			$mensaje.isCantidadPresupuestosIndicada()
-			$mensaje.isPresupuestoElegido()
-			$mensaje.isCriterioCorrecto()
-		</li>
-   		
-   		#end
-        
-        </ul>
     </div>    
   </div>
     

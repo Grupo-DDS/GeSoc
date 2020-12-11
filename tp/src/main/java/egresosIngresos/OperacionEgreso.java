@@ -78,9 +78,7 @@ public class OperacionEgreso {
 	public long getId() {
 		return id;
 	}
-	public void setId(Long id) {
-		this.id = id;
-	}
+
 	public Compra getCompra() {
 		return compra;
 	}

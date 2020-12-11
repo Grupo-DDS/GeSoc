@@ -106,7 +106,9 @@ public class EgresoController {
 
 				
 				OperacionEgreso.insertarNuevoEgresoEnBD(nuevaOperacionEgreso);
+				model.put("numeroEgreso", nuevaOperacionEgreso.getId());
 				model.put("cargaEgresoExitosa", true);
+				
 
 			} else {
 				model.put("errorDatosIncompletos", true);

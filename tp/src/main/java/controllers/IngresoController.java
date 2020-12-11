@@ -53,6 +53,8 @@ public class IngresoController {
 				OperacionIngreso ingreso = new OperacionIngreso(descripcion, montoTotal, fechaOperacion, null, null);
 				OperacionIngreso.insertarEnBD(ingreso);
 				model.put("cargaIngresoExitosa", true);
+				model.put("numeroIngreso", ingreso.getId());
+				
 			} else {
 				model.put("OperacionIncompleta", true);
 				return ViewUtil.render(request, model, Path.Template.INGRESOS);

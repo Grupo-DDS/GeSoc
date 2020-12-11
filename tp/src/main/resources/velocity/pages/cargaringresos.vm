@@ -68,7 +68,7 @@
 	#elseif($OperacionIncompleta)
 		<p>ERROR: COMPLETE TODOS LOS CAMPOS</p>
 	#elseif($cargaIngresoExitosa)
-		<p>EXITO: EL EGRESO FUE CARGADO CORRECTAMENTE</p>
+		<p>EXITO: EL EGRESO FUE CARGADO CORRECTAMENTE. EL NUMERO DE INGRESO ES: $numeroIngreso</p>
     #end
     <!-- Page Features -->
 

@@ -39,7 +39,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/mensaje">Mensajes</a>
+            <a class="nav-link" href="/mensajes">Mensajes</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/logout">Cerrar Sesi&oacute;n</a>
@@ -103,7 +103,7 @@
       </div>
   </div>
       <!-- /.row -->
-      <footer class="py-5 bg-dark">
+      <footer class="py-5 bg-dark fixed-bottom">
         <div class="container">
           <p class="m-0 text-center text-white">Copyright &copy; GeSoc Website 2020</p>
         </div>

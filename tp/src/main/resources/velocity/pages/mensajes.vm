@@ -91,7 +91,7 @@
 				#else
 					<td>NO</td>
 				#end	
-
+			</tr>
 			
 		 #end
 		 

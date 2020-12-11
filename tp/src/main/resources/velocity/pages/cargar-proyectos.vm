@@ -36,7 +36,7 @@
             <a class="nav-link" href="/proyecto">Proyecto</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./mensajes">Mensajes</a>
+            <a class="nav-link" href="/mensajes">Mensajes</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/logout">Cerrar Sesi&oacute;n</a>
@@ -56,31 +56,49 @@
         </header>
     </div>
 
+
+	
 <div class="container">
-          <form>
+	#if($FormatoNumeroIncorrecto)
+		<p>ERROR: EL FORMATO DEL MONTO INGRESADO ES INCORRECTO</p>
+	#elseif($montoMenorACero)
+		<p>ERROR: EL MONTO INGRESADO DEBE SER MAYOR A CERO</p>
+    #elseif($FormatoMontoLimiteIncorrecto)
+		<p>ERROR:EL FORMATO DEL MONTO LIMITE INGRESADO ES INCORRECTO </p>
+	#elseif($montoLimiteMenorACero)
+		<p>ERROR: EL MONTO LIMITE INGRESADO DEBE SER MAYOR O IGUAL A CERO</p>
+	#elseif($montoLimiteMayorAlTotal)
+		<p>ERROR: EL MONTO LIMITE NO DEBE SUPERAR AL MONTO TOTAL</p>			
+	#elseif($FormatoCantidadIncorrecto)
+		<p>ERROR: EL FORMATO DE LA CANTIDAD DE PRESUPUESTOS INGRESADA ES INCORRECTA</p>
+	#elseif($cantidadMenorACero)
+		<p>ERROR: LA CANTIDAD DE PRESUPUESTOS INGRESADA DEBE SER MAYOR O IGUAL A CERO</p>
+	#elseif($usuarioNoExiste)
+		<p>ERROR: EL USUARIO INGRESADO NO EXISTE</p>
+	#elseif($proyectoCargadoCorrectamente)
+		<p>EXITO: EL PROYECTO FUE CARGADO CORRECTAMENTE. EL NUMERO DE PROYECTO ES: $idProyectoNuevo</p>
+    #end
+          <form method="get">
             <div class="form-row">
               <div class="form-group col-md-6">
-                <label for="inputUsuario">Usuario</label>
-                <input type="text" class="form-control" id="inputUsuario" placeholder="Usuario">
+				<label for="inputMonto">Monto</label>
+                <input name="MontoTotal" type="text" class="form-control" id="inputMonto" placeholder="Monto">
               </div>
               <div class="form-group col-md-6">
-                <label for="inputMonto">Monto</label>
-                <input type="text" class="form-control" id="inputMonto" placeholder="Monto">
+				<label for="inputPresupuestos">Monto limite sin presupuesto</label>
+				<input name="montoLimiteSinPresupuesto" type="text" class="form-control" id="montoLimiteSinPresupuesto" placeholder="Monto limite sin presupuesto">
               </div>
             </div>
             <div class="form-group">
-              <label for="inputCantPres">Cantidad Presupuesto</label>
-              <input type="text" class="form-control" id="inputCantPres" placeholder="Presupuesto">
+              <label for="inputCantPres">Cantidad de presupuestos</label>
+              <input name="CantidadPresupuestos" type="text" class="form-control" id="inputCantPres" placeholder="Cantidad de presupuestos">
             </div>
             <div class="form-group">
-              <label for="inputPresupuestos">Presupuestos</label>
-              <input type="text" class="form-control" id="inputPresupuestos" placeholder="Lista de Presupuestos">
+			  <label for="inputUsuario">Usuario</label>
+              <input name="username" type="text" class="form-control" id="inputUsuario" placeholder="Usuario">
             </div>
-              <div class="form-group col-md-15 col-md-15 col-lg-15">
-                <label for="inputIngresos">Ingresos</label>
-                <input type="text" class="form-control" id="inputIngresos" placeholder="Lista de Ingresos">
-              </div>
-            <button type="submit" class="btn btn-primary">Cargar</button>
+
+            <button onclick="submit" class="btn btn-primary">Cargar</button>
           </form>
     </div>
 </div>

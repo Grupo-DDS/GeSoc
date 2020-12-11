@@ -120,4 +120,14 @@ public class RequestUtil {
 	public static String getQueryTipoOperacion(Request request) {
 		return request.queryParams("TipoOperacion");
 	}
+	
+	public static String getQueryCantidadPresupuestos(Request request) {
+		return request.queryParams("CantidadPresupuestos");
+	}
+	
+	public static String getQueryMontoLimiteSinPresupuesto(Request request) {
+		return request.queryParams("montoLimiteSinPresupuesto");
+	}
+	
+	
 }

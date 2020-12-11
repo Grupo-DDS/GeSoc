@@ -172,11 +172,23 @@
       <div class="card h-100">
         <img class="card-img-top" src="" alt="">
         <div class="card-body">
-          <h4 class="card-title">Presupuetos</h4>
+          <h4 class="card-title">Presupuestos</h4>
           <p class="card-text">Cargue distintos presupuestos</p>
         </div>
         <div class="card-footer">
-          <a href="../pages/presupuesto-detallado.html" class="btn btn-primary">Cargar presupuestos</a>
+          <a href="../pages/presupuesto.html" class="btn btn-primary">Cargar presupuestos</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4 mb-3">
+      <div class="card h-100">
+        <img class="card-img-top" src="" alt="">
+        <div class="card-body">
+          <h4 class="card-title">Presupuestos Detallados</h4>
+          <p class="card-text">Cargue presupuestos detallados</p>
+        </div>
+        <div class="card-footer">
+          <a href="../pages/presupuesto-detallado.html" class="btn btn-primary">Presupuestos detallados</a>
         </div>
       </div>
     </div>

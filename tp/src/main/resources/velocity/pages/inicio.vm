@@ -66,7 +66,7 @@
           <img class="card-img-top" src="/Images/cargar-operaciones.svg" alt="">
           <div class="card-body">
             <h4 class="card-title">Cargar Operaciones</h4>
-            <p class="card-text">Cargue sus Operaciones de Egresos</p>
+            <p class="card-text">Cargue distintas Operaciones</p>
           </div>
           <div class="card-footer">
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ventanaOperaciones">Cargar Operaciones</button>

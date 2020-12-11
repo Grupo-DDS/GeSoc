@@ -23,6 +23,8 @@ import controllers.IngresoController;
 import controllers.InicioController;
 import controllers.LoginController;
 import controllers.MensajesController;
+import controllers.PresupuestoController;
+import controllers.ProductoController;
 import controllers.ProyectoController;
 import persistencia.BDUtils;
 
@@ -68,6 +70,9 @@ public class Application {
         get(Path.Web.MIS_EGRESOS,  EgresoController.mis_egresos);
         get(Path.Web.AUDITORIA,  AuditoriaController.LogsView);
         get(Path.Web.COMPRA,  CompraController.cargarCompra);
+        get(Path.Web.PRODUCTOS, ProductoController.cargarProducto);
+        get(Path.Web.PRESUPUESTO, PresupuestoController.cargarPresupuesto);
+        get(Path.Web.PRESUPUESTO_DETALLADO, PresupuestoController.cargarPresupuestoDetallado);
         get("*",                ViewUtil.notFound);
 
         // Filtro aplicado despues de get y post

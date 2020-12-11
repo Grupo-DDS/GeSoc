@@ -24,8 +24,9 @@ public class Path {
         @Getter public static final String MIS_INGRESOS = "/mis-ingresos";
         @Getter public static final String AUDITORIA = "/auditoria";
         @Getter public static final String COMPRA = "/compras";
-        
-        
+        @Getter public static final String PRODUCTOS = "/productos";
+        @Getter public static final String PRESUPUESTO = "/presupuesto";
+        @Getter public static final String PRESUPUESTO_DETALLADO = "/presupuesto-detallado";
         public static String getINDEX() {
 			return INDEX;
 		}
@@ -62,6 +63,9 @@ public class Path {
         public static final String MIS_INGRESOS = "/velocity/pages/mis-ingresos.vm";
         public static final String AUDITORIA = "/velocity/pages/auditoria.vm";
         public static final String COMPRA = "/velocity/pages/cargar-compras.vm";
+        public static final String PRODUCTOS = "/velocity/pages/productos.vm";
+        public static final String PRESUPUESTO = "/velocity/pages/presupuesto.vm";
+        public static final String PRESUPUESTO_DETALLADO = "/velocity/pages/presupuesto-detallado.vm";
     }
 
 }

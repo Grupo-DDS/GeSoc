@@ -16,13 +16,15 @@ import comprasPresupuestos.ProveedorMenorValor;
 import spark.Request;
 import spark.Response;
 import spark.Route;
+import validadorDeCompras.Usuario;
+
 import static app.RequestUtil.getQueryCompra;
 import static app.RequestUtil.getQueryCantidadPresupuestos;
 import static app.RequestUtil.getQueryCriterioSeleccion;
 import static app.RequestUtil.getQueryPresupuestosSeleccionados;
 import static app.RequestUtil.getQueryProductosSeleccionados;
 import static app.RequestUtil.getQueryPresupuestoElegido;
-
+import static app.RequestUtil.getQueryUsername;
 public class CompraController {
 	public static Route cargarCompra = (Request request, Response response) -> {
 		Map<String, Object> model = new HashMap<>();
@@ -33,8 +35,8 @@ public class CompraController {
 		LoginController.ensureUserIsLoggedIn(request, response);
 		Compra compraNueva = new Compra();
 		if (getQueryCompra(request) != null && getQueryCantidadPresupuestos(request) != null
-				&& getQueryCriterioSeleccion(request) != null && getQueryPresupuestosSeleccionados(request) != null
-				&& getQueryProductosSeleccionados(request) != null && getQueryPresupuestoElegido(request) != null) {
+				&& getQueryCriterioSeleccion(request) != null 
+				 && getQueryPresupuestoElegido(request) != null) {
 
 			Long numeroCompra;
 			try {
@@ -48,7 +50,7 @@ public class CompraController {
 				return ViewUtil.render(request, model, Path.Template.COMPRA);
 			}
 
-			if (Compra.buscarCompraPorNumeroEnBD(numeroCompra) == null) {
+			if (Compra.buscarCompraPorNumeroEnBD(numeroCompra) != null) {
 				model.put("NumeroCompraYaExiste", true);
 				return ViewUtil.render(request, model, Path.Template.COMPRA);
 			}
@@ -69,23 +71,28 @@ public class CompraController {
 
 			if (getQueryCriterioSeleccion(request).equals("ProveedorMenorValor"))
 				compraNueva.setCriterio(ProveedorMenorValor.getInstance());
-
+			if(getQueryPresupuestosSeleccionados(request) != null){
 			String[] identificadoresPresupuestosSeleccionados = getQueryPresupuestosSeleccionados(request);
 			List<Presupuesto> presupuestosSeleccionados = filtrarPresupuestosPorIdentificadores(presupuestos,
 					identificadoresPresupuestosSeleccionados);
 			compraNueva.setPresupuestos(presupuestosSeleccionados);
+			}
 			
+			if(getQueryProductosSeleccionados(request) != null){
 			String[] identificadoresProductosSeleccionados = getQueryProductosSeleccionados(request);
 			List<Producto> productosSeleccionados = filtrarProductosPorIdentificadores(productos,
 					identificadoresProductosSeleccionados);
 			compraNueva.setProductos(productosSeleccionados);
-
+			}
 			Long identificadorPresupuestoElegido = Long.parseLong(getQueryPresupuestoElegido(request));
 			List<Presupuesto> presupuestoElegido = presupuestos.stream()
 					.filter(presupuesto -> presupuesto.getId() == identificadorPresupuestoElegido)
 					.collect(Collectors.toList());
 			compraNueva.setPresupuestoElegido(presupuestoElegido.get(0));
 			
+			compraNueva.getRevisores().add(Usuario.buscarUsuarioBD(getQueryUsername(request)));
+			Compra.insertarNuevaCompraEnBD(compraNueva);
+			model.put("cargaCompraExitosa", true);
 		}
 
 		return ViewUtil.render(request, model, Path.Template.COMPRA);

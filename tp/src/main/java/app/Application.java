@@ -49,7 +49,6 @@ public class Application {
       
         bookDao = new BookDao();
         userDao = new UserDao();
-
         
         
         // Configuracion Spark

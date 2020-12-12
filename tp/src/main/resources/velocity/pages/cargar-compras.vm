@@ -64,7 +64,17 @@
     <!-- Page Features -->
     
     <form method="get">
-
+    #if($FormatoNumeroCompraIncorrecto)
+		<p>ERROR: EL FORMATO DEL NUMERO DE COMPRA ES INCORRECTO</p>
+	#elseif($NumeroCompraMenorACero)
+		<p>ERROR: EL NUMERO DE COMPRA DEBE SER MAYOR A CERO</p>
+    #elseif($NumeroCompraYaExiste)
+		<p>ERROR: YA EXISTE UNA COMPRA CON EL NUMERO INGRESADO </p>
+	#elseif($FormatoCantidadIncorrecto)
+		<p>ERROR: EL FORMATO DE LA CANTIDAD DE PRESUPUESTOS ES INCORRECTO </p>
+	#elseif($cargaCompraExitosa)
+		<p>EXITO: LA COMPRA FUE CARGADA CORRECTAMENTE.</p>
+    #end
 
      <div class="form-group">
       <label for="inputNumeroCompra">N&uacute;mero de compra</label>
@@ -206,8 +216,8 @@
 					<div class="custom-control custom-checkbox">
 						<div class="form-row">
 							<div class="form-group col-md-9">
-								<input name="productosSeleccionados" value="$!producto.getId()" type="checkbox" class="custom-control-input" id="check$!producto.getId()">
-									<label class="custom-control-label" for="check$!producto.getId()">
+								<input name="productosSeleccionados" value="$!producto.getId()" type="checkbox" class="custom-control-input" id="$!foreach.count">
+									<label class="custom-control-label" for="$!foreach.count">
 										Producto $producto.getId() Descripcion: $producto.getDescripcion() Precio: $producto.getValor()
 									</label>
                  			</div>

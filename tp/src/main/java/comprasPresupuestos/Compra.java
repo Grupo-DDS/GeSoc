@@ -3,6 +3,7 @@ package comprasPresupuestos;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,8 +25,7 @@ public class Compra {
 	
 	private Long numeroCompra;
 	
-	@OneToMany
-	@JoinColumn(name = "id_compra")
+	@ManyToMany
 	private List<Producto> productos = new ArrayList<Producto>();
 	
 	@OneToMany
@@ -39,7 +39,7 @@ public class Compra {
 	@ManyToMany
 	private List<Usuario> revisores = new ArrayList<Usuario>();
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	private CriterioSeleccionPresupuesto criterio;
 	
 	public Compra() {}
@@ -142,6 +142,10 @@ public class Compra {
 	
 	public static Compra buscarCompraPorNumeroEnBD(Long numero) {
 		return CompraMapperBD.getInstance().buscarCompraPorNumero(numero);
+	}
+	
+	public static void insertarNuevaCompraEnBD(Compra compra) {
+		CompraMapperBD.getInstance().insert(compra);
 	}
 
 

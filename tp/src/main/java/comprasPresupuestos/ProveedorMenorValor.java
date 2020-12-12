@@ -5,8 +5,6 @@ import java.util.Comparator;
 
 import javax.persistence.Entity;
 
-import persistencia.CompraMapperBD;
-
 @Entity
 public class ProveedorMenorValor extends CriterioSeleccionPresupuesto {
 

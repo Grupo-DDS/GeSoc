@@ -6,7 +6,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 
 import comprasPresupuestos.Presupuesto;
-import egresosIngresos.OperacionEgreso;
 
 public class PresupuestoMapperBD extends MapperBD<Presupuesto> {
 	private static final PresupuestoMapperBD instance = new PresupuestoMapperBD();

@@ -1,14 +1,15 @@
 package controllers;
 
+import static app.RequestUtil.getQueryOpcionesAsociacion;
+import static app.RequestUtil.getQueryRegla1Mix;
+import static app.RequestUtil.getQueryRegla2Mix;
+import static app.RequestUtil.getQueryRegla3Mix;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static app.RequestUtil.getQueryOpcionesAsociacion;
-import static app.RequestUtil.getQueryRegla1Mix;
-import static app.RequestUtil.getQueryRegla2Mix;
-import static app.RequestUtil.getQueryRegla3Mix;
 import app.Path;
 import app.ViewUtil;
 import egresosIngresos.OperacionEgreso;

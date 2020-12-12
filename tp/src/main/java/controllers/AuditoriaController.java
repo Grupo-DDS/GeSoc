@@ -9,11 +9,13 @@ import static app.RequestUtil.getQueryTipoOperacion;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import logueo.MapperMongoDB;
+
 import org.bson.Document;
-import logueo.TipoOperacion;
+
 import app.Path;
 import app.ViewUtil;
+import logueo.MapperMongoDB;
+import logueo.TipoOperacion;
 import spark.Request;
 import spark.Response;
 import spark.Route;

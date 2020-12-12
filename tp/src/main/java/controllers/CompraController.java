@@ -1,10 +1,17 @@
 package controllers;
 
+import static app.RequestUtil.getQueryCantidadPresupuestos;
+import static app.RequestUtil.getQueryCompra;
+import static app.RequestUtil.getQueryCriterioSeleccion;
+import static app.RequestUtil.getQueryPresupuestoElegido;
+import static app.RequestUtil.getQueryPresupuestosSeleccionados;
+import static app.RequestUtil.getQueryProductosSeleccionados;
+import static app.RequestUtil.getQueryUsername;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import app.Path;
@@ -17,14 +24,6 @@ import spark.Request;
 import spark.Response;
 import spark.Route;
 import validadorDeCompras.Usuario;
-
-import static app.RequestUtil.getQueryCompra;
-import static app.RequestUtil.getQueryCantidadPresupuestos;
-import static app.RequestUtil.getQueryCriterioSeleccion;
-import static app.RequestUtil.getQueryPresupuestosSeleccionados;
-import static app.RequestUtil.getQueryProductosSeleccionados;
-import static app.RequestUtil.getQueryPresupuestoElegido;
-import static app.RequestUtil.getQueryUsername;
 public class CompraController {
 	public static Route cargarCompra = (Request request, Response response) -> {
 		Map<String, Object> model = new HashMap<>();

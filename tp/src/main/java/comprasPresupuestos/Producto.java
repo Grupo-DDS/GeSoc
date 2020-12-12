@@ -11,6 +11,7 @@ import javax.persistence.ManyToMany;
 
 import criteriosCategorias.Categoria;
 import criteriosCategorias.CriterioCategorizacion;
+import persistencia.ProductoMapperBD;
 
 @Entity
 public class Producto {
@@ -20,7 +21,7 @@ public class Producto {
 	private String descripcion;
 	private float valor;
 	@ManyToMany
-	public List<Categoria> categorias = new ArrayList<Categoria>();
+	private List<Categoria> categorias = new ArrayList<Categoria>();
 	public Producto() {}
 	public Producto(String descripcion, float valor) {
 		super();
@@ -39,6 +40,17 @@ public class Producto {
 	public void setValor(float valorIngresado) {
 		this.valor = valorIngresado;
 	}
+		
+	public Long getId() {
+		return id;
+	}
+
+	public List<Categoria> getCategorias() {
+		return categorias;
+	}
+	public void setCategorias(List<Categoria> categorias) {
+		this.categorias = categorias;
+	}
 	private boolean buscarCriterio(CriterioCategorizacion criterio) {
 		boolean encontrado = false;
 			for(int i=0; i<categorias.size();i++) {
@@ -55,5 +67,8 @@ public class Producto {
 		//Puede estar asociado a sólo una categoría de cada criterio
 		if(categorias.isEmpty() || !this.buscarCriterio(categoria.getCriterio()))
 		categorias.add(categoria);
+	}
+	public static List<Producto> obtenerTodosEnBD() {
+		return ProductoMapperBD.getInstance().obtenerTodos();
 	}
 }

@@ -139,6 +139,23 @@ public class RequestUtil {
 	
 	public static String getQueryNumeroOperacion(Request request) {
 		return request.queryParams("NumeroOperacion");
-	}	
+	}
+	
+	public static String getQueryCriterioSeleccion(Request request) {
+		return request.queryParams("criterioSeleccion");
+	}
+	
+	public static String[] getQueryPresupuestosSeleccionados(Request request) {
+		return request.queryParamsValues("presupuestosSeleccionados");
+	}
+	
+	public static String[] getQueryProductosSeleccionados(Request request) {
+		return request.queryParamsValues("productosSeleccionados");
+	}
+	
+	public static String getQueryPresupuestoElegido(Request request) {
+		return request.queryParams("PresupuestoElegido");
+	}
+	
 	
 }

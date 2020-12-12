@@ -28,8 +28,8 @@ public class ProductoTest {
 		zapatillas.agregarCategoria(interior);
 		zapatillas.agregarCategoria(mucho);
 		
-		assertEquals(zapatillas.categorias.size(),2);
-		Categoria cat = zapatillas.categorias.get(1);
+		assertEquals(zapatillas.getCategorias().size(),2);
+		Categoria cat = zapatillas.getCategorias().get(1);
 		assertEquals(cat, mucho);
 	}
 

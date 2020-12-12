@@ -9,10 +9,16 @@ import static spark.Spark.post;
 import static spark.Spark.staticFiles;
 import static spark.debug.DebugScreen.enableDebugScreen;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
+
+import com.google.common.collect.ImmutableList;
 
 import app.persistencia.BookDao;
 import app.persistencia.UserDao;
+import comprasPresupuestos.Presupuesto;
+import comprasPresupuestos.Producto;
 import controllers.AsociacionesController;
 import controllers.AuditoriaController;
 import controllers.BookController;
@@ -27,6 +33,8 @@ import controllers.PresupuestoController;
 import controllers.ProductoController;
 import controllers.ProyectoController;
 import persistencia.BDUtils;
+import persistencia.PresupuestoMapperBD;
+import persistencia.ProductoMapperBD;
 
 public class Application {
 	
@@ -42,6 +50,8 @@ public class Application {
         bookDao = new BookDao();
         userDao = new UserDao();
 
+        
+        
         // Configuracion Spark
         port(5020);
         staticFiles.location("/public");

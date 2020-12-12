@@ -1,9 +1,12 @@
 package persistencia;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 
 import comprasPresupuestos.Presupuesto;
+import egresosIngresos.OperacionEgreso;
 
 public class PresupuestoMapperBD extends MapperBD<Presupuesto> {
 	private static final PresupuestoMapperBD instance = new PresupuestoMapperBD();
@@ -24,5 +27,12 @@ public class PresupuestoMapperBD extends MapperBD<Presupuesto> {
 			presupuestoEncontrado = null;
 		}
 		return presupuestoEncontrado;
+	}
+	public List<Presupuesto> obtenerTodos() {
+		EntityManager em = BDUtils.getEntityManager();
+		BDUtils.comenzarTransaccion(em);
+		
+		return em.createQuery("select p from Presupuesto p", Presupuesto.class)
+				.getResultList();
 	}
 }

@@ -47,6 +47,10 @@ public class Presupuesto {
 		return proveedor;
 	}
 
+	public Long getId() {
+		return id;
+	}
+
 	public void setProveedor(Proveedor proveedor) {
 		this.proveedor = proveedor;
 	}
@@ -78,6 +82,10 @@ public class Presupuesto {
 
 	public static Presupuesto buscarPresupuestoPorIdEnBD(Long identificadorOperacion) {
 		return PresupuestoMapperBD.getInstance().buscarPresupuestoPorId(identificadorOperacion);
+	}
+
+	public static List<Presupuesto> obtenerTodosEnBD() {
+		return PresupuestoMapperBD.getInstance().obtenerTodos();
 	}
 
 	/* Esto seria Interfaz, donde se ve el detalle de los productos

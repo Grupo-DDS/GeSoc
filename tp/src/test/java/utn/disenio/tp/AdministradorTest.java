@@ -15,8 +15,8 @@ public class AdministradorTest {
 		CriterioCategorizacion padre=new CriterioCategorizacion();
 		CriterioCategorizacion hijo=new CriterioCategorizacion();
 		admin.otorgarJerarquia(padre, hijo);
-		assertEquals(padre.criterioHijo.get(0),hijo);
-		assertEquals(hijo.criterioPadre,padre);
+		assertEquals(padre.getCriterioHijo().get(0),hijo);
+		assertEquals(hijo.getCriterioPadre(),padre);
 		
 		
 	}

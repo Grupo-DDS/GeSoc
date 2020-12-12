@@ -159,11 +159,38 @@
       <div class="card h-100">
         <img class="card-img-top" src="" alt="">
         <div class="card-body">
-          <h4 class="card-title">Productos</h4>
-          <p class="card-text">Cargue distintos productos</p>
+          <h4 class="card-title">Productos y categor&iacute;as</h4>
+          <p class="card-text">Cargue productos o categor&iacute;as</p>
         </div>
         <div class="card-footer">
-          <a href="../pages/productos.html" class="btn btn-primary">Cargar productos</a>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ventanaProdCateg">Cargar</button>
+          <!-- Modal -->
+         <div class="modal fade" id="ventanaProdCateg" tabindex="-1" role="dialog" aria-labelledby="modalProdCateg" aria-hidden="true">
+           <div class="modal-dialog modal-dialog-centered" role="document">
+             <div class="modal-content">
+               <div class="modal-header">
+                
+                 <h5 class="modal-title" id="modalProdCateg">¿Qu&eacute; desea cargar?</h5>
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                   <span aria-hidden="true">&times;</span>
+                 </button>
+               </div>
+
+               <div class="modal-body">
+                 <p>Elija entre productos y categor&iacute;as</p>
+                 <div style="display:none;" class="form-group js-auth-dialog-input-2fa">
+                 <input name="secondFactor" style="width:100%" placeholder="One-time password" type="text" class="form-control">
+                           
+                 </div>
+                 <div class="modal-footer">
+                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                   <a href="../pages/productos.html" class="btn btn-primary">Productos</a>
+                   <a href="../pages/categorias.html" class="btn btn-primary">Categor&iacute;as</a>
+                 </div>
+               </div>
+             </div>
+           </div>
+         </div>    
         </div>
       </div>
     </div>

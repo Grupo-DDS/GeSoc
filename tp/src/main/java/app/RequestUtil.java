@@ -158,4 +158,10 @@ public class RequestUtil {
 	}
 	
 	
+	public static String getQueryProductoSeleccionado(Request request) {
+		return request.queryParams("ProductoSeleccionado");
+	}
+	
+	
+	
 }

@@ -6,6 +6,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import persistencia.PresupuestoDetalladoMapperBD;
+
 @Entity
 public class PresupuestoDetallado {
 	public PresupuestoDetallado(float precio, Producto productoCompra) {
@@ -37,7 +39,17 @@ public class PresupuestoDetallado {
 	public void setProductoCompra(Producto productoCompra) {
 		this.productoCompra = productoCompra;
 	}
+	
+	public Long getId() {
+		return id;
+	}
+
 	public boolean coincidePrecio() {
 		return precio == productoCompra.getValor();
+	}
+
+	public static void insertarNuevoPDEnBD(PresupuestoDetallado presupuestoDetalladoNuevo) {
+		PresupuestoDetalladoMapperBD.getInstance().insert(presupuestoDetalladoNuevo);
+		
 	}
 }

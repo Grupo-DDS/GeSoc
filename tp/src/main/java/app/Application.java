@@ -74,7 +74,7 @@ public class Application {
         get(Path.Web.PRODUCTOS, ProductoController.cargarProducto);
         get(Path.Web.PRESUPUESTO, PresupuestoController.cargarPresupuesto);
         get(Path.Web.PRESUPUESTO_DETALLADO, PresupuestoController.cargarPresupuestoDetallado);
-        get(Path.Web.CATEGORIA, ProductoController.cargarCategoria1);
+        get(Path.Web.CATEGORIA, ProductoController.cargarCategoria);
         get("*",                ViewUtil.notFound);
 
         // Filtro aplicado despues de get y post

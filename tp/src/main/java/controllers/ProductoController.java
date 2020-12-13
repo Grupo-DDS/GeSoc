@@ -24,9 +24,9 @@ public class ProductoController {
 		return ViewUtil.render(request, model, Path.Template.PRODUCTOS);
 	};
 
-	public static Route cargarCategoria1 = (Request request, Response response) -> {
+	public static Route cargarCategoria = (Request request, Response response) -> {
 		Map<String, Object> model = new HashMap<>();
-		// LoginController.ensureUserIsLoggedIn(request, response);
+		LoginController.ensureUserIsLoggedIn(request, response);
 
 		if (getQueryCantidadCategorias(request) != null && getQueryNombreCriterio(request) != null) {
 

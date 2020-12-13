@@ -1,15 +1,22 @@
 package controllers;
 
 import static app.RequestUtil.getQueryCantidadCategorias;
+import static app.RequestUtil.getQueryCategoriasElegidas;
+import static app.RequestUtil.getQueryCriteriosSeleccionados;
+import static app.RequestUtil.getQueryDescripcion;
+import static app.RequestUtil.getQueryMontoTotal;
 import static app.RequestUtil.getQueryNombreCategorias;
 import static app.RequestUtil.getQueryNombreCriterio;
 import static app.RequestUtil.getQueryNombreCriterioPadre;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import app.Path;
 import app.ViewUtil;
+import comprasPresupuestos.Producto;
 import criteriosCategorias.Categoria;
 import criteriosCategorias.CriterioCategorizacion;
 import spark.Request;
@@ -20,7 +27,66 @@ public class ProductoController {
 	public static Route cargarProducto = (Request request, Response response) -> {
 		Map<String, Object> model = new HashMap<>();
 		LoginController.ensureUserIsLoggedIn(request, response);
+		List<CriterioCategorizacion> criterios = CriterioCategorizacion.obtenerTodosEnBD();
+		model.put("criterios", criterios);
+		
+		if(getQueryDescripcion(request)!=null && getQueryMontoTotal(request)!=null) {
+			Producto productoNuevo = new Producto();
+			productoNuevo.setDescripcion(getQueryDescripcion(request).trim());
+			
+			Float montoTotal;
+			try {
+				montoTotal = Float.parseFloat(getQueryMontoTotal(request).trim());
+			} catch (NumberFormatException e1) {
+				model.put("FormatoNumeroIncorrecto", true);
+				return ViewUtil.render(request, model, Path.Template.PRODUCTOS);
+			}
+			if (montoTotal <= 0) {
+				model.put("montoMenorACero", true);
+				return ViewUtil.render(request, model, Path.Template.PRODUCTOS);
+			}
+		
+			if(getQueryCriteriosSeleccionados(request)!=null) {
+				int index = 0;
+				int l = getQueryCriteriosSeleccionados(request).length;
+				while(index<l) {
+					System.out.println(getQueryCriteriosSeleccionados(request)[index]);
+					index++;
+				}
+				
+			}
+			
+			
+			if(getQueryCriteriosSeleccionados(request)!=null && getQueryCategoriasElegidas(request,criterios)!=null) {
+				int index = 0;
+				int l = getQueryCriteriosSeleccionados(request).length;
+				Map<String,String> mapaCriterioCategoriaElegidos = new HashMap<>();
+				while(index<l) {
+					String nombreCriterioI = getQueryCriteriosSeleccionados(request)[index];
+					String nombreCategoriaI = getQueryCategoriasElegidas(request,criterios).get(nombreCriterioI);
+					if(nombreCategoriaI != null)
+						mapaCriterioCategoriaElegidos.put(nombreCriterioI, nombreCategoriaI);
+					else {
+						model.put("errorEleccionCategorias", true);
+						return ViewUtil.render(request, model, Path.Template.PRODUCTOS);
+					}
+					index++;
+				}
+				List<Categoria> categoriasElegidas = buscarCategorias(criterios,mapaCriterioCategoriaElegidos);
+				
+				productoNuevo.setCategorias(categoriasElegidas);
+				
+				Producto.insertarNuevoProductoEnBD(productoNuevo);
+				model.put("cargaCorrecta",true);
+				model.put("idProducto", productoNuevo.getId());
+				
+				
+			}
 
+			
+		}
+		
+		
 		return ViewUtil.render(request, model, Path.Template.PRODUCTOS);
 	};
 
@@ -94,6 +160,32 @@ public class ProductoController {
 		return ViewUtil.render(request, model, Path.Template.CATEGORIA);
 
 	};
+
+	private static List<Categoria> buscarCategorias(List<CriterioCategorizacion> criterios,
+			Map<String, String> mapaCriterioCategoriaElegidos) {
+		List<Categoria> categorias = new ArrayList<Categoria>();
+		int index = 0;
+		int size = criterios.size();
+		
+		while(index<size) {
+			String nombreCategoria = mapaCriterioCategoriaElegidos.get(criterios.get(index).getNombre());
+			if(nombreCategoria !=null)
+			{
+				int indexC = 0;
+				int sizeC = criterios.get(index).getCategorias().size();
+				while(indexC<sizeC) {
+					if(criterios.get(index).getCategorias().get(indexC).getNombre().equals(nombreCategoria)) {
+						categorias.add(criterios.get(index).getCategorias().get(indexC));
+					}
+					indexC++;
+				}
+			}
+			
+			index++;
+		}
+		
+		return categorias;
+	}
 
 
 }

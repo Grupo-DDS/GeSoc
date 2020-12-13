@@ -71,4 +71,8 @@ public class Producto {
 	public static List<Producto> obtenerTodosEnBD() {
 		return ProductoMapperBD.getInstance().obtenerTodos();
 	}
+	public static void insertarNuevoProductoEnBD(Producto productoNuevo) {
+		ProductoMapperBD.getInstance().insert(productoNuevo);
+		
+	}
 }

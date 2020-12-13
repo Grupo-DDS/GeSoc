@@ -102,4 +102,8 @@ public class CriterioCategorizacion {
 		CriterioCategorizacionMapper.getInstance().update(criterioPadreEncontrado);
 		
 	}
+
+	public static List<CriterioCategorizacion> obtenerTodosEnBD() {
+		return CriterioCategorizacionMapper.getInstance().obtenerTodos();
+	}
 }

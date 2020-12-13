@@ -2,7 +2,8 @@
 <html lang="en">
 
 <head>
-
+  <script src="/vendor/jquery/jquery.min.js"></script>
+  <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
@@ -61,29 +62,84 @@
     
     <!-- Page Features -->
    
-        <form>
-
+        <form method="get">
+    #if($FormatoNumeroIncorrecto)
+		<p>ERROR: EL FORMATO DEL MONTO ES INCORRECTO</p>
+	#elseif($montoMenorACero)
+		<p>ERROR: EL MONTO DEBE SER MAYOR A CERO</p>
+    #elseif($errorEleccionCategorias)
+		<p>ERROR EN LA SELECCION DE CATEGORIAS </p>
+	#elseif($cargaCorrecta)
+		<p>EXITO: EL PRODUCTO A FUE CARGAD CORRECTAMENTE. SU IDENTIFICADOR ES: $idProducto</p>
+    #end
             <div class="form-group">
                 <label for="inputDescripcion">Descripci&oacute;n</label>
-                <input type="text" class="form-control" id="inputDescripcion" placeholder="Descripci&oacute;n del producto">
+                <input name="Descripcion" type="text" class="form-control" id="inputDescripcion" placeholder="Descripci&oacute;n del producto">
             </div>
             <div class="form-group">
               <label for="inputValor">Valor</label>
-              <input type="text" class="form-control" id="inputValor" placeholder="999.99">
-              
-              <div class="form-row">
-                <div class="form-group col-md-6 col-md-6 col-lg-6">
-                <select class="form-control">
-                  <option>Categor&iacute;a</option>
-                    </select>
-                  </div>
-                  <div class="form-group col-md-6 col-md-6 col-lg-6">
-                    <select class="form-control">
-                      <option>Criterio</option>
-                    </select>
+              <input name="MontoTotal" type="text" class="form-control" id="inputValor" placeholder="Valor">
               </div>
-              </div>
-              <button type="submit" class="btn btn-primary">Cargar</button>
+
+			  
+
+   <div class="form-group">
+    <fieldset disabled>
+      <label for="inputPres">Agregue todos los presupuestos necesarios</label>
+      <input type="text" class="form-control" id="inputPres" placeholder="Presupuestos seleccionados">
+    </fieldset>
+    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#ventanaAgregarPresupuestos">Agregar</button>
+    <!-- Modal -->
+    <div class="modal fade" id="ventanaAgregarPresupuestos" tabindex="-1" role="dialog" aria-labelledby="modalCargarOperaciones" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+
+            <h5 class="modal-title" id="modalCargarPresupuestos">Presupuestos disponibles:</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+          <ul class="list-group list-group-flush">
+			#foreach($criterio in $criterios)
+				<li class="list-group-item">
+					<div class="custom-control custom-checkbox">
+						<div class="form-row">
+							<div class="form-group col-md-9">
+								<input name="criteriosSeleccionados" value="$!criterio.getNombre()" type="checkbox" class="custom-control-input" id="$!$criterio.getNombre()">
+									<label class="custom-control-label" for="$!$criterio.getNombre()">
+										Criterio $foreach.count: $criterio.getNombre()
+									</label>
+									<div>
+									#foreach($categoria in $criterio.getCategorias())
+										<div class="form-check">
+											<input class="form-check-input" type="radio" name="$criterio.getNombre()" value="$categoria.getNombre()" id="$categoria.getNombre()">
+											<label class="form-check-label" for="$categoria.getNombre()">
+												Categoria $foreach.count: $categoria.getNombre()
+											</label>
+            							</div>
+									#end
+									</div>
+                 			</div>
+						</div>
+					</div>
+           		</li>	
+			#end
+
+        </ul>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Seleccionar</button>
+
+        </div>
+      </div>
+    </div>
+  </div>  
+</div> 
+			  
+              <button onclick="submit" class="btn btn-primary">Cargar</button>
         </form>
   </div>
 </body>

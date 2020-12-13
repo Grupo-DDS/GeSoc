@@ -1,5 +1,7 @@
 package persistencia;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 
@@ -24,5 +26,12 @@ public class CriterioCategorizacionMapper extends MapperBD<CriterioCategorizacio
 			criterioEncontrado = null;
 		}
 		return criterioEncontrado;
+	}
+	public List<CriterioCategorizacion> obtenerTodos() {
+		EntityManager em = BDUtils.getEntityManager();
+		BDUtils.comenzarTransaccion(em);
+		
+		return em.createQuery("select c from CriterioCategorizacion c", CriterioCategorizacion.class)
+				.getResultList();
 	}
 }

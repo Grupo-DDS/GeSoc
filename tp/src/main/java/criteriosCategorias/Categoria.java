@@ -1,11 +1,15 @@
 package criteriosCategorias;
 
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+
+import persistencia.CategoriaMapper;
 
 
 @Entity
@@ -41,6 +45,9 @@ public class Categoria {
 	}
 	public void setCriterio(CriterioCategorizacion criterioCategorizacion) {
 		this.criterio = criterioCategorizacion;
+	}
+	public static void actualizarCategorias(List<Categoria> categorias) {
+		CategoriaMapper.getInstance().updateAll(categorias);
 	}
 
 }

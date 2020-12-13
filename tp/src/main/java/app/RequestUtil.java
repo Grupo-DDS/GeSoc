@@ -162,6 +162,29 @@ public class RequestUtil {
 		return request.queryParams("ProductoSeleccionado");
 	}
 	
+	public static String getQueryNombreCriterio(Request request) {
+		return request.queryParams("NombreCriterio");
+	}
 	
+	public static String getQueryNombreCriterioPadre(Request request) {
+		return request.queryParams("NombreCriterioPadre");
+	}
 	
+	public static String getQueryCantidadCategorias(Request request) {
+		return request.queryParams("CantidadCategorias");
+	}
+	
+
+	
+	public static String[] getQueryNombreCategorias(Request request) {
+		return request.queryParamsValues("nombreCategorias");
+	}
+	
+	public static String getCriterioNombreSegundaParte(Request request) {
+		return request.params("criterio");
+		//request.
+		//return request.queryParams("criterioNombreSegundaParte");
+		
+		
+	}
 }

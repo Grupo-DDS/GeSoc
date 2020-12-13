@@ -3,12 +3,15 @@ package criteriosCategorias;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
+import persistencia.CriterioCategorizacionMapper;
 
 
 @Entity
@@ -21,7 +24,7 @@ public class CriterioCategorizacion {
 	
 	private String nombre;
 	
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL)
 	List<Categoria> categorias = new ArrayList<Categoria>();
 	
 	@ManyToOne
@@ -84,5 +87,19 @@ public class CriterioCategorizacion {
 	public void agregarCategoria(Categoria categoria) {
 		categorias.add(categoria);
 		categoria.setCriterio(this);
+	}
+
+	public static CriterioCategorizacion buscarCriterioPorNombreEnBD(String nombre) {
+		return CriterioCategorizacionMapper.getInstance().buscarCriterioPorNombre(nombre);
+	}
+
+	public static void insertarNuevoCriterioEnBD(CriterioCategorizacion criterioNuevo) {
+		CriterioCategorizacionMapper.getInstance().insert(criterioNuevo);
+		
+	}
+
+	public static void actualizarCriterioEnBD(CriterioCategorizacion criterioPadreEncontrado) {
+		CriterioCategorizacionMapper.getInstance().update(criterioPadreEncontrado);
+		
 	}
 }

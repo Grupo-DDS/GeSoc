@@ -27,6 +27,8 @@ public class Path {
         @Getter public static final String PRODUCTOS = "/productos";
         @Getter public static final String PRESUPUESTO = "/presupuesto";
         @Getter public static final String PRESUPUESTO_DETALLADO = "/presupuesto-detallado";
+        @Getter public static final String CATEGORIA = "/cargar-categoria";
+        
         public static String getINDEX() {
 			return INDEX;
 		}
@@ -66,6 +68,8 @@ public class Path {
         public static final String PRODUCTOS = "/velocity/pages/productos.vm";
         public static final String PRESUPUESTO = "/velocity/pages/presupuesto.vm";
         public static final String PRESUPUESTO_DETALLADO = "/velocity/pages/presupuesto-detallado.vm";
+        public static final String CATEGORIA = "/velocity/pages/categorias.vm";
+        
     }
 
 }

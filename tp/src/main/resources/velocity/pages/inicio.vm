@@ -184,8 +184,8 @@
                  </div>
                  <div class="modal-footer">
                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                   <a href="../pages/productos.html" class="btn btn-primary">Productos</a>
-                   <a href="../pages/categorias.html" class="btn btn-primary">Categor&iacute;as</a>
+                   <a href="/productos" class="btn btn-primary">Productos</a>
+                   <a href="/cargar-categoria" class="btn btn-primary">Categor&iacute;as</a>
                  </div>
                </div>
              </div>
@@ -203,7 +203,7 @@
           <p class="card-text">Cargue distintos presupuestos</p>
         </div>
         <div class="card-footer">
-          <a href="../pages/presupuesto.html" class="btn btn-primary">Cargar presupuestos</a>
+          <a href="/presupuesto" class="btn btn-primary">Cargar presupuestos</a>
         </div>
       </div>
     </div>
@@ -215,7 +215,7 @@
           <p class="card-text">Cargue presupuestos detallados</p>
         </div>
         <div class="card-footer">
-          <a href="../pages/presupuesto-detallado.html" class="btn btn-primary">Presupuestos detallados</a>
+          <a href="/presupuesto-detallado" class="btn btn-primary">Presupuestos detallados</a>
         </div>
       </div>
     </div>

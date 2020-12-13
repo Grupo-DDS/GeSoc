@@ -11,14 +11,10 @@ import static spark.debug.DebugScreen.enableDebugScreen;
 
 import javax.persistence.EntityManager;
 
-import app.persistencia.BookDao;
-import app.persistencia.UserDao;
 import controllers.AsociacionesController;
 import controllers.AuditoriaController;
-import controllers.BookController;
 import controllers.CompraController;
 import controllers.EgresoController;
-import controllers.IndexController;
 import controllers.IngresoController;
 import controllers.InicioController;
 import controllers.LoginController;
@@ -29,19 +25,13 @@ import controllers.ProyectoController;
 import persistencia.BDUtils;
 
 public class Application {
-	
-    // Declare dependencies
-    public static BookDao bookDao;
-    public static UserDao userDao;
 
     public static void main(String[] args) {
     	
         EntityManager em = BDUtils.getEntityManager();
         BDUtils.comenzarTransaccion(em);
       
-        bookDao = new BookDao();
-        userDao = new UserDao();
-        
+
         
         // Configuracion Spark
         port(5020);
@@ -53,10 +43,7 @@ public class Application {
         before("*",             Filters.handleLocaleChange);
 
         // Rutas (path, controller)
-        get(Path.Web.INDEX,     IndexController.serveIndexPage);
         get(Path.Web.INICIO,     InicioController.servePaginaInicio);
-        get(Path.Web.BOOKS,     BookController.fetchAllBooks);
-        get(Path.Web.ONE_BOOK,  BookController.fetchOneBook);        
         get(Path.Web.LOGIN,     LoginController.serveLoginPage);
         get(Path.Web.EGRESOS,  EgresoController.cargarEgreso);
         get(Path.Web.INGRESOS,  IngresoController.cargarIngreso);

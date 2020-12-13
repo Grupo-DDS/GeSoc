@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -29,7 +30,7 @@ public class Presupuesto {
 	@JoinColumn(name = "id_presupuesto")
 	private List<DocumentoComercial> documentosComerciales = new ArrayList<DocumentoComercial>();
 	
-	@OneToMany
+	@ManyToMany
 	@JoinColumn(name = "id_presupuesto")
 	private List<PresupuestoDetallado> detalles = new ArrayList<PresupuestoDetallado>();
 
@@ -86,6 +87,11 @@ public class Presupuesto {
 
 	public static List<Presupuesto> obtenerTodosEnBD() {
 		return PresupuestoMapperBD.getInstance().obtenerTodos();
+	}
+
+	public static void insertarNuevoPresupuestoEnBD(Presupuesto presupuestoNuevo) {
+		PresupuestoMapperBD.getInstance().insert(presupuestoNuevo);
+		
 	}
 
 	/* Esto seria Interfaz, donde se ve el detalle de los productos

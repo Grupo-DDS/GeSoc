@@ -1,9 +1,13 @@
 package comprasPresupuestos;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 import persistencia.PresupuestoDetalladoMapperBD;
@@ -51,5 +55,9 @@ public class PresupuestoDetallado {
 	public static void insertarNuevoPDEnBD(PresupuestoDetallado presupuestoDetalladoNuevo) {
 		PresupuestoDetalladoMapperBD.getInstance().insert(presupuestoDetalladoNuevo);
 		
+	}
+
+	public static List<PresupuestoDetallado> obtenerTodosEnBD() {
+		return PresupuestoDetalladoMapperBD.getInstance().obtenerTodos();
 	}
 }

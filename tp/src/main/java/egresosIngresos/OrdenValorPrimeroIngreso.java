@@ -27,10 +27,15 @@ public class OrdenValorPrimeroIngreso extends Requerimiento {
 	public IngresosEgresos vincular(List<OperacionEgreso> egresosAVincular, List<OperacionIngreso> ingresosAVincular,
 			ReglaVinculacion regla) {
 		ingresosAVincular.sort(Comparator.comparing(OperacionIngreso::getMontoTotal));
-		OperacionEgreso unEgreso = egresosAVincular.get(0);
-		for (OperacionIngreso unIngreso : ingresosAVincular) {
-			if (regla.esVinculable(unIngreso, unEgreso))
-				unIngreso.getEgresos().add(unEgreso);
+		int index = 0;
+		int sizeEgresos = egresosAVincular.size();
+		while (index < sizeEgresos) {			
+			OperacionEgreso unEgreso = egresosAVincular.get(index);
+			for (OperacionIngreso unIngreso : ingresosAVincular) {
+				if (regla.esVinculable(unIngreso, unEgreso))
+					unIngreso.getEgresos().add(unEgreso);
+			}
+			index++;
 		}
 		return null;
 	}

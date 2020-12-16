@@ -132,7 +132,6 @@ public class EgresoController {
 			model.put("formato", formatoPrecio);
 			model.put("egresos", egresos);
 			// actualiza la Vista (MVC) que es un HTML
-			System.out.println(egresos.get(0).toString());
 			return ViewUtil.render(request, model, Path.Template.MIS_EGRESOS);
 		}
 

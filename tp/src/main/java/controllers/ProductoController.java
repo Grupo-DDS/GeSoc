@@ -45,6 +45,8 @@ public class ProductoController {
 				model.put("montoMenorACero", true);
 				return ViewUtil.render(request, model, Path.Template.PRODUCTOS);
 			}
+			
+			productoNuevo.setValor(montoTotal);
 		
 			if(getQueryCriteriosSeleccionados(request)!=null) {
 				int index = 0;

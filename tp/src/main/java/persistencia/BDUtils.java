@@ -11,10 +11,14 @@ public class BDUtils {
 	static {
 		factory = Persistence.createEntityManagerFactory("demo-hibernate-PU");
 	}
+	
+	private static EntityManager emGeneral = factory.createEntityManager();
 
 	public static EntityManager getEntityManager() {
-		EntityManager em = factory.createEntityManager();
-		return em;
+		if(!factory.isOpen())
+			emGeneral = factory.createEntityManager();
+		return emGeneral;
+		
 	}
 
 	public static void comenzarTransaccion(EntityManager em) {
@@ -22,6 +26,7 @@ public class BDUtils {
 		if (!tx.isActive()) {
 			tx.begin();
 		}
+		
 	}
 
 	public static void commit(EntityManager em) {

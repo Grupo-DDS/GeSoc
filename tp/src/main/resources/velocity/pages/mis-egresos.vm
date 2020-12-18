@@ -84,6 +84,7 @@
 			<th>&nbsp;Proveedor&nbsp;</th>
 			<th>&nbsp;Medio de pago&nbsp;</th>
 			<th>&nbsp;Fecha&nbsp;</th>
+			<th>&nbsp;Montoo&nbsp;</th>
 			<th>&nbsp;Ingreso vinculado&nbsp;</th>
 		</tr>
 	</thead><tbody>
@@ -95,6 +96,7 @@
 				<td>&nbsp; $egreso.getProveedor().getNombre() &nbsp;</td>
 				<td>&nbsp; $egreso.getMedioDePago().getMedio() &nbsp;</td>
 				<td>&nbsp; $egreso.getFechaOperacion() &nbsp;</td>
+				<td>&nbsp; $egreso.getMontoTotal() &nbsp;</td>
 				#if($egreso.getIdIngreso() == -1)
 					<td>&nbsp; SIN VINCULAR &nbsp;</td>
 				#else

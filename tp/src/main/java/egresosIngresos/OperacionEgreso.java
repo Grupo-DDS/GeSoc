@@ -54,6 +54,8 @@ public class OperacionEgreso {
 	
 	private Long idIngreso = (long) -1;
 	
+	private float montoTotal;
+	
 	public OperacionEgreso() {}
 
 	public OperacionEgreso(Long id, DocumentoComercial comprobante, LocalDate fechaOperacion, MedioDePago medioDePago,
@@ -167,6 +169,14 @@ public class OperacionEgreso {
 
 	public static List<OperacionEgreso> buscarEgresosLazy() {
 		return OperacionEgresoMapperBD.getInstance().obtenerEgresosLazy();
+	}
+
+	public float getMontoTotal() {
+		return montoTotal;
+	}
+
+	public void setMontoTotal(float montoTotal) {
+		this.montoTotal = montoTotal;
 	}
 
 

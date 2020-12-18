@@ -23,6 +23,7 @@ import egresosIngresos.MedioDePago;
 import egresosIngresos.OperacionEgreso;
 import egresosIngresos.OrganizacionProveedora;
 import egresosIngresos.Persona;
+import persistencia.OperacionEgresoMapperBD;
 import spark.Request;
 import spark.Response;
 import spark.Route;
@@ -105,6 +106,8 @@ public class EgresoController {
 				}
 
 				OperacionEgreso.insertarNuevoEgresoEnBD(nuevaOperacionEgreso);
+				nuevaOperacionEgreso.setMontoTotal(nuevaOperacionEgreso.getValorDeEgreso());
+				OperacionEgresoMapperBD.getInstance().update(nuevaOperacionEgreso);
 				model.put("numeroEgreso", nuevaOperacionEgreso.getId());
 				model.put("cargaEgresoExitosa", true);
 

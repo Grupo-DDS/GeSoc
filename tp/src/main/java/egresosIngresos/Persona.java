@@ -25,6 +25,7 @@ public class Persona extends Proveedor {
 		this.nombreApellido = nombreApellido;
 	}
 
+	@Override
 	public String getNombre() {
 		return nombreApellido;
 	}

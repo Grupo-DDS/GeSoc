@@ -27,6 +27,7 @@ public class OrganizacionProveedora extends Proveedor {
 		this.razonSocial = razonSocial;
 	}
 
+	@Override
 	public String getNombre() {
 		return razonSocial;
 	}

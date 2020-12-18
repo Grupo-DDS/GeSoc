@@ -1,8 +1,6 @@
 package controllers;
 
-import static app.JsonUtil.dataToJson;
-import static app.RequestUtil.clientAcceptsHtml;
-import static app.RequestUtil.clientAcceptsJson;
+
 import static app.RequestUtil.getQueryCompra;
 import static app.RequestUtil.getQueryComprobanteNumero;
 import static app.RequestUtil.getQueryComprobanteTipo;
@@ -39,7 +37,8 @@ public class EgresoController {
 					&& !getQueryFecha(request).equals("") && !getQueryMedio(request).equals("")
 					&& !getQueryNombreProveedor(request).equals("") && !getQueryDNICUITProveedor(request).equals("")
 					&& !getQueryComprobanteNumero(request).equals("")) {
-				Compra compraEncontrada = Compra.buscarCompraPorNumeroEnBD(Long.parseLong(getQueryCompra(request).trim()));
+				Compra compraEncontrada = Compra
+						.buscarCompraPorNumeroEnBD(Long.parseLong(getQueryCompra(request).trim()));
 				if (compraEncontrada != null)
 					nuevaOperacionEgreso.setCompra(compraEncontrada);
 				else {
@@ -86,13 +85,14 @@ public class EgresoController {
 						nuevaPersona.setDni(dniPersona);
 						nuevaPersona.setNombreApellido(getQueryNombreProveedor(request).trim());
 						Persona.insertarNuevaPersonaEnBD(nuevaPersona);
-						
+
 						nuevaOperacionEgreso.setProveedor(nuevaPersona);
 					}
 				} else {
 					int cuitProveedor = Integer.parseInt(getQueryDNICUITProveedor(request).trim());
-					
-					OrganizacionProveedora proveedorEncontradoBD = OrganizacionProveedora.buscarProveedorPorCUITEnBD(cuitProveedor);
+
+					OrganizacionProveedora proveedorEncontradoBD = OrganizacionProveedora
+							.buscarProveedorPorCUITEnBD(cuitProveedor);
 					if (proveedorEncontradoBD != null)
 						nuevaOperacionEgreso.setProveedor(proveedorEncontradoBD);
 					else {
@@ -104,11 +104,9 @@ public class EgresoController {
 					}
 				}
 
-				
 				OperacionEgreso.insertarNuevoEgresoEnBD(nuevaOperacionEgreso);
 				model.put("numeroEgreso", nuevaOperacionEgreso.getId());
 				model.put("cargaEgresoExitosa", true);
-				
 
 			} else {
 				model.put("errorDatosIncompletos", true);
@@ -120,27 +118,18 @@ public class EgresoController {
 		return ViewUtil.render(request, model, Path.Template.EGRESOS);
 
 	};
-	
+
 	public static Route mis_egresos = (Request request, Response response) -> {
 		LoginController.ensureUserIsLoggedIn(request, response);
-		if (clientAcceptsHtml(request)) {
-			// obtencion, generacion del Modelo (MVC)
-			HashMap<String, Object> model = new HashMap<>();
-			List<OperacionEgreso> egresos = OperacionEgreso.buscarEgresos();
-			
-			DecimalFormat formatoPrecio = new DecimalFormat("#.##");
-			model.put("formato", formatoPrecio);
-			model.put("egresos", egresos);
-			// actualiza la Vista (MVC) que es un HTML
-			return ViewUtil.render(request, model, Path.Template.MIS_EGRESOS);
-		}
 
-		if (clientAcceptsJson(request)) {
-			// actualiza la Vista, que es un JSON
-			
-			return dataToJson(OperacionEgreso.buscarEgresos());
-		}
-		// actualiza la Vista con un mensaje de error
-		return ViewUtil.notAcceptable.handle(request, response);
+		// obtencion, generacion del Modelo (MVC)
+		HashMap<String, Object> model = new HashMap<>();
+		List<OperacionEgreso> egresos = OperacionEgreso.buscarEgresosLazy();
+
+		DecimalFormat formatoPrecio = new DecimalFormat("#.##");
+		model.put("formato", formatoPrecio);
+		model.put("egresos", egresos);
+		return ViewUtil.render(request, model, Path.Template.MIS_EGRESOS);
+
 	};
 }

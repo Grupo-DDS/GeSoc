@@ -27,29 +27,32 @@ public class OperacionEgreso {
 	@Column(name="FECHA_EGRESO")
 	private LocalDate fechaOperacion;
 	
-	@OneToOne
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="ID_DOC_COMERCIAL")
 	private DocumentoComercial comprobante;
 
-	@OneToOne
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="ID_MEDIO_DE_PAGO")
 	private MedioDePago medioDePago;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="ID_ORGANIZACION")
 	private Organizacion organizacion;
 	
-	@OneToOne
-	@JoinColumn(name="ID_COMPRA")
+	
+	@JoinColumn(name="ID_COMPRA")	
+	@ManyToOne(fetch = FetchType.LAZY)
 	private Compra compra;
 	
-	@OneToOne
 	@JoinColumn(name="ID_PROVEEDOR")
+	@ManyToOne
 	private Proveedor proveedor;
 	
-	@ManyToOne(fetch=FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="ingreso")
 	private OperacionIngreso ingreso;
+	
+	private Long idIngreso = (long) -1;
 	
 	public OperacionEgreso() {}
 
@@ -77,6 +80,16 @@ public class OperacionEgreso {
 
 	public long getId() {
 		return id;
+	}
+	
+	
+
+	public Long getIdIngreso() {
+		return idIngreso;
+	}
+
+	public void setIdIngreso(Long idIngreso) {
+		this.idIngreso = idIngreso;
 	}
 
 	public Compra getCompra() {
@@ -150,6 +163,10 @@ public class OperacionEgreso {
 
 	public static OperacionEgreso buscarEgresoPorIdEnBD(Long identificadorOperacion) {
 		return OperacionEgresoMapperBD.getInstance().buscarEgresoPorId(identificadorOperacion);
+	}
+
+	public static List<OperacionEgreso> buscarEgresosLazy() {
+		return OperacionEgresoMapperBD.getInstance().obtenerEgresosLazy();
 	}
 
 

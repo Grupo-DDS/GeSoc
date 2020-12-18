@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -25,21 +26,21 @@ public class Compra {
 	
 	private Long numeroCompra;
 	
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.LAZY)
 	private List<Producto> productos = new ArrayList<Producto>();
 	
-	@OneToMany
+	@OneToMany(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_compra")
 	private List<Presupuesto> presupuestos = new ArrayList<Presupuesto>();
 	
-	@OneToOne
+	@OneToOne(fetch = FetchType.LAZY)
 	private Presupuesto presupuestoElegido;
 	private int cantidadMinimaPresupuestos;
 	
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.LAZY)
 	private List<Usuario> revisores = new ArrayList<Usuario>();
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private CriterioSeleccionPresupuesto criterio;
 	
 	public Compra() {}

@@ -32,8 +32,11 @@ public class OrdenValorPrimeroIngreso extends Requerimiento {
 		while (index < sizeEgresos) {			
 			OperacionEgreso unEgreso = egresosAVincular.get(index);
 			for (OperacionIngreso unIngreso : ingresosAVincular) {
-				if (regla.esVinculable(unIngreso, unEgreso))
+				if (regla.esVinculable(unIngreso, unEgreso)) {
 					unIngreso.getEgresos().add(unEgreso);
+					unEgreso.setIdIngreso(unIngreso.getId());
+					unEgreso.setIngreso(unIngreso);
+				}
 			}
 			index++;
 		}

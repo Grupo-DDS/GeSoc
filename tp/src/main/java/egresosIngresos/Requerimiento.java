@@ -38,6 +38,7 @@ public abstract class Requerimiento {
 							ingresosEgresosOrdenados.getEgresosRestantes().remove(indexEgreso);
 							ingresoAVincular.getEgresos().add(egresoAVincular);
 							egresoAVincular.setIngreso(ingresoAVincular);
+							egresoAVincular.setIdIngreso(ingresoAVincular.getId());
 							indexEgreso = 0;
 							sizeEgreso = ingresosEgresosOrdenados.getEgresosRestantes().size();
 							continue;
@@ -49,6 +50,7 @@ public abstract class Requerimiento {
 						}
 						indexEgreso++;
 					}
+					indexEgreso = 0;
 				}
 				
 				return restante;

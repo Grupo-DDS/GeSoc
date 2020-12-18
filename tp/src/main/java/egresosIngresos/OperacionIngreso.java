@@ -7,6 +7,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,60 +18,56 @@ import javax.persistence.Table;
 import persistencia.OperacionIngresoMapperBD;
 
 @Entity
-@Table(name="INGRESOS")
+@Table(name = "INGRESOS")
 public class OperacionIngreso {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="ID_INGRESO")
-	private Long id;                                               
-	
-	@Column(name="DESCRIPCION")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ID_INGRESO")
+	private Long id;
+
+	@Column(name = "DESCRIPCION")
 	private String descripcion;
-	
-	@Column(name="MONTO_TOTAL")
+
+	@Column(name = "MONTO_TOTAL")
 	private float montoTotal;
-	
-	@Column(name="FECHA_OPERACION")
+
+	@Column(name = "FECHA_OPERACION")
 	private LocalDate fechaOperacion;
-	
-	@OneToMany(mappedBy="ingreso",cascade = CascadeType.ALL)
-	private List<OperacionEgreso> egresos=new ArrayList<OperacionEgreso>();
-	
-	@ManyToOne
+
+	@OneToMany(mappedBy = "ingreso", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<OperacionEgreso> egresos = new ArrayList<OperacionEgreso>();
+
+	@ManyToOne(fetch = FetchType.LAZY)
 	private Organizacion organizacion;
-	
-	
+
 	private LocalDate fechaInicio;
-	
-	
+
 	private LocalDate fechaFin;
+
 	@Override
 	public String toString() {
 		return "OperacionIngreso [id=" + id + ", descripcion=" + descripcion + ", montoTotal=" + montoTotal
-				 + ", egresos=" + egresos + ", fechaOperacion=" + fechaOperacion + "]";
+				+ ", egresos=" + egresos + ", fechaOperacion=" + fechaOperacion + "]";
 	}
-	
-	public OperacionIngreso(){}
 
-	public OperacionIngreso(String descripcion, float montoTotal, LocalDate fechaOperacion, List<OperacionEgreso> egresos,
-			Organizacion organizacion) {
+	public OperacionIngreso() {
+	}
+
+	public OperacionIngreso(String descripcion, float montoTotal, LocalDate fechaOperacion,
+			List<OperacionEgreso> egresos, Organizacion organizacion) {
 		super();
 		this.descripcion = descripcion;
 		this.montoTotal = montoTotal;
 		this.fechaOperacion = fechaOperacion;
 		this.egresos = egresos;
 		this.organizacion = organizacion;
-		this.fechaInicio= sumarDiasAFecha(fechaOperacion,-5);
-		this.fechaFin= sumarDiasAFecha(fechaOperacion,5);
+		this.fechaInicio = sumarDiasAFecha(fechaOperacion, -5);
+		this.fechaFin = sumarDiasAFecha(fechaOperacion, 5);
 	}
-	
 
-	
 	public Long getId() {
 		return id;
 	}
-
-
 
 	public String getDescripcion() {
 		return descripcion;
@@ -128,9 +125,9 @@ public class OperacionIngreso {
 		this.fechaFin = fechaFin;
 	}
 
-	public static LocalDate sumarDiasAFecha(LocalDate fecha, int dias){
+	public static LocalDate sumarDiasAFecha(LocalDate fecha, int dias) {
 
-	      return fecha.plusDays(dias);
+		return fecha.plusDays(dias);
 
 	}
 
@@ -145,10 +142,15 @@ public class OperacionIngreso {
 	public static OperacionIngreso buscarIngresoPorIdEnBD(Long identificadorOperacion) {
 		return OperacionIngresoMapperBD.getInstance().buscarIngresoPorId(identificadorOperacion);
 	}
-	
 
-
-
+	public float getMontoTotalEgresos() {
+		float monto = 0;
+		if (egresos != null) {
+			for (OperacionEgreso egreso : egresos) {
+				monto += egreso.getValorDeEgreso();
+			}
+		}
+		return monto;
+	}
 
 }
-

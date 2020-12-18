@@ -46,4 +46,12 @@ public class OperacionEgresoMapperBD extends MapperBD<OperacionEgreso> {
 		return egresoEncontrado;
 	}
 
+	public List<OperacionEgreso> obtenerEgresosLazy() {
+		EntityManager em = BDUtils.getEntityManager();
+		BDUtils.comenzarTransaccion(em);
+		
+		return em.createQuery("select e from OperacionEgreso e", OperacionEgreso.class)
+				.getResultList();
+	}
+
 }

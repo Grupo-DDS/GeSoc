@@ -18,5 +18,9 @@ public class Proveedor {
     
     @OneToOne
     Direccion direccion;
+    
+	public String getNombre() {
+		return "SIN NOMBRE";
+	}
 
 }

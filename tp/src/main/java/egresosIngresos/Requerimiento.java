@@ -36,6 +36,10 @@ public abstract class Requerimiento {
 						OperacionEgreso egresoAVincular = ingresosEgresosOrdenados.getEgresosRestantes().get(indexEgreso);
 						if (regla.esVinculable(ingresoAVincular, egresoAVincular)){
 							ingresosEgresosOrdenados.getEgresosRestantes().remove(indexEgreso);
+							if(ingresoAVincular.getEgresos() == null) {
+								List<OperacionEgreso> egresosNuevos = new ArrayList<OperacionEgreso>();
+								ingresoAVincular.setEgresos(egresosNuevos);
+								}
 							ingresoAVincular.getEgresos().add(egresoAVincular);
 							egresoAVincular.setIngreso(ingresoAVincular);
 							egresoAVincular.setIdIngreso(ingresoAVincular.getId());

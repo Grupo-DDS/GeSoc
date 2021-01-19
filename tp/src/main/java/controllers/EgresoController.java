@@ -15,11 +15,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.API.MedioDePago;
+
 import app.Path;
 import app.ViewUtil;
 import comprasPresupuestos.Compra;
 import egresosIngresos.DocumentoComercial;
-import egresosIngresos.MedioDePago;
 import egresosIngresos.OperacionEgreso;
 import egresosIngresos.OrganizacionProveedora;
 import egresosIngresos.Persona;

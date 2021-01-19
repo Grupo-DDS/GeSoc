@@ -71,20 +71,6 @@ public class Moneda {
 	public void setDecimal_places(int decimal_places) {
 		this.decimal_places = decimal_places;
 	}
-	
-	public List<Moneda> obtenerListaAPI() throws IOException{
-		List<Moneda> list = null;
-		try (CloseableHttpClient client = HttpClientBuilder.create().build()) {
-            HttpGet get = new HttpGet("https://api.mercadolibre.com/currencies/");
-            HttpResponse responseGet = client.execute(get);
-            HttpEntity responseEntity = responseGet.getEntity();
-            ObjectMapper objectMapper = new ObjectMapper();
-            list = objectMapper.readValue(responseEntity.getContent(),new TypeReference<List<Moneda>>(){});
-          
-		}
-		 return list;
-	}
-	
-	
+			
 	
 }

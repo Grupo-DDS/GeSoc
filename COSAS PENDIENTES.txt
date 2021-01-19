@@ -1,1 +1,5 @@
 REVISAR Requerimiento.java lineas 39-42
+
+REVISAR VistaEgreso -> MedioDePago
+
+VINCULAR MONEDA, PAIS, ETC.. A UNA CLASE

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import com.API.MedioDePago;
 import com.API.Moneda;
 import com.API.Pais;
 
@@ -15,7 +16,6 @@ import comprasPresupuestos.PresupuestoDetallado;
 import comprasPresupuestos.Producto;
 import comprasPresupuestos.ProveedorMenorValor;
 import egresosIngresos.DocumentoComercial;
-import egresosIngresos.MedioDePago;
 import egresosIngresos.OperacionEgreso;
 import egresosIngresos.OperacionIngreso;
 import egresosIngresos.Organizacion;
@@ -39,19 +39,6 @@ import validadorDeCompras.Usuario;
 
 public class Consola {
 	public static void main(String args[]) throws IOException {
-		
-		Moneda m = new Moneda();
-		MonedaMapperBD mbd = MonedaMapperBD.getInstance();
-		List<Moneda> monedas = m.obtenerListaAPI();
-		mbd.insert(monedas);
-		
-		
-		Pais p = new Pais();
-		PaisMapperBD pbd = PaisMapperBD.getInstance();
-		List<Pais> paises = p.obtenerPaises();
-		List<Pais> paisesDetallados = p.obtenerPaisesDetallados(paises);
-		pbd.insert(paisesDetallados);
-	
 		
 		Producto p1 = new Producto("Oreo",100);
 		Producto p2 = new Producto("Cepillo de dientes",300);

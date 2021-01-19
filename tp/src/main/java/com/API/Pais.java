@@ -45,8 +45,13 @@ public class Pais {
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "country_id_pais")
 	private List<Provincia> states;
-
 	
+	@Override
+	public String toString() {
+		return "Pais [id=" + id + ", name=" + name + ", locale=" + locale + ", currency_id=" + currency_id
+				+ ", decimal_separator=" + decimal_separator + ", thousands_separator=" + thousands_separator
+				+ ", time_zone=" + time_zone + ", geo_information=" + geo_information + ", states=" + states + "]";
+	}
 	public Long getId_pais() {
 		return id_pais;
 	}
@@ -106,77 +111,6 @@ public class Pais {
 	}
 	public void setStates(List<Provincia> states) {
 		this.states = states;
-	}
-	
-	public Pais obtenerPais(String id) throws JsonParseException, JsonMappingException, UnsupportedOperationException, IOException{
-		Pais pais = null;
-		try (CloseableHttpClient client = HttpClientBuilder.create().build()) {
-            HttpGet get = new HttpGet("https://api.mercadolibre.com/classified_locations/countries/"+id);
-            HttpResponse responseGet = client.execute(get);
-            HttpEntity responseEntity = responseGet.getEntity();
-            ObjectMapper objectMapper = new ObjectMapper();
-            pais = objectMapper.readValue(responseEntity.getContent(),Pais.class);
-		}
-		
-		
-		return pais;
-	}
-	
-	public List<Pais> obtenerPaises() throws JsonParseException, JsonMappingException, UnsupportedOperationException, IOException{
-		List<Pais> list = null;
-		try (CloseableHttpClient client = HttpClientBuilder.create().build()) {
-            HttpGet get = new HttpGet("https://api.mercadolibre.com/classified_locations/countries");
-            HttpResponse responseGet = client.execute(get);
-            HttpEntity responseEntity = responseGet.getEntity();
-            ObjectMapper objectMapper = new ObjectMapper();
-            list = objectMapper.readValue(responseEntity.getContent(),new TypeReference<List<Pais>>(){});
-		}
-		return list;
-	}
-	
-	public List<Pais> obtenerPaisesDetallados(List<Pais> paises) throws JsonParseException, JsonMappingException, UnsupportedOperationException, IOException{
-		List<Pais> paisesDetallados = new ArrayList<Pais>();
-		int index = 0;
-		int size = paises.size();
-		while(index<size) {
-			Pais paisDetallado = obtenerPais(paises.get(index).getId());
-			paisesDetallados.add(paisDetallado);
-			index++;
-		}
-		return paisesDetallados;
-	}
-	public static void main(String[] args) throws JsonParseException, JsonMappingException, UnsupportedOperationException, IOException{
-		Pais p = new Pais();
-		List<Pais> list = p.obtenerPaises(); 
-		int i=0;
-		while(i<list.size()){
-			Pais pais = list.get(i);
-			
-			System.out.println(pais.getId());
-			System.out.println(pais.getName());
-			System.out.println(pais.getLocale());
-			System.out.println(pais.getCurrency_id());
-			pais = pais.obtenerPais(pais.getId());
-			System.out.println(pais.getDecimal_separator());
-			System.out.println(pais.getThousands_separator());
-			System.out.println(pais.getTime_zone());
-			if(pais.getGeo_information() != null) {
-				System.out.println(pais.getGeo_information().getLocation().getLatitude());
-				System.out.println(pais.getGeo_information().getLocation().getLongitude());
-			}
-			
-			int j=0;
-			while(j<pais.getStates().size()) {
-				Provincia provincia = pais.getStates().get(j);
-				System.out.println(provincia.getId());
-				System.out.println(provincia.getName());
-				j++;
-			}
-			i++;
-			
-		}
-	}
-	
-	
+	}		
 	
 }

@@ -23,6 +23,7 @@ import controllers.PresupuestoController;
 import controllers.ProductoController;
 import controllers.ProyectoController;
 import persistencia.BDUtils;
+import validadorDeCompras.ValidadorCompras;
 
 public class Application {
 
@@ -31,7 +32,10 @@ public class Application {
         EntityManager em = BDUtils.getEntityManager();
         BDUtils.comenzarTransaccion(em);
       
-
+        ValidadorCompras.getInstance().validar();
+        
+        
+        //TODO ejecutarScheduler
         
         // Configuracion Spark
         port(5020);

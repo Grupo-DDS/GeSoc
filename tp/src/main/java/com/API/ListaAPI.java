@@ -15,8 +15,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import persistencia.OperacionEgresoMapperBD;
-
 public class ListaAPI {
 	
 	private static final ListaAPI instance = new ListaAPI();

@@ -1,4 +1,4 @@
-package comprasPresupuestos; 
+package comprasPresupuestos;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,30 +23,30 @@ public class Compra {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	private Long numeroCompra;
-	
+
 	@ManyToMany(fetch = FetchType.LAZY)
 	private List<Producto> productos = new ArrayList<Producto>();
-	
+
 	@OneToMany(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_compra")
 	private List<Presupuesto> presupuestos = new ArrayList<Presupuesto>();
-	
+
 	@OneToOne(fetch = FetchType.LAZY)
 	private Presupuesto presupuestoElegido;
 	private int cantidadMinimaPresupuestos;
-	
+
 	@ManyToMany(fetch = FetchType.LAZY)
 	private List<Usuario> revisores = new ArrayList<Usuario>();
-	
+
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private CriterioSeleccionPresupuesto criterio;
-	
-	public Compra() {}
 
+	private boolean fueValidada = false;
 
-
+	public Compra() {
+	}
 
 	public Compra(Long numeroCompra, List<Producto> productos, List<Presupuesto> presupuestos,
 			Presupuesto presupuestoElegido, int cantidadMinimaPresupuestos, List<Usuario> revisores,
@@ -61,21 +61,18 @@ public class Compra {
 		this.criterio = criterio;
 	}
 
-
-
-
 	public float getValorTotal() {
 		float total = 0;
-		for(Producto unProducto : this.getProductos())
+		for (Producto unProducto : this.getProductos())
 			total += unProducto.getValor();
 		return total;
 	}
 
-	public  List<Presupuesto> getPresupuestos() {
+	public List<Presupuesto> getPresupuestos() {
 		return presupuestos;
 	}
 
-	public  void setPresupuestos(List<Presupuesto> _presupuestos) {
+	public void setPresupuestos(List<Presupuesto> _presupuestos) {
 		presupuestos = _presupuestos;
 	}
 
@@ -123,32 +120,36 @@ public class Compra {
 		this.productos = productos;
 	}
 
-
-
 	public int getCantidadMinimaPresupuestos() {
 		return cantidadMinimaPresupuestos;
 	}
 
-
-
 	public void setCantidadMinimaPresupuestos(int cantidadMinimaPresupuestos) {
 		this.cantidadMinimaPresupuestos = cantidadMinimaPresupuestos;
 	}
+
 	public Long getNumeroCompra() {
 		return numeroCompra;
 	}
+
 	public void setNumeroCompra(Long numeroCompra) {
 		this.numeroCompra = numeroCompra;
 	}
-	
+
+	public boolean isFueValidada() {
+		return fueValidada;
+	}
+
+	public void setFueValidada(boolean fueValidada) {
+		this.fueValidada = fueValidada;
+	}
+
 	public static Compra buscarCompraPorNumeroEnBD(Long numero) {
 		return CompraMapperBD.getInstance().buscarCompraPorNumero(numero);
 	}
-	
+
 	public static void insertarNuevaCompraEnBD(Compra compra) {
 		CompraMapperBD.getInstance().insert(compra);
 	}
-
-
 
 }

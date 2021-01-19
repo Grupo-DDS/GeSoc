@@ -7,8 +7,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.API.MedioDePago;
-import com.API.Moneda;
-import com.API.Pais;
 
 import comprasPresupuestos.Compra;
 import comprasPresupuestos.Presupuesto;
@@ -24,11 +22,9 @@ import persistencia.CompraMapperBD;
 import persistencia.CriterioSeleccionPresupuestoMapperBD;
 import persistencia.DocumentoComercialMapperBD;
 import persistencia.MedioDePagoMapperBD;
-import persistencia.MonedaMapperBD;
 import persistencia.OperacionEgresoMapperBD;
 import persistencia.OperacionIngresoMapperBD;
 import persistencia.OrganizacionMapperBD;
-import persistencia.PaisMapperBD;
 import persistencia.PresupuestoDetalladoMapperBD;
 import persistencia.PresupuestoMapperBD;
 import persistencia.ProductoMapperBD;

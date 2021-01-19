@@ -89,7 +89,7 @@ public class CompraController {
 					.collect(Collectors.toList());
 			compraNueva.setPresupuestoElegido(presupuestoElegido.get(0));
 			
-			compraNueva.getRevisores().add(Usuario.buscarUsuarioBD(getQueryUsername(request)));
+			compraNueva.getRevisores().add(Usuario.buscarUsuarioBD(request.session().attribute("currentUser")));
 			Compra.insertarNuevaCompraEnBD(compraNueva);
 			model.put("cargaCompraExitosa", true);
 		}

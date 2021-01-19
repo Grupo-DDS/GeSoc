@@ -9,16 +9,26 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import comprasPresupuestos.Compra;
+import comprasPresupuestos.CriterioSeleccionPresupuesto;
 import comprasPresupuestos.Presupuesto;
+import persistencia.CompraMapperBD;
+import persistencia.MensajeMapper;
 
 
 @Entity
-//@Table(name = "VALIDADOR DE COMPRAS")
-
 public class ValidadorCompras {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+	static Queue<Compra> listaCompra = new LinkedList<Compra>(); // Deberian cargarse las comrpas en esta lista, y el validador deberia ir tomando cada compra como un FIFO.
+
+	private static ValidadorCompras instance = new ValidadorCompras();
+	public static ValidadorCompras getInstance() {
+		return instance;
+	}
+	private ValidadorCompras(){
+
+	}
 	
 	public Long getId() {
 		return id;
@@ -36,19 +46,9 @@ public class ValidadorCompras {
 		ValidadorCompras.listaCompra = listaCompra;
 	}
 
-	public static void setInstance(ValidadorCompras instance) {
-		ValidadorCompras.instance = instance;
-	}
 
-	static Queue<Compra> listaCompra = new LinkedList<Compra>(); // Deberian cargarse las comrpas en esta lista, y el validador deberia ir tomando cada compra como un FIFO.
-	private static ValidadorCompras instance = new ValidadorCompras();
-	public static ValidadorCompras getInstance() {
-		return instance;
-	}
 
-	private ValidadorCompras(){
 
-	}
 
 	public void notificar(Compra compra) {
 		listaCompra.add(compra);
@@ -65,13 +65,28 @@ public class ValidadorCompras {
 	}
 
 	public static boolean verificarCriterio(Compra compra){
-		Presupuesto presCriterio = compra.getCriterio().obtenerPresupuesto(compra);
+		CriterioSeleccionPresupuesto criterio = compra.getCriterio();
+		if(criterio == null)
+			return true;
+		if(compra.getCantidadMinimaPresupuestos() == 0)
+			return true;
+		if(compra.getCantidadMinimaPresupuestos() > 0 && compra.getPresupuestos() == null)
+			return false;
+		if(compra.getCantidadMinimaPresupuestos() > 0 && compra.getPresupuestos().size() == 0)
+			return false;
+		Presupuesto presCriterio = criterio.obtenerPresupuesto(compra);
+		
 		return presCriterio.equals(compra.getPresupuestoElegido());
 	}
 
 	public void validar(){
+		
+		
+		listaCompra = CompraMapperBD.obtenerComprasParaValidar();
 		while(listaCompra.size() > 0) {
 			Compra compra = listaCompra.poll();
+			compra.setFueValidada(true);
+			CompraMapperBD.getInstance().update(compra);			
 			Mensaje mensaje = new Mensaje();
 			mensaje.setCompra(compra);
 			mensaje.setCantidadPresupuestosIndicada(verificarCantidad(compra));
@@ -86,10 +101,14 @@ public class ValidadorCompras {
 			System.out.printf("Verifica criterio: ");
 			System.out.printf(Boolean.toString(verificarCriterio(compra)));
 			System.out.println();
+			MensajeMapper.getInstance().insert(mensaje);
 			NotificarRevisores nr = NotificarRevisores.getInstance();
 			nr.notificar(compra.getRevisores(),mensaje);			
 		}
+		
 	}
+	
+	
 
 }
 

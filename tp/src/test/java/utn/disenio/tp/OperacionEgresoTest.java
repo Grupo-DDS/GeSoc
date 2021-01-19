@@ -9,11 +9,12 @@ import java.util.List;
 
 import org.junit.Test;
 
+import com.API.MedioDePago;
+
 import comprasPresupuestos.Compra;
 import comprasPresupuestos.Producto;
 import comprasPresupuestos.ProveedorMenorValor;
 import egresosIngresos.DocumentoComercial;
-import egresosIngresos.MedioDePago;
 import egresosIngresos.OperacionEgreso;
 import egresosIngresos.Organizacion;
 import egresosIngresos.Proveedor;

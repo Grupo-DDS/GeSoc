@@ -72,8 +72,14 @@
 		<p>ERROR: YA EXISTE UNA COMPRA CON EL NUMERO INGRESADO </p>
 	#elseif($FormatoCantidadIncorrecto)
 		<p>ERROR: EL FORMATO DE LA CANTIDAD DE PRESUPUESTOS ES INCORRECTO </p>
+	#elseif($errorElegirCriterio)
+		<p>ERROR: ELIJA UN CRITERIO DE SELECCION </p>
+	#elseif($errorElegirPresupuesto)
+		<p> ERROR: ELIJA AL MENOS UN PRESUPUESTO </p>
 	#elseif($cargaCompraExitosa)
 		<p>EXITO: LA COMPRA FUE CARGADA CORRECTAMENTE.</p>
+		
+	
     #end
 
      <div class="form-group">
@@ -82,14 +88,14 @@
     </div>
 
     <div class="form-group">
-      <label for="inputCantidadPresupuestos">Cantidad de presupuestos</label>
+      <label for="inputCantidadPresupuestos">Cantidad m&iacute;nima de presupuestos</label>
       <input name="CantidadPresupuestos" type="text" class="form-control" id="inputCantidadPresupuestos" placeholder="Cantidad de presupuestos">
     </div>
 
     <div class="form-group">
       <label for="inputCriterio">Criterio de selecci&oacute;n de presupuesto</label>
       <select name="criterioSeleccion" class="form-control">
-       <option selected disabled>Criterio</option>
+       <option value="Ninguno" selected>Ninguno</option>
        <option value="ProveedorMenorValor">Por menor valor</option>
      </select>
    </div>
@@ -97,7 +103,7 @@
 
    <div class="form-group">
     <fieldset disabled>
-      <label for="inputPres">Agregue todos los presupuestos necesarios</label>
+      <label for="inputPres">Elegir presupuestos</label>
       <input type="text" class="form-control" id="inputPres" placeholder="Presupuestos seleccionados">
     </fieldset>
     <button type="button" class="btn btn-info" data-toggle="modal" data-target="#ventanaAgregarPresupuestos">Agregar</button>
@@ -146,54 +152,13 @@
   </div>  
 </div> 
 
-  <div class="form-group">
-    <fieldset disabled>
-      <label for="inputPresupuestos">Elegir presupuestos</label>
-      <input type="text" class="form-control" id="inputPresupuestos" placeholder="Presupuesto elegido">
-    </fieldset>
-    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#ventanaAgregarPresupuestoElegido">Ver</button>
-    <!-- Modal -->
-    <div class="modal fade" id="ventanaAgregarPresupuestoElegido" tabindex="-1" role="dialog" aria-labelledby="modalCargarOperaciones" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
 
-            <h5 class="modal-title" id="modalCargarPresupuestos">Presupuestos disponibles:</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-		  
-          <div class="col-sm-10">
-			#foreach($presupuesto in $presupuestos)
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="PresupuestoElegido" value="$!presupuesto.getId()" id="gridRadios$!presupuesto.getId()" checked>
-              <label class="form-check-label" for="gridRadios$!presupuesto.getId()">
-                Presupuesto $presupuesto.getId()
-				#if($presupuesto.getProveedor())
-					Proveedor: $presupuesto.getProveedor().getNombre()
-				#else
-					Proveedor: NO ASIGNADO
-				#end				
-              </label>
-            </div>
-		    #end
-          </div>
-
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary" data-dismiss="modal">Seleccionar</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
 
 
   <div class="form-group">
     <fieldset disabled>
-      <label for="inputProds">Productos</label>
+      <label for="inputProds">Elegir productos</label>
       <input type="text" class="form-control" id="inputProds" placeholder="Productos seleccionados">
     </fieldset>
     <button type="button" class="btn btn-info" data-toggle="modal" data-target="#ventanaAgregarProductos">Agregar</button>

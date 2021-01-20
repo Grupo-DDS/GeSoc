@@ -13,7 +13,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 import persistencia.CompraMapperBD;
 import validadorDeCompras.Usuario;
@@ -33,7 +32,7 @@ public class Compra {
 	@JoinColumn(name = "id_compra")
 	private List<Presupuesto> presupuestos = new ArrayList<Presupuesto>();
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY)
 	private Presupuesto presupuestoElegido;
 	private int cantidadMinimaPresupuestos;
 

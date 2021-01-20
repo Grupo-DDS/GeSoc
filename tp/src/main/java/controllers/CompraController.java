@@ -3,16 +3,13 @@ package controllers;
 import static app.RequestUtil.getQueryCantidadPresupuestos;
 import static app.RequestUtil.getQueryCompra;
 import static app.RequestUtil.getQueryCriterioSeleccion;
-import static app.RequestUtil.getQueryPresupuestoElegido;
 import static app.RequestUtil.getQueryPresupuestosSeleccionados;
 import static app.RequestUtil.getQueryProductosSeleccionados;
-import static app.RequestUtil.getQueryUsername;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 import app.Path;
 import app.ViewUtil;
@@ -24,6 +21,7 @@ import spark.Request;
 import spark.Response;
 import spark.Route;
 import validadorDeCompras.Usuario;
+
 public class CompraController {
 	public static Route cargarCompra = (Request request, Response response) -> {
 		Map<String, Object> model = new HashMap<>();
@@ -31,11 +29,10 @@ public class CompraController {
 		List<Producto> productos = Producto.obtenerTodosEnBD();
 		model.put("presupuestos", presupuestos);
 		model.put("productos", productos);
-		LoginController.ensureUserIsLoggedIn(request, response);
+		LoginController.ensureUserIsLoggedIn(request,response);
 		Compra compraNueva = new Compra();
 		if (getQueryCompra(request) != null && getQueryCantidadPresupuestos(request) != null
-				&& getQueryCriterioSeleccion(request) != null 
-				 && getQueryPresupuestoElegido(request) != null) {
+				&& getQueryCriterioSeleccion(request) != null) {
 
 			Long numeroCompra;
 			try {
@@ -60,35 +57,49 @@ public class CompraController {
 				cantidadPresupuestos = Integer.parseInt(getQueryCantidadPresupuestos(request).trim());
 			} catch (NumberFormatException e1) {
 				model.put("FormatoCantidadIncorrecto", true);
-				return ViewUtil.render(request, model, Path.Template.CARGAR_PROYECTO);
+				return ViewUtil.render(request, model, Path.Template.COMPRA);
 			}
 			if (cantidadPresupuestos < 0) {
 				model.put("cantidadMenorACero", true);
-				return ViewUtil.render(request, model, Path.Template.CARGAR_PROYECTO);
+				return ViewUtil.render(request, model, Path.Template.COMPRA);
 			}
 			compraNueva.setCantidadMinimaPresupuestos(cantidadPresupuestos);
 
 			if (getQueryCriterioSeleccion(request).equals("ProveedorMenorValor"))
 				compraNueva.setCriterio(ProveedorMenorValor.getInstance());
-			if(getQueryPresupuestosSeleccionados(request) != null){
-			String[] identificadoresPresupuestosSeleccionados = getQueryPresupuestosSeleccionados(request);
-			List<Presupuesto> presupuestosSeleccionados = filtrarPresupuestosPorIdentificadores(presupuestos,
-					identificadoresPresupuestosSeleccionados);
-			compraNueva.setPresupuestos(presupuestosSeleccionados);
+			if (getQueryCriterioSeleccion(request).equals("Ninguno"))
+				compraNueva.setCriterio(null);
+
+			if (getQueryPresupuestosSeleccionados(request) != null) {
+				String[] identificadoresPresupuestosSeleccionados = getQueryPresupuestosSeleccionados(request);
+				List<Presupuesto> presupuestosSeleccionados = filtrarPresupuestosPorIdentificadores(presupuestos,
+						identificadoresPresupuestosSeleccionados);
+				compraNueva.setPresupuestos(presupuestosSeleccionados);
 			}
-			
-			if(getQueryProductosSeleccionados(request) != null){
-			String[] identificadoresProductosSeleccionados = getQueryProductosSeleccionados(request);
-			List<Producto> productosSeleccionados = filtrarProductosPorIdentificadores(productos,
-					identificadoresProductosSeleccionados);
-			compraNueva.setProductos(productosSeleccionados);
+
+			if (getQueryProductosSeleccionados(request) != null) {
+				String[] identificadoresProductosSeleccionados = getQueryProductosSeleccionados(request);
+				List<Producto> productosSeleccionados = filtrarProductosPorIdentificadores(productos,
+						identificadoresProductosSeleccionados);
+				compraNueva.setProductos(productosSeleccionados);
 			}
-			Long identificadorPresupuestoElegido = Long.parseLong(getQueryPresupuestoElegido(request));
-			List<Presupuesto> presupuestoElegido = presupuestos.stream()
-					.filter(presupuesto -> presupuesto.getId() == identificadorPresupuestoElegido)
-					.collect(Collectors.toList());
-			compraNueva.setPresupuestoElegido(presupuestoElegido.get(0));
-			
+
+			if (compraNueva.getCriterio() == null && compraNueva.getPresupuestos().size() > 0) {
+				model.put("errorElegirCriterio", true);
+				return ViewUtil.render(request, model, Path.Template.COMPRA);
+			}
+
+			if (compraNueva.getCantidadMinimaPresupuestos() > 0 && compraNueva.getPresupuestos().size() == 0) {
+				model.put("errorElegirPresupuesto", true);
+				return ViewUtil.render(request, model, Path.Template.COMPRA);
+			}
+
+			if (compraNueva.getCantidadMinimaPresupuestos() == 0 && compraNueva.getPresupuestos().size() == 0)
+				compraNueva.setPresupuestoElegido(null);
+
+			if (compraNueva.getCriterio() != null && compraNueva.getPresupuestos().size() > 0)
+				compraNueva.setPresupuestoElegido(compraNueva.getCriterio().obtenerPresupuesto(compraNueva));
+
 			compraNueva.getRevisores().add(Usuario.buscarUsuarioBD(request.session().attribute("currentUser")));
 			Compra.insertarNuevaCompraEnBD(compraNueva);
 			model.put("cargaCompraExitosa", true);

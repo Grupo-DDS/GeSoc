@@ -17,6 +17,7 @@ import controllers.CompraController;
 import controllers.EgresoController;
 import controllers.IngresoController;
 import controllers.InicioController;
+import controllers.InstanciarEmpresaController;
 import controllers.LoginController;
 import controllers.MensajesController;
 import controllers.PresupuestoController;
@@ -65,6 +66,7 @@ public class Application {
         get(Path.Web.PRESUPUESTO, PresupuestoController.cargarPresupuesto);
         get(Path.Web.PRESUPUESTO_DETALLADO, PresupuestoController.cargarPresupuestoDetallado);
         get(Path.Web.CATEGORIA, ProductoController.cargarCategoria);
+        get(Path.Web.INSTANCIAR_EMPRESA_1, InstanciarEmpresaController.instanciarEmpresa);
         get("*",                ViewUtil.notFound);
 
         // Filtro aplicado despues de get y post

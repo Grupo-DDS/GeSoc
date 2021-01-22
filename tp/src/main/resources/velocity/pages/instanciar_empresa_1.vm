@@ -23,9 +23,19 @@
 <script type="text/javascript">
 function showDiv(select){
    if(select.value==1){
-    document.getElementById('hidden_div').style.display = "block";
-   } else{
-    document.getElementById('hidden_div').style.display = "none";
+    document.getElementById('hidden_div_osc').style.display = "block";
+	document.getElementById('hidden_div_jur').style.display = "none";
+   } 
+   else
+   {
+      if(select.value==2){
+    	document.getElementById('hidden_div_jur').style.display = "block";
+		document.getElementById('hidden_div_osc').style.display = "none";
+   	}
+	  else{
+      document.getElementById('hidden_div_jur').style.display = "none";
+	  document.getElementById('hidden_div_osc').style.display = "none";
+	  }
    }
 } 
 </script>
@@ -87,32 +97,71 @@ function showDiv(select){
 
        <form method="get">
             <div class="form-group col-md-12">
-			<label for="OpcionOperacion">Opciones</label>
-			<select name="OpcionOperacion" class="form-control">
-				<option selected disabled>Opciones</option>
-				<option value="ingreso">Ingreso</option>
-				<option value="egreso">Egreso</option>
-				<option value="presupuesto">Presupuesto</option>
+			<label for="OpcionOperacion">BASE O JURIDICA</label>
+			
+			<select id="test" name="form_select" onchange="showDiv(this)" class="form-control">
+				<option selected value="0">Opciones</option>
+				<option value="1">Base</option>
+				<option value="2">Juridica</option>
 			</select>
+			
             </div>
 			
-            <div class="form-group col-md-12">
-                <label for="inputDescripcion">Descripci&oacute;n</label>
-                <input name="Descripcion"  type="text" class="form-control" id="inputDescripcion" placeholder="Descripci&oacute;n del ingreso">
+
+			<div id="hidden_div_osc" style="display:none;">
+            
+			<div class="form-group col-md-12">
+                <label for="inputDescripcion">Nombre Ficticio</label>
+                <input name="Descripcion"  type="text" class="form-control" id="inputDescripcion" placeholder="Nombre Ficticio">
             </div>
           
-           
-              <div class="form-group col-md-12">
-                <label for="inputFechaOperacion">Fecha de operaci&oacute;n</label>
-                <input name="fecha" type="text" class="form-control" id="inputFechaOperacion" placeholder="20/10/2020">
-              </div>
+			 <div class="form-group col-md-12">
+                <label for="inputDescripcion">Descripcion</label>
+                <input name="Descripcion"  type="text" class="form-control" id="inputDescripcion" placeholder="Descripcion">
+            </div>
+			
+
+			
+			</div>
+			
+           <div id="hidden_div_jur" style="display:none;">
+			
+			
+			<div class="form-group col-md-12">
+                <label for="inputDescripcion">Nombre Ficticio</label>
+                <input name="Descripcion"  type="text" class="form-control" id="inputDescripcion" placeholder="Nombre Ficticio">
+            </div>
+			
+						<div class="form-group col-md-12">
+                <label for="inputDescripcion">Codigo inscripcion</label>
+                <input name="Descripcion"  type="text" class="form-control" id="inputDescripcion" placeholder="Codigo inscripcion">
+            </div>
+						<div class="form-group col-md-12">
+                <label for="inputDescripcion">Codigo postal</label>
+                <input name="Descripcion"  type="text" class="form-control" id="inputDescripcion" placeholder="Codigo postal">
+            </div>
+						<div class="form-group col-md-12">
+                <label for="inputDescripcion">CUIT</label>
+                <input name="Descripcion"  type="text" class="form-control" id="inputDescripcion" placeholder="CUIT">
+            </div>
+						<div class="form-group col-md-12">
+                <label for="inputDescripcion">Entidades base</label>
+                <input name="Descripcion"  type="text" class="form-control" id="inputDescripcion" placeholder="Entidades base">
+            </div>
+						<div class="form-group col-md-12">
+                <label for="inputDescripcion">Razon social</label>
+                <input name="Descripcion"  type="text" class="form-control" id="inputDescripcion" placeholder="Razon social">
+            </div>
 			  
 			  
-<select id="test" name="form_select" onchange="showDiv(this)">
-   <option value="0">No</option>
-   <option value="1">Yes</option>
-</select>
-<div id="hidden_div" style="display:none;">Hello hidden content</div>
+			  
+			</div>  
+			  
+
+			<div class="form-group col-md-12">
+                <label for="inputDescripcion">Tipo de entidad</label>
+                <input name="Descripcion"  type="text" class="form-control" id="inputDescripcion" placeholder="Tipo de entidad">
+            </div>
 
               <button onclick="submit" class="btn btn-primary">Cargar</button>
 

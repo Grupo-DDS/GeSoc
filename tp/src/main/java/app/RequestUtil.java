@@ -201,5 +201,73 @@ public class RequestUtil {
 	}
 	
 	
+	  
+	public static String getQuery_seleccion_base_jur(Request request) {
+		return request.queryParams("seleccion_base_jur");
+	}
+	
+	public static String getQuery_nombre_ficticio_base(Request request) {
+		return request.queryParams("nombre_ficticio_base");
+	}
+	
+	public static String getQuery_descripcion_base(Request request) {
+		return request.queryParams("descripcion_base");
+	}
+	
+	public static String getQuery_tipoEntidad_base_osc_empresa(Request request) {
+		return request.queryParams("tipoEntidad_base_osc_empresa");
+	}
+	
+	public static String getQuery_actividad_base_empresa(Request request) {
+		return request.queryParams("actividad_base_empresa");
+	}
+	
+	public static String getQuery_personal_base_empresa(Request request) {
+		return request.queryParams("personal_base_empresa");
+	}
+	
+	public static String getQuery_ventasAnuales_base_empresa(Request request) {
+		return request.queryParams("ventasAnuales_base_empresa");
+	}
+	 
+	public static String getQuery_nombre_ficticio_jur(Request request) {
+		return request.queryParams("nombre_ficticio_jur");
+	}
+	
+	public static String getQuery_codigo_inscripcion_jur(Request request) {
+		return request.queryParams("codigo_inscripcion_jur");
+	}
+	
+	public static String getQuery_codigo_postal_jur(Request request) {
+		return request.queryParams("codigo_postal_jur");
+	}
+	
+	public static String getQuery_cuit_jur(Request request) {
+		return request.queryParams("cuit_jur");
+	}
+	
+	public static String getQuery_descripcion_jur(Request request) {
+		return request.queryParams("descripcion_jur");
+	}
+	
+	public static String getQuery_tipoEntidad_jur_osc_empresa(Request request) {
+		return request.queryParams("tipoEntidad_jur_osc_empresa");
+	}
+	
+	public static String getQuery_actividad_jur_empresa(Request request) {
+		return request.queryParams("actividad_jur_empresa");
+	}
+	
+	public static String getQuery_personal_jur_empresa(Request request) {
+		return request.queryParams("personal_jur_empresa");
+	}
+	
+	public static String getQuery_ventasAnuales_jur_empresa(Request request) {
+		return request.queryParams("ventasAnuales_jur_empresa");
+	}
+	
+
+	
+	
 
 }

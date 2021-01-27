@@ -19,7 +19,8 @@
   <!-- JavaScript 
   <script src="/js/instanciar_empresa.js"></script>
 -->
-
+    <script src="../vendor/jquery/jquery.min.js"></script>
+    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script type="text/javascript">
   function showDiv(select){
    if(select.value==1){
@@ -212,6 +213,53 @@ function showDivTipoEntidadEmp(select){
   <label for="inputDescripcion">Razon social</label>
   <input name="Descripcion"  type="text" class="form-control" id="inputDescripcion" placeholder="Razon social">
 </div>
+
+        <div class="form-row col-md-12" >
+            <label for="inputDocComercial">Elija las entidades base</label>
+            <input type="text" class="form-control" id="inputDocComercial" placeholder="Entidades base disponibles">
+             <button type="button" class="btn btn-info" data-toggle="modal" data-target="#ventanaDocumentoComercial">Ver</button>
+            <!-- Modal -->
+           <div class="modal fade" id="ventanaDocumentoComercial" tabindex="-1" role="dialog" aria-labelledby="modalDocumentoComercial" aria-hidden="true">
+             <div class="modal-dialog modal-dialog-centered" role="document">
+               <div class="modal-content">
+                 <div class="modal-header">
+                  
+                   <h5 class="modal-title" id="modalCargarProductos">Entidades base:</h5>
+                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                   </button>
+                 </div>
+
+          <ul class="list-group list-group-flush">
+			#foreach($presupuesto in $presupuestos)
+				<li class="list-group-item">
+					<div class="custom-control custom-checkbox">
+						<div class="form-row">
+							<div class="form-group col-md-9">
+								<input name="presupuestosSeleccionados" value="$!presupuesto.getId()" type="checkbox" class="custom-control-input" id="check$!presupuesto.getId()">
+									<label class="custom-control-label" for="check$!presupuesto.getId()">
+										Presupuesto $presupuesto.getId() Precio: $presupuesto.getPrecio() Producto: $presupuesto.getProductoCompra().getDescripcion()
+									</label>
+                 			</div>
+						</div>
+					</div>
+           		</li>	
+			#end
+
+        </ul>
+                   
+                   <div class="modal-footer">
+                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                   <button type="button" class="btn btn-primary" data-dismiss="modal">Seleccionar</button>
+                   </div>
+                 </div>
+               </div>
+             </div>
+        </div>
+
+
+
+
 
 <div class="form-group col-md-12">
  <label for="inputDescripcion">Tipo de entidad</label>

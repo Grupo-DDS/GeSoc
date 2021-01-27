@@ -266,6 +266,10 @@ public class RequestUtil {
 		return request.queryParams("ventasAnuales_jur_empresa");
 	}
 	
+	public static String[] getQuery_entidadesBaseSeleccionadas(Request request) {
+		return request.queryParamsValues("entidadesBaseSeleccionadas");
+	}
+	
 
 	
 	

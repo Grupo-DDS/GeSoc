@@ -14,7 +14,7 @@ public class EntidadJuridica extends Entidad{
 	private int codigoPostal;
 	private int cuit;
 	
-	@OneToMany //(mappedBy="EntidadJuridica")
+	@OneToMany
 	private List<EntidadBase> entidades = new ArrayList<EntidadBase>(); 
 	
 	private String razonSocial;

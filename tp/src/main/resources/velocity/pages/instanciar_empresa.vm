@@ -231,14 +231,14 @@ function showDivTipoEntidadEmp(select){
                  </div>
 
           <ul class="list-group list-group-flush">
-			#foreach($presupuesto in $presupuestos)
+			#foreach($entidadBaseLista in $entidadesBaseLista)
 				<li class="list-group-item">
 					<div class="custom-control custom-checkbox">
 						<div class="form-row">
 							<div class="form-group col-md-9">
-								<input name="presupuestosSeleccionados" value="$!presupuesto.getId()" type="checkbox" class="custom-control-input" id="check$!presupuesto.getId()">
-									<label class="custom-control-label" for="check$!presupuesto.getId()">
-										Presupuesto $presupuesto.getId() Precio: $presupuesto.getPrecio() Producto: $presupuesto.getProductoCompra().getDescripcion()
+								<input name="entidadesBaseSeleccionadas" value="$!entidadBaseLista.getIdEntidad()" type="checkbox" class="custom-control-input" id="check$!entidadBaseLista.getIdEntidad()">
+									<label class="custom-control-label" for="check$!entidadBaseLista.getIdEntidad()">
+										Entidad: $entidadBaseLista.getIdEntidad() Nombre: $entidadBaseLista.getNombreFicticio() Descripcion: $entidadBaseLista.getDescripcion()
 									</label>
                  			</div>
 						</div>

@@ -23,7 +23,9 @@ import controllers.MensajesController;
 import controllers.PresupuestoController;
 import controllers.ProductoController;
 import controllers.ProyectoController;
+import entidades.EntidadBase;
 import persistencia.BDUtils;
+import persistencia.EntidadBaseMapperBD;
 
 public class Application {
 
@@ -31,7 +33,11 @@ public class Application {
     	
         EntityManager em = BDUtils.getEntityManager();
         BDUtils.comenzarTransaccion(em);
-      
+        EntidadBase entidadNueva = new EntidadBase();
+        entidadNueva.setDescripcion("esta es una descripcion");
+        entidadNueva.setNombreFicticio("nombre de una entidad");
+        EntidadBaseMapperBD.getInstance().insert(entidadNueva);
+       
         //ValidadorCompras.getInstance().validar();
         
         

@@ -36,4 +36,10 @@ public class Entidad {
 	public void setTipoDeEntidad(TipoEntidad tipoDeEntidad) {
 		this.tipoDeEntidad = tipoDeEntidad;
 	}
+
+	public int getIdEntidad() {
+		return idEntidad;
+	}
+	
+	
 }

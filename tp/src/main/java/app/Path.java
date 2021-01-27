@@ -25,9 +25,7 @@ public class Path {
         @Getter public static final String PRESUPUESTO = "/presupuesto";
         @Getter public static final String PRESUPUESTO_DETALLADO = "/presupuesto-detallado";
         @Getter public static final String CATEGORIA = "/cargar-categoria";
-        @Getter public static final String INSTANCIAR_EMPRESA_1 = "/instanciar-empresa-1";
-        @Getter public static final String INSTANCIAR_EMPRESA_2 = "/instanciar-empresa-2";
-        @Getter public static final String INSTANCIAR_EMPRESA_3 = "/instanciar-empresa-3";
+        @Getter public static final String INSTANCIAR_EMPRESA = "/instanciar-empresa";
         
         
 		public static String getLOGIN() {
@@ -59,9 +57,7 @@ public class Path {
         public static final String PRESUPUESTO = "/velocity/pages/presupuesto.vm";
         public static final String PRESUPUESTO_DETALLADO = "/velocity/pages/presupuesto-detallado.vm";
         public static final String CATEGORIA = "/velocity/pages/categorias.vm";
-        public static final String INSTANCIAR_EMPRESA_1 = "/velocity/pages/instanciar_empresa_1.vm";
-        public static final String INSTANCIAR_EMPRESA_2 = "/velocity/pages/instanciar_empresa_2.vm";
-        public static final String INSTANCIAR_EMPRESA_3 = "/velocity/pages/instanciar_empresa_3.vm";
+        public static final String INSTANCIAR_EMPRESA = "/velocity/pages/instanciar_empresa.vm";
         
     }
 

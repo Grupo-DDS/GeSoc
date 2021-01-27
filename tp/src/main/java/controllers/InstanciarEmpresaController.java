@@ -18,7 +18,7 @@ public class InstanciarEmpresaController {
 		Map<String, Object> model = new HashMap<>();
 		//LoginController.ensureUserIsLoggedIn(request, response);
 
-		return ViewUtil.render(request, model, Path.Template.INSTANCIAR_EMPRESA_1);
+		return ViewUtil.render(request, model, Path.Template.INSTANCIAR_EMPRESA);
 	};
 
 }

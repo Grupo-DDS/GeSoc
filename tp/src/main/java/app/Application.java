@@ -33,11 +33,7 @@ public class Application {
     	
         EntityManager em = BDUtils.getEntityManager();
         BDUtils.comenzarTransaccion(em);
-        EntidadBase entidadNueva = new EntidadBase();
-        entidadNueva.setDescripcion("esta es una descripcion");
-        entidadNueva.setNombreFicticio("nombre de una entidad");
-        EntidadBaseMapperBD.getInstance().insert(entidadNueva);
-       
+        
         //ValidadorCompras.getInstance().validar();
         
         

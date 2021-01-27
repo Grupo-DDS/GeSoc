@@ -39,4 +39,8 @@ public class EntidadBase extends Entidad {
 		return EntidadBaseMapperBD.getInstance().obtenerTodosSinAsignar();
 	}
 
+	public static void insertarNuevaBase(EntidadBase entidad) {
+		EntidadBaseMapperBD.getInstance().insert(entidad);
+	}
+
 }

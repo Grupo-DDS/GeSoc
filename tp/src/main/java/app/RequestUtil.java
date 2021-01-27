@@ -200,5 +200,6 @@ public class RequestUtil {
 		return categoriasElegidas;
 	}
 	
+	
 
 }

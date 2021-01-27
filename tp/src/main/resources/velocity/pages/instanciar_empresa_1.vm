@@ -23,21 +23,42 @@
 <script type="text/javascript">
 function showDiv(select){
    if(select.value==1){
-    document.getElementById('hidden_div_osc').style.display = "block";
+    document.getElementById('hidden_div_base').style.display = "block";
 	document.getElementById('hidden_div_jur').style.display = "none";
    } 
    else
    {
       if(select.value==2){
     	document.getElementById('hidden_div_jur').style.display = "block";
-		document.getElementById('hidden_div_osc').style.display = "none";
+		document.getElementById('hidden_div_base').style.display = "none";
    	}
 	  else{
       document.getElementById('hidden_div_jur').style.display = "none";
-	  document.getElementById('hidden_div_osc').style.display = "none";
+	  document.getElementById('hidden_div_base').style.display = "none";
 	  }
    }
-} 
+}
+
+function showDivTipoEntidad(select){
+   if(select.value==2){
+	document.getElementById('hidden_div_emp').style.display = "block";
+   } 
+   else
+   {
+	document.getElementById('hidden_div_emp').style.display = "none";
+   }
+}
+
+function showDivTipoEntidadEmp(select){
+   if(select.value==2){
+	document.getElementById('hidden_div_emp2').style.display = "block";
+   } 
+   else
+   {
+	document.getElementById('hidden_div_emp2').style.display = "none";
+   }
+}
+
 </script>
   
 </head>
@@ -99,7 +120,7 @@ function showDiv(select){
             <div class="form-group col-md-12">
 			<label for="OpcionOperacion">BASE O JURIDICA</label>
 			
-			<select id="test" name="form_select" onchange="showDiv(this)" class="form-control">
+			<select id="test1" name="form_select" onchange="showDiv(this)" class="form-control">
 				<option selected value="0">Opciones</option>
 				<option value="1">Base</option>
 				<option value="2">Juridica</option>
@@ -108,7 +129,7 @@ function showDiv(select){
             </div>
 			
 
-			<div id="hidden_div_osc" style="display:none;">
+			<div id="hidden_div_base" style="display:none;">
             
 			<div class="form-group col-md-12">
                 <label for="inputDescripcion">Nombre Ficticio</label>
@@ -120,8 +141,48 @@ function showDiv(select){
                 <input name="Descripcion"  type="text" class="form-control" id="inputDescripcion" placeholder="Descripcion">
             </div>
 			
+			<div class="form-group col-md-12">
+			<label for="inputDescripcion">Tipo de entidad</label>
+			
+			<select id="test2" name="form_select" onchange="showDivTipoEntidad(this)" class="form-control">
+				<option selected value="0">Opciones</option>
+				<option value="1">OSC</option>
+				<option value="2">Empresa</option>
+			</select>
+			
+            </div>
+
 
 			
+			<div id="hidden_div_emp" style="display:none;">
+				
+			<div class="form-group col-md-12">
+				
+                <label for="inputDescripcion">Actividad</label>
+				
+				<select name="form_select" class="form-control">
+				<option selected value="0">Opciones</option>
+				<option value="CONSTRUCCION">Construccion</option>
+				<option value="SERVICIOS">Servicios</option>
+				<option value="COMERCIO">Comercio</option>
+				<option value="INDUSTRIAyMINERIA">Industria y mineria</option>
+				<option value="AGROPECUARIO">Agropecuario</option>
+				</select>
+
+            </div>
+
+			
+			
+			<div class="form-group col-md-12">
+                <label for="inputDescripcion">Personal</label>
+                <input name="Descripcion"  type="text" class="form-control" id="inputDescripcion" placeholder="Personal">
+            </div>
+			  						<div class="form-group col-md-12">
+                <label for="inputDescripcion">Ventas anuales</label>
+                <input name="Descripcion"  type="text" class="form-control" id="inputDescripcion" placeholder="Ventas anuales">
+            </div>
+			
+			</div>
 			</div>
 			
            <div id="hidden_div_jur" style="display:none;">
@@ -132,37 +193,120 @@ function showDiv(select){
                 <input name="Descripcion"  type="text" class="form-control" id="inputDescripcion" placeholder="Nombre Ficticio">
             </div>
 			
-						<div class="form-group col-md-12">
+			<div class="form-group col-md-12">
                 <label for="inputDescripcion">Codigo inscripcion</label>
                 <input name="Descripcion"  type="text" class="form-control" id="inputDescripcion" placeholder="Codigo inscripcion">
             </div>
-						<div class="form-group col-md-12">
+			
+			<div class="form-group col-md-12">
                 <label for="inputDescripcion">Codigo postal</label>
                 <input name="Descripcion"  type="text" class="form-control" id="inputDescripcion" placeholder="Codigo postal">
             </div>
-						<div class="form-group col-md-12">
+			
+			<div class="form-group col-md-12">
                 <label for="inputDescripcion">CUIT</label>
                 <input name="Descripcion"  type="text" class="form-control" id="inputDescripcion" placeholder="CUIT">
             </div>
-						<div class="form-group col-md-12">
-                <label for="inputDescripcion">Entidades base</label>
-                <input name="Descripcion"  type="text" class="form-control" id="inputDescripcion" placeholder="Entidades base">
+			
+  <div class="form-group col-md-12">
+    <fieldset disabled>
+      <label for="inputProductos">Elegir entidades base</label>
+      <input type="text" class="form-control" id="inputProductos" placeholder="Entidades elegidas">
+    </fieldset>
+    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#ventanaAgregarProductoElegido">Ver</button>
+    <!-- Modal -->
+    <div class="modal fade" id="ventanaAgregarProductoElegido" tabindex="-1" role="dialog" aria-labelledby="modalCargarProducto" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+
+            <h5 class="modal-title" id="modalCargarProducto">Entidades bases disponibles:</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+		  
+          <div class="col-sm-10">
+			
+			##foreach($producto in $productos)
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="ProductoSeleccionado" value="producto.getId()" id="producto.getId()" checked>
+              <label class="form-check-label" for="producto.getId()">
+				Producto producto.getId() Descripcion: producto.getDescripcion() Precio: producto.getValor()				
+              </label>
             </div>
-						<div class="form-group col-md-12">
+		    ##end
+			
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Seleccionar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>>
+			
+			<div class="form-group col-md-12">
                 <label for="inputDescripcion">Razon social</label>
                 <input name="Descripcion"  type="text" class="form-control" id="inputDescripcion" placeholder="Razon social">
             </div>
 			  
+			<div class="form-group col-md-12">
+			<label for="inputDescripcion">Tipo de entidad</label>
+			
+			<select id="test3" name="form_select" onchange="showDivTipoEntidadEmp(this)" class="form-control">
+				<option selected value="0">Opciones</option>
+				<option value="1">OSC</option>
+				<option value="2">Empresa</option>
+			</select>
+			
+            </div>
+
+
+			
+			<div id="hidden_div_emp2" style="display:none;">
+			
+			<div class="form-group col-md-12">
+				
+                <label for="inputDescripcion">Actividad</label>
+				
+				<select name="form_select" class="form-control">
+				<option selected value="0">Opciones</option>
+				<option value="CONSTRUCCION">Construccion</option>
+				<option value="SERVICIOS">Servicios</option>
+				<option value="COMERCIO">Comercio</option>
+				<option value="INDUSTRIAyMINERIA">Industria y mineria</option>
+				<option value="AGROPECUARIO">Agropecuario</option>
+				</select>
+
+            </div>
+			
+			<div class="form-group col-md-12">
+                <label for="inputDescripcion">Personal</label>
+                <input name="Descripcion"  type="text" class="form-control" id="inputDescripcion" placeholder="Personal">
+            </div>
+			 
+			 <div class="form-group col-md-12">
+                <label for="inputDescripcion">Ventas anuales</label>
+                <input name="Descripcion"  type="text" class="form-control" id="inputDescripcion" placeholder="Ventas anuales">
+            </div>
 			  
 			  
 			</div>  
 			  
 
-			<div class="form-group col-md-12">
-                <label for="inputDescripcion">Tipo de entidad</label>
-                <input name="Descripcion"  type="text" class="form-control" id="inputDescripcion" placeholder="Tipo de entidad">
-            </div>
 
+			
+
+			  
+				
+				
+				
+			</div>
+			
+			
               <button onclick="submit" class="btn btn-primary">Cargar</button>
 
         </form>

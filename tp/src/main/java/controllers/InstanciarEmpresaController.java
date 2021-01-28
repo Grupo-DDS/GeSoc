@@ -26,11 +26,11 @@ public class InstanciarEmpresaController {
 		model.put("entidadesBaseLista", entidadesBaseLista);
 		//LoginController.ensureUserIsLoggedIn(request, response);
 		if(getQuery_seleccion_base_jur(request)!=null) {
-			if(getQuery_seleccion_base_jur(request)=="0") {
+			if(getQuery_seleccion_base_jur(request).equals("0")) {
 				model.put("seleccion_base_jur_incorrecta", true);
 				return ViewUtil.render(request, model, Path.Template.INSTANCIAR_EMPRESA);
 			}
-			if(getQuery_seleccion_base_jur(request)=="1") {
+			if(getQuery_seleccion_base_jur(request).equals("1")) {
 				EntidadBase entidad = new EntidadBase();
 				entidad.setNombreFicticio(getQuery_nombre_ficticio_base(request));
 				entidad.setDescripcion(getQuery_descripcion_base(request));
@@ -44,7 +44,7 @@ public class InstanciarEmpresaController {
 					break;
 				case "2":					
 					Empresa empresa = new Empresa();
-					if(getQuery_actividad_base_empresa(request)=="0") {
+					if(getQuery_actividad_base_empresa(request).equals("0")) {
 						model.put("seleccion_actividad_base_incorrecta", true);
 						return ViewUtil.render(request, model, Path.Template.INSTANCIAR_EMPRESA);
 					}
@@ -83,7 +83,7 @@ public class InstanciarEmpresaController {
 				EntidadBase.insertarNuevaBase(entidad);
 				model.put("Carga_de_Base_exitosa", true);
 			}
-			if(getQuery_seleccion_base_jur(request)=="2") {
+			if(getQuery_seleccion_base_jur(request).equals("2")) {
 				EntidadJuridica entidad = new EntidadJuridica();
 				entidad.setNombreFicticio(getQuery_nombre_ficticio_jur(request));
 				Integer codigoInscripcion;
@@ -135,7 +135,7 @@ public class InstanciarEmpresaController {
 					break;
 				case "2":					
 					Empresa empresa = new Empresa();
-					if(getQuery_actividad_jur_empresa(request)=="0") {
+					if(getQuery_actividad_jur_empresa(request).equals("0")) {
 						model.put("seleccion_actividad_jur_incorrecta", true);
 						return ViewUtil.render(request, model, Path.Template.INSTANCIAR_EMPRESA);
 					}

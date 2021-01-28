@@ -104,17 +104,72 @@ function showDivTipoEntidadEmp(select){
       facilita la carga y gesti&oacute;n de sus operaciones de ingresos. </p>
     </header>
 
-    #if($FormatoNumeroIncorrecto)
-    <p>ERROR: EL FORMATO DEL MONTO INGRESADO ES INCORRECTO</p>
-    #elseif($montoMenorACero)
+	
+
+    #if($seleccion_base_jur_incorrecta)
+    <p>ERROR: SELECCIONE UNA OPCION</p>
+
+    #elseif($seleccion_empresa_base_incorrecta)
+    <p>ERROR: SELECCIONE EL TIPO DE ENTIDAD</p>
+
+    #elseif($seleccion_actividad_base_incorrecta)
+    <p>ERROR: SELECCIONE LA ACTIVIDAD DE LA EMPRESA</p>
+
+    #elseif($FormatoPersonal_base_Incorrecto)
+    <p>ERROR: EL NUMERO DE PERSONAL ES INCORRECTO</p>
+
+    #elseif($cantidadPersonalBaseMenorACero)
+    <p>ERROR: LA CANTIDAD DE PERSONAL DEBE SER MAYOR O IGUAL A CERO</p>
+
+    #elseif($FormatoVtasAnuales_base_Incorrecto)
+    <p>ERROR: EL NUMERO DE VENTAS ES INCORRECTO </p>
+
+    #elseif($cantidadVtasAnualesBaseMenorACero)
+    <p>ERROR: LA CANTIDAD DE VENTAS ANUALES DEBE SER DEBE SER MAYOR O IGUAL A CERO</p>
+
+    #elseif($Carga_de_Base_exitosa)
+    <p>ERROR: LA ENTIDAD BASE FUE CARGADA CORRECTAMENTE</p>
+
+    #elseif($codigoInsciripcion_jur_Incorrecto)
+    <p>ERROR: EL CODIGO DE INSCRIPCION ES INCORRECTO</p>
+
+    #elseif($codigoInscripcionJurMenorACero)
+    <p>ERROR: EL CODIGO DE INSCRIPCION DEBE SER MAYOR O IGUAL A CERO</p>
+
+    #elseif($codigoPostal_Jur_Incorrecto)
+    <p>ERROR: EL CODIGO POSTAL ES INCORRECTO</p>
+
+    #elseif($codigoPostalJurMenorACero)
+    <p>ERROR: EL CODIGO POSTAL DEBE SER MAYOR A CERO</p>
+
+    #elseif($nroCuit_Jur_Incorrecto)
+    <p>ERROR: EL NUMERO DE CUIT ES INCORRECTO</p>
+
+    #elseif($nroCuitJurMenorACero)
+    <p>ERROR: EL NUMERO DE CUIT ES INCORRECTO</p>
+
+    #elseif($seleccion_empresa_jur_incorrecta)
+    <p>ERROR: SELECCIONE EL TIPO DE ENTIDAD</p>
+
+    #elseif($seleccion_actividad_jur_incorrecta)
+    <p>ERROR: SELECCIONE LA ACTIVIDAD DE LA EMPRESA</p>
+
+    #elseif($FormatoPersonal_jur_Incorrecto)
+    <p>ERROR: EL NUMERO DE PERSONAL ES INCORRECTO</p>
+
+    #elseif($cantidadPersonalJurMenorACero)
+    <p>ERROR: LA CANTIDAD DE PERSONAL DEBE SER MAYOR O IGUAL A CERO</p>
+
+    #elseif($FormatoVtasAnuales_jur_Incorrecto)
     <p>ERROR: EL MONTO INGRESADO DEBE SER MAYOR A CERO</p>
-    #elseif($errorFecha)
-    <p>ERROR: LA FECHA ES INCORRECTA </p>
-    #elseif($OperacionIncompleta)
-    <p>ERROR: COMPLETE TODOS LOS CAMPOS</p>
-    #elseif($cargaIngresoExitosa)
-    <p>EXITO: EL EGRESO FUE CARGADO CORRECTAMENTE. EL NUMERO DE INGRESO ES: $numeroIngreso</p>
-    #end
+
+    #elseif($cantidadVtasAnualesJurMenorACero)
+    <p>ERROR: EL NUMERO DE VENTAS ES INCORRECTO</p>
+
+    #elseif($Carga_de_Jur_exitosa)
+    <p>ERROR:  LA CANTIDAD DE VENTAS ANUALES DEBE SER DEBE SER MAYOR O IGUAL A CERO</p>
+#end	
+
     <!-- Page Features -->
 
     <form method="get">
@@ -122,7 +177,7 @@ function showDivTipoEntidadEmp(select){
        <label for="OpcionOperacion">BASE O JURIDICA</label>
 
        <select id="test1" name="seleccion_base_jur" onchange="showDiv(this)" class="form-control">
-        <option selected value="0">Opciones</option>
+        <option disabled selected value="0">Opciones</option>
         <option value="1">Base</option>
         <option value="2">Juridica</option>
       </select>
@@ -146,7 +201,7 @@ function showDivTipoEntidadEmp(select){
      <label for="inputDescripcion">Tipo de entidad</label>
 
      <select id="test2" name="tipoEntidad_base_osc_empresa" onchange="showDivTipoEntidad(this)" class="form-control">
-      <option selected value="0">Opciones</option>
+      <option disabled selected value="0">Opciones</option>
       <option value="1">OSC</option>
       <option value="2">Empresa</option>
     </select>
@@ -162,7 +217,7 @@ function showDivTipoEntidadEmp(select){
     <label for="inputDescripcion">Actividad</label>
 
     <select name="actividad_base_empresa" class="form-control">
-      <option selected value="0">Opciones</option>
+      <option disabled selected value="0">Opciones</option>
       <option value="CONSTRUCCION">Construccion</option>
       <option value="SERVICIOS">Servicios</option>
       <option value="COMERCIO">Comercio</option>
@@ -265,7 +320,7 @@ function showDivTipoEntidadEmp(select){
  <label for="inputDescripcion">Tipo de entidad</label>
 
  <select id="test3" name="form_select" onchange="showDivTipoEntidadEmp(this)" class="form-control">
-  <option selected value="0">Opciones</option>
+  <option disabled selected value="0">Opciones</option>
   <option value="1">OSC</option>
   <option value="2">Empresa</option>
 </select>
@@ -281,7 +336,7 @@ function showDivTipoEntidadEmp(select){
   <label for="inputDescripcion">Actividad</label>
 
   <select name="form_select" class="form-control">
-    <option selected value="0">Opciones</option>
+    <option disabled selected value="0">Opciones</option>
     <option value="CONSTRUCCION">Construccion</option>
     <option value="SERVICIOS">Servicios</option>
     <option value="COMERCIO">Comercio</option>

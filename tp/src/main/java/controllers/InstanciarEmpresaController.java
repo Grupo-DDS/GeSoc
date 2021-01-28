@@ -34,15 +34,17 @@ public class InstanciarEmpresaController {
 				EntidadBase entidad = new EntidadBase();
 				entidad.setNombreFicticio(getQuery_nombre_ficticio_base(request));
 				entidad.setDescripcion(getQuery_descripcion_base(request));
-				switch(getQuery_tipoEntidad_base_osc_empresa(request)) {
-				case "0":					
+				if(getQuery_tipoEntidad_base_osc_empresa(request).equals("0")) 
+				{					
 					model.put("seleccion_empresa_base_incorrecta", true);
 					return ViewUtil.render(request, model, Path.Template.INSTANCIAR_EMPRESA);
-				case "1":					
+				}
+				else if(getQuery_tipoEntidad_base_osc_empresa(request).equals("1")) {
 					OSC osc = new OSC();
 					entidad.setTipoDeEntidad(osc);
-					break;
-				case "2":					
+					}
+				
+				else if(getQuery_tipoEntidad_base_osc_empresa(request).equals("2")) {					
 					Empresa empresa = new Empresa();
 					if(getQuery_actividad_base_empresa(request).equals("0")) {
 						model.put("seleccion_actividad_base_incorrecta", true);
@@ -75,10 +77,7 @@ public class InstanciarEmpresaController {
 					empresa.setVtasAnuales(cantidadVtasAnuales);
 					InstanciarEmpresa.definirEmpresa(empresa);
 					entidad.setTipoDeEntidad(empresa);
-					break;
-				default:
 
-					break;
 				}
 				EntidadBase.insertarNuevaBase(entidad);
 				model.put("Carga_de_Base_exitosa", true);
@@ -96,7 +95,8 @@ public class InstanciarEmpresaController {
 				if (codigoInscripcion < 0) {
 					model.put("codigoInscripcionJurMenorACero", true);
 					return ViewUtil.render(request, model, Path.Template.INSTANCIAR_EMPRESA);
-				}				
+				}
+				entidad.setCodigoInscripcion(codigoInscripcion);
 				Integer codigoPostal;
 				try {
 					codigoPostal = Integer.parseInt(getQuery_codigo_postal_jur(request).trim());
@@ -107,7 +107,8 @@ public class InstanciarEmpresaController {
 				if (codigoPostal < 0) {
 					model.put("codigoPostalJurMenorACero", true);
 					return ViewUtil.render(request, model, Path.Template.INSTANCIAR_EMPRESA);
-				}				
+				}
+				entidad.setCodigoPostal(codigoPostal);
 				Integer nroCuit;
 				try {
 					nroCuit = Integer.parseInt(getQuery_cuit_jur(request).trim());
@@ -119,21 +120,23 @@ public class InstanciarEmpresaController {
 					model.put("nroCuitJurMenorACero", true);
 					return ViewUtil.render(request, model, Path.Template.INSTANCIAR_EMPRESA);
 				}
+				entidad.setCuit(nroCuit);
 				entidad.setRazonSocial(getQuery_razon_social_jur(request));
 				
 				String[] entidadBaseSelec = getQuery_entidadesBaseSeleccionadas(request);
 				List<EntidadBase> entidadesBase = EntidadBase.obtenerMisEntidades(entidadBaseSelec,entidadesBaseLista);
 				entidad.setEntidades(entidadesBase);
 				
-				switch(getQuery_tipoEntidad_jur_osc_empresa(request)) {
-				case "0":					
+				if(getQuery_tipoEntidad_jur_osc_empresa(request).equals("0")) {
+					
 					model.put("seleccion_empresa_jur_incorrecta", true);
 					return ViewUtil.render(request, model, Path.Template.INSTANCIAR_EMPRESA);
-				case "1":					
+					}
+				else if(getQuery_tipoEntidad_jur_osc_empresa(request).equals("1")) {					
 					OSC osc = new OSC();
 					entidad.setTipoDeEntidad(osc);
-					break;
-				case "2":					
+				}
+				else if(getQuery_tipoEntidad_jur_osc_empresa(request).equals("2")) {					
 					Empresa empresa = new Empresa();
 					if(getQuery_actividad_jur_empresa(request).equals("0")) {
 						model.put("seleccion_actividad_jur_incorrecta", true);
@@ -166,10 +169,7 @@ public class InstanciarEmpresaController {
 					empresa.setVtasAnuales(cantidadVtasAnuales);
 					InstanciarEmpresa.definirEmpresa(empresa);
 					entidad.setTipoDeEntidad(empresa);
-					break;
-				default:
 
-					break;
 				}
 				EntidadJuridica.insertarNuevaJuridica(entidad);				
 				model.put("Carga_de_Jur_exitosa", true);

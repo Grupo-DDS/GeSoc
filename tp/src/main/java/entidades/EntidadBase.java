@@ -4,13 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 import persistencia.EntidadBaseMapperBD;
-
-@Entity(name = "EntidadBase")
+@Entity
 public class EntidadBase extends Entidad {
 
+	
+
+	
 	@ManyToOne
 	private EntidadJuridica entidad_juridica;
 	private String descripcion;
@@ -45,7 +50,7 @@ public class EntidadBase extends Entidad {
 	public static List<EntidadBase> obtenerMisEntidades(String[] entidadBaseSelec,
 			List<EntidadBase> entidadesBaseLista) {
 		List<EntidadBase> entidadBaseReturn = new ArrayList<EntidadBase>();
-		int tam = entidadesBaseLista.size();
+		int tam = entidadBaseSelec.length;
 		for (int i = 0; i < tam; i++) {
 			Long id = Long.parseLong(entidadBaseSelec[i]);
 			entidadBaseReturn

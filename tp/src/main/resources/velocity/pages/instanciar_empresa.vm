@@ -128,7 +128,7 @@ function showDivTipoEntidadEmp(select){
     <p>ERROR: LA CANTIDAD DE VENTAS ANUALES DEBE SER DEBE SER MAYOR O IGUAL A CERO</p>
 
     #elseif($Carga_de_Base_exitosa)
-    <p>ERROR: LA ENTIDAD BASE FUE CARGADA CORRECTAMENTE</p>
+    <p>EXITO: LA ENTIDAD BASE FUE CARGADA CORRECTAMENTE</p>
 
     #elseif($codigoInsciripcion_jur_Incorrecto)
     <p>ERROR: EL CODIGO DE INSCRIPCION ES INCORRECTO</p>
@@ -161,13 +161,13 @@ function showDivTipoEntidadEmp(select){
     <p>ERROR: LA CANTIDAD DE PERSONAL DEBE SER MAYOR O IGUAL A CERO</p>
 
     #elseif($FormatoVtasAnuales_jur_Incorrecto)
-    <p>ERROR: EL MONTO INGRESADO DEBE SER MAYOR A CERO</p>
-
-    #elseif($cantidadVtasAnualesJurMenorACero)
     <p>ERROR: EL NUMERO DE VENTAS ES INCORRECTO</p>
 
+    #elseif($cantidadVtasAnualesJurMenorACero)
+    <p>ERROR: LA CANTIDAD DE VENTAS ANUALES DEBE SER DEBE SER MAYOR O IGUAL A CERO</p>
+
     #elseif($Carga_de_Jur_exitosa)
-    <p>ERROR:  LA CANTIDAD DE VENTAS ANUALES DEBE SER DEBE SER MAYOR O IGUAL A CERO</p>
+    <p>EXITO: LA ENTIDAD JURIDICA FUE CARGADA CORRECTAMENTE </p>
 #end	
 
     <!-- Page Features -->
@@ -319,7 +319,7 @@ function showDivTipoEntidadEmp(select){
 <div class="form-group col-md-12">
  <label for="inputDescripcion">Tipo de entidad</label>
 
- <select id="test3" name="form_select" onchange="showDivTipoEntidadEmp(this)" class="form-control">
+ <select id="test3" name="tipoEntidad_jur_osc_empresa" onchange="showDivTipoEntidadEmp(this)" class="form-control">
   <option disabled selected value="0">Opciones</option>
   <option value="1">OSC</option>
   <option value="2">Empresa</option>
@@ -335,7 +335,7 @@ function showDivTipoEntidadEmp(select){
 
   <label for="inputDescripcion">Actividad</label>
 
-  <select name="form_select" class="form-control">
+  <select name="actividad_jur_empresa" class="form-control">
     <option disabled selected value="0">Opciones</option>
     <option value="CONSTRUCCION">Construccion</option>
     <option value="SERVICIOS">Servicios</option>
@@ -348,12 +348,12 @@ function showDivTipoEntidadEmp(select){
 
 <div class="form-group col-md-12">
   <label for="inputDescripcion">Personal</label>
-  <input name="Descripcion"  type="text" class="form-control" id="inputDescripcion" placeholder="Personal">
+  <input name="personal_jur_empresa"  type="text" class="form-control" id="inputDescripcion" placeholder="Personal">
 </div>
 
 <div class="form-group col-md-12">
   <label for="inputDescripcion">Ventas anuales</label>
-  <input name="Descripcion"  type="text" class="form-control" id="inputDescripcion" placeholder="Ventas anuales">
+  <input name="ventasAnuales_jur_empresa"  type="text" class="form-control" id="inputDescripcion" placeholder="Ventas anuales">
 </div>
 
 

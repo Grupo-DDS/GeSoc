@@ -10,9 +10,8 @@ import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
-@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
-@Entity (name="Entidad")
-
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Entity
 public class Entidad {
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE)
@@ -20,7 +19,6 @@ public class Entidad {
 	private String nombreFicticio;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "id_entidad")
 	private TipoEntidad tipoDeEntidad;
 	
 	public Entidad() {}

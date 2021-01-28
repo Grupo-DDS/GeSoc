@@ -6,12 +6,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-
-@Inheritance(strategy=InheritanceType.JOINED)
-@Entity(name="TipoEntidad")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Entity
 public class TipoEntidad {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.TABLE)
 	private int idTipoEntidad;
 	
 	public TipoEntidad() {}

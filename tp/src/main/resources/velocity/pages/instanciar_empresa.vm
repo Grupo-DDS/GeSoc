@@ -211,7 +211,7 @@ function showDivTipoEntidadEmp(select){
 
 <div class="form-group col-md-12">
   <label for="inputDescripcion">Razon social</label>
-  <input name="Descripcion"  type="text" class="form-control" id="inputDescripcion" placeholder="Razon social">
+  <input name="razon_social"  type="text" class="form-control" id="inputDescripcion" placeholder="Razon social">
 </div>
 
         <div class="form-row col-md-12" >

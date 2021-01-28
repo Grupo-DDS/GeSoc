@@ -6,6 +6,9 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
+import persistencia.EntidadBaseMapperBD;
+import persistencia.EntidadJuridicaMapperBD;
+
 
 @Entity(name="EntidadJuridica")
 public class EntidadJuridica extends Entidad{
@@ -52,7 +55,7 @@ public class EntidadJuridica extends Entidad{
 	public List<EntidadBase> getEntidades() {
 		return entidades;
 	}
-	public void setEntidades(ArrayList<EntidadBase> entidades) {
+	public void setEntidades(List<EntidadBase> entidades) {
 		this.entidades = entidades;
 	}
 	public String getRazonSocial() {
@@ -61,5 +64,8 @@ public class EntidadJuridica extends Entidad{
 	public void setRazonSocial(String razonSocial) {
 		this.razonSocial = razonSocial;
 	}
-	
+
+	public static void insertarNuevaJuridica(EntidadJuridica entidad) {
+		EntidadJuridicaMapperBD.getInstance().insert(entidad);		
+	}		
 }

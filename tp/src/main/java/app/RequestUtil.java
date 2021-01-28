@@ -246,8 +246,8 @@ public class RequestUtil {
 		return request.queryParams("cuit_jur");
 	}
 	
-	public static String getQuery_descripcion_jur(Request request) {
-		return request.queryParams("descripcion_jur");
+	public static String getQuery_razon_social_jur(Request request) {
+		return request.queryParams("razon_social_jur");
 	}
 	
 	public static String getQuery_tipoEntidad_jur_osc_empresa(Request request) {

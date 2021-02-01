@@ -11,6 +11,8 @@ import static spark.debug.DebugScreen.enableDebugScreen;
 
 import javax.persistence.EntityManager;
 
+import com.API.ListaAPI;
+
 import controllers.AsociacionesController;
 import controllers.AuditoriaController;
 import controllers.CompraController;
@@ -33,7 +35,7 @@ public class Application {
     	
         EntityManager em = BDUtils.getEntityManager();
         BDUtils.comenzarTransaccion(em);
-        
+        ListaAPI.getInstance().agregarNuevosMediosDePago();
         //ValidadorCompras.getInstance().validar();
         
         

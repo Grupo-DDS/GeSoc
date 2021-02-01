@@ -1,5 +1,7 @@
 package com.API;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,6 +19,7 @@ public class MedioDePago {
 	private Long id_medioDePago;
 	private String id;
 	private String name;
+	private String payment_type_id;
 	
 	public MedioDePago() {}
 	public MedioDePago(String id, String name, String payment_type_id) {
@@ -54,7 +57,6 @@ public class MedioDePago {
 		this.payment_type_id = payment_type_id;
 	}
 
-	private String payment_type_id;
 
 	public Long getId_medioDePago() {
 		return id_medioDePago;
@@ -62,6 +64,22 @@ public class MedioDePago {
 
 	public static void insertarNuevoMedioDePagoEnBD(MedioDePago mp) {
 		MedioDePagoMapperBD.getInstance().insert(mp);
+	}
+	public static List<MedioDePago> obtenerTodosDeBD() {
+		return MedioDePagoMapperBD.getInstance().obtenerTodos();
+	}
+	
+	public static MedioDePago buscarMedioDePagoPorID(String id, List<MedioDePago> medios) {
+		int index = 0;
+		int size = medios.size();
+		Long idCasteado = Long.parseLong(id);
+		while(index<size) {
+			if(medios.get(index).getId_medioDePago() == idCasteado) 
+				return medios.get(index);
+			index++;
+		}
+		return null; //si llega aca cagamos
+		
 	}
 
 }

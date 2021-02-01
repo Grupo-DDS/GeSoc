@@ -8,7 +8,7 @@ import static app.RequestUtil.getQueryDNICUITProveedor;
 import static app.RequestUtil.getQueryFecha;
 import static app.RequestUtil.getQueryMedio;
 import static app.RequestUtil.getQueryNombreProveedor;
-
+import static com.API.MedioDePago.buscarMedioDePagoPorID;
 import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.HashMap;
@@ -34,6 +34,8 @@ public class EgresoController {
 		Map<String, Object> model = new HashMap<>();
 		LoginController.ensureUserIsLoggedIn(request, response);
 		OperacionEgreso nuevaOperacionEgreso = new OperacionEgreso();
+		List<MedioDePago> mediosDePagoExistentes = MedioDePago.obtenerTodosDeBD();
+		model.put("medios",mediosDePagoExistentes);
 		try {
 			if (!getQueryCompra(request).equals("") && !getQueryComprobanteTipo(request).equals("")
 					&& !getQueryFecha(request).equals("") && !getQueryMedio(request).equals("")
@@ -67,15 +69,9 @@ public class EgresoController {
 					model.put("errorFecha", true);
 					return ViewUtil.render(request, model, Path.Template.EGRESOS);
 				}
-				MedioDePago mp = new MedioDePago();
-				mp.setMedio(getQueryMedio(request).trim());
-				if (mp.datosDelSistema(getQueryMedio(request).trim())) {
-					MedioDePago.insertarNuevoMedioDePagoEnBD(mp);
-					nuevaOperacionEgreso.setMedioDePago(mp);
-				} else {
-					model.put("errorMedioDePagoInexistente", true);
-					return ViewUtil.render(request, model, Path.Template.EGRESOS);
-				}
+				MedioDePago mp = buscarMedioDePagoPorID(getQueryMedio(request),mediosDePagoExistentes);
+				nuevaOperacionEgreso.setMedioDePago(mp);
+				//TODO PROBAR
 				if (getQueryDNICUITProveedor(request).trim().length() <= 8) {
 					int dniPersona = Integer.parseInt(getQueryDNICUITProveedor(request).trim());
 					Persona proveedorEncontradoBD = Persona.buscarPersonaPorDNIEnBD(dniPersona);
@@ -136,4 +132,7 @@ public class EgresoController {
 		return ViewUtil.render(request, model, Path.Template.MIS_EGRESOS);
 
 	};
+	
+	
+	
 }

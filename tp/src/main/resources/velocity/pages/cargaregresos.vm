@@ -126,7 +126,7 @@
 			#foreach($medio in $medios)
             <div class="form-check">
               <input class="form-check-input" type="radio" name="medio" value="$!medio.getId_medioDePago()" id="$!medio.getId_medioDePago()" checked>
-              <label class="form-check-label" for="$!producto.getId_medioDePago()">
+              <label class="form-check-label" for="$!medio.getId_medioDePago()">
 				$medio.getName()		
               </label>
             </div>

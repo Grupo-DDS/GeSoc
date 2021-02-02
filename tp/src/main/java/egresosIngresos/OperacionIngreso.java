@@ -18,23 +18,22 @@ import javax.persistence.Table;
 import persistencia.OperacionIngresoMapperBD;
 
 @Entity
-@Table(name = "INGRESOS")
 public class OperacionIngreso {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ID_INGRESO")
+
 	private Long id;
 
-	@Column(name = "DESCRIPCION")
+
 	private String descripcion;
 
-	@Column(name = "MONTO_TOTAL")
+
 	private float montoTotal;
 
-	@Column(name = "FECHA_OPERACION")
+
 	private LocalDate fechaOperacion;
 
-	@OneToMany(mappedBy = "ingreso", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<OperacionEgreso> egresos = new ArrayList<OperacionEgreso>();
 
 	@ManyToOne(fetch = FetchType.LAZY)

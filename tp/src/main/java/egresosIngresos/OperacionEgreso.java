@@ -19,39 +19,30 @@ import com.API.MedioDePago;
 import comprasPresupuestos.Compra;
 import persistencia.OperacionEgresoMapperBD;
 @Entity
-@Table(name="EGRESOS")
 public class OperacionEgreso {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="ID_EGRESO")
 	private Long id;
 	
-	@Column(name="FECHA_EGRESO")
 	private LocalDate fechaOperacion;
 	
 	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="ID_DOC_COMERCIAL")
 	private DocumentoComercial comprobante;
 
 	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="ID_MEDIO_DE_PAGO")
 	private MedioDePago medioDePago;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="ID_ORGANIZACION")
 	private Organizacion organizacion;
 	
 	
-	@JoinColumn(name="ID_COMPRA")	
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Compra compra;
 	
-	@JoinColumn(name="ID_PROVEEDOR")
 	@ManyToOne
 	private Proveedor proveedor;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="ingreso")
 	private OperacionIngreso ingreso;
 	
 	private Long idIngreso = (long) -1;

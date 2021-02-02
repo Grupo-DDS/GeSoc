@@ -4,12 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.EntityManager;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Transient;
+
+import persistencia.BDUtils;
+import persistencia.OperacionEgresoMapperBD;
+import persistencia.OperacionIngresoMapperBD;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -33,13 +38,10 @@ public abstract class Requerimiento {
 				for (OperacionIngreso ingresoAVincular: ingresosEgresosOrdenados.getIngresosRestantes()) {
 					while(indexEgreso < sizeEgreso)
 					{
+						
 						OperacionEgreso egresoAVincular = ingresosEgresosOrdenados.getEgresosRestantes().get(indexEgreso);
 						if (regla.esVinculable(ingresoAVincular, egresoAVincular)){
 							ingresosEgresosOrdenados.getEgresosRestantes().remove(indexEgreso);
-							if(ingresoAVincular.getEgresos() == null) {
-								List<OperacionEgreso> egresosNuevos = new ArrayList<OperacionEgreso>();
-								ingresoAVincular.setEgresos(egresosNuevos);
-								}
 							ingresoAVincular.getEgresos().add(egresoAVincular);
 							egresoAVincular.setIngreso(ingresoAVincular);
 							egresoAVincular.setIdIngreso(ingresoAVincular.getId());

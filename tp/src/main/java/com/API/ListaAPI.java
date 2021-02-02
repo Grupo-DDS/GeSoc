@@ -43,7 +43,7 @@ public class ListaAPI {
 	}
 
 	public void agregarNuevosMediosDePago() {
-		if (MedioDePagoMapperBD.getInstance().mediosCargadosEnBD()) {
+		if (!MedioDePagoMapperBD.getInstance().mediosCargadosEnBD()) {
 			List<MedioDePago> medios;
 			try {
 				medios = ListaAPI.getInstance().obtenerListaAPImedioPago();

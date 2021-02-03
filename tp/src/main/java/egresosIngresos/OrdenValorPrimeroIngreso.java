@@ -5,6 +5,10 @@ import java.util.List;
 
 import javax.persistence.Entity;
 
+import persistencia.BDUtils;
+import persistencia.OperacionEgresoMapperBD;
+import persistencia.OperacionIngresoMapperBD;
+
 @Entity
 public class OrdenValorPrimeroIngreso extends Requerimiento {
 	private static final OrdenValorPrimeroIngreso instance = new OrdenValorPrimeroIngreso();
@@ -24,12 +28,17 @@ public class OrdenValorPrimeroIngreso extends Requerimiento {
 	}
 
 	@Override
-	public IngresosEgresos vincular(List<OperacionEgreso> egresosAVincular, List<OperacionIngreso> ingresosAVincular,
-			ReglaVinculacion regla) {
+	public IngresosEgresos vincular(ReglaVinculacion regla) {
+		BDUtils.getEntityManager().clear();
+		List<OperacionIngreso> ingresosAVincular = OperacionIngresoMapperBD.getInstance()
+				.obtenerIngresosQueSeanVinculables();
+		List<OperacionEgreso> egresosAVincular = OperacionEgresoMapperBD.getInstance()
+				.obtenerEgresosQueSeanVinculables();
+
 		ingresosAVincular.sort(Comparator.comparing(OperacionIngreso::getMontoTotal));
 		int index = 0;
 		int sizeEgresos = egresosAVincular.size();
-		while (index < sizeEgresos) {			
+		while (index < sizeEgresos) {
 			OperacionEgreso unEgreso = egresosAVincular.get(index);
 			for (OperacionIngreso unIngreso : ingresosAVincular) {
 				if (regla.esVinculable(unIngreso, unEgreso)) {
@@ -40,7 +49,10 @@ public class OrdenValorPrimeroIngreso extends Requerimiento {
 			}
 			index++;
 		}
-		return null;
+		OperacionIngresoMapperBD.getInstance().updateAll(ingresosAVincular);
+		OperacionEgresoMapperBD.getInstance().updateAll(egresosAVincular);
+		
+		return null; //TODO Y ESTE NULL
 	}
 
 }

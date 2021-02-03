@@ -21,45 +21,53 @@ import persistencia.OperacionIngresoMapperBD;
 public abstract class Requerimiento {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@Transient
-	private IngresosEgresos restante = new IngresosEgresos(new ArrayList<OperacionEgreso>(), new ArrayList<OperacionIngreso>());
-	
-	public IngresosEgresos vincular(List<OperacionEgreso> egresosAVincular, List<OperacionIngreso> ingresosAVincular,
-			ReglaVinculacion regla){
-				IngresosEgresos ingresosEgresosOrdenados = ordenar(egresosAVincular, ingresosAVincular);
-				
-				int indexEgreso = 0;
-				
-				int sizeEgreso = ingresosEgresosOrdenados.getEgresosRestantes().size();
-				
-				for (OperacionIngreso ingresoAVincular: ingresosEgresosOrdenados.getIngresosRestantes()) {
-					while(indexEgreso < sizeEgreso)
-					{
-						
-						OperacionEgreso egresoAVincular = ingresosEgresosOrdenados.getEgresosRestantes().get(indexEgreso);
-						if (regla.esVinculable(ingresoAVincular, egresoAVincular)){
-							ingresosEgresosOrdenados.getEgresosRestantes().remove(indexEgreso);
-							ingresoAVincular.getEgresos().add(egresoAVincular);
-							egresoAVincular.setIngreso(ingresoAVincular);
-							egresoAVincular.setIdIngreso(ingresoAVincular.getId());
-							indexEgreso = 0;
-							sizeEgreso = ingresosEgresosOrdenados.getEgresosRestantes().size();
-							continue;
-						} 
-						else 
-						{
-							restante.getEgresosRestantes().add(egresoAVincular);
-							restante.getIngresosRestantes().add(ingresoAVincular);
-						}
-						indexEgreso++;
-					}
+	private IngresosEgresos restante = new IngresosEgresos(new ArrayList<OperacionEgreso>(),
+			new ArrayList<OperacionIngreso>());
+
+	public IngresosEgresos vincular(ReglaVinculacion regla) {
+		BDUtils.getEntityManager().clear();
+		List<OperacionIngreso> ingresosAVincular = OperacionIngresoMapperBD.getInstance()
+				.obtenerIngresosQueSeanVinculables();
+		List<OperacionEgreso> egresosAVincular = OperacionEgresoMapperBD.getInstance()
+				.obtenerEgresosQueSeanVinculables();
+		
+		if(ingresosAVincular.size()>0 && egresosAVincular.size()>0) {
+		IngresosEgresos ingresosEgresosOrdenados = ordenar(egresosAVincular, ingresosAVincular);
+
+		int indexEgreso = 0;
+
+		int sizeEgreso = ingresosEgresosOrdenados.getEgresosRestantes().size();
+
+		for (OperacionIngreso ingresoAVincular : ingresosEgresosOrdenados.getIngresosRestantes()) {
+			while (indexEgreso < sizeEgreso) {
+
+				OperacionEgreso egresoAVincular = ingresosEgresosOrdenados.getEgresosRestantes().get(indexEgreso);
+				if (regla.esVinculable(ingresoAVincular, egresoAVincular)) {
+					ingresosEgresosOrdenados.getEgresosRestantes().remove(indexEgreso);
+					ingresoAVincular.getEgresos().add(egresoAVincular);
+					egresoAVincular.setIngreso(ingresoAVincular);
+					egresoAVincular.setIdIngreso(ingresoAVincular.getId());
 					indexEgreso = 0;
+					sizeEgreso = ingresosEgresosOrdenados.getEgresosRestantes().size();
+					continue;
+				} else {
+					restante.getEgresosRestantes().add(egresoAVincular);
+					restante.getIngresosRestantes().add(ingresoAVincular);
 				}
-				
-				return restante;
+				indexEgreso++;
+			}
+			indexEgreso = 0;
 		}
-public abstract IngresosEgresos ordenar(List<OperacionEgreso> egresosAVincular, List<OperacionIngreso> ingresoAVincular);
+		OperacionIngresoMapperBD.getInstance().updateAll(ingresosAVincular);
+		OperacionEgresoMapperBD.getInstance().updateAll(egresosAVincular);
+		}
+		return restante;
+	}
+
+	public abstract IngresosEgresos ordenar(List<OperacionEgreso> egresosAVincular,
+			List<OperacionIngreso> ingresoAVincular);
 }

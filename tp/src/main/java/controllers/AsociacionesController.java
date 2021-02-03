@@ -34,35 +34,21 @@ public class AsociacionesController {
 		if (getQueryOpcionesAsociacion(request) != null) {
 
 			if (getQueryOpcionesAsociacion(request).equals("OrdenEgreso")) {
-				List<OperacionIngreso> ingresosAVincular = OperacionIngresoMapperBD.getInstance()
-						.obtenerIngresosQueSeanVinculables();
-				List<OperacionEgreso> egresosAVincular = OperacionEgresoMapperBD.getInstance()
-						.obtenerEgresosQueSeanVinculables();
 				ReglaVinculacion regla = ReglaFecha.getInstance();
-				OrdenValorPrimeroEgreso.getInstance().vincular(egresosAVincular, ingresosAVincular, regla);
+				OrdenValorPrimeroEgreso.getInstance().vincular(regla);
 				model.put("vinculacionCompletada", true);
-				OperacionIngresoMapperBD.getInstance().updateAll(ingresosAVincular);
-				OperacionEgresoMapperBD.getInstance().updateAll(egresosAVincular);
+
 			} else if (getQueryOpcionesAsociacion(request).equals("OrdenIngreso")) {
-				List<OperacionIngreso> ingresosAVincular = OperacionIngresoMapperBD.getInstance()
-						.obtenerIngresosQueSeanVinculables();
-				List<OperacionEgreso> egresosAVincular = OperacionEgresoMapperBD.getInstance()
-						.obtenerEgresosQueSeanVinculables();
+
 				ReglaVinculacion regla = ReglaFecha.getInstance();
-				OrdenValorPrimeroIngreso.getInstance().vincular(egresosAVincular, ingresosAVincular, regla);
+				OrdenValorPrimeroIngreso.getInstance().vincular(regla);
 				model.put("vinculacionCompletada", true);
-				OperacionIngresoMapperBD.getInstance().updateAll(ingresosAVincular);
-				OperacionEgresoMapperBD.getInstance().updateAll(egresosAVincular);
+
 			} else if (getQueryOpcionesAsociacion(request).equals("OrdenFecha")) {
-				List<OperacionIngreso> ingresosAVincular = OperacionIngresoMapperBD.getInstance()
-						.obtenerIngresosQueSeanVinculables();
-				List<OperacionEgreso> egresosAVincular = OperacionEgresoMapperBD.getInstance()
-						.obtenerEgresosQueSeanVinculables();
+
 				ReglaVinculacion regla = ReglaFecha.getInstance();
-				OrdenFecha.getInstance().vincular(egresosAVincular, ingresosAVincular, regla);
+				OrdenFecha.getInstance().vincular(regla);
 				model.put("vinculacionCompletada", true);
-				OperacionIngresoMapperBD.getInstance().updateAll(ingresosAVincular);
-				OperacionEgresoMapperBD.getInstance().updateAll(egresosAVincular);
 			} else if (getQueryOpcionesAsociacion(request).equals("OrdenMix")) {
 				model.put("SolicitarRequerimientosMix", true);
 			}
@@ -97,14 +83,8 @@ public class AsociacionesController {
 
 			OrdenMix criterio = new OrdenMix();
 			criterio.setRequerimientos(requerimientos);
-			List<OperacionIngreso> ingresosAVincular = OperacionIngresoMapperBD.getInstance()
-					.obtenerIngresosQueSeanVinculables();
-			List<OperacionEgreso> egresosAVincular = OperacionEgresoMapperBD.getInstance()
-					.obtenerEgresosQueSeanVinculables();
 			ReglaVinculacion regla = ReglaFecha.getInstance();
-			criterio.vincular(egresosAVincular, ingresosAVincular, regla);
-			OperacionIngresoMapperBD.getInstance().updateAll(ingresosAVincular);
-			OperacionEgresoMapperBD.getInstance().updateAll(egresosAVincular);
+			criterio.vincular(regla);
 			model.put("vinculacionCompletada", true);
 			model.put("SolicitarRequerimientosMix", false);
 		}

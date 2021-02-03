@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EntityManager;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,6 +15,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import persistencia.BDUtils;
 import persistencia.CompraMapperBD;
 import validadorDeCompras.Usuario;
 
@@ -42,6 +44,9 @@ public class Compra {
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private CriterioSeleccionPresupuesto criterio;
 
+	private Long id_operacion_egreso = (long) -1;
+	
+	
 	private boolean fueValidada = false;
 
 	public Compra() {
@@ -143,12 +148,26 @@ public class Compra {
 		this.fueValidada = fueValidada;
 	}
 
+	
+	
+	public Long getId_operacion_egreso() {
+		return id_operacion_egreso;
+	}
+
+	public void setId_operacion_egreso(Long id_operacion_egreso) {
+		this.id_operacion_egreso = id_operacion_egreso;
+	}
+
 	public static Compra buscarCompraPorNumeroEnBD(Long numero) {
 		return CompraMapperBD.getInstance().buscarCompraPorNumero(numero);
 	}
 
 	public static void insertarNuevaCompraEnBD(Compra compra) {
 		CompraMapperBD.getInstance().insert(compra);
+	}
+	
+	public static List<Compra> obtenerComprasSinEgresos() {
+		return CompraMapperBD.getInstance().obtenerComprasSinEgresos();
 	}
 
 }

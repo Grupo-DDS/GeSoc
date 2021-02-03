@@ -36,7 +36,7 @@ public class OperacionEgreso {
 	private Organizacion organizacion;
 	
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.LAZY)
 	private Compra compra;
 	
 	@ManyToOne

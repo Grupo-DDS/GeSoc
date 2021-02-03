@@ -24,6 +24,7 @@ import egresosIngresos.DocumentoComercial;
 import egresosIngresos.OperacionEgreso;
 import egresosIngresos.OrganizacionProveedora;
 import egresosIngresos.Persona;
+import persistencia.CompraMapperBD;
 import persistencia.OperacionEgresoMapperBD;
 import spark.Request;
 import spark.Response;
@@ -36,6 +37,8 @@ public class EgresoController {
 		OperacionEgreso nuevaOperacionEgreso = new OperacionEgreso();
 		List<MedioDePago> mediosDePagoExistentes = MedioDePago.obtenerTodosDeBD();
 		model.put("medios",mediosDePagoExistentes);
+		model.remove("compras_disponibles");
+		model.put("compras_disponibles",Compra.obtenerComprasSinEgresos());  
 		try {
 			if (!getQueryCompra(request).equals("") && !getQueryComprobanteTipo(request).equals("")
 					&& !getQueryFecha(request).equals("") && !getQueryMedio(request).equals("")
@@ -107,6 +110,10 @@ public class EgresoController {
 				OperacionEgresoMapperBD.getInstance().update(nuevaOperacionEgreso);
 				model.put("numeroEgreso", nuevaOperacionEgreso.getId());
 				model.put("cargaEgresoExitosa", true);
+				nuevaOperacionEgreso.getCompra().setId_operacion_egreso(nuevaOperacionEgreso.getId());
+				CompraMapperBD.getInstance().update(nuevaOperacionEgreso.getCompra());
+				model.remove("compras_disponibles");
+				model.put("compras_disponibles",Compra.obtenerComprasSinEgresos());  
 
 			} else {
 				model.put("errorDatosIncompletos", true);

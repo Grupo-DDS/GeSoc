@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 
 import comprasPresupuestos.Compra;
+import egresosIngresos.OperacionEgreso;
 
 
 public class CompraMapperBD extends MapperBD<Compra>{
@@ -43,4 +44,13 @@ public class CompraMapperBD extends MapperBD<Compra>{
 		return colaCompras;
 		
 	}
+	
+	public List<Compra> obtenerComprasSinEgresos() {
+		EntityManager em = BDUtils.getEntityManager();
+		BDUtils.comenzarTransaccion(em);
+		return em.createQuery("select c from Compra c where c.id_operacion_egreso = -1", Compra.class)
+				.getResultList();
+	}
+	
+	
 }

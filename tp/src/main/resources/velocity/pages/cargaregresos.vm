@@ -76,10 +76,55 @@
     
         <form method="get">
 
-			<div class="form-row">
-              <label for="inputCompra">Compra</label>
-              <input name="compra" type="text" class="form-control" id="inputCompra" placeholder="Compra">
+			
+			
+
+			
+						  <div class="form-group">
+    <fieldset disabled>
+      <label for="inputCompra">Compra</label>
+      <input type="text" class="form-control" id="inputCompra" placeholder="Compra elegida">
+    </fieldset>
+    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#ventanaAgregarCompra">Ver</button>
+    <!-- Modal -->
+    <div class="modal fade" id="ventanaAgregarCompra" tabindex="-1" role="dialog" aria-labelledby="modalCargarCompra" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+
+            <h5 class="modal-title" id="modalCargarCompra">Compras disponibles:</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+		  
+          <div class="col-sm-10">
+			 <div class="form-check">
+              <input class="form-check-input" type="radio" name="compra" value="-1" id="-1" checked>
+              <label class="form-check-label" for="-1">
+				Opciones		
+              </label>
             </div>
+			#foreach($compra_disp in $compras_disponibles)
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="compra" value="$!compra_disp.getNumeroCompra()" id="$!compra_disp.getNumeroCompra()">
+              <label class="form-check-label" for="$!compra_disp.getNumeroCompra()">
+				Numero: $compra_disp.getNumeroCompra() Monto: $compra_disp.getValorTotal()	
+              </label>
+            </div>
+		    #end
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Seleccionar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+			
+			
 			<div class="form-row">
               <div class="form-group col-md-6">
                 <label for="inputComprobante">Numero Comprobante</label>

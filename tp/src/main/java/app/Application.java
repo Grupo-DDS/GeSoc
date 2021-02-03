@@ -43,6 +43,8 @@ public class Application {
         ListaAPI.getInstance().agregarNuevosMediosDePago();
         //ValidadorCompras.getInstance().validar();
         
+        
+        
 
 			
 		

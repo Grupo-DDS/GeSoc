@@ -57,7 +57,8 @@
         contabilidad de gesti&oacute;n como objetivo principal. </p>
       <a href="/info.html" class="btn btn-primary btn-lg">M&aacute;s Info</a>
     </header>
-
+   
+<main role="main" class="container">
     <!-- Page Features -->
     <div class="row text-center">
 
@@ -223,9 +224,10 @@
 	</div>
   </div>
   <!-- /.container -->
-
+ </main> 
+ 
   <!-- Footer -->
-  <footer class="py-1 bg-dark">
+  <footer class="bg-dark">
     <div class="container">
       <p class="m-0 text-center text-white">Copyright &copy; GeSoc Website 2020</p>
     </div>

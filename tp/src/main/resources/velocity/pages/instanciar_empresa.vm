@@ -19,8 +19,7 @@
   <!-- JavaScript 
   <script src="/js/instanciar_empresa.js"></script>
 -->
-    <script src="../vendor/jquery/jquery.min.js"></script>
-    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
 <script type="text/javascript">
   function showDiv(select){
    if(select.value==1){
@@ -375,6 +374,10 @@ function showDivTipoEntidadEmp(select){
 </form>
 
 </div>
+
+<!-- Bootstrap core JavaScript -->
+  <script src="/vendor/jquery/jquery.min.js"></script>
+  <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
 

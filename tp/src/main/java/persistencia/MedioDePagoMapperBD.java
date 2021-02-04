@@ -6,8 +6,6 @@ import javax.persistence.EntityManager;
 
 import com.API.MedioDePago;
 
-import comprasPresupuestos.Producto;
-
 public class MedioDePagoMapperBD extends MapperBD<MedioDePago>{
 	private static final MedioDePagoMapperBD instance = new MedioDePagoMapperBD();
 	

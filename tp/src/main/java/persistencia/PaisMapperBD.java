@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
-import com.API.Moneda;
 import com.API.Pais;
 
 public class PaisMapperBD extends MapperBD <Pais>{

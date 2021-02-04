@@ -8,7 +8,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 
 import comprasPresupuestos.Compra;
-import egresosIngresos.OperacionEgreso;
 
 
 public class CompraMapperBD extends MapperBD<Compra>{

@@ -12,8 +12,6 @@ import java.util.Map;
 
 import app.Path;
 import app.ViewUtil;
-import egresosIngresos.OperacionEgreso;
-import egresosIngresos.OperacionIngreso;
 import egresosIngresos.OrdenFecha;
 import egresosIngresos.OrdenMix;
 import egresosIngresos.OrdenValorPrimeroEgreso;
@@ -21,8 +19,6 @@ import egresosIngresos.OrdenValorPrimeroIngreso;
 import egresosIngresos.ReglaFecha;
 import egresosIngresos.ReglaVinculacion;
 import egresosIngresos.Requerimiento;
-import persistencia.OperacionEgresoMapperBD;
-import persistencia.OperacionIngresoMapperBD;
 import spark.Request;
 import spark.Response;
 import spark.Route;

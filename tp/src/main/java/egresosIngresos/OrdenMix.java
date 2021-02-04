@@ -5,9 +5,6 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
-import persistencia.OperacionEgresoMapperBD;
-import persistencia.OperacionIngresoMapperBD;
-
 @Entity
 public class OrdenMix extends Requerimiento {
 

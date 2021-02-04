@@ -45,6 +45,7 @@ public class OrdenValorPrimeroIngreso extends Requerimiento {
 					unIngreso.getEgresos().add(unEgreso);
 					unEgreso.setIdIngreso(unIngreso.getId());
 					unEgreso.setIngreso(unIngreso);
+					break;
 				}
 			}
 			index++;

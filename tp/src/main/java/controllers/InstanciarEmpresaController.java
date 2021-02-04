@@ -1,9 +1,24 @@
 package controllers;
 
 
-import static app.RequestUtil.*;
+import static app.RequestUtil.getQuery_actividad_base_empresa;
+import static app.RequestUtil.getQuery_actividad_jur_empresa;
+import static app.RequestUtil.getQuery_codigo_inscripcion_jur;
+import static app.RequestUtil.getQuery_codigo_postal_jur;
+import static app.RequestUtil.getQuery_cuit_jur;
+import static app.RequestUtil.getQuery_descripcion_base;
+import static app.RequestUtil.getQuery_entidadesBaseSeleccionadas;
+import static app.RequestUtil.getQuery_nombre_ficticio_base;
+import static app.RequestUtil.getQuery_nombre_ficticio_jur;
+import static app.RequestUtil.getQuery_personal_base_empresa;
+import static app.RequestUtil.getQuery_personal_jur_empresa;
+import static app.RequestUtil.getQuery_razon_social_jur;
+import static app.RequestUtil.getQuery_seleccion_base_jur;
+import static app.RequestUtil.getQuery_tipoEntidad_base_osc_empresa;
+import static app.RequestUtil.getQuery_tipoEntidad_jur_osc_empresa;
+import static app.RequestUtil.getQuery_ventasAnuales_base_empresa;
+import static app.RequestUtil.getQuery_ventasAnuales_jur_empresa;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,7 +39,7 @@ public class InstanciarEmpresaController {
 		Map<String, Object> model = new HashMap<>();
 		List<EntidadBase> entidadesBaseLista = EntidadBase.obtenerTodosSinAsignar();
 		model.put("entidadesBaseLista", entidadesBaseLista);
-		//LoginController.ensureUserIsLoggedIn(request, response);
+		LoginController.ensureUserIsLoggedIn(request, response);
 		if(getQuery_seleccion_base_jur(request)!=null) {
 			if(getQuery_seleccion_base_jur(request).equals("0")) {
 				model.put("seleccion_base_jur_incorrecta", true);

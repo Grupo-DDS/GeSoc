@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
-import egresosIngresos.OperacionEgreso;
 import entidades.EntidadBase;
 
 public class EntidadBaseMapperBD extends MapperBD<EntidadBase>{

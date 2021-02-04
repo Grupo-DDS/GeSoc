@@ -16,6 +16,8 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import persistencia.MedioDePagoMapperBD;
+import persistencia.MonedaMapperBD;
+import persistencia.PaisMapperBD;
 
 public class ListaAPI {
 
@@ -54,6 +56,39 @@ public class ListaAPI {
 
 		}
 	}
+	
+	public void agregarNuevasMonedas() {
+		if (!MonedaMapperBD.getInstance().monedasCargadasEnBD()) {
+			List<Moneda> monedas;
+			try {
+				monedas = ListaAPI.getInstance().obtenerListaAPImoneda();
+				MonedaMapperBD.getInstance().insert(monedas);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+		}
+	}
+	
+	public void agregarNuevosPaises() {
+		if (!PaisMapperBD.getInstance().paisesCargadosEnBD()) {
+			List<Pais> paises;
+			try {
+				paises = ListaAPI.getInstance().obtenerListaAPIPaisDetallado(obtenerListaAPIPais());
+				PaisMapperBD.getInstance().insert(paises);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+		}
+	}
+	
+	public void agregarElementosAPI() {
+		ListaAPI.getInstance().agregarNuevasMonedas();
+		ListaAPI.getInstance().agregarNuevosMediosDePago();
+		ListaAPI.getInstance().agregarNuevosPaises();
+	}
+	
 
 	public List<Moneda> obtenerListaAPImoneda() throws IOException {
 		List<Moneda> list = null;
@@ -171,16 +206,6 @@ public class ListaAPI {
 			return ciudades;
 	}
 
-	public static void main(String[] args) throws IOException {
-		List<Pais> listaAPI = ListaAPI.getInstance().obtenerListaAPIpais();
-		List<Pais> listaAPIdetallada = ListaAPI.getInstance().obtenerListaAPIdetallado(listaAPI);
-		if (listaAPIdetallada == null) {
-			System.out.print("esta LOL");
-		} else {
-			for (Pais m : listaAPIdetallada) {
-				System.out.println(m.toString());
-			}
-		}
-	}
+
 
 }

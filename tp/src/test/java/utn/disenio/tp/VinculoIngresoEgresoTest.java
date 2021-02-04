@@ -93,7 +93,7 @@ public class VinculoIngresoEgresoTest {
 		//vm.vincular();
 		
 		
-		List<OperacionEgreso> egresosVinculados = OperacionEgresoMapperBD.getInstance().obtenerEgresos();
+		//List<OperacionEgreso> egresosVinculados = OperacionEgresoMapperBD.getInstance().obtenerEgresos();
 		
 		//egresosVinculados.forEach(egresoV -> System.out.println(egresoV.toString()));
 //		

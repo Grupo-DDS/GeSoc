@@ -28,7 +28,6 @@ public class OperacionEgresoTest {
 		DocumentoComercial comprobante1=new DocumentoComercial(25,'a');
 		//Medio de pago
 		MedioDePago tarjeta=new MedioDePago();
-		tarjeta.setMedio("Visa");
 		//organizacion
 		Organizacion organizacion= new Organizacion();
 		//proveedores

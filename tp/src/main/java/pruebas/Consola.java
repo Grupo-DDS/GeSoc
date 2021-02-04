@@ -132,7 +132,6 @@ public class Consola {
 		//Medio de pago
 		MedioDePago tarjeta=new MedioDePago();
 		MedioDePagoMapperBD mdpbd = MedioDePagoMapperBD.getInstance();
-		tarjeta.setMedio("Visa");
 		mdpbd.insert(tarjeta);
 		//organizacion
 		Organizacion organizacion= new Organizacion();

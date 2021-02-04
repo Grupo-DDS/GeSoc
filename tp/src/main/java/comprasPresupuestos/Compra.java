@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.EntityManager;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,9 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
-import persistencia.BDUtils;
 import persistencia.CompraMapperBD;
 import validadorDeCompras.Usuario;
 
@@ -30,7 +27,7 @@ public class Compra {
 	@ManyToMany(fetch = FetchType.LAZY)
 	private List<Producto> productos = new ArrayList<Producto>();
 
-	@OneToMany(fetch = FetchType.LAZY)
+	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_compra")
 	private List<Presupuesto> presupuestos = new ArrayList<Presupuesto>();
 

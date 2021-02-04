@@ -9,6 +9,7 @@ import static app.RequestUtil.getQueryFecha;
 import static app.RequestUtil.getQueryMedio;
 import static app.RequestUtil.getQueryNombreProveedor;
 import static com.API.MedioDePago.buscarMedioDePagoPorID;
+
 import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.HashMap;

@@ -7,8 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 import comprasPresupuestos.Presupuesto;
 import egresosIngresos.OperacionEgreso;
@@ -26,12 +26,12 @@ public class ProyectoDeFinanciacion {
 	private Float montoTotalAsignado;
 	private Float montoLimiteSinPresupuesto;
 	private int cantPresupuestosMinima;
-	@OneToMany
+	@ManyToMany
 	private List<Presupuesto> presupuestos = new ArrayList<Presupuesto>();
-	@OneToMany
+	@ManyToMany
 	private List<OperacionIngreso> ingresos = new ArrayList<OperacionIngreso>();
 	
-	@OneToMany
+	@ManyToMany
 	private List<OperacionEgreso> egresos = new ArrayList<OperacionEgreso>();
 
 	public ProyectoDeFinanciacion(Long id, Usuario directorResponsable, Float montoTotalAsignado,

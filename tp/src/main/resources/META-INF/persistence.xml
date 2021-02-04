@@ -12,13 +12,13 @@
 			<property name="hibernate.connection.driver_class"
 				value="com.mysql.jdbc.Driver" />
 			<property name="hibernate.connection.url"
-				value="jdbc:mysql://remotemysql.com:3306/vT9W8IVB3G?serverTimezone=America/Buenos_Aires" />
-			<property name="hibernate.connection.username" value="vT9W8IVB3G" />
-			<property name="hibernate.connection.password" value="yYFepy5u39" />
+				value="jdbc:mysql://localhost:3306/basetp?serverTimezone=America/Buenos_Aires" />
+			<property name="hibernate.connection.username" value="root" />
+			<property name="hibernate.connection.password" value="" />
 			<property name="hibernate.dialect"
 				value="org.hibernate.dialect.MySQL57Dialect" />
-			<!-- <property name="hibernate.hbm2ddl.auto" value="uptdate" />-->
-			<property name="hibernate.hbm2ddl.auto" value="create-drop"/> 
+			<!-- <property name="hibernate.hbm2ddl.auto" value="create-drop" />-->
+			<property name="hibernate.hbm2ddl.auto" value="update"/> 
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
 			<property name="connection.pool_size" value="100"/>

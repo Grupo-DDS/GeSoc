@@ -11,7 +11,10 @@ import static spark.debug.DebugScreen.enableDebugScreen;
 
 import javax.persistence.EntityManager;
 
+import org.quartz.SchedulerException;
+
 import com.API.ListaAPI;
+import com.example.demoquartz.QuartzSchedulerCronTriggerExample;
 
 import controllers.AsociacionesController;
 import controllers.AuditoriaController;
@@ -34,14 +37,12 @@ public class Application {
         EntityManager em = BDUtils.getEntityManager();
         BDUtils.comenzarTransaccion(em);
         ListaAPI.getInstance().agregarElementosAPI();
-        //ValidadorCompras.getInstance().validar();
         
-        
-        
-
-			
-		
-        //TODO ejecutarScheduler
+        try {
+			QuartzSchedulerCronTriggerExample.getInstance().iniciar();
+		} catch (SchedulerException e) {
+			e.printStackTrace();
+		}
         
         // Configuracion Spark
         port(5020);

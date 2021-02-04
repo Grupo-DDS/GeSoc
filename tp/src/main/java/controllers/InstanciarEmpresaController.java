@@ -24,7 +24,7 @@ public class InstanciarEmpresaController {
 		Map<String, Object> model = new HashMap<>();
 		List<EntidadBase> entidadesBaseLista = EntidadBase.obtenerTodosSinAsignar();
 		model.put("entidadesBaseLista", entidadesBaseLista);
-		//LoginController.ensureUserIsLoggedIn(request, response);
+		LoginController.ensureUserIsLoggedIn(request, response);
 		if(getQuery_seleccion_base_jur(request)!=null) {
 			if(getQuery_seleccion_base_jur(request).equals("0")) {
 				model.put("seleccion_base_jur_incorrecta", true);

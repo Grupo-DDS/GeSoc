@@ -40,7 +40,7 @@ public class Application {
     	
         EntityManager em = BDUtils.getEntityManager();
         BDUtils.comenzarTransaccion(em);
-        ListaAPI.getInstance().agregarNuevosMediosDePago();
+        ListaAPI.getInstance().agregarElementosAPI();
         //ValidadorCompras.getInstance().validar();
         
         

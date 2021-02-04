@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 import persistencia.PresupuestoDetalladoMapperBD;
@@ -26,7 +27,7 @@ public class PresupuestoDetallado {
 	private Long id;
 	private float precio;
 	
-	@OneToOne
+	@ManyToOne
 	private Producto productoCompra;
 	
 	public float getPrecio() {

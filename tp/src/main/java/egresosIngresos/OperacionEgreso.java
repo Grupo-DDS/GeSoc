@@ -29,7 +29,7 @@ public class OperacionEgreso {
 	@OneToOne(fetch = FetchType.LAZY)
 	private DocumentoComercial comprobante;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY)
 	private MedioDePago medioDePago;
 	
 	@ManyToOne(fetch = FetchType.LAZY)

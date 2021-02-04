@@ -30,7 +30,7 @@ public class Compra {
 	@ManyToMany(fetch = FetchType.LAZY)
 	private List<Producto> productos = new ArrayList<Producto>();
 
-	@OneToMany(fetch = FetchType.LAZY)
+	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_compra")
 	private List<Presupuesto> presupuestos = new ArrayList<Presupuesto>();
 

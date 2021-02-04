@@ -1,5 +1,7 @@
 package com.API;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -35,9 +37,7 @@ public class Moneda {
 	public Long getId_moneda() {
 		return id_moneda;
 	}
-	public void setId_moneda(Long id_moneda) {
-		this.id_moneda = id_moneda;
-	}
+
 	public void setId(String id) {
 		this.id = id;
 	}
@@ -60,5 +60,16 @@ public class Moneda {
 		this.decimal_places = decimal_places;
 	}
 			
-	
+	public static Moneda buscarMonedaPorID(String id, List<Moneda> monedas) {
+		int index = 0;
+		int size = monedas.size();
+		Long idCasteado = Long.parseLong(id);
+		while(index<size) {
+			if(monedas.get(index).getId_moneda() == idCasteado) 
+				return monedas.get(index);
+			index++;
+		}
+		return null; //si llega aca cagamos
+		
+	}
 }

@@ -7,12 +7,19 @@ import static app.RequestUtil.getQueryMontoTotal;
 import static app.RequestUtil.getQueryNombreProveedor;
 import static app.RequestUtil.getQueryPresupuestosSeleccionados;
 import static app.RequestUtil.getQueryProductoSeleccionado;
+import static app.RequestUtil.getQuery_Moneda;
+import static app.RequestUtil.getQuery_Pais;
+import static com.API.Moneda.buscarMonedaPorID;
+import static com.API.Pais.buscarPaisPorID;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+
+import com.API.Moneda;
+import com.API.Pais;
 
 import app.Path;
 import app.ViewUtil;
@@ -22,6 +29,8 @@ import comprasPresupuestos.Producto;
 import egresosIngresos.DocumentoComercial;
 import egresosIngresos.OrganizacionProveedora;
 import egresosIngresos.Persona;
+import persistencia.MonedaMapperBD;
+import persistencia.PaisMapperBD;
 import spark.Request;
 import spark.Response;
 import spark.Route;
@@ -34,6 +43,10 @@ public class PresupuestoController {
 		Presupuesto presupuestoNuevo = new Presupuesto();
 		List<PresupuestoDetallado> presupuestos = PresupuestoDetallado.obtenerTodosEnBD();
 		model.put("presupuestos", presupuestos);
+		List<Pais> paises = PaisMapperBD.getInstance().obtenerTodos();
+		model.put("paises",paises);
+		List<Moneda> monedas = MonedaMapperBD.getInstance().obtenerTodos();
+		model.put("monedas",monedas);
 		if (getQueryComprobanteTipo(request) != null && getQueryComprobanteNumero(request) != null
 				&& getQueryDNICUITProveedor(request) != null && getQueryNombreProveedor(request) != null) {
 			if (getQueryComprobanteTipo(request).trim().length() == 1) {
@@ -47,6 +60,8 @@ public class PresupuestoController {
 
 				DocumentoComercial comprobante = new DocumentoComercial(numeroComprobante,
 						getQueryComprobanteTipo(request).trim().charAt(0));
+				comprobante.setMoneda(buscarMonedaPorID(getQuery_Moneda(request),monedas));
+				comprobante.setPais(buscarPaisPorID(getQuery_Pais(request),paises));
 				DocumentoComercial.insertarDocumentoEnBD(comprobante);
 				presupuestoNuevo.getDocumentosComerciales().add(comprobante);
 			} else {

@@ -142,7 +142,81 @@
              </div>
         </div>
 
-		
+					  <div class="form-group">
+    <fieldset disabled>
+      <label for="inputMoneda">Moneda</label>
+      <input type="text" class="form-control" id="inputMoneda" placeholder="Moneda elegida">
+    </fieldset>
+    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#ventanaAgregarMoneda">Ver</button>
+    <!-- Modal -->
+    <div class="modal fade" id="ventanaAgregarMoneda" tabindex="-1" role="dialog" aria-labelledby="modalCargarMoneda" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+
+            <h5 class="modal-title" id="modalCargarMoneda">Monedas disponibles:</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+		  
+          <div class="col-sm-10">
+			#foreach($moneda in $monedas)
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="moneda_query" value="$!moneda.getId_moneda()" id="$!moneda.getId_moneda()" checked>
+              <label class="form-check-label" for="$!moneda.getId_moneda()">
+				$moneda.getDescription()		
+              </label>
+            </div>
+		    #end
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Seleccionar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  			  <div class="form-group">
+    <fieldset disabled>
+      <label for="inputPais">Pais</label>
+      <input type="text" class="form-control" id="inputPais" placeholder="Pais elegido">
+    </fieldset>
+    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#ventanaAgregarPais">Ver</button>
+    <!-- Modal -->
+    <div class="modal fade" id="ventanaAgregarPais" tabindex="-1" role="dialog" aria-labelledby="modalCargarPais" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+
+            <h5 class="modal-title" id="modalCargarPais">Paises disponibles:</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+		  
+          <div class="col-sm-10">
+			#foreach($pais in $paises)
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="pais_query" value="$!pais.getId_pais()" id="$!pais.getId_pais()" checked>
+              <label class="form-check-label" for="$!pais.getId_pais()">
+				$pais.getName()		
+              </label>
+            </div>
+		    #end
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Seleccionar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 		
 		<button type="submit" class="btn btn-primary">Cargar</button>
     </form>

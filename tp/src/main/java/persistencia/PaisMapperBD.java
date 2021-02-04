@@ -16,7 +16,7 @@ public class PaisMapperBD extends MapperBD <Pais>{
 	public boolean paisesCargadosEnBD() {
 		return PaisMapperBD.getInstance().obtenerTodos().size()>0;
 	}
-	private List<Pais> obtenerTodos() {
+	public List<Pais> obtenerTodos() {
 		EntityManager em = BDUtils.getEntityManager();
 		BDUtils.comenzarTransaccion(em);
 		

@@ -42,9 +42,7 @@ public class Pais {
 	public Long getId_pais() {
 		return id_pais;
 	}
-	public void setId_pais(Long id_pais) {
-		this.id_pais = id_pais;
-	}
+
 	public String getId() {
 		return id;
 	}
@@ -98,6 +96,19 @@ public class Pais {
 	}
 	public void setStates(List<Provincia> states) {
 		this.states = states;
-	}		
+	}
+	
+	public static Pais buscarPaisPorID(String id, List<Pais> paises) {
+		int index = 0;
+		int size = paises.size();
+		Long idCasteado = Long.parseLong(id);
+		while(index<size) {
+			if(paises.get(index).getId_pais() == idCasteado) 
+				return paises.get(index);
+			index++;
+		}
+		return null; //si llega aca cagamos
+		
+	}
 	
 }

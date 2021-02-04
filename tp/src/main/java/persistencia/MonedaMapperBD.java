@@ -18,7 +18,7 @@ public class MonedaMapperBD extends MapperBD<Moneda> {
 	public boolean monedasCargadasEnBD() {
 		return MonedaMapperBD.getInstance().obtenerTodos().size()>0;
 	}
-	private List<Moneda> obtenerTodos() {
+	public List<Moneda> obtenerTodos() {
 		EntityManager em = BDUtils.getEntityManager();
 		BDUtils.comenzarTransaccion(em);
 		

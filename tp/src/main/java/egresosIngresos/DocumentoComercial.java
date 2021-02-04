@@ -1,26 +1,27 @@
 package egresosIngresos;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.ManyToOne;
+
+import com.API.Moneda;
+import com.API.Pais;
 
 import persistencia.DocumentoComercialMapperBD;
 
 @Entity
-@Table(name="DOCUMENTOS_COMERCIALES")
 public class DocumentoComercial {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="ID_DOC_COMERCIAL")
 	private Long id;
-	@Column(name="NRO_DOC_COMERCIAL")
 	private int nroComercial;
-	@Column(name="TIPO_DOC_COMERCIAL")
 	private char tipo;
-	
+	@ManyToOne
+	private Pais pais;
+	@ManyToOne
+	private Moneda moneda;
 	
 	public DocumentoComercial(int nroComercial, char tipo) {
 		super();
@@ -67,6 +68,22 @@ public class DocumentoComercial {
 		this.tipo = tipo;
 	}
 	
+	public Pais getPais() {
+		return pais;
+	}
+
+	public void setPais(Pais pais) {
+		this.pais = pais;
+	}
+
+	public Moneda getMoneda() {
+		return moneda;
+	}
+
+	public void setMoneda(Moneda moneda) {
+		this.moneda = moneda;
+	}
+
 	public static void insertarDocumentoEnBD(DocumentoComercial doc) {
 		DocumentoComercialMapperBD.getInstance().insert(doc);
 	}

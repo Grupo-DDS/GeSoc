@@ -270,6 +270,15 @@ public class RequestUtil {
 		return request.queryParamsValues("entidadesBaseSeleccionadas");
 	}
 	
+	public static String getQuery_Moneda(Request request) {
+		return request.queryParams("moneda_query");
+	}
+	
+	public static String getQuery_Pais(Request request) {
+		return request.queryParams("pais_query");
+	}
+	
+	
 
 	
 	

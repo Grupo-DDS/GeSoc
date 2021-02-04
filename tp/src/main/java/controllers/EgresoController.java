@@ -8,7 +8,11 @@ import static app.RequestUtil.getQueryDNICUITProveedor;
 import static app.RequestUtil.getQueryFecha;
 import static app.RequestUtil.getQueryMedio;
 import static app.RequestUtil.getQueryNombreProveedor;
+import static app.RequestUtil.getQuery_Moneda;
+import static app.RequestUtil.getQuery_Pais;
 import static com.API.MedioDePago.buscarMedioDePagoPorID;
+import static com.API.Moneda.buscarMonedaPorID;
+import static com.API.Pais.buscarPaisPorID;
 
 import java.text.DecimalFormat;
 import java.time.LocalDate;
@@ -17,6 +21,8 @@ import java.util.List;
 import java.util.Map;
 
 import com.API.MedioDePago;
+import com.API.Moneda;
+import com.API.Pais;
 
 import app.Path;
 import app.ViewUtil;
@@ -26,7 +32,9 @@ import egresosIngresos.OperacionEgreso;
 import egresosIngresos.OrganizacionProveedora;
 import egresosIngresos.Persona;
 import persistencia.CompraMapperBD;
+import persistencia.MonedaMapperBD;
 import persistencia.OperacionEgresoMapperBD;
+import persistencia.PaisMapperBD;
 import spark.Request;
 import spark.Response;
 import spark.Route;
@@ -40,6 +48,11 @@ public class EgresoController {
 		model.put("medios",mediosDePagoExistentes);
 		model.remove("compras_disponibles");
 		model.put("compras_disponibles",Compra.obtenerComprasSinEgresos());  
+		List<Pais> paises = PaisMapperBD.getInstance().obtenerTodos();
+		model.put("paises",paises);
+		List<Moneda> monedas = MonedaMapperBD.getInstance().obtenerTodos();
+		model.put("monedas",monedas);
+		
 		try {
 			if (!getQueryCompra(request).equals("") && !getQueryComprobanteTipo(request).equals("")
 					&& !getQueryFecha(request).equals("") && !getQueryMedio(request).equals("")
@@ -57,6 +70,8 @@ public class EgresoController {
 					DocumentoComercial comprobante = new DocumentoComercial(
 							Integer.parseInt(getQueryComprobanteNumero(request).trim()),
 							getQueryComprobanteTipo(request).trim().charAt(0));
+					comprobante.setMoneda(buscarMonedaPorID(getQuery_Moneda(request),monedas));
+					comprobante.setPais(buscarPaisPorID(getQuery_Pais(request),paises));
 					DocumentoComercial.insertarDocumentoEnBD(comprobante);
 					nuevaOperacionEgreso.setComprobante(comprobante);
 				} else {

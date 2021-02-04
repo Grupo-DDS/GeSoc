@@ -187,7 +187,7 @@
 			  <div class="form-group">
     <fieldset disabled>
       <label for="inputMoneda">Moneda</label>
-      <input type="text" class="form-control" id="inputMoneda" placeholder="Medio de pago elegido">
+      <input type="text" class="form-control" id="inputMoneda" placeholder="Moneda elegida">
     </fieldset>
     <button type="button" class="btn btn-info" data-toggle="modal" data-target="#ventanaAgregarMoneda">Ver</button>
     <!-- Modal -->
@@ -196,18 +196,18 @@
         <div class="modal-content">
           <div class="modal-header">
 
-            <h5 class="modal-title" id="modalCargarMoneda">Medios de pago disponibles:</h5>
+            <h5 class="modal-title" id="modalCargarMoneda">Monedas disponibles:</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
 		  
           <div class="col-sm-10">
-			#foreach($medio in $medios)
+			#foreach($moneda in $monedas)
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="medio" value="$!medio.getId_medioDePago()" id="$!medio.getId_medioDePago()" checked>
-              <label class="form-check-label" for="$!medio.getId_medioDePago()">
-				$medio.getName()		
+              <input class="form-check-input" type="radio" name="moneda_query" value="$!moneda.getId_moneda()" id="$!moneda.getId_moneda()" checked>
+              <label class="form-check-label" for="$!moneda.getId_moneda()">
+				$moneda.getDescription()		
               </label>
             </div>
 		    #end
@@ -225,7 +225,7 @@
   			  <div class="form-group">
     <fieldset disabled>
       <label for="inputPais">Pais</label>
-      <input type="text" class="form-control" id="inputPais" placeholder="Medio de pago elegido">
+      <input type="text" class="form-control" id="inputPais" placeholder="Pais elegido">
     </fieldset>
     <button type="button" class="btn btn-info" data-toggle="modal" data-target="#ventanaAgregarPais">Ver</button>
     <!-- Modal -->
@@ -234,18 +234,18 @@
         <div class="modal-content">
           <div class="modal-header">
 
-            <h5 class="modal-title" id="modalCargarPais">Medios de pago disponibles:</h5>
+            <h5 class="modal-title" id="modalCargarPais">Paises disponibles:</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
 		  
           <div class="col-sm-10">
-			#foreach($medio in $medios)
+			#foreach($pais in $paises)
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="medio" value="$!medio.getId_medioDePago()" id="$!medio.getId_medioDePago()" checked>
-              <label class="form-check-label" for="$!medio.getId_medioDePago()">
-				$medio.getName()		
+              <input class="form-check-input" type="radio" name="pais_query" value="$!pais.getId_pais()" id="$!pais.getId_pais()" checked>
+              <label class="form-check-label" for="$!pais.getId_pais()">
+				$pais.getName()		
               </label>
             </div>
 		    #end

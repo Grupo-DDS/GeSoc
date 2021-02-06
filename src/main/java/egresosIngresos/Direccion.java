@@ -11,7 +11,6 @@ import javax.persistence.Table;
 import com.API.Ciudad;
 
 @Entity
-@Table(name="DIRECCIONES")
 public class Direccion {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

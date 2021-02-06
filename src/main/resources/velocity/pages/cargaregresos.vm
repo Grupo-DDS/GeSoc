@@ -105,14 +105,17 @@
 				Opciones		
               </label>
             </div>
+					
 			#foreach($compra_disp in $compras_disponibles)
+			#if($compra_disp.getNumeroCompra())	
             <div class="form-check">
               <input class="form-check-input" type="radio" name="compra" value="$!compra_disp.getNumeroCompra()" id="$!compra_disp.getNumeroCompra()">
               <label class="form-check-label" for="$!compra_disp.getNumeroCompra()">
 				Numero: $compra_disp.getNumeroCompra() Monto: $compra_disp.getValorTotal()	
               </label>
             </div>
-		    #end
+			#end
+			#end
           </div>
 
           <div class="modal-footer">

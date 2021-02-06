@@ -251,7 +251,7 @@
 					<artifactId>heroku-maven-plugin</artifactId>
 					<version>3.0.4</version>
 					<configuration>
-						<jdkVersion>1.8</jdkVersion>
+						<jdkVersion>15.0.1</jdkVersion>
 						<!-- Use your own application name -->
 						<appName>gesoc-prueba</appName>
 						<processTypes>

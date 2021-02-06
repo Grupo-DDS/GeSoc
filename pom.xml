@@ -12,8 +12,8 @@
 	<version>0.0.1-SNAPSHOT</version>
 
 	<name>tp</name>
-	
-	
+
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
@@ -64,7 +64,7 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.11</version>
+			<version>4.13.1</version>
 			<scope>test</scope>
 		</dependency>
 
@@ -117,11 +117,10 @@
 			<artifactId>mongodb-driver-sync</artifactId>
 			<version>4.1.1</version>
 		</dependency>
-
 		<dependency>
 			<groupId>com.sparkjava</groupId>
 			<artifactId>spark-core</artifactId>
-			<version>2.5</version>
+			<version>2.9.3</version>
 		</dependency>
 		<!--algunas herramientas utiles para desarrollo -->
 		<dependency>
@@ -151,7 +150,7 @@
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-core</artifactId>
-			<version>2.5.1</version>
+			<version>2.12.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.mindrot</groupId>
@@ -244,7 +243,7 @@
 					<artifactId>heroku-maven-plugin</artifactId>
 					<version>3.0.4</version>
 					<configuration>
-						<jdkVersion>15.0.1</jdkVersion>
+						<jdkVersion>1.8</jdkVersion>
 						<!-- Use your own application name -->
 						<appName>gesoc-prueba</appName>
 						<processTypes>

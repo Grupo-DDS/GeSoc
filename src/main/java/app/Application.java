@@ -30,7 +30,7 @@ import persistencia.BDUtils;
 public class Application {
 
     public static void main(String[] args) {
-    	
+    	int port = 5020;
         EntityManager em = BDUtils.getEntityManager();
         BDUtils.comenzarTransaccion(em);
         ListaAPI.getInstance().agregarElementosAPI();
@@ -42,7 +42,7 @@ public class Application {
 //		}
         
         // Configuracion Spark
-        port(5020);
+        port(port);
         staticFiles.location("/public");
         staticFiles.expireTime(600L);
         enableDebugScreen(); //ver una pantalla con detalle en caso de error
@@ -75,6 +75,8 @@ public class Application {
 
         // Filtro aplicado despues de get y post
         after("*",              Filters.addGzipHeader);
+        
+        System.out.println("SERVER IS RUNNING IN "+port);
     }
 
 }

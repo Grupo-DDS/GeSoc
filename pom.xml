@@ -131,7 +131,7 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<version>1.16.6</version>
+			<version>1.18.2</version>
 		</dependency>
 		<!--Serializacion y deserializacion JSON -->
 		<dependency>
@@ -194,6 +194,33 @@
 					<groupId>org.springframework.boot</groupId>
 					<artifactId>spring-boot-maven-plugin</artifactId>
 				</plugin>
+
+
+
+				<plugin>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-maven-plugin</artifactId>
+				</plugin>
+				<plugin>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-maven-plugin</artifactId>
+					<executions>
+						<execution>
+							<goals>
+								<goal>repackage</goal>
+							</goals>
+							<configuration>
+								<classifier>spring-boot</classifier>
+								<mainClass>
+									com.baeldung.executable.ExecutableMavenJar
+								</mainClass>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+				
+				
+				
 			</plugins>
 		</pluginManagement>
 	</build>

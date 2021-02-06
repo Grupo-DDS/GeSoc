@@ -31,9 +31,9 @@ public class Application {
 
     public static void main(String[] args) {
     	int port = 5020;
-        EntityManager em = BDUtils.getEntityManager();
-        BDUtils.comenzarTransaccion(em);
-        ListaAPI.getInstance().agregarElementosAPI();
+        //EntityManager em = BDUtils.getEntityManager();
+        //BDUtils.comenzarTransaccion(em);
+        //ListaAPI.getInstance().agregarElementosAPI();
         
 //        try {
 //			QuartzSchedulerCronTriggerExample.getInstance().iniciar();

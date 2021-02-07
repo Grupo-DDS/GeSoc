@@ -1,13 +1,10 @@
 package app;
 
-
 import static spark.Spark.after;
 import static spark.Spark.before;
 import static spark.Spark.get;
 import static spark.Spark.port;
 import static spark.Spark.post;
-import static spark.Spark.staticFiles;
-import static spark.debug.DebugScreen.enableDebugScreen;
 
 import javax.persistence.EntityManager;
 
@@ -26,65 +23,147 @@ import controllers.PresupuestoController;
 import controllers.ProductoController;
 import controllers.ProyectoController;
 import persistencia.BDUtils;
-
+import spark.Spark;
 public class Application {
 
-    public static void main(String[] args) {
-    	int port = 5020;
-        EntityManager em = BDUtils.getEntityManager();
-        BDUtils.comenzarTransaccion(em);
-        ListaAPI.getInstance().agregarElementosAPI();
-        
+	public static void main(String[] args) {
+		int PUERTO = getHerokuAssignedPort();
+		System.out.println("----------------------------------------------------------------------------");
+		System.out.println("----------------------------------------------------------------------------");
+		System.out.println("----------------------------------------------------------------------------");
+		System.out.println("----------------------------------------------------------------------------");
+		System.out.println("PUERTO LEIDO " + PUERTO);
+		System.out.println("----------------------------------------------------------------------------");
+		System.out.println("----------------------------------------------------------------------------");
+		System.out.println("----------------------------------------------------------------------------");
+		System.out.println("----------------------------------------------------------------------------");
+
 //        try {
 //			QuartzSchedulerCronTriggerExample.getInstance().iniciar();
 //		} catch (SchedulerException e) {
 //			e.printStackTrace();
 //		}
-        
-        // Configuracion Spark
-        port(getHerokuAssignedPort());
-        staticFiles.location("/public");
-        staticFiles.expireTime(600L);
-        enableDebugScreen(); //ver una pantalla con detalle en caso de error
 
-        // Filtro aplicado antes de get y post
-        before("*",             Filters.handleLocaleChange);
+		// Configuracion Spark
+		System.out.println("----------------------------------------------------------------------------");
+		System.out.println("----------------------------------------------------------------------------");
+		System.out.println("----------------------------------------------------------------------------");
+		System.out.println("----------------------------------------------------------------------------");
+		System.out.println("----------------------------------------------------------------------------");
+		System.out.println("----------------------------------------------------------------------------");
+		System.out.println("----------------------------------------------------------------------------");
+		System.out.println("----------------------------------------------------------------------------");
+		System.out.println("----------------------------------------------------------------------------");
+		System.out.println("----------------------------------------------------------------------------");
+		System.out.println("----------------------------------------------------------------------------");
+		System.out.println("INICIO PROGRAMA SPARK");
+		System.out.println("----------------------------------------------------------------------------");
+		System.out.println("----------------------------------------------------------------------------");
+		System.out.println("----------------------------------------------------------------------------");
+		System.out.println("----------------------------------------------------------------------------");
+		System.out.println("----------------------------------------------------------------------------");
+		System.out.println("----------------------------------------------------------------------------");
+		System.out.println("----------------------------------------------------------------------------");
+		System.out.println("----------------------------------------------------------------------------");
+		System.out.println("----------------------------------------------------------------------------");
+		System.out.println("----------------------------------------------------------------------------");
+		System.out.println("----------------------------------------------------------------------------");
+		port(PUERTO);
 
-        // Rutas (path, controller)
-        get(Path.Web.INICIO,     InicioController.servePaginaInicio);
-        get(Path.Web.LOGIN,     LoginController.serveLoginPage);
-        get(Path.Web.EGRESOS,  EgresoController.cargarEgreso);
-        get(Path.Web.INGRESOS,  IngresoController.cargarIngreso);
-        post(Path.Web.LOGIN,    LoginController.handleLoginPost);
-        get(Path.Web.LOGOUT,   LoginController.handleLogoutPost);
-        get(Path.Web.MENSAJES,   MensajesController.mensajesView);
-        get(Path.Web.PROYECTO,   ProyectoController.IndexProyecto);
-        get(Path.Web.VINCULAR_PROYECTO,   ProyectoController.vincularProyecto);
-        get(Path.Web.CARGAR_PROYECTO,   ProyectoController.cargarProyecto);
-        get(Path.Web.ASOCIACIONES,   AsociacionesController.handleAsociaciones);
-        get(Path.Web.MIS_INGRESOS,  IngresoController.mis_ingresos);
-        get(Path.Web.MIS_EGRESOS,  EgresoController.mis_egresos);
-        get(Path.Web.AUDITORIA,  AuditoriaController.LogsView);
-        get(Path.Web.COMPRA,  CompraController.cargarCompra);
-        get(Path.Web.PRODUCTOS, ProductoController.cargarProducto);
-        get(Path.Web.PRESUPUESTO, PresupuestoController.cargarPresupuesto);
-        get(Path.Web.PRESUPUESTO_DETALLADO, PresupuestoController.cargarPresupuestoDetallado);
-        get(Path.Web.CATEGORIA, ProductoController.cargarCategoria);
-        get(Path.Web.INSTANCIAR_EMPRESA, InstanciarEmpresaController.instanciarEmpresa);
-        get("*",                ViewUtil.notFound);
+		Spark.staticFiles.location("/public");
+		Spark.staticFiles.expireTime(600L);
+		//enableDebugScreen(); //ver una pantalla con detalle en caso de error
 
-        // Filtro aplicado despues de get y post
-        after("*",              Filters.addGzipHeader);
-        
-        System.out.println("SERVER IS RUNNING IN "+port);
-    }
-    
-    static int getHerokuAssignedPort() {
-        ProcessBuilder processBuilder = new ProcessBuilder();
-        if (processBuilder.environment().get("PORT") != null) {
-            return Integer.parseInt(processBuilder.environment().get("PORT"));
-        }
-        return 4567; //return default port if heroku-port isn't set (i.e. on localhost)
-    }
+		// Filtro aplicado antes de get y post
+		before("*", Filters.handleLocaleChange);
+
+		// Rutas (path, controller)
+		get(Path.Web.INICIO, InicioController.servePaginaInicio);
+		get(Path.Web.LOGIN, LoginController.serveLoginPage);
+		get(Path.Web.EGRESOS, EgresoController.cargarEgreso);
+		get(Path.Web.INGRESOS, IngresoController.cargarIngreso);
+		post(Path.Web.LOGIN, LoginController.handleLoginPost);
+		get(Path.Web.LOGOUT, LoginController.handleLogoutPost);
+		get(Path.Web.MENSAJES, MensajesController.mensajesView);
+		get(Path.Web.PROYECTO, ProyectoController.IndexProyecto);
+		get(Path.Web.VINCULAR_PROYECTO, ProyectoController.vincularProyecto);
+		get(Path.Web.CARGAR_PROYECTO, ProyectoController.cargarProyecto);
+		get(Path.Web.ASOCIACIONES, AsociacionesController.handleAsociaciones);
+		get(Path.Web.MIS_INGRESOS, IngresoController.mis_ingresos);
+		get(Path.Web.MIS_EGRESOS, EgresoController.mis_egresos);
+		get(Path.Web.AUDITORIA, AuditoriaController.LogsView);
+		get(Path.Web.COMPRA, CompraController.cargarCompra);
+		get(Path.Web.PRODUCTOS, ProductoController.cargarProducto);
+		get(Path.Web.PRESUPUESTO, PresupuestoController.cargarPresupuesto);
+		get(Path.Web.PRESUPUESTO_DETALLADO, PresupuestoController.cargarPresupuestoDetallado);
+		get(Path.Web.CATEGORIA, ProductoController.cargarCategoria);
+		get(Path.Web.INSTANCIAR_EMPRESA, InstanciarEmpresaController.instanciarEmpresa);
+		get("*", ViewUtil.notFound);
+
+		// Filtro aplicado despues de get y post
+		after("*", Filters.addGzipHeader);
+
+		System.out.println("SERVER IS RUNNING IN " + PUERTO);
+
+		
+        System.out.println("----------------------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------------------------");
+        System.out.println("INICIO CONEXION BD");
+        System.out.println("----------------------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------------------------");
+		EntityManager em = BDUtils.getEntityManager();
+		BDUtils.comenzarTransaccion(em);
+		ListaAPI.getInstance().agregarElementosAPI();
+		
+        System.out.println("----------------------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------------------------");
+        System.out.println("FINALIZACION CONEXION INICIAL BD");
+        System.out.println("----------------------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------------------------");
+	}
+
+	static int getHerokuAssignedPort() {
+		ProcessBuilder processBuilder = new ProcessBuilder();
+		if (processBuilder.environment().get("PORT") != null) {
+			return Integer.parseInt(processBuilder.environment().get("PORT"));
+		}
+		return 5020; // return default port if heroku-port isn't set (i.e. on localhost)
+	}
 
 }

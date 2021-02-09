@@ -62,7 +62,7 @@
 
         <div class="col-lg-4 col-md-4 mb-3">
           <div class="card h-100">
-            <img class="card-img-top" src="/Images/cargar-proyectos.svg" alt="">
+            <img class="card-img-top" src="/Images/cargar-proyectos.png">
             <div class="card-body">
               <h4 class="card-title">Cargar Proyectos</h4>
               <p class="card-text">Cargue sus proyectos de financiamiento</p>
@@ -75,7 +75,7 @@
   
         <div class="col-lg-4 col-md-4 mb-3">
           <div class="card h-100">
-            <img class="card-img-top" src="/Images/vincular-proyecto.svg" alt="">
+            <img class="card-img-top" src="/Images/vincular-proyecto.png">
             <div class="card-body">
               <h4 class="card-title">Vincular Proyectos</h4>
               <p class="card-text">Vincule sus proyectos cargados</p>
@@ -88,7 +88,7 @@
   
         <div class="col-lg-4 col-md-4 mb-3">
           <div class="card h-100">
-            <img class="card-img-top" src="/Images/auditoria.svg" alt="">
+            <img class="card-img-top" src="/Images/auditoria.png">
             <div class="card-body">
               <h4 class="card-title">Auditor&iacute;a</h4>
               <p class="card-text">Acceda a la auditor&iacute;a de operaciones </p>

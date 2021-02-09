@@ -27,11 +27,9 @@ public class Presupuesto {
 	private Proveedor proveedor;
 	
 	@OneToMany
-	@JoinColumn(name = "id_presupuesto")
 	private List<DocumentoComercial> documentosComerciales = new ArrayList<DocumentoComercial>();
 	
 	@ManyToMany
-	@JoinColumn(name = "id_presupuesto")
 	private List<PresupuestoDetallado> detalles = new ArrayList<PresupuestoDetallado>();
 
 	public Presupuesto(Proveedor proveedor, List<DocumentoComercial> documentosComerciales,

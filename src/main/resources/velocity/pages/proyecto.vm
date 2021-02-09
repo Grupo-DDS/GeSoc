@@ -101,13 +101,6 @@
   
       </div>
   </div>
-      <!-- /.row -->
-      <footer class="bg-dark">
-        <div class="container">
-          <p class="m-0 text-center text-white">Copyright &copy; GeSoc Website 2020</p>
-        </div>
-        <!-- /.container -->
-      </footer>
       
 <!-- Bootstrap core JavaScript -->
   <script src="/vendor/jquery/jquery.min.js"></script>

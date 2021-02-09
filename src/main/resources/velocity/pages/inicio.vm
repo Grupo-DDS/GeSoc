@@ -43,9 +43,9 @@
           </li>
         </ul> 
       </div>
-       <div class="justified-content-center badge badge-pill badge-secondary" data-target="#navbarResponsive">
+       <div class="justified-content-center badge badge-secondary" data-target="#navbarResponsive">
           	<a class="text-white"> $currentUser </a>	
-          	<img class="card-img-top" src="/Images/avatar.png" style="width: 50px;">		
+          	<img class="card-img-top" src="/Images/avatar.png" style="width: 30px;">		
       </div>  
       
   </nav>
@@ -67,7 +67,7 @@
 
       <div class="col-lg-4 col-md-4 mb-3">
         <div class="card h-100">
-          <img class="card-img-top" src="/Images/cargar-operaciones.svg" alt="">
+          <img class="card-img-top" src="/Images/cargar-operaciones.svg">
           <div class="card-body">
             <h4 class="card-title">Cargar Operaciones</h4>
             <p class="card-text">Cargue distintas Operaciones</p>
@@ -108,7 +108,7 @@
 
       <div class="col-lg-4 col-md-4 mb-3">
         <div class="card h-100">
-          <img class="card-img-top" src="/Images/mis-operaciones.svg" alt="">
+          <img class="card-img-top" src="/Images/mis-operaciones.svg">
           <div class="card-body">
             <h4 class="card-title">Mis Operaciones</h4>
             <p class="card-text">Visualice sus Operaciones Cargadas</p>
@@ -148,7 +148,7 @@
 
       <div class="col-lg-4 col-md-4 mb-3">
         <div class="card h-100">
-          <img class="card-img-top" src="/Images/asociaciones.svg" alt="">
+          <img class="card-img-top" src="/Images/asociaciones.svg">
           <div class="card-body">
             <h4 class="card-title">Asociaciones</h4>
             <p class="card-text">Realice distintos tipos de asociaciones</p>
@@ -161,7 +161,7 @@
       
 <div class="col-lg-4 col-md-4 mb-3">
       <div class="card h-100">
-        <img class="card-img-top" src="/Images/producto-categoria.png" style="width: 50px;">
+        <img class="card-img-top" src="/Images/producto-categoria.png" style="width: 250px;">
         <div class="card-body">
           <h4 class="card-title">Productos y categor&iacute;as</h4>
           <p class="card-text">Cargue productos o categor&iacute;as</p>
@@ -201,7 +201,7 @@
     
     <div class="col-lg-4 col-md-4 mb-3">
       <div class="card h-100">
-        <img class="card-img-top" src="/Images/presupuestos.png" alt="">
+        <img class="card-img-top" src="/Images/presupuestos.png">
         <div class="card-body">
           <h4 class="card-title">Presupuestos y presupuestos detallados </h4>
           <p class="card-text">Cargue sus presupuestos o presupuestos detallados</p>
@@ -242,7 +242,7 @@
     
     <div class="col-lg-4 col-md-4 mb-3">
       <div class="card h-100">
-        <img class="card-img-top" src="/Images/entidad.png" alt="">
+        <img class="card-img-top" src="/Images/entidad.png">
         <div class="card-body">
           <h4 class="card-title">Crear entidad</h4>
           <p class="card-text">Cargue informaci&oacute;n de su entidad</p>

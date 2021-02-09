@@ -161,7 +161,7 @@
       
 <div class="col-lg-4 col-md-4 mb-3">
       <div class="card h-100">
-        <img class="card-img-top" src="/Images/producto-categoria.png" style="width: 250px;">
+        <img class="card-img-top" src="/Images/producto-categoria.png" ">
         <div class="card-body">
           <h4 class="card-title">Productos y categor&iacute;as</h4>
           <p class="card-text">Cargue productos o categor&iacute;as</p>

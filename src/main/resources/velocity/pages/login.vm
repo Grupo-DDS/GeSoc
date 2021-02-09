@@ -55,7 +55,7 @@
     <header class="jumbotron my-4">
       <h1 class="display-3">Bienvenido a GeSoc</h1>
       <p class="lead">Nuestro sistema Gestor de Proyectos Sociales
-           facilita la carga y gesti&oacute;n de sus operaciones de egresos. </p>
+           facilita la carga y gesti&oacute;n de sus operaciones. </p>
     </header>
 
     <!-- Page Features -->
@@ -73,7 +73,7 @@
                       <div class="col-sm-12">
                         <i class="j-icon-purchases-feature pull-left"></i>
                         <p class="lead">
-                          <strong>&#9660; Cargue sus Operaciones de Egresos</strong>
+                          <strong>Cargue sus Operaciones de Egresos</strong>
                           <br>
                            y vea su historial de Operaciones.
                         </p>
@@ -83,7 +83,7 @@
                       <div class="col-sm-12">
                         <i class="j-icon-alert-feature pull-left"></i>
                         <p class="lead">
-                          <strong>&#9660; Asocie sus Ingresos con sus Egresos</strong>
+                          <strong>Asocie sus Ingresos con sus Egresos</strong>
                           <br>
                            de forma eficiente y r&aacute;pida.
                         </p>
@@ -93,7 +93,7 @@
                       <div class="col-sm-12">
                         <i class="j-icon-manage-feature pull-left"></i>
                         <p class="lead">
-                          <strong>&#9660; Visualice sus asociaciones por categor&iacute;a</strong>
+                          <strong>Visualice sus asociaciones por categor&iacute;a</strong>
                           <br>
                            y pruebe entre las distintas categor&iacute;as. 
                         </p>

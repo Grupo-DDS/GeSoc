@@ -74,7 +74,7 @@ public class ListaAPI {
 		if (!PaisMapperBD.getInstance().paisesCargadosEnBD()) {
 			List<Pais> paises;
 			try {
-				paises = ListaAPI.getInstance().obtenerListaAPIPaisDetallado(obtenerListaAPIPais());
+				paises = ListaAPI.getInstance().obtenerListaAPIPais();
 				PaisMapperBD.getInstance().insert(paises);
 			} catch (IOException e) {
 				e.printStackTrace();

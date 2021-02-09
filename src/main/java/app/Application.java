@@ -8,7 +8,10 @@ import static spark.Spark.post;
 
 import javax.persistence.EntityManager;
 
+import org.quartz.SchedulerException;
+
 import com.API.ListaAPI;
+import com.example.demoquartz.QuartzSchedulerCronTriggerExample;
 
 import controllers.AsociacionesController;
 import controllers.AuditoriaController;
@@ -37,12 +40,6 @@ public class Application {
 		System.out.println("----------------------------------------------------------------------------");
 		System.out.println("----------------------------------------------------------------------------");
 		System.out.println("----------------------------------------------------------------------------");
-
-//        try {
-//			QuartzSchedulerCronTriggerExample.getInstance().iniciar();
-//		} catch (SchedulerException e) {
-//			e.printStackTrace();
-//		}
 
 		// Configuracion Spark
 		System.out.println("----------------------------------------------------------------------------");
@@ -156,7 +153,12 @@ public class Application {
         System.out.println("----------------------------------------------------------------------------");
         System.out.println("----------------------------------------------------------------------------");
         System.out.println("----------------------------------------------------------------------------");
-	}
+      try {
+			QuartzSchedulerCronTriggerExample.getInstance().iniciar();
+		} catch (SchedulerException e) {
+			e.printStackTrace();
+		}
+	}	
 
 	static int getHerokuAssignedPort() {
 		ProcessBuilder processBuilder = new ProcessBuilder();

@@ -98,9 +98,9 @@ function showDivTipoEntidadEmp(select){
 
     <!-- Header -->
     <header class="jumbotron my-4">
-      <h1 class="display-3">Cargue sus Ingresos</h1>
+      <h1 class="display-3">Cargue sus entidades</h1>
       <p class="lead">Nuestro sistema Gestor de Proyectos Sociales
-      facilita la carga y gesti&oacute;n de sus operaciones de ingresos. </p>
+      facilita la carga y gesti&oacute;n de sus entidades. </p>
     </header>
 
 	
@@ -173,12 +173,12 @@ function showDivTipoEntidadEmp(select){
 
     <form method="get">
       <div class="form-group col-md-12">
-       <label for="OpcionOperacion">BASE O JURIDICA</label>
+       <label for="OpcionOperacion">Seleccione el tipo de entidad</label>
 
        <select id="test1" name="seleccion_base_jur" onchange="showDiv(this)" class="form-control">
         <option disabled selected value="0">Opciones</option>
         <option value="1">Base</option>
-        <option value="2">Juridica</option>
+        <option value="2">Jur&iacute;dica</option>
       </select>
 
     </div>
@@ -192,12 +192,12 @@ function showDivTipoEntidadEmp(select){
     </div>
 
     <div class="form-group col-md-12">
-      <label for="inputDescripcion">Descripcion</label>
-      <input name="descripcion_base"  type="text" class="form-control" id="inputDescripcion" placeholder="Descripcion">
+      <label for="inputDescripcion">Descripci&oacute;n</label>
+      <input name="descripcion_base"  type="text" class="form-control" id="inputDescripcion" placeholder="Descripci&oacute;n">
     </div>
 
     <div class="form-group col-md-12">
-     <label for="inputDescripcion">Tipo de entidad</label>
+     <label for="inputDescripcion">Elija la categor&iacute;a</label>
 
      <select id="test2" name="tipoEntidad_base_osc_empresa" onchange="showDivTipoEntidad(this)" class="form-control">
       <option disabled selected value="0">Opciones</option>
@@ -217,10 +217,10 @@ function showDivTipoEntidadEmp(select){
 
     <select name="actividad_base_empresa" class="form-control">
       <option disabled selected value="0">Opciones</option>
-      <option value="CONSTRUCCION">Construccion</option>
+      <option value="CONSTRUCCION">Construcci&oacute;n</option>
       <option value="SERVICIOS">Servicios</option>
       <option value="COMERCIO">Comercio</option>
-      <option value="INDUSTRIAyMINERIA">Industria y mineria</option>
+      <option value="INDUSTRIAyMINERIA">Industria y miner&iacute;a</option>
       <option value="AGROPECUARIO">Agropecuario</option>
     </select>
 
@@ -249,13 +249,13 @@ function showDivTipoEntidadEmp(select){
 </div>
 
 <div class="form-group col-md-12">
-  <label for="inputDescripcion">Codigo inscripcion</label>
-  <input name="codigo_inscripcion_jur"  type="text" class="form-control" id="inputDescripcion" placeholder="Codigo inscripcion">
+  <label for="inputDescripcion">C&oacute;digo inscripci&oacute;n</label>
+  <input name="codigo_inscripcion_jur"  type="text" class="form-control" id="inputDescripcion" placeholder="C&oacute;digo inscripci&oacute;n">
 </div>
 
 <div class="form-group col-md-12">
-  <label for="inputDescripcion">Codigo postal</label>
-  <input name="codigo_postal_jur"  type="text" class="form-control" id="inputDescripcion" placeholder="Codigo postal">
+  <label for="inputDescripcion">C&oacute;digo postal</label>
+  <input name="codigo_postal_jur"  type="text" class="form-control" id="inputDescripcion" placeholder="C&oacute;digo postal">
 </div>
 
 <div class="form-group col-md-12">
@@ -264,8 +264,8 @@ function showDivTipoEntidadEmp(select){
 </div>
 
 <div class="form-group col-md-12">
-  <label for="inputDescripcion">Razon social</label>
-  <input name="razon_social"  type="text" class="form-control" id="inputDescripcion" placeholder="Razon social">
+  <label for="inputDescripcion">Raz&oacute;n social</label>
+  <input name="razon_social"  type="text" class="form-control" id="inputDescripcion" placeholder="Raz&oacute;n social">
 </div>
 
         <div class="form-row col-md-12" >
@@ -316,7 +316,7 @@ function showDivTipoEntidadEmp(select){
 
 
 <div class="form-group col-md-12">
- <label for="inputDescripcion">Tipo de entidad</label>
+ <label for="inputDescripcion">Elija la categor&iacute;a</label>
 
  <select id="test3" name="tipoEntidad_jur_osc_empresa" onchange="showDivTipoEntidadEmp(this)" class="form-control">
   <option disabled selected value="0">Opciones</option>
@@ -336,10 +336,10 @@ function showDivTipoEntidadEmp(select){
 
   <select name="actividad_jur_empresa" class="form-control">
     <option disabled selected value="0">Opciones</option>
-    <option value="CONSTRUCCION">Construccion</option>
+    <option value="CONSTRUCCION">Construcci&oacute;n</option>
     <option value="SERVICIOS">Servicios</option>
     <option value="COMERCIO">Comercio</option>
-    <option value="INDUSTRIAyMINERIA">Industria y mineria</option>
+    <option value="INDUSTRIAyMINERIA">Industria y miner&iacute;a</option>
     <option value="AGROPECUARIO">Agropecuario</option>
   </select>
 

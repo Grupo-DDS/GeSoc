@@ -32,7 +32,7 @@ public class QuartzSchedulerCronTriggerExample {
 		Trigger trigger = TriggerBuilder
 		.newTrigger()
 		.withIdentity("Trigger", "Grupo6")
-		.withSchedule(CronScheduleBuilder.cronSchedule("0/2 * * * * ?")) // Ejecuta cada 2 segundos.
+		.withSchedule(CronScheduleBuilder.cronSchedule("0 0/5 * * * ?")) // Ejecuta cada 5 minutos.
 		.build();
 		scheduler.start();
 		scheduler.scheduleJob(job,trigger);

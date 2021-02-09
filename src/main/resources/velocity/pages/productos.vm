@@ -70,7 +70,7 @@
     #elseif($errorEleccionCategorias)
 		<p>ERROR EN LA SELECCION DE CATEGORIAS </p>
 	#elseif($cargaCorrecta)
-		<p>EXITO: EL PRODUCTO A FUE CARGAD CORRECTAMENTE. SU IDENTIFICADOR ES: $idProducto</p>
+		<p>EXITO: EL PRODUCTO A FUE CARGADO CORRECTAMENTE. SU IDENTIFICADOR ES: $idProducto</p>
     #end
             <div class="form-group">
                 <label for="inputDescripcion">Descripci&oacute;n</label>

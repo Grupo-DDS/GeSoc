@@ -54,7 +54,7 @@
     <!-- Header -->
         <header class="jumbotron my-4">
         <h1 class="display-3">Vea sus Egresos</h1>
-        <p class="lead">Visualice operaciones de egresos.</p>
+        <p class="lead">Visualice sus operaciones de egresos.</p>
         </header>
     </div>
 
@@ -84,7 +84,7 @@
 			<th>&nbsp;Proveedor&nbsp;</th>
 			<th>&nbsp;Medio de pago&nbsp;</th>
 			<th>&nbsp;Fecha&nbsp;</th>
-			<th>&nbsp;Montoo&nbsp;</th>
+			<th>&nbsp;Monto&nbsp;</th>
 			<th>&nbsp;Ingreso vinculado&nbsp;</th>
 		</tr>
 	</thead><tbody>

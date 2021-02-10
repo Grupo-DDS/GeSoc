@@ -13,5 +13,15 @@ public abstract class CriterioSeleccionPresupuesto {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long id;
+	private String tipo;
+	
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
 	public abstract Presupuesto obtenerPresupuesto(Compra compra);
 }

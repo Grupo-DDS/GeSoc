@@ -103,6 +103,8 @@
 
           <ul class="list-group list-group-flush">
 			#foreach($criterio in $criterios)
+			#if($criterio.getCategorias())
+			#if($criterio.getCategorias().size()>0)
 				<li class="list-group-item">
 					<div class="custom-control custom-checkbox">
 						<div class="form-row">
@@ -114,9 +116,9 @@
 									<div>
 									#foreach($categoria in $criterio.getCategorias())
 										<div class="form-check">
-											<input class="form-check-input" type="radio" name="$criterio.getNombre()" value="$categoria.getNombre()" id="$categoria.getNombre()">
-											<label class="form-check-label" for="$categoria.getNombre()">
-												Categoria $foreach.count: $categoria.getNombre()
+											<input class="form-check-input" type="radio" name="$criterio.getId()" value="$categoria.getId()" id="$categoria.getId()">
+											<label class="form-check-label" for="$categoria.getId()">
+												Categoria $categoria.getId(): $categoria.getNombre()
 											</label>
             							</div>
 									#end
@@ -126,7 +128,8 @@
 					</div>
            		</li>	
 			#end
-
+			#end
+			#end
         </ul>
 
         <div class="modal-footer">

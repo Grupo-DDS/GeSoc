@@ -1,6 +1,5 @@
 package entidades;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,7 +16,7 @@ public class Entidad {
 	private int idEntidad;
 	private String nombreFicticio;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne
 	private TipoEntidad tipoDeEntidad;
 	
 	public Entidad() {}

@@ -29,11 +29,11 @@ public class ProductoController {
 		LoginController.ensureUserIsLoggedIn(request, response);
 		List<CriterioCategorizacion> criterios = CriterioCategorizacion.obtenerTodosEnBD();
 		model.put("criterios", criterios);
-		
-		if(getQueryDescripcion(request)!=null && getQueryMontoTotal(request)!=null) {
+
+		if (getQueryDescripcion(request) != null && getQueryMontoTotal(request) != null) {
 			Producto productoNuevo = new Producto();
 			productoNuevo.setDescripcion(getQueryDescripcion(request).trim());
-			
+
 			Float montoTotal;
 			try {
 				montoTotal = Float.parseFloat(getQueryMontoTotal(request).trim());
@@ -45,28 +45,28 @@ public class ProductoController {
 				model.put("montoMenorACero", true);
 				return ViewUtil.render(request, model, Path.Template.PRODUCTOS);
 			}
-			
+
 			productoNuevo.setValor(montoTotal);
-		
-			if(getQueryCriteriosSeleccionados(request)!=null) {
+
+			if (getQueryCriteriosSeleccionados(request) != null) {
 				int index = 0;
 				int l = getQueryCriteriosSeleccionados(request).length;
-				while(index<l) {
+				while (index < l) {
 					System.out.println(getQueryCriteriosSeleccionados(request)[index]);
 					index++;
 				}
-				
+
 			}
-			
-			
-			if(getQueryCriteriosSeleccionados(request)!=null && getQueryCategoriasElegidas(request,criterios)!=null) {
+
+			if (getQueryCriteriosSeleccionados(request) != null
+					&& getQueryCategoriasElegidas(request, criterios) != null) {
 				int index = 0;
 				int l = getQueryCriteriosSeleccionados(request).length;
-				Map<String,String> mapaCriterioCategoriaElegidos = new HashMap<>();
-				while(index<l) {
+				Map<String, String> mapaCriterioCategoriaElegidos = new HashMap<>();
+				while (index < l) {
 					String nombreCriterioI = getQueryCriteriosSeleccionados(request)[index];
-					String nombreCategoriaI = getQueryCategoriasElegidas(request,criterios).get(nombreCriterioI);
-					if(nombreCategoriaI != null)
+					String nombreCategoriaI = getQueryCategoriasElegidas(request, criterios).get(nombreCriterioI);
+					if (nombreCategoriaI != null)
 						mapaCriterioCategoriaElegidos.put(nombreCriterioI, nombreCategoriaI);
 					else {
 						model.put("errorEleccionCategorias", true);
@@ -74,21 +74,18 @@ public class ProductoController {
 					}
 					index++;
 				}
-				List<Categoria> categoriasElegidas = buscarCategorias(criterios,mapaCriterioCategoriaElegidos);
-				
+				List<Categoria> categoriasElegidas = buscarCategorias(criterios, mapaCriterioCategoriaElegidos);
+
 				productoNuevo.setCategorias(categoriasElegidas);
-				
+
 				Producto.insertarNuevoProductoEnBD(productoNuevo);
-				model.put("cargaCorrecta",true);
+				model.put("cargaCorrecta", true);
 				model.put("idProducto", productoNuevo.getId());
-				
-				
+
 			}
 
-			
 		}
-		
-		
+
 		return ViewUtil.render(request, model, Path.Template.PRODUCTOS);
 	};
 
@@ -129,6 +126,7 @@ public class ProductoController {
 			while (index < cantidadCategorias) {
 				Categoria categoriaNueva = new Categoria();
 				categoriaNueva.setCriterio(criterioNuevo);
+				categoriaNueva.setNombre("Nombre sin asignar");
 				criterioNuevo.getCategorias().add(categoriaNueva);
 				index++;
 			}
@@ -148,7 +146,9 @@ public class ProductoController {
 				int index = 1;
 				int length = getQueryNombreCategorias(request).length;
 				while (index < length) {
-					cr.getCategorias().get(index-1).setNombre(getQueryNombreCategorias(request)[index]);
+					if (getQueryNombreCategorias(request)[index] != null)
+						if (!getQueryNombreCategorias(request)[index].equals(""))
+							cr.getCategorias().get(index - 1).setNombre(getQueryNombreCategorias(request)[index]);
 					index++;
 				}
 				Categoria.actualizarCategorias(cr.getCategorias());
@@ -168,26 +168,24 @@ public class ProductoController {
 		List<Categoria> categorias = new ArrayList<Categoria>();
 		int index = 0;
 		int size = criterios.size();
-		
-		while(index<size) {
+
+		while (index < size) {
 			String nombreCategoria = mapaCriterioCategoriaElegidos.get(criterios.get(index).getNombre());
-			if(nombreCategoria !=null)
-			{
+			if (nombreCategoria != null) {
 				int indexC = 0;
 				int sizeC = criterios.get(index).getCategorias().size();
-				while(indexC<sizeC) {
-					if(criterios.get(index).getCategorias().get(indexC).getNombre().equals(nombreCategoria)) {
+				while (indexC < sizeC) {
+					if (criterios.get(index).getCategorias().get(indexC).getNombre().equals(nombreCategoria)) {
 						categorias.add(criterios.get(index).getCategorias().get(indexC));
 					}
 					indexC++;
 				}
 			}
-			
+
 			index++;
 		}
-		
+
 		return categorias;
 	}
-
 
 }

@@ -17,6 +17,7 @@ import comprasPresupuestos.Compra;
 import comprasPresupuestos.Presupuesto;
 import comprasPresupuestos.Producto;
 import comprasPresupuestos.ProveedorMenorValor;
+import persistencia.CriterioSeleccionPresupuestoMapperBD;
 import spark.Request;
 import spark.Response;
 import spark.Route;
@@ -65,8 +66,16 @@ public class CompraController {
 			}
 			compraNueva.setCantidadMinimaPresupuestos(cantidadPresupuestos);
 
-			if (getQueryCriterioSeleccion(request).equals("ProveedorMenorValor"))
-				compraNueva.setCriterio(ProveedorMenorValor.getInstance());
+			if (getQueryCriterioSeleccion(request).equals("ProveedorMenorValor")) {
+				ProveedorMenorValor crit = ProveedorMenorValor.buscarCriterioEnBD();
+				if(crit != null)
+				compraNueva.setCriterio(crit);
+				else {
+					ProveedorMenorValor.getInstance().setTipo("menor valor");
+					CriterioSeleccionPresupuestoMapperBD.getInstance().insert(ProveedorMenorValor.getInstance());
+					compraNueva.setCriterio(ProveedorMenorValor.getInstance());
+				}
+				}
 			if (getQueryCriterioSeleccion(request).equals("Ninguno"))
 				compraNueva.setCriterio(null);
 

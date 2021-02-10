@@ -3,7 +3,6 @@ package comprasPresupuestos;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -38,8 +37,10 @@ public class Compra {
 	@ManyToMany(fetch = FetchType.LAZY)
 	private List<Usuario> revisores = new ArrayList<Usuario>();
 
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY)
 	private CriterioSeleccionPresupuesto criterio;
+	
+	private String criterioBD;
 
 	private Long id_operacion_egreso = (long) -1;
 	
@@ -147,6 +148,14 @@ public class Compra {
 
 	
 	
+	public String getCriterioBD() {
+		return criterioBD;
+	}
+
+	public void setCriterioBD(String criterioBD) {
+		this.criterioBD = criterioBD;
+	}
+
 	public Long getId_operacion_egreso() {
 		return id_operacion_egreso;
 	}

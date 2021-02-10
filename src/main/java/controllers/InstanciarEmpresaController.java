@@ -30,6 +30,8 @@ import entidades.EntidadBase;
 import entidades.EntidadJuridica;
 import entidades.InstanciarEmpresa;
 import entidades.OSC;
+import persistencia.EmpresaMapperBD;
+import persistencia.OSCMapperBD;
 import spark.Request;
 import spark.Response;
 import spark.Route;
@@ -56,6 +58,7 @@ public class InstanciarEmpresaController {
 				}
 				else if(getQuery_tipoEntidad_base_osc_empresa(request).equals("1")) {
 					OSC osc = new OSC();
+					OSCMapperBD.getInstance().insert(osc);
 					entidad.setTipoDeEntidad(osc);
 					}
 				
@@ -91,6 +94,7 @@ public class InstanciarEmpresaController {
 					empresa.setPersonal(cantidadPersonal);
 					empresa.setVtasAnuales(cantidadVtasAnuales);
 					InstanciarEmpresa.definirEmpresa(empresa);
+					EmpresaMapperBD.getInstance().insert(empresa);
 					entidad.setTipoDeEntidad(empresa);
 
 				}
@@ -149,6 +153,7 @@ public class InstanciarEmpresaController {
 					}
 				else if(getQuery_tipoEntidad_jur_osc_empresa(request).equals("1")) {					
 					OSC osc = new OSC();
+					OSCMapperBD.getInstance().insert(osc);
 					entidad.setTipoDeEntidad(osc);
 				}
 				else if(getQuery_tipoEntidad_jur_osc_empresa(request).equals("2")) {					
@@ -183,6 +188,7 @@ public class InstanciarEmpresaController {
 					empresa.setPersonal(cantidadPersonal);
 					empresa.setVtasAnuales(cantidadVtasAnuales);
 					InstanciarEmpresa.definirEmpresa(empresa);
+					EmpresaMapperBD.getInstance().insert(empresa);
 					entidad.setTipoDeEntidad(empresa);
 
 				}

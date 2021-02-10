@@ -5,6 +5,8 @@ import java.util.Comparator;
 
 import javax.persistence.Entity;
 
+import persistencia.CriterioSeleccionPresupuestoMapperBD;
+
 @Entity
 public class ProveedorMenorValor extends CriterioSeleccionPresupuesto {
 
@@ -28,5 +30,8 @@ public class ProveedorMenorValor extends CriterioSeleccionPresupuesto {
 		Presupuesto presMin = Collections.min(compra.getPresupuestos(), comparador);
 		return presMin;
 
+	}
+	public static ProveedorMenorValor buscarCriterioEnBD() {
+		return CriterioSeleccionPresupuestoMapperBD.getInstance().buscarCriterioMenorValor();
 	}
 }

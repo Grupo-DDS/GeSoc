@@ -32,6 +32,6 @@ public class ProveedorMenorValor extends CriterioSeleccionPresupuesto {
 
 	}
 	public static ProveedorMenorValor buscarCriterioEnBD() {
-		return CriterioSeleccionPresupuestoMapperBD.getInstance().buscarCriterioMenorValor();
+		return (ProveedorMenorValor) CriterioSeleccionPresupuestoMapperBD.getInstance().buscarCriterioMenorValor();
 	}
 }

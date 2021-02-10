@@ -62,7 +62,6 @@ public class ProductoController {
 				List<Categoria> categoriasElegidas = new ArrayList<Categoria>();
 				int index = 0;
 				int l = getQueryCriteriosSeleccionados(request).length;
-				Map<String, String> mapaCriterioCategoriaElegidos = new HashMap<>();
 				while (index < l) {
 					String IDCriterioI = getQueryCriteriosSeleccionados(request)[index];
 					String IDCategoriaI = getQueryCategoriaElegida(request,IDCriterioI);

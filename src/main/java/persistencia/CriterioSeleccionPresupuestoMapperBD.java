@@ -4,7 +4,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 
 import comprasPresupuestos.CriterioSeleccionPresupuesto;
-import comprasPresupuestos.ProveedorMenorValor;
 
 public class CriterioSeleccionPresupuestoMapperBD  extends MapperBD<CriterioSeleccionPresupuesto>{
 	private static final CriterioSeleccionPresupuestoMapperBD instance = new CriterioSeleccionPresupuestoMapperBD();
@@ -13,12 +12,12 @@ public class CriterioSeleccionPresupuestoMapperBD  extends MapperBD<CriterioSele
 	public static CriterioSeleccionPresupuestoMapperBD getInstance() {
 		return instance;
 	}
-	public ProveedorMenorValor buscarCriterioMenorValor() {
+	public CriterioSeleccionPresupuesto buscarCriterioMenorValor() {
 		EntityManager em = BDUtils.getEntityManager();
 		BDUtils.comenzarTransaccion(em);
-		ProveedorMenorValor critEncontrado;
+		CriterioSeleccionPresupuesto critEncontrado;
 		try {
-			critEncontrado = em.createQuery("select c from CriterioSeleccionPresupuesto c where c.tipo like :n", ProveedorMenorValor.class)
+			critEncontrado = em.createQuery("select c from CriterioSeleccionPresupuesto c where c.tipo like :n", CriterioSeleccionPresupuesto.class)
 					.setParameter("n", "menor valor").getSingleResult();
 		}
 		catch(NoResultException e) {

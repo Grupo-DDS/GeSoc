@@ -109,15 +109,15 @@
 					<div class="custom-control custom-checkbox">
 						<div class="form-row">
 							<div class="form-group col-md-9">
-								<input name="criteriosSeleccionados" value="$!criterio.getNombre()" type="checkbox" class="custom-control-input" id="$!$criterio.getNombre()">
-									<label class="custom-control-label" for="$!$criterio.getNombre()">
+								<input name="criteriosSeleccionados" value="$!criterio.getId()" type="checkbox" class="custom-control-input" id="$!$criterio.getId()">
+									<label class="custom-control-label" for="$!$criterio.getId()">
 										Criterio $foreach.count: $criterio.getNombre()
 									</label>
 									<div>
 									#foreach($categoria in $criterio.getCategorias())
 										<div class="form-check">
-											<input class="form-check-input" type="radio" name="$criterio.getId()" value="$categoria.getId()" id="$categoria.getId()">
-											<label class="form-check-label" for="$categoria.getId()">
+											<input class="form-check-input" type="radio" name="$!criterio.getId()" value="$!categoria.getId()" id="$!categoria.getId()">
+											<label class="form-check-label" for="$!categoria.getId()">
 												Categoria $categoria.getId(): $categoria.getNombre()
 											</label>
             							</div>

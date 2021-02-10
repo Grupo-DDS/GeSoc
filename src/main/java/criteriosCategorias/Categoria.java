@@ -47,4 +47,9 @@ public class Categoria {
 		CategoriaMapper.getInstance().updateAll(categorias);
 	}
 
+
+	public static Categoria buscarCategoriaPorID(Long idCategoriaParseada) {
+		return CategoriaMapper.getInstance().buscarCategoriaPorID(idCategoriaParseada);
+	}
+
 }

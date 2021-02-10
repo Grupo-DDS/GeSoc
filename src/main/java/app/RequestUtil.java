@@ -1,10 +1,5 @@
 package app;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import criteriosCategorias.CriterioCategorizacion;
 import spark.Request;
 
 public class RequestUtil {
@@ -189,16 +184,12 @@ public class RequestUtil {
 		return request.queryParamsValues("criteriosSeleccionados");
 	}
 	
-	public static Map<String,String> getQueryCategoriasElegidas(Request request, List<CriterioCategorizacion> criterios) {
-		Map<String,String> categoriasElegidas = new HashMap<>();
-		int index = 0;
-		int longitud = criterios.size();
-		while(index<longitud) {
-			categoriasElegidas.put(criterios.get(index).getNombre(),request.queryParams(criterios.get(index).getNombre()));
-			index++;
-		}
-		return categoriasElegidas;
+	public static String getQueryCategoriaElegida(Request request, String criterio) {
+		return request.queryParams(criterio);
 	}
+	
+	
+	
 	
 	
 	  

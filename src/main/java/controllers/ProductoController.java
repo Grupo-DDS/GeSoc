@@ -1,7 +1,7 @@
 package controllers;
 
 import static app.RequestUtil.getQueryCantidadCategorias;
-import static app.RequestUtil.getQueryCategoriasElegidas;
+import static app.RequestUtil.getQueryCategoriaElegida;
 import static app.RequestUtil.getQueryCriteriosSeleccionados;
 import static app.RequestUtil.getQueryDescripcion;
 import static app.RequestUtil.getQueryMontoTotal;
@@ -57,24 +57,25 @@ public class ProductoController {
 				}
 
 			}
-
-			if (getQueryCriteriosSeleccionados(request) != null
-					&& getQueryCategoriasElegidas(request, criterios) != null) {
+			
+			if (getQueryCriteriosSeleccionados(request) != null) {
+				List<Categoria> categoriasElegidas = new ArrayList<Categoria>();
 				int index = 0;
 				int l = getQueryCriteriosSeleccionados(request).length;
 				Map<String, String> mapaCriterioCategoriaElegidos = new HashMap<>();
 				while (index < l) {
-					String nombreCriterioI = getQueryCriteriosSeleccionados(request)[index];
-					String nombreCategoriaI = getQueryCategoriasElegidas(request, criterios).get(nombreCriterioI);
-					if (nombreCategoriaI != null)
-						mapaCriterioCategoriaElegidos.put(nombreCriterioI, nombreCategoriaI);
-					else {
-						model.put("errorEleccionCategorias", true);
-						return ViewUtil.render(request, model, Path.Template.PRODUCTOS);
+					String IDCriterioI = getQueryCriteriosSeleccionados(request)[index];
+					String IDCategoriaI = getQueryCategoriaElegida(request,IDCriterioI);
+					if(IDCategoriaI != null) {
+						Long idCategoriaParseada = Long.parseLong(IDCategoriaI);
+						Categoria categoriaEncontrada = Categoria.buscarCategoriaPorID(idCategoriaParseada);
+						if(categoriaEncontrada != null) {
+							categoriasElegidas.add(categoriaEncontrada);
+						}
 					}
 					index++;
 				}
-				List<Categoria> categoriasElegidas = buscarCategorias(criterios, mapaCriterioCategoriaElegidos);
+				
 
 				productoNuevo.setCategorias(categoriasElegidas);
 

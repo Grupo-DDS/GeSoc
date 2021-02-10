@@ -13,33 +13,27 @@ import javax.persistence.OneToMany;
 
 import persistencia.CriterioCategorizacionMapper;
 
-
 @Entity
 
 public class CriterioCategorizacion {
-	
+
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-	
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+
 	private String nombre;
-	
+
 	@OneToMany(cascade = CascadeType.ALL)
 	List<Categoria> categorias = new ArrayList<Categoria>();
-	
+
 	@ManyToOne
 	private CriterioCategorizacion criterioPadre;
-	
+
 	@OneToMany
 	private List<CriterioCategorizacion> criterioHijo = new ArrayList<CriterioCategorizacion>();
-	
-	
+
 	public Long getId() {
 		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public String getNombre() {
@@ -82,8 +76,6 @@ public class CriterioCategorizacion {
 		this.criterioHijo = criterioHijo;
 	}
 
-
-	
 	public void agregarCategoria(Categoria categoria) {
 		categorias.add(categoria);
 		categoria.setCriterio(this);
@@ -95,12 +87,12 @@ public class CriterioCategorizacion {
 
 	public static void insertarNuevoCriterioEnBD(CriterioCategorizacion criterioNuevo) {
 		CriterioCategorizacionMapper.getInstance().insert(criterioNuevo);
-		
+
 	}
 
 	public static void actualizarCriterioEnBD(CriterioCategorizacion criterioPadreEncontrado) {
 		CriterioCategorizacionMapper.getInstance().update(criterioPadreEncontrado);
-		
+
 	}
 
 	public static List<CriterioCategorizacion> obtenerTodosEnBD() {
